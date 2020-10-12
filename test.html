@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Test Seite</title>
+        <style>
+            .tex1 {
+                color: blue;
+            }
+
+            .tex1.tex2 {
+                font-family: "Agency FB";
+            }
+
+            #tex3 {
+                color: red;
+            }
+
+            h3 {
+                color: pink;
+            }
+
+            .divexample {
+                padding-left: 40px;
+                margin: 30px;
+            }
+
+        </style>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+        <script type="text/javascript">
+
+            // let irgendwas = 10;
+            // irgendwas = irgendwas + 3;
+            // irgendwas++;
+            //
+            // alert(irgendwas);
+
+
+            window.addEventListener("load", function () {
+
+                let block = document.getElementById("blockx");
+                block.innerHTML = "<h3>0</h3>";
+
+            });
+
+            // $( document ).ready(function() {
+            //
+            //     let block = document.getElementById("blockx");
+            //     block.innerHTML = "<h1>JavaScript!</h1>";
+            //
+            // });
+
+            function foo() {
+                let block = document.getElementById("blockx");
+                block.firstChild.innerHTML ++;
+            }
+
+            function change_page() {
+                window.location.assign("/");
+            }
+
+            function send_data() {
+                let value1 = document.getElementById("field1").value;
+                let value2 = document.getElementById("field2").value;
+                let value3 = document.getElementById("field3").value;
+
+                let send_data = {};
+                send_data.field1 = value1;
+                send_data.field2 = value2;
+                send_data.field3 = value3;
+
+                fetch('localhost/example/test.html', {
+                    method: 'post',
+                    body: send_data,
+                })
+                .then(function (data) {
+                    if(data.status !== 200) throw("error!");
+
+                    alert("success!");
+
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+
+                // $.ajax({
+                //     url: "localhost/example/test.html",
+                //     method: "POST",
+                //     data: send_data,
+                //     success: function () {
+                //         alert("success!");
+                //     }
+                // });
+
+            }
+
+        </script>
+
+        <!--    Kommentar    -->
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1 class="tex1">Class tex1</h1>
+        <h2 class="tex2">Class tex2 only</h2>
+        <h2 class="tex1 tex2">Classes tex1 and tex2</h2>
+        <h3>h3 with global overridden color </h3>
+        <h3 style="color: black" class="tex1">Multiple defenitions for color</h3>
+        <span>Stan html-tag</span>
+        <div class="divexample">
+            <h1 id="tex3">Class tex2</h1>
+            <h1 style="color: green">Color defined in style-attribute of this element</h1>
+        </div>
+        <div style="display: none">
+            <h1>Block1</h1>
+        </div>
+        <div style="visibility: hidden">
+            <h1>Block2</h1>
+        </div>
+        <div style="">
+            <h1>Block3</h1>
+        </div>
+    <div style="display: inline-flex; width: 100%">
+        <div id="blockx" style="width: 150px; height: 80px; background-color: blue"></div>
+        <div style="width: 150px; height: 80px; background-color: red"></div>
+        <div style="width: 150px; height: 80px; background-color: blue"></div>
+        <div style="width: 150px; height: 80px; background-color: red"></div>
+        <div style="width: 150px; height: 80px; background-color: blue"></div>
+        <div style="width: 150px; height: 80px; background-color: red"></div>
+    </div>
+
+    <div class="shadow-lg" style="width: 300px; height: 300px; margin: 20px; background-color: lightgray">
+    </div>
+
+    <button class="btn btn-primary ml-3" onclick="foo()">click</button>
+
+
+    <div class="d-flex justify-content-center">
+        <div style="width: 80%">
+            <input id="field1" class="form-control m-2" type="text" placeholder="dies ist text">
+            <input id="field2" class="form-control m-2" type="number" placeholder="55">
+            <input id="field3" class="form-control m-2" type="password" placeholder="dies ist text">
+
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-primary m-2" onclick="send_data()" style="width: 30%;">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <form action="test.html">
+        <input type="text" placeholder="dies ist text">
+        <input type="number" placeholder="55">
+        <input type="password" placeholder="dies ist text">
+        <button style="width: 30%;" type="submit">Submit</button>
+    </form>
+
+    <a href="test.html">LINK</a>
+    <button class="btn btn-primary" onclick="change_page()">Zum Dashboard!</button>
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    </body>
+</html>
