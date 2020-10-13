@@ -5,14 +5,18 @@
     <title>Dashboard</title>
 
 
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
     <script type="application/javascript">
 
 
         window.addEventListener("load", function () {
 
-            setUsername("Renge");
+            setUsername(User);
+            setUsername2(User)
 
         });
 
@@ -20,6 +24,9 @@
 
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
+        }
+        function setUsername2(user){
+            document.getElementById("UserName2").innerHTML = user;
         }
 
 
@@ -33,7 +40,7 @@
     <style>
 
     #HeaderBox {
-        background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/31a92255-861d-40f4-ad78-a2efd309b0d2/davtogx-3e3192c8-7fe5-46b7-9b0e-a0b9de1f87db.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzFhOTIyNTUtODYxZC00MGY0LWFkNzgtYTJlZmQzMDliMGQyXC9kYXZ0b2d4LTNlMzE5MmM4LTdmZTUtNDZiNy05YjBlLWEwYjlkZTFmODdkYi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.8v669J2Di-VW2E8753Il58VfuqbsvXGWrf9d2xaP-fY");
+        background-image: url("../../Images/header-background.jpg");
         background-position: center;
         background-size: cover;
         height: 260px;
@@ -41,7 +48,6 @@
         padding: 0;
         border: 0;
         outline: 0;
-        vertical-align: baseline;
     }
 
     h1{
@@ -53,10 +59,23 @@
     .WelcomeMessage{
         color: white;
         margin-left: 1%;
+        padding-bottom: 0px;
     }
+
     .Logo{
-        content:url("/../../Images/Logo.png");
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+        border: 0;
+        outline: 0;
     }
+    #UserButton{
+        margin-right: 1%;
+        margin-top: 0.5%;
+    }
+
+
 
 
 
@@ -64,16 +83,37 @@
     </style>
 </head>
 <body>
-    <div class="d-flex p-0 bd-highlight m-0" id = "HeaderBox">
-        <h1 class="WelcomeMessage">Welcome <span id="UserName"></span></h1>
-        <div class="Logo">
+    <div class="d-flex" id = "HeaderBox">
 
+        <h1 class="d-flex align-self-start WelcomeMessage">Welcome&nbsp <span id="UserName"></span></h1>
+
+
+
+        <div class="align-self-center d-flex justify-content-center Logo ">
+            <img src="../../Images/Logo_Small.png" >
         </div>
 
+
+
+        <div class="btn-group d-flex align-items-start" id="UserButton">
+            <div class="btn-group dropleft" role="group">
+                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="sr-only">Toggle Dropleft</span>
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">Account</a>
+                    <a class="dropdown-item" href="#">LogOut</a>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary">
+                <span id="UserName2"></span>
+            </button>
+        </div>
+
+
+
+        </div>
     </div>
-
-
-
 
 
 
