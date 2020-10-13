@@ -2,9 +2,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Dashboard</title>
+
+
+
+
+    <script type="application/javascript">
+
+
+        window.addEventListener("load", function () {
+
+            setUsername("Renge");
+
+        });
+
+        let User = "Renge";
+
+        function setUsername(user){
+            document.getElementById("UserName").innerHTML = user;
+        }
+
+
+
+
+
+
+
+
+    </script>
+    <style>
+
+    #HeaderBox {
+        background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/31a92255-861d-40f4-ad78-a2efd309b0d2/davtogx-3e3192c8-7fe5-46b7-9b0e-a0b9de1f87db.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvMzFhOTIyNTUtODYxZC00MGY0LWFkNzgtYTJlZmQzMDliMGQyXC9kYXZ0b2d4LTNlMzE5MmM4LTdmZTUtNDZiNy05YjBlLWEwYjlkZTFmODdkYi5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.8v669J2Di-VW2E8753Il58VfuqbsvXGWrf9d2xaP-fY");
+        background-position: center;
+        background-size: cover;
+        height: 260px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+        vertical-align: baseline;
+    }
+
+    h1{
+        margin-top: 0;
+    }
+    body{
+        margin:0;
+    }
+    .WelcomeMessage{
+        color: white;
+        margin-left: 1%;
+    }
+    .Logo{
+        content:url("/../../Images/Logo.png");
+    }
+
+
+
+
+    </style>
 </head>
 <body>
+    <div class="d-flex p-0 bd-highlight m-0" id = "HeaderBox">
+        <h1 class="WelcomeMessage">Welcome <span id="UserName"></span></h1>
+        <div class="Logo">
+
+        </div>
+
+    </div>
+
+
+
+
+
 
 </body>
 </html>
