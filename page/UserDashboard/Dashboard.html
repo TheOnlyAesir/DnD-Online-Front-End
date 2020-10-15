@@ -30,6 +30,26 @@
             document.getElementById("UserName2").innerHTML = user;
         }
 
+        function getCharactersheet(charactersheetid){
+            fetch('http://localhost:8181/api/v1.0/User/1/Group/1/Charactersheet/'+ charactersheetid, {
+                method: 'get',
+            })
+                .then(function (response) {
+                    if(response.status !== 200) throw("error!");
+
+                    return response.json();
+
+                })
+                .then(function (data) {
+
+                    document.getElementById("testabfrage").innerHTML = data.characterName;
+
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+        }
+
 
 
 
@@ -59,7 +79,6 @@
     }
     body{
         margin:0;
-        background: ;
     }
     .WelcomeMessage{
         color: white;
@@ -91,6 +110,7 @@
         max-width: 1440px;
         padding: 16px;
         width: 100%;
+        justify-content: center;
     }
 
     .sticky {
@@ -182,8 +202,17 @@
 
     <div class="container-fluid" id="app-main">
         <div class="d-flex content">
-            <div class="">
+            <div class="p-5" >
+                <!-- Link collapse -->
 
+                Asasas
+                <a class="btn btn-link" href="#" data-toggle="collapse" data-target="#target1">
+                    What is Lorem Ipsum?
+                </a>
+                <div id="target1" class="collapse">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ...
+                </div>
             </div>
         </div>
     </div>
