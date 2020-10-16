@@ -82,6 +82,7 @@
             padding: 10px 16px;
             background: #6c757d;
             color: white;
+            z-index: 9;
         }
 
         .content {
@@ -105,6 +106,7 @@
             border: 0;
             outline: 0;
             display: inline-flex;
+            color: white;
         }
 
         .StickyHeaderButton{
@@ -115,6 +117,86 @@
             display: flex;
             justify-content: center;
 
+        }
+
+        .leftContainer{
+            margin-left: 10%;
+            margin-right: 50%;
+            width: 100%;
+        }
+
+        .rightContainer{
+            margin-left: 50%;
+            margin-right: 10%;
+            width: 50%;
+        }
+
+        .Table {
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 2%;
+            border: 1px solid #FFFFFF;
+            width: 100%;
+        }
+
+
+        .TableHeader{
+            padding: 0;
+            border: 0;
+            outline: 0;
+            display: inline-flex;
+            color: white;
+            margin-left: 10%;
+            font-weight: normal;
+
+
+        }
+        .linieRight {
+            border-right: 1px solid white;
+            width:150px;
+        }
+
+
+        .card-header{
+            background-color: #ba8b00;
+            color: white;
+            padding: 0%;
+            margin-right: 0%;
+
+        }
+        .card{
+            margin-right: 5%;
+            margin-left: 5%;
+        }
+
+
+        .btn {
+            color: white;
+        }
+
+        .previous{
+            margin-left: 4%;
+            text-align: left;
+        }
+
+        .next{
+            margin-right: 4%;
+            text-align: right;
+        }
+        .races{
+            padding: 0;
+            border: 0;
+            outline: 0;
+            display: inline-flex;
+            margin-left: 10%;
+            margin-right: 50%;
+            font-weight: normal;
+        }
+
+        .racescheckbox{
+            text-align: center;
+            width: 25px;
+            height: 25px;
         }
 
         #app-main{
@@ -128,6 +210,17 @@
             align-content: center;
 
         }
+        .cardleftbody{
+            margin-right: 10%;
+
+        }
+
+        .racesinfo{
+            margin-left: 2%;
+            margin-top: 2%;
+            margin-bottom: 2%;
+        }
+
 
 
     </style>
@@ -194,12 +287,143 @@
     </div>
 
     <div class="container-fluid" id="app-main">
-        <div class="d-flex content">
-            <div class="">
+            <br>
+            <br>
 
-            </div>
-        </div>
+            <table class = "Table">
+                <tr class = "linieRight">
+                    <td class = "linieRight" colspan="2" >
+                        <br>
+                            <div class = "previous">
+                                <button type="button" class="btn btn-warning">Previous</button>
+                            </div>
+                        <br>
+                            <h4 class="TableHeader">Race</h4></td>
+
+                    <td class = "linieRight" colspan="2"  >
+
+                        <br>
+                        <div class = "next">
+                            <button type="button" class="btn btn-warning">Next</button>
+                        </div>
+                        <br>
+                        <h4 class="TableHeader">Class/Level</h4></td>
+
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="linieRight" colspan="2" > <br> <p class="TableHeader">Select</p> <br>
+
+
+                            <div id="accordion">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                       <h5 class="mb-0">
+                                           <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                             Dwarf
+                                            </button>
+
+                                     </h5>
+                                    </div>
+
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                     <table class="card-body">
+                                         <tr>
+                                             <td width="80%">
+                                                 <p class="racesinfo">
+                                                speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
+                                                 Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                             </td>
+                                             <td class="col text-center" >
+                                                 <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                             </td>
+                                         </tr>
+                                            </table>
+                                    </div>
+                             </div>
+
+
+
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                Human
+                                            </button>
+
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <table class="card-body">
+                                            <tr>
+                                                <td width="80%">
+                                                    <p class="racesinfo">
+                                                        speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
+                                                        Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                </td>
+                                                <td class="col text-center" >
+                                                    <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                                Elf
+                                            </button>
+
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <table class="card-body">
+                                            <tr>
+                                                <td width="80%">
+                                                    <p class="racesinfo">
+                                                        speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
+                                                        Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                </td>
+                                                <td class="col text-center" >
+                                                    <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                        </div>
+
+                    </td>
+
+
+
+
+
+                    <td colspan="2">
+
+                        <br> <p class="TableHeader"> <br> Select</p> <br><br><br><br><br><br>
+
+                    </td>
+
+                </tr>
+
+            </table>
+
     </div>
+
+
+
+
+
+
 
     <script>
         // When the user scrolls the page, execute myFunction
@@ -219,6 +443,14 @@
                 header.classList.remove("sticky");
             }
         }
+
+
+        $(function () {
+            $('.racescheckbox').click(function(e) {
+                $('.racescheckbox').not(this).prop('checked', false);
+            });
+        });
+
 
     </script>
 
