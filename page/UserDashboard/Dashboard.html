@@ -12,15 +12,19 @@
 
     <script type="application/javascript">
 
-
+        var presetDiv;
+        let User = "Renge";
         window.addEventListener("load", function () {
 
             setUsername(User);
             setUsername2(User)
+            presetDiv = document.getElementById("UpperCharacterBlueprint");
 
         });
 
-        let User = "Renge";
+
+
+
 
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
@@ -30,8 +34,8 @@
             document.getElementById("UserName2").innerHTML = user;
         }
 
-        function getCharactersheet(charactersheetid){
-            fetch('http://localhost:8181/api/v1.0/User/1/Group/1/Charactersheet/'+ charactersheetid, {
+        function getAllCharactersheets(userid){
+            fetch('http://localhost:8181/api/v1.0/User/' + userid + '/Charactersheets/all', {
                 method: 'get',
             })
                 .then(function (response) {
@@ -41,8 +45,29 @@
 
                 })
                 .then(function (data) {
+                     for(let i = 0; i < data.length; i++){
+                         alert('Sollte Klappen');
+                         let surrounddiv = document.getElementById("Insertable");
+                         let newdiv = presetDiv.cloneNode(true);           //Voralge für das DIV in HTml bauen und css hidden setzen, hier mit werden befüllen.
+                         newdiv.setAttribute('id', i);
+                         newdiv.reference = data[i];
+                         newdiv.children.item(0).children.item(0).children.item(0).innerText = data[i].characterName;
+                         newdiv.children.item(0).children.item(3).children.item(0).innerText = data[i].level;
+                         newdiv.children.item(0).children.item(1).children.item(0).innerText = data[i].groupID;
+                         // newdiv.innerText += data[i].characterName;
+                         newdiv.onclick = function (){                          //ON-Click muss auffgelöst werden, da es sonst alle elemente im child betrifft.
 
-                    document.getElementById("testabfrage").innerHTML = data.characterName;
+                             alert("Clicked");
+                         }
+                         surrounddiv.appendChild(newdiv);
+
+
+                     }
+
+
+
+
+                    // document.getElementById("testabfrage").innerHTML = data.characterName;
 
                 })
                 .catch(function (error) {
@@ -152,6 +177,33 @@
 
     }
 
+    #Insertable {
+        width: 100%;
+    }
+
+    .UpperLabel{
+        font-size: 30px;
+        display: block;
+        padding-right: 5%;
+        align-self: center;
+    }
+
+    .alignementMOD{
+        flex-grow: 1;
+        visibility: hidden;
+    }
+
+    .HigherAlignMod {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    #UpperCharacterBlueprint{
+        visibility: hidden;
+    }
 
 
     </style>
@@ -202,17 +254,20 @@
 
     <div class="container-fluid" id="app-main">
         <div class="d-flex content">
-            <div class="p-5" >
-                <!-- Link collapse -->
+            <div class="p-5 d-flex flex-column" id="Insertable" >
 
-                Asasas
-                <a class="btn btn-link" href="#" data-toggle="collapse" data-target="#target1">
-                    What is Lorem Ipsum?
-                </a>
-                <div id="target1" class="collapse">
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s ...
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -240,6 +295,33 @@
         }
 
     </script>
+
+    <div id="UpperCharacterBlueprint" class="d-flex flex-column w-100" style="color: white ">
+
+        <div class="HigherAlignMod d-flex w-100">
+            <div class="UpperLabel">
+                Character: <span></span>
+            </div>
+            <div class="UpperLabel">
+                Group: <span></span>
+            </div>
+            <div class="alignementMOD">third item
+            </div>
+            <div class="UpperLabel">
+                Level: <span></span>
+            </div>
+        </div>
+
+
+
+        <div id="InnerCharacterBluePrint" class="d-flex align-self-center">
+            Test
+
+
+
+
+        </div>
+    </div>
 
 
 </body>
