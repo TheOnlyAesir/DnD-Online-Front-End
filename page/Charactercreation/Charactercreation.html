@@ -221,14 +221,52 @@
             margin-bottom: 2%;
         }
 
+        .input-group-text{
+
+        }
+
+        .input-groupClass{
+            width: 100%;
+            margin-left: 5%;
+
+        }
+
+        .input-groupLevel{
+            width: 50%;
 
 
+        }
+
+        .custom-select{
+
+        }
+
+        .mb-3{
+
+        }
+
+        .test{
+            color: white;
+            text-align: right;
+
+        }
+
+        .innerTable{
+            width: 100%;
+
+
+        }
+
+        .levelbox{
+            width: 50%;
+        }
     </style>
 
 
 
 </head>
 <body>
+
 
     <div id="HeaderBox" class="row">
 
@@ -313,8 +351,12 @@
 
                 </tr>
                 <tr>
-                    <td class="linieRight" colspan="2" > <br> <p class="TableHeader">Select</p> <br>
+                    <td class="linieRight" colspan="2" > <br> <p class="TableHeader">Select</p> <br>    </td>
+                    <td class="linieRight" colspan="2" > <br> <p class="TableHeader">Select</p> <br>    </td>
+                </tr>
 
+                <tr>
+                    <td class="linieRight" colspan="2" >
 
                             <div id="accordion">
                                 <div class="card">
@@ -401,19 +443,75 @@
 
                         </div>
 
+                    <td class="linieRight" colspan="2" >
+
+                    <table class ="innerTable">
+                        <tr>
+                            <td>
+
+                                <div class="input-group input-groupClass mb-3" >
+                                    <div class="input-group-prepend" >
+                                        <label class="input-group-text" for="inputGroupSelect01">Class</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01">
+<!--                                        <option selected>Choose...</option>-->
+                                        <option value="1">Fighter</option>
+                                        <option value="2">Wizard</option>
+                                        <option value="3">Ranger</option>
+                                    </select>
+                                </div>
+
+                            </td>
+                            <td class="levelbox" width= 30% align= center>
+
+                                <div class="input-group input-groupLevel  mb-3">
+                                    <div class="input-group-prepend">
+                                        <label class="input-group-text" for="inputGroupSelect02">Level</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect02">
+                                        <!--                                        <option selected>Choose...</option>-->
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="1">4</option>
+                                        <option value="2">5</option>
+                                        <option value="3">6</option>
+                                        <option value="1">7</option>
+                                        <option value="2">8</option>
+                                        <option value="3">9</option>
+                                        <option value="1">10</option>
+                                        <option value="2">11</option>
+                                        <option value="3">12</option>
+                                        <option value="1">13</option>
+                                        <option value="2">14</option>
+                                        <option value="3">15</option>
+                                        <option value="2">16</option>
+                                        <option value="3">17</option>
+                                        <option value="1">18</option>
+                                        <option value="2">19</option>
+                                        <option value="3">20</option>
+                                    </select>
+                                </div>
+
+
+                            </td>
+
+                        </tr>
+                    </table>
+
+
+
+
                     </td>
 
 
 
 
 
-                    <td colspan="2">
 
-                        <br> <p class="TableHeader"> <br> Select</p> <br><br><br><br><br><br>
 
-                    </td>
 
-                </tr>
+
 
             </table>
 
