@@ -76,7 +76,7 @@
         }
 
         .content {
-            max-width: 1440px;
+            max-width: 100%;
             padding: 16px;
             width: 100%;
         }
@@ -96,6 +96,7 @@
             border: 0;
             outline: 0;
             display: inline-flex;
+            font-family: "Palatino Linotype"
         }
 
         .StickyHeaderButton{
@@ -103,9 +104,15 @@
         }
 
         .container-fluid{
-            display: flex;
+            display: fluid;
             justify-content: center;
-
+            margin-top: 0.25%;
+            margin-left: 1%;
+            margin-bottom: 0.25%;
+            margin-right: 1%;
+            color: #f7f7f7;
+            font-family: "Palatino Linotype";
+            border: 0px;
         }
 
         #app-main{
@@ -119,7 +126,54 @@
             align-content: center;
 
         }
-
+        .PageDescription{
+            padding-left: 1.5%;
+            padding-top: 0.5%;
+            padding-bottom: 2%;
+            margin-right: 2%;
+            font-family: "Palatino Linotype" ;
+            hyphens: auto;
+            text-align: justify;
+            color: #721c24;
+        }
+        .Text{
+            padding-left: 7%;
+            padding-top: 0.5%;
+            margin-right: 7%;
+            font-family: "Palatino Linotype" ;
+            hyphens: auto;
+            text-align: justify;
+            color: #f7f7f7;
+        }
+        .PageDescriptionLong{
+            padding-left: 1.5%;
+            padding-top: 0.5%;
+            padding-bottom: 2%;
+            margin-right: 2%;
+            font-family: "Palatino Linotype" ;
+            hyphens: auto;
+            text-align: justify;
+            color: #721c24;
+        }
+        .image{
+            padding-left: 5%;
+            padding-right: 5%;
+            padding-top: 0.5%
+        }
+        #lining{
+            padding-right: 5%;
+            padding-top: 2.5%;
+            padding-down: 0.5%
+        }
+        .flex{
+            object-fit: cover;
+            width: auto;
+            height: auto;
+            margin: 4em auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(2em, 1fr));
+            gap: 1em;
+        }
 
     </style>
 
@@ -165,11 +219,38 @@
 </div>
 
 <div class="container-fluid" id="app-main">
-    <div class="d-flex content">
-        <div class="">
+    <div class="d-flex content" >
+        <div class="PageDescription">
+            <h2 class="PageDescription" style="text-align: center">You are tired of forgetting your Dnd character sheet all the time?
+                Your sheet always looks totally scribbled after a session? Then this is the right place for you!</h2>
 
+        <div class="PageDescriptionLong ">
+            <p class="Text" id="" style="text-align: center"> This website provides you the ability to create, edit and store your character sheet online, so you will never struggle from an overcrowded or lost charactersheet again.
+                Of course you can also modify your character stats once your character levels up or takes damage.
+            <p class="Text" id="" style="text-align: center"> As the dungeon master of your player group you can also create and manage your group online, so playing as a group becomes even more fun! Your fellow player can even send you messages,
+            which can make your game more immersive while still maintaining the little secrets you prepared for the group members.</p>
+            <p class="Text" id="" style="text-align: center"> "Alexa, change the hitpoints!", using the popular voice assistant Alex you can make changes to your character sheet during a game without the need for manual input.
+                With the support of our website your next campaign will be a Nat20! </p>
+
+            <div class="image"> <img sytle="width: 95%" src="../../Images/DungeonsandDragonsStart-696x383.jpg"class="flex">
+                 <img style=" width: 45%" src="../../Images/SCL_Keyart_Thumb.jpg"class="flex">
+            <div class="m-0">
+            <h3 class="container-fluid" id="lining"> What is Dnd? </h3>
+
+            <p class="Text" id="">Dungeons and Dragons is a pen and paper role playing game published in 1974 by Gary Gygax and Dave Arneson.
+                It is about adventures that take place in fictional worlds. The Dungeon Master creates different scenarios, which the players have to master with their fictitious characters.
+            Dungeons and Dragons has become immensely popular over the years, and D&D has grown to include many new ways to vividly experience worlds of heroic fantasy.
+                Storytelling in DnD allows you and your friends to experience and change the story together.
+                You lead your heroes through quest for treasure, battles with deadly enemies, daring rescue missions, courtly intrigues and much more.</p>
+
+                </div>
+            </div>
+        </div>
         </div>
     </div>
+    <img style="width: 100%" src="../../Images/NEW-TO-DnD_What-is-DnD_Subsection_Hero_140718.jpg"  >
+
+
 </div>
 
 <script>
