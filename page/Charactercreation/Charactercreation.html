@@ -29,6 +29,19 @@
         }
 
 
+        function LevelBoxes(level){
+
+            if (level === 1)
+                document.getElementById("Level1").classList.remove("hidden");
+                document.getElementById("Level2").classList.add("hidden");
+            if (level === 2){
+                document.getElementById("Level1").classList.remove("hidden");
+                document.getElementById("Level2").classList.remove("hidden");
+            }
+            alert("PENIS");
+            return false;
+        }
+
 
 
 
@@ -312,6 +325,10 @@
 
         .Modifiercolumn{
             width: 20%;
+        }
+
+        .hidden {
+            display: none;
         }
 
 
@@ -649,10 +666,10 @@
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect02">Level</label>
                         </div>
-                        <select class="custom-select" id="inputGroupSelect02">
+                        <select class="custom-select " id="inputGroupSelect02">
                             <!--                                        <option selected>Choose...</option>-->
-                            <option value="1" onclick="">1</option>
-                            <option value="2">2</option>
+                            <option value="1" onclick="LevelBoxes(1)">1</option>
+                            <option value="2" onclick="LevelBoxes(2)">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
@@ -705,7 +722,7 @@
 
                                                 </tr>
 
-                                                <tr>
+                                                <tr id="Level1">
                                                     <td class=" innertable tableborder ">
                                                         <p>1</p>
                                                     </td>
@@ -724,366 +741,366 @@
 
                                                 </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>2</p>-->
-<!--                                                    </td>-->
+                                                <tr id="Level2" class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>2</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>3</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>3</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>4</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>4</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>5</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>5</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr >
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>6</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>6</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>7</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>7</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>8</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>8</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>9</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>9</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>10</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>10</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>11</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>11</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>12</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>12</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>13</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>13</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>14</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>14</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>15</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>15</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>16</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>16</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>17</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>17</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>18</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>18</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>19</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>19</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
-<!--                                                <tr>-->
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>20</p>-->
-<!--                                                    </td>-->
+                                                <tr class="hidden">
+                                                    <td class=" innertable tableborder ">
+                                                        <p>20</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Base</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Modifier</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
 
-<!--                                                    <td class=" innertable tableborder ">-->
-<!--                                                        <p>Total Level</p>-->
-<!--                                                    </td>-->
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
 
-<!--                                                </tr>-->
+                                                </tr>
 
 
                 </table>
