@@ -8,7 +8,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-
     <script type="application/javascript">
 
 
@@ -171,23 +170,27 @@
         .card{
             margin-right: 5%;
             margin-left: 5%;
+
         }
 
 
         .btn {
             color: white;
+
         }
 
         .previous{
-            margin-left: 4%;
+            margin-left: 5%;
             margin-top: 1%;
             text-align: left;
         }
 
         .next{
-            margin-left: 90%;
+            /*margin-left: 100%;*/
+            margin-right: 5%;
             margin-top: 1%;
-            text-align: left;
+            text-align: right;
+
         }
         .races{
             padding: 0;
@@ -232,13 +235,13 @@
         }
 
         .input-groupClass{
-            width: 100%;
+            width: 50%;
             margin-left: 5%;
 
         }
 
         .input-groupLevel{
-            width: 50%;
+            width: 35%;
 
 
         }
@@ -257,8 +260,9 @@
 
         }
 
-        .innerTable{
-            width: 100%;
+        .innertable{
+            color: white;
+            text-align: center;
 
 
         }
@@ -267,30 +271,63 @@
             width: 50%;
         }
 
+        .CharCreationHeader{
+            color: white;
+            padding-left: 12%;
+
+        }
+        .HitPointsTableHeader{
+            color: white;
+            width: 30%;
+            text-align: center;
+        }
+
+
+
+        .CharCreationSelect{
+            color: white;
+            padding-left: 15%;
+            padding-bottom: 0%;
+            padding-top: 0%;
+        }
+        .pernextHeader{
+            /*margin-left: 10%;*/
+            /*margin-right: 20%;*/
+            width: 100%;
+
+        }
+
+        .tableborder{
+            border: 1px solid white;
+        }
+
+        .levelcolumn{
+            width: 20%;
+        }
+
+        .Basecolumn{
+            width: 40%;
+
+        }
+
+        .Modifiercolumn{
+            width: 20%;
+        }
+
+
         /* Tables
    ================================== */
-        .tableborderright{
 
-            border-right: 1px solid white;
-        }
-
-        .tableborderleft{
-            border-left: 1px solid white;
-        }
-
-        .tablebordebottom{
-            border-bottom: 1px solid white;
-        }
-        .tablebordertop{
-            border-top: 1px solid white;
-        }
 
         .marginspace{
-
+            width: 100%;
             margin-top: 3%;
-            margin-left: 3%;
-            margin-right: 3%;
+            /*margin-left: 5%;*/
+            /*margin-right: 5%;*/
 
+        }
+        .tablecellsize{
+            height: 20px;
         }
 
         .Rtable {
@@ -300,6 +337,7 @@
             margin: 0 0 3em 0;
             padding: 0;
             border-right: white;
+            width: 100%;
 
         }
         .Rtable-cell {
@@ -475,237 +513,590 @@
     </div>
 
     <div class="container-fluid " id="app-main">
-        <br>
-        <br><br>
-        <br>
+
     <div class="marginspace">
+
+                <div class="d-flex justify-content-between pernextHeader">
+                    <button type="button" class="btn btn-warning previous d-flex">Previous</button>
+                    <button type="button" class="btn btn-warning next d-flex">Next</button>
+
+                </div>
+<br>
         <div class="Rtable Rtable--2cols Rtable--collapse " >
 
-            <div style="order:0;" class="Rtable-cell Rtable-cell--head tablebordertop tableborderright tableborderleft">
-                <div class = "previous"> <button type="button" class="btn btn-warning">Previous</button> </div>
+            <div style="order:0;" class="Rtable-cell  ">
+                <div class="CharCreationHeader"> <h4>Race</h4> <br> <p>Select</p> </div>
+            </div>
+
+            <div style="order:1;" class="Rtable-cell Rtable-cell--foot previous  ">
+                <div>
+                                         <div id="accordion">
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingOne">
+                                                           <h5 class="mb-0">
+                                                               <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                                 Dwarf
+                                                                </button>
+
+                                                         </h5>
+                                                        </div>
+
+                                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                         <table class="card-body">
+                                                             <tr>
+                                                                 <td width="80%">
+                                                                     <p class="racesinfo">
+                                                                    speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
+                                                                     Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                                 </td>
+                                                                 <td class="col text-center" >
+                                                                     <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                 </td>
+                                                             </tr>
+                                                                </table>
+                                                        </div>
+                                                 </div>
+
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingTwo">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
+                                                                    Human
+                                                                </button>
+
+                                                            </h5>
+                                                        </div>
+
+                                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                            <table class="card-body">
+                                                                <tr>
+                                                                    <td width="80%">
+                                                                        <p class="racesinfo">
+                                                                            speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
+                                                                            Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                                    </td>
+                                                                    <td class="col text-center" >
+                                                                        <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="card">
+                                                        <div class="card-header" id="headingThree">
+                                                            <h5 class="mb-0">
+                                                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                                                    Elf
+                                                                </button>
+
+                                                            </h5>
+                                                        </div>
+
+                                                        <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                                            <table class="card-body">
+                                                                <tr>
+                                                                    <td width="80%">
+                                                                        <p class="racesinfo">
+                                                                            speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
+                                                                            Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                                    </td>
+                                                                    <td class="col text-center" >
+                                                                        <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                   </div>
+                                             </div>
+
+
+
+            </div>
+
+            <div style="order:3;" class="Rtable-cell ">
+            </div>
+
+            <div style="order:4;" class="Rtable-cell ">
+                <div class="CharCreationHeader"> <p>Hitpoints</p> </div>
             </div>
 
 
-            <div style="order:1;" class="Rtable-cell tableborderright tableborderleft"><p class = "test">Has a sword named Longclaw</p></div>
-            <div style="order:2;" class="Rtable-cell tableborderright tableborderleft"><p class = "test">Has a sword named Longclaw</p></div>
-            <div style="order:3;" class="Rtable-cell Rtable-cell--foot tableborderright tableborderleft tablebordebottom"><p class = "test">Has a sword named Longclaw</p></div>
 
-
-
-            <div style="order:0;" class="Rtable-cell Rtable-cell--head tablebordertop tableborderright tableborderleft">
-                <div class = "next"> <button type="button" class="btn btn-warning">Next</button> </div>
+            <div style="order:0;" class="Rtable-cell Rtable-cell--head ">
+                <div class="CharCreationHeader"> <h4>Class/Level</h4> <br> <p>Select</p> </div>
             </div>
-            <div style="order:1;" class="Rtable-cell tableborderright tableborderleft"> <p class = "test">Has a sword named Longclaw</p></div>
-            <div style="order:2;" class="Rtable-cell tableborderright tableborderleft"><p class = "test">Has a sword named Longclaw</p></div>
-            <div style="order:3;" class="Rtable-cell Rtable-cell--foot tableborderright tablebordebottom tableborderleft"><p class = "test">Has a sword named Longclaw</p></div>
+
+            <div style="order:1;" class="Rtable-cell ">
+                <div class="d-flex justify-content-between">
+
+
+                <div class="input-group input-groupClass mb-3 d-flex " >
+                    <div class="input-group-prepend" >
+                        <label class="input-group-text" for="inputGroupSelect01">Class</label>
+                    </div>
+                    <select class="custom-select" id="inputGroupSelect01">
+
+                        <option value="1">Fighter</option>
+                        <option value="2">Wizard</option>
+                        <option value="3">Ranger</option>
+                    </select>
+                </div>
+
+                    <div class="input-group input-groupLevel  mb-3 d-flex">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect02">Level</label>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect02">
+                            <!--                                        <option selected>Choose...</option>-->
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                        </select>
+                    </div>
+
+
+            </div>
+            </div>
+
+            <div style="order:3;" class="Rtable-cell ">
+                <div class="CharCreationHeader"> <p>Hitpoints</p> </div>
+            </div>
+
+            <div style="order:4;" class="Rtable-cell ">
+
+                <table id="hitpointTable" class="tableborder" width= 100%>
+
+                                                <tr>
+                                                    <th class="HitPointsTableHeader tableborder levelcolumn">
+                                                        <p>Level</p>
+                                                    </th>
+
+                                                    <th class="HitPointsTableHeader tableborder Basecolumn">
+                                                        <p>Base</p>
+                                                    </th>
+
+                                                    <th class="HitPointsTableHeader tableborder Modifiercolumn">
+                                                        <p>Modifier</p>
+                                                    </th>
+
+                                                    <th class="HitPointsTableHeader tableborder Totalcolumn">
+                                                        <p>Total Level</p>
+                                                    </th>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td class=" innertable tableborder ">
+                                                        <p>1</p>
+                                                    </td>
+
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Base</p>
+                                                    </td>
+
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Modifier</p>
+                                                    </td>
+
+                                                    <td class=" innertable tableborder ">
+                                                        <p>Total Level</p>
+                                                    </td>
+
+                                                </tr>
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>2</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>3</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>4</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>5</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>6</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>7</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>8</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>9</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>10</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>11</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>12</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>13</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>14</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>15</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>16</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>17</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>18</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>19</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+<!--                                                <tr>-->
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>20</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Base</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Modifier</p>-->
+<!--                                                    </td>-->
+
+<!--                                                    <td class=" innertable tableborder ">-->
+<!--                                                        <p>Total Level</p>-->
+<!--                                                    </td>-->
+
+<!--                                                </tr>-->
+
+
+                </table>
+
+            </div>
 
 
         </div>
     </div>
-
-
-<!--            <table class = "Table">-->
-<!--                <tr class = "linieRight">-->
-<!--                    <td class = "linieRight"  >-->
-<!--                        <br>-->
-<!--                            <div class = "previous">-->
-<!--                                <button type="button" class="btn btn-warning">Previous</button>-->
-<!--                            </div>-->
-<!--                        <br>-->
-<!--                            <h4 class="TableHeader">Race</h4></td>-->
-
-<!--                    <td class = "linieRight"   >-->
-
-<!--                        <br>-->
-<!--                        <div class = "next">-->
-<!--                            <button type="button" class="btn btn-warning">Next</button>-->
-<!--                        </div>-->
-<!--                        <br>-->
-<!--                        <h4 class="TableHeader">Class/Level</h4></td>-->
-
-<!--                    </td>-->
-
-<!--                </tr>-->
-<!--                <tr>-->
-<!--                    <td class="linieRight" > <br> <p class="TableHeader">Select</p> <br>    </td>-->
-<!--                    <td class="linieRight" > <br> <p class="TableHeader">Select</p> <br>    </td>-->
-<!--                </tr>-->
-
-<!--                <tr>-->
-<!--                    <td class="linieRight" >-->
-
-<!--                            <div id="accordion">-->
-<!--                                <div class="card">-->
-<!--                                    <div class="card-header" id="headingOne">-->
-<!--                                       <h5 class="mb-0">-->
-<!--                                           <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">-->
-<!--                                             Dwarf-->
-<!--                                            </button>-->
-
-<!--                                     </h5>-->
-<!--                                    </div>-->
-
-<!--                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">-->
-<!--                                     <table class="card-body">-->
-<!--                                         <tr>-->
-<!--                                             <td width="80%">-->
-<!--                                                 <p class="racesinfo">-->
-<!--                                                speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>-->
-<!--                                                 Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>-->
-<!--                                             </td>-->
-<!--                                             <td class="col text-center" >-->
-<!--                                                 <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">-->
-<!--                                             </td>-->
-<!--                                         </tr>-->
-<!--                                            </table>-->
-<!--                                    </div>-->
-<!--                             </div>-->
-
-
-
-<!--                                <div class="card">-->
-<!--                                    <div class="card-header" id="headingTwo">-->
-<!--                                        <h5 class="mb-0">-->
-<!--                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">-->
-<!--                                                Human-->
-<!--                                            </button>-->
-
-<!--                                        </h5>-->
-<!--                                    </div>-->
-
-<!--                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">-->
-<!--                                        <table class="card-body">-->
-<!--                                            <tr>-->
-<!--                                                <td width="80%">-->
-<!--                                                    <p class="racesinfo">-->
-<!--                                                        speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>-->
-<!--                                                        Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>-->
-<!--                                                </td>-->
-<!--                                                <td class="col text-center" >-->
-<!--                                                    <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-<!--                                        </table>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-
-<!--                                <div class="card">-->
-<!--                                    <div class="card-header" id="headingThree">-->
-<!--                                        <h5 class="mb-0">-->
-<!--                                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">-->
-<!--                                                Elf-->
-<!--                                            </button>-->
-
-<!--                                        </h5>-->
-<!--                                    </div>-->
-
-<!--                                    <div id="collapseThree" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">-->
-<!--                                        <table class="card-body">-->
-<!--                                            <tr>-->
-<!--                                                <td width="80%">-->
-<!--                                                    <p class="racesinfo">-->
-<!--                                                        speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>-->
-<!--                                                        Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>-->
-<!--                                                </td>-->
-<!--                                                <td class="col text-center" >-->
-<!--                                                    <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">-->
-<!--                                                </td>-->
-<!--                                            </tr>-->
-<!--                                        </table>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-
-
-<!--                        </div>-->
-
-<!--                    <td class="linieRight"  >-->
-
-<!--                    <table class ="innerTable">-->
-<!--                        <tr>-->
-<!--                            <td>-->
-
-<!--                                <div class="input-group input-groupClass mb-3" >-->
-<!--                                    <div class="input-group-prepend" >-->
-<!--                                        <label class="input-group-text" for="inputGroupSelect01">Class</label>-->
-<!--                                    </div>-->
-<!--                                    <select class="custom-select" id="inputGroupSelect01">-->
-<!--&lt;!&ndash;                                        <option selected>Choose...</option>&ndash;&gt;-->
-<!--                                        <option value="1">Fighter</option>-->
-<!--                                        <option value="2">Wizard</option>-->
-<!--                                        <option value="3">Ranger</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-
-<!--                            </td>-->
-<!--                            <td class="levelbox" width= 30% align= center>-->
-
-<!--                                <div class="input-group input-groupLevel  mb-3">-->
-<!--                                    <div class="input-group-prepend">-->
-<!--                                        <label class="input-group-text" for="inputGroupSelect02">Level</label>-->
-<!--                                    </div>-->
-<!--                                    <select class="custom-select" id="inputGroupSelect02">-->
-<!--                                        &lt;!&ndash;                                        <option selected>Choose...</option>&ndash;&gt;-->
-<!--                                        <option value="1">1</option>-->
-<!--                                        <option value="2">2</option>-->
-<!--                                        <option value="3">3</option>-->
-<!--                                        <option value="1">4</option>-->
-<!--                                        <option value="2">5</option>-->
-<!--                                        <option value="3">6</option>-->
-<!--                                        <option value="1">7</option>-->
-<!--                                        <option value="2">8</option>-->
-<!--                                        <option value="3">9</option>-->
-<!--                                        <option value="1">10</option>-->
-<!--                                        <option value="2">11</option>-->
-<!--                                        <option value="3">12</option>-->
-<!--                                        <option value="1">13</option>-->
-<!--                                        <option value="2">14</option>-->
-<!--                                        <option value="3">15</option>-->
-<!--                                        <option value="2">16</option>-->
-<!--                                        <option value="3">17</option>-->
-<!--                                        <option value="1">18</option>-->
-<!--                                        <option value="2">19</option>-->
-<!--                                        <option value="3">20</option>-->
-<!--                                    </select>-->
-<!--                                </div>-->
-
-
-<!--                            </td>-->
-
-<!--                        </tr>-->
-<!--                    </table>-->
-<!--                    <tr>-->
-<!--                        <td >-->
-<!--                            <p class = "test" >dawdsad</p>-->
-
-<!--                        </td>-->
-
-<!--                        <td>-->
-<!--                            <p class = "test" >dawdsad</p>-->
-
-<!--                        </td>-->
-<!--                    </tr>-->
-
-
-<!--                    </table>-->
-
-
-
-
-<!--                    </td>-->
-
-
-
-
-
-
-
-
-
-
-<!--            </table>-->
-
     </div>
+
+
+
 
 
 
@@ -737,6 +1128,56 @@
             $('.racescheckbox').click(function(e) {
                 $('.racescheckbox').not(this).prop('checked', false);
             });
+        });
+
+
+
+
+
+
+        function addHitPointColumns(actual, target){
+            for(i = actual +1;i<=target;i++) //this loop creates the new floors
+            {
+                newItemHTML = '<tr><td class=" innertable tableborder "><p>' + i + '</p></td><td class=" innertable tableborder "><p>' + Modifier + '</p></td><td class=" innertable tableborder "><p>' + i + '</p></td><td class=" innertable tableborder "><p>' + TotalLevel + '</p></td> </tr>';
+
+                //i also changed the html inside the first td from <span> to <p> to match your html markup
+                $("table#hitpointTable tr").last().before(newItemHTML);
+            }
+        }
+
+        function removeHitPointColumns(target){
+            if(target >= 1) //remove all floors except the base 4
+            {
+                $('.hitpointTable').slice(target).parent().parent().remove();
+                //since i select the .floor input box, i have to use the parent() function two times, to move the selector up to the <tr> element
+            }
+        }
+
+
+
+
+        $("#inputGroupSelect02").bind('change', function() {
+            curVal = $.trim($(this).val()).match(/^\d*$/);
+            curFloors = $('.hitpointTable').length;
+            <input type="number" id="inputGroupSelect02" name="" class=' InputBox' />
+            if(curVal > curFloors)
+            {
+                addHitPointColumns(curFloors, curVal);
+            }else if(curVal < curFloors)
+            {
+                removeHitPointColumns(curVal);
+            }
+
+            $('.hitpointTable').each(function(index){
+                if(index >= curVal)
+                {
+                    $(this).prop('disabled', true);
+                }else
+                {
+                    $(this).prop('disabled', false);
+                }
+            });
+
         });
 
 
