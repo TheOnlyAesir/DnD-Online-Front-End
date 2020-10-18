@@ -13,13 +13,14 @@
     <script type="application/javascript">
 
         var presetDiv;
+        var innerPresetDiv;
         let User = "Renge";
         window.addEventListener("load", function () {
 
             setUsername(User);
             setUsername2(User)
             presetDiv = document.getElementById("UpperCharacterBlueprint");
-
+            innerPresetDiv = document.getElementById("InnerCharacterBluePrint");
         });
 
 
@@ -46,20 +47,81 @@
                 })
                 .then(function (data) {
                      for(let i = 0; i < data.length; i++){
-                         alert('Sollte Klappen');
+                         // alert('Sollte Klappen');
                          let surrounddiv = document.getElementById("Insertable");
+                         let parentdiv = document.createElement('div');
                          let newdiv = presetDiv.cloneNode(true);           //Voralge für das DIV in HTml bauen und css hidden setzen, hier mit werden befüllen.
                          newdiv.setAttribute('id', i);
                          newdiv.reference = data[i];
                          newdiv.children.item(0).children.item(0).children.item(0).innerText = data[i].characterName;
                          newdiv.children.item(0).children.item(3).children.item(0).innerText = data[i].level;
                          newdiv.children.item(0).children.item(1).children.item(0).innerText = data[i].groupID;
-                         // newdiv.innerText += data[i].characterName;
-                         newdiv.onclick = function (){                          //ON-Click muss auffgelöst werden, da es sonst alle elemente im child betrifft.
+                         newdiv.onclick = function (e){                          //ON-Click muss auffgelöst werden, da es sonst alle elemente im child betrifft.
+
+
+                             e.stopPropagation();
+                             let newdiv = e.currentTarget;
+                             let parentdiv = e.currentTarget.parentElement;
+
 
                              alert("Clicked");
+                             if(parentdiv.children.item(1) == null){
+                                let inNewDiv = innerPresetDiv.cloneNode(true);
+                                inNewDiv.setAttribute('id', newdiv.reference.charactersheetID);
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
+                                    = newdiv.reference.stats.strength;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(0).children.item(3).children.item(0).innerText
+                                     = newdiv.reference.stats.strengthModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(1).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.stats.dexterity;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(1).children.item(3).children.item(0).innerText
+                                     = newdiv.reference.stats.dexterityModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(2).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.stats.constitution;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(2).children.item(3).children.item(0).innerText
+                                     = newdiv.reference.stats.constitutionModifier;
+
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(0).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.stats.intelligence;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(0).children.item(3).children.item(0).innerText
+                                     = newdiv.reference.stats.intelligenceModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(1).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.stats.wisdom;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(1).children.item(3).children.item(0).innerText
+                                     = newdiv.reference.stats.wisdomModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(2).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.stats.charisma;
+                                inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(2).children.item(3).children.item(0).innerText
+                                     = newdiv.reference.stats.charismaModifier;
+
+
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.proficiencyBonus
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(1).children.item(0).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.passivePerception
+
+
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(1).children.item(0).children.item(0).innerText
+                                     = newdiv.reference.stats.strengthModifier
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(2).children.item(0).children.item(0).innerText
+                                     = newdiv.reference.stats.dexterityModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(3).children.item(0).children.item(0).innerText
+                                     = newdiv.reference.stats.constitutionModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(4).children.item(0).children.item(0).innerText
+                                     = newdiv.reference.stats.intelligenceModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(5).children.item(0).children.item(0).innerText
+                                     = newdiv.reference.stats.wisdomModifier;
+                                inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(6).children.item(0).children.item(0).innerText
+                                     = newdiv.reference.stats.charismaModifier;
+
+                                parentdiv.appendChild(inNewDiv);
+                             }
+                             else {
+
+                             }
                          }
-                         surrounddiv.appendChild(newdiv);
+                         parentdiv.appendChild(newdiv);
+                         surrounddiv.appendChild(parentdiv);
 
 
                      }
@@ -73,6 +135,64 @@
                 .catch(function (error) {
                     alert(error);
                 });
+        }
+
+        function showContent(e, contentNumber){
+            var combat = e.parentElement.parentElement.parentElement.parentElement.parentElement.children.item(1);
+            var profs = e.parentElement.parentElement.parentElement.parentElement.parentElement.children.item(2);
+            var spells = e.parentElement.parentElement.parentElement.parentElement.parentElement.children.item(3);
+            var features = e.parentElement.parentElement.parentElement.parentElement.parentElement.children.item(4);
+            var equipment = e.parentElement.parentElement.parentElement.parentElement.parentElement.children.item(5);
+            var combatButton= e.parentElement.children.item(0);
+            var profsButton= e.parentElement.children.item(1);
+            var spellsButton= e.parentElement.children.item(2);
+            var featuresButton= e.parentElement.children.item(3);
+            var equipmentButton= e.parentElement.children.item(4);
+
+            combatButton.classList.remove("active");
+            profsButton.classList.remove("active");
+            spellsButton.classList.remove("active");
+            featuresButton.classList.remove("active");
+            equipmentButton.classList.remove("active");
+            e.classList.add("active");
+
+            if(contentNumber === 1){
+                combat.classList.remove("hidden");
+                profs.classList.add("hidden");
+                spells.classList.add("hidden");
+                features.classList.add("hidden");
+                equipment.classList.add("hidden");
+            }
+            if(contentNumber === 2){
+                combat.classList.add("hidden");
+                profs.classList.remove("hidden");
+                spells.classList.add("hidden");
+                features.classList.add("hidden");
+                equipment.classList.add("hidden");
+            }
+            if(contentNumber === 3){
+                combat.classList.add("hidden");
+                profs.classList.add("hidden");
+                spells.classList.remove("hidden");
+                features.classList.add("hidden");
+                equipment.classList.add("hidden");
+            }
+            if(contentNumber === 4){
+                combat.classList.add("hidden");
+                profs.classList.add("hidden");
+                spells.classList.add("hidden");
+                features.classList.remove("hidden");
+                equipment.classList.add("hidden");
+            }
+            if(contentNumber === 5){
+                combat.classList.add("hidden");
+                profs.classList.add("hidden");
+                spells.classList.add("hidden");
+                features.classList.add("hidden");
+                equipment.classList.remove("hidden");
+            }
+
+            return false;
         }
 
 
@@ -138,12 +258,6 @@
         z-index: 9;
     }
 
-    .content {
-        max-width: 1440px;
-        padding: 16px;
-        width: 100%;
-        justify-content: center;
-    }
 
     .sticky {
         position: fixed;
@@ -168,6 +282,13 @@
 
     /* Dynamic Content
     ================================== */
+
+    .content {
+        max-width: 1440px;
+        padding: 16px;
+        width: 100%;
+        justify-content: center;
+    }
 
     #app-main{
         width: 100%;
@@ -218,8 +339,8 @@
         /*visibility: hidden;*/
     }
 
-    .Stats{
-
+    #InnerCharacterBluePrint{
+        /*visibility: hidden;*/
     }
 
     .StatsName{
@@ -227,7 +348,14 @@
         display: flex;
         margin: 0;
         text-align: center;
+        font-weight: lighter;
     }
+
+    .StatsValue{
+        font-size: 20px;
+        font-weight: bold;
+    }
+
 
     .MOD {
         font-size: 15px;
@@ -236,6 +364,20 @@
         text-align: center;
     }
 
+    .OtherTexts{
+        font-size: 25px;
+        display: flex;
+        margin: 0;
+        text-align: center;
+    }
+
+    .OtherValues{
+        font-size: 20px;
+    }
+
+    .hidden {
+        display: none;
+    }
 
 
 
@@ -334,7 +476,7 @@
     }
     /* Responsive
     ==================================== */
-    @media all and (max-width: 500px) {
+    @media all and (max-width: 832px) {
         .Rtable--collapse {
             display: block;
         }
@@ -363,6 +505,8 @@
 <body>
 
 
+    <!--Banner Header
+    ==========================================-->
     <div id="HeaderBox" class="row">
 
         <div class="col-1">
@@ -392,6 +536,8 @@
     </div>
 
 
+    <!--Sticky Header
+    ==========================================-->
     <div class="header" id="OptionsHeader">
         <div class="d-flex">
             <h1 class="StickyHeaderName ">Dashboard</h1>
@@ -404,10 +550,15 @@
         </div>
     </div>
 
+    <!--Lower Content Container
+   ==========================================-->
     <div class="container-fluid" id="app-main">
         <div class="d-flex content">
             <div class="p-5 d-flex flex-column" id="Insertable" >
 
+
+                <!--Upper Blueprint
+                ==========================================-->
                 <div id="UpperCharacterBlueprint" class="d-flex flex-column w-100" style="color: white ">
 
                     <div class="HigherAlignMod d-flex w-100">
@@ -423,134 +574,297 @@
                             Level: <span></span>
                         </div>
                     </div>
+                </div>
 
 
+                <!--Inner Blueprint
+                ==========================================-->
+                <div id="InnerCharacterBluePrint" class="d-flex justify-content-center" style="color: white; ">
 
-                    <div id="InnerCharacterBluePrint" class="d-flex justify-content-center">
+
+                    <div class="Rtable Rtable--2cols Rtable--collapse">                                             <!-- 0 -->
+
+                        <!--Left Top
+                        ==========================================-->
+                        <div style="order:0;" class="Rtable-cell Rtable-cell--head">                                     <!-- 0 -->
+                        </div>
+
+                        <!--Left Cell
+                        ==========================================-->
+                        <div style="order:1; border-right: solid 3px white;width: available " class="Rtable-cell">  <!-- 1 -->
 
 
-                        <div class="Rtable Rtable--2cols Rtable--collapse" style="">
-
-                            <div style="order:0;" class="Rtable-cell Rtable-cell--head">
+                            <div class="d-flex justify-content-center">                                             <!-- 0 -->
+                                <h2>Ability Scores</h2>
                             </div>
+                            <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">                       <!-- 1 -->
 
-                            <div style="order:1; border-right: solid 5px white;width: available " class="Rtable-cell"  >
+                                <div style="order:1;" class="Rtable-cell">                                          <!-- 0 -->
 
+                                    <div class="d-flex justify-content-between">                                    <!-- 0 -->
 
-                                <div class="d-flex justify-content-center">
-                                    <h2>Ability Scores</h2>
-                                </div>
-                                <div class="d-flex justify-content-between">
-                                    <div class="Stats">
-                                        <div class="StatsName">
-                                            STR
+                                        <div>                                                                       <!-- 0 -->
+                                            <div class="StatsName">                                                 <!-- 0 -->
+                                                STR
+                                            </div>
+                                            <div class="text-center">                                               <!-- 1 -->
+                                                <span class="StatsValue"></span>                                    <!-- 0 -->
+                                            </div>
+                                            <div class="MOD">                                                       <!-- 2 -->
+                                                mod
+                                            </div>
+                                            <div class="text-center">                                               <!-- 3 -->
+                                                <span></span>                                                       <!-- 0 -->
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            <span></span>
+
+                                        <div>                                                                       <!-- 1 -->
+                                            <div class="StatsName">
+                                                DEX
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="StatsValue"></span>
+                                            </div>
+                                            <div class="MOD">
+                                                mod
+                                            </div>
+                                            <div class="text-center">
+                                                <span></span>
+                                            </div>
                                         </div>
-                                        <div class="MOD">
-                                            mod
+
+                                        <div>                                                                       <!-- 2 -->
+                                            <div class="StatsName">
+                                                CON
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="StatsValue"></span>
+                                            </div>
+                                            <div class="MOD">
+                                                mod
+                                            </div>
+                                            <div class="text-center">
+                                                <span></span>
+                                            </div>
                                         </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="Stats">
-                                        <div class="StatsName">
-                                            DEX
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                        <div class="MOD">
-                                            mod
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="Stats">
-                                        <div class="StatsName">
-                                            CON
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                        <div class="MOD">
-                                            mod
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="Stats">
-                                        <div class="StatsName">
-                                            INT
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                        <div class="MOD">
-                                            mod
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="Stats">
-                                        <div class="StatsName">
-                                            WIS
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                        <div class="MOD">
-                                            mod
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                    <div class="Stats">
-                                        <div class="StatsName">
-                                            CHA
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
-                                        <div class="MOD">
-                                            mod
-                                        </div>
-                                        <div class="text-center">
-                                            <span></span>
-                                        </div>
+
                                     </div>
                                 </div>
-                                Das müsste drunter Stehen
 
+                                <div style="order:1;" class="Rtable-cell">                                          <!-- 1 -->
+
+                                    <div class="d-flex justify-content-between">
+
+                                        <div>
+                                            <div class="StatsName">
+                                                INT
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="StatsValue"></span>
+                                            </div>
+                                            <div class="MOD">
+                                                mod
+                                            </div>
+                                            <div class="text-center">
+                                                <span></span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="StatsName">
+                                                WIS
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="StatsValue"></span>
+                                            </div>
+                                            <div class="MOD">
+                                                mod
+                                            </div>
+                                            <div class="text-center">
+                                                <span></span>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <div class="StatsName">
+                                                CHA
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="StatsValue"></span>
+                                            </div>
+                                            <div class="MOD">
+                                                mod
+                                            </div>
+                                            <div class="text-center">
+                                                <span></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">            <!-- 2 -->
+
+                                <div style="order:1;" class="Rtable-cell">                                          <!-- 0 -->
+                                    <div class="d-flex justify-content-center" style="margin-bottom: 10px">         <!-- 0 -->
+
+                                        <div>                                                                       <!-- 0 -->
+                                            <div class="OtherTexts">                                                <!-- 0 -->
+                                                Proficiency Bonus
+                                            </div>
+                                            <div class="text-center">                                               <!-- 1 -->
+                                                <span class="OtherValues"></span>                                   <!-- 0 -->
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center" style="margin-bottom: 10px">         <!-- 1 -->
+                                        <div>
+                                            <div class="OtherTexts">
+                                                Passive Perception
+                                            </div>
+                                            <div class="text-center">
+                                                <span class="OtherValues"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div style="order:1;" class="Rtable-cell">                                          <!-- 1 -->
+
+                                    <div class="d-flex justify-content-center">                                     <!-- 0 -->
+                                        <div>
+                                            <div class="OtherTexts">
+                                                Saving Throws
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">                                     <!-- 1 -->
+                                        <div>
+                                            STR &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">                                     <!-- 2 -->
+                                        <div>                                                                       <!-- 0 -->
+                                            DEX &nbsp;&nbsp;&nbsp;&nbsp;                                            <!-- 0 -->
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            CON &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            INT &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            WIS &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div>
+                                            CHA &nbsp;&nbsp;&nbsp;&nbsp;
+                                            <span></span>
+                                        </div>
+                                    </div>
+
+                                </div>
 
                             </div>
-                            <div style="order:0;" class="Rtable-cell Rtable-cell--head">
-                                <button type="button" class="btn btn-warning m-1 " >Edit</button>
-                                <button type="button" class="btn btn-warning m-1 " >Save</button>
-                                <button type="button" class="btn btn-warning m-1 " >Delete</button>
+
+
+                        </div>
+
+                        <!--Right Top
+                        ==========================================-->
+                        <div style="order:0;" class="Rtable-cell Rtable-cell--head">
+                            <button type="button" class="btn btn-warning m-1 " >Edit</button>
+                            <button type="button" class="btn btn-warning m-1 " >Save</button>
+                            <button type="button" class="btn btn-warning m-1 " >Delete</button>
+                        </div>
+
+                        <!--Right Cell
+                        ==========================================-->
+                        <div style="order:1;" class="Rtable-cell">
+
+
+                            <!--Navbar
+                            ==========================================-->
+                            <div class="d-flex justify-content-center">
+                                <nav class="navbar navbar-expand-lg navbar-dark" style="background: #1e2027">
+                                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                                        <div class="navbar-nav">
+                                            <a class="nav-link active" onclick="return showContent(this, 1)" >COMBAT</a>
+                                            <a class="nav-link" onclick="return showContent(this, 2)">PROFICIENCIES</a>
+                                            <a class="nav-link" onclick="return showContent(this, 3)">SPELLS</a>
+                                            <a class="nav-link" onclick="return showContent(this, 4)">FEATURES</a>
+                                            <a class="nav-link" onclick="return showContent(this, 5)">EQUIPMENT</a>
+                                        </div>
+                                    </div>
+                                </nav>
                             </div>
-                            <div style="order:1;" class="Rtable-cell">
-                                Right
 
-
-
-
+                            <!--Combat
+                            ==========================================-->
+                            <div class="">
+                                Combat
                             </div>
-                            <div style="order:3;" class="Rtable-cell Rtable-cell--foot">
 
-
+                            <!--Profs
+                            ==========================================-->
+                            <div class="hidden">
+                                Profs
                             </div>
+
+                            <!--Spells
+                            ==========================================-->
+                            <div class="hidden">
+                                Spells
+                            </div>
+
+                            <!--Features
+                            ==========================================-->
+                            <div class="hidden">
+                                Features
+                            </div>
+
+                            <!--Equipment
+                            ==========================================-->
+                            <div class="hidden">
+                                Equipment
+                            </div>
+
+                        </div>
+
+                        <!--Bottom
+                        ==========================================-->
+                        <div style="order:3; border-bottom: solid 5px white;" class="Rtable-cell Rtable-cell--foot">
+
+
                         </div>
                     </div>
-
-
                 </div>
+
+
+
+
+
+
+
             </div>
         </div>
     </div>
@@ -578,6 +892,9 @@
         }
 
     </script>
+
+
+
 
 
 
