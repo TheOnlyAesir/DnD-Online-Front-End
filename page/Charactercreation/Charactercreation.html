@@ -651,7 +651,7 @@
                         </div>
                         <select class="custom-select" id="inputGroupSelect02">
                             <!--                                        <option selected>Choose...</option>-->
-                            <option value="1">1</option>
+                            <option value="1" onclick="">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
                             <option value="4">4</option>
@@ -1123,7 +1123,6 @@
             }
         }
 
-
         $(function () {
             $('.racescheckbox').click(function(e) {
                 $('.racescheckbox').not(this).prop('checked', false);
@@ -1131,54 +1130,7 @@
         });
 
 
-
-
-
-
-        function addHitPointColumns(actual, target){
-            for(i = actual +1;i<=target;i++) //this loop creates the new floors
-            {
-                newItemHTML = '<tr><td class=" innertable tableborder "><p>' + i + '</p></td><td class=" innertable tableborder "><p>' + Modifier + '</p></td><td class=" innertable tableborder "><p>' + i + '</p></td><td class=" innertable tableborder "><p>' + TotalLevel + '</p></td> </tr>';
-
-                //i also changed the html inside the first td from <span> to <p> to match your html markup
-                $("table#hitpointTable tr").last().before(newItemHTML);
-            }
-        }
-
-        function removeHitPointColumns(target){
-            if(target >= 1) //remove all floors except the base 4
-            {
-                $('.hitpointTable').slice(target).parent().parent().remove();
-                //since i select the .floor input box, i have to use the parent() function two times, to move the selector up to the <tr> element
-            }
-        }
-
-
-
-
-        $("#inputGroupSelect02").bind('change', function() {
-            curVal = $.trim($(this).val()).match(/^\d*$/);
-            curFloors = $('.hitpointTable').length;
-            <input type="number" id="inputGroupSelect02" name="" class=' InputBox' />
-            if(curVal > curFloors)
-            {
-                addHitPointColumns(curFloors, curVal);
-            }else if(curVal < curFloors)
-            {
-                removeHitPointColumns(curVal);
-            }
-
-            $('.hitpointTable').each(function(index){
-                if(index >= curVal)
-                {
-                    $(this).prop('disabled', true);
-                }else
-                {
-                    $(this).prop('disabled', false);
-                }
-            });
-
-        });
+        --
 
 
     </script>
