@@ -9,11 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
 
     <script type="application/javascript">
 
         var presetDiv;
         var innerPresetDiv;
+        var weaponPreset;
+        var armorPreset;
         let User = "Renge";
         window.addEventListener("load", function () {
 
@@ -21,6 +25,8 @@
             setUsername2(User)
             presetDiv = document.getElementById("UpperCharacterBlueprint");
             innerPresetDiv = document.getElementById("InnerCharacterBluePrint");
+            weaponPreset = document.getElementById("WeaponBlueprint");
+            armorPreset = document.getElementById("ArmorBlueprint");
         });
 
 
@@ -68,6 +74,8 @@
                              if(parentdiv.children.item(1) == null){
                                 let inNewDiv = innerPresetDiv.cloneNode(true);
                                 inNewDiv.setAttribute('id', newdiv.reference.charactersheetID);
+
+                                // Stats Left
                                 inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
                                     = newdiv.reference.stats.strength;
                                 inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(0).children.item(3).children.item(0).innerText
@@ -81,6 +89,7 @@
                                 inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(2).children.item(3).children.item(0).innerText
                                      = newdiv.reference.stats.constitutionModifier;
 
+                                //Stats Right
                                 inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(0).children.item(1).children.item(0).innerText
                                      = newdiv.reference.stats.intelligence;
                                 inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(0).children.item(3).children.item(0).innerText
@@ -94,15 +103,15 @@
                                 inNewDiv.children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).children.item(2).children.item(3).children.item(0).innerText
                                      = newdiv.reference.stats.charismaModifier;
 
-
+                                // Left Values
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
-                                     = newdiv.reference.proficiencyBonus
+                                     = newdiv.reference.proficiencyBonus;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(1).children.item(0).children.item(1).children.item(0).innerText
-                                     = newdiv.reference.passivePerception
+                                     = newdiv.reference.passivePerception;
 
-
+                                // Saving Throws
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(1).children.item(0).children.item(0).innerText
-                                     = newdiv.reference.stats.strengthModifier
+                                     = newdiv.reference.stats.strengthModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(2).children.item(0).children.item(0).innerText
                                      = newdiv.reference.stats.dexterityModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(3).children.item(0).children.item(0).innerText
@@ -113,6 +122,226 @@
                                      = newdiv.reference.stats.wisdomModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(6).children.item(0).children.item(0).innerText
                                      = newdiv.reference.stats.charismaModifier;
+
+                                //Combat Values
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(0).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.armorClass;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(0).children.item(0).children.item(0).children.item(1).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.life.maximumHitPoints;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(0).children.item(1).children.item(0).children.item(0).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.speed;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(0).children.item(1).children.item(0).children.item(1).children.item(1).children.item(0).innerText
+                                     = newdiv.reference.initiative;
+
+                                 //HitPoints
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(1).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).value
+                                     = newdiv.reference.life.temporaryHitPoints;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(1).children.item(1).children.item(0).children.item(0).children.item(1).children.item(0).value
+                                     = newdiv.reference.life.currentHitPoints;
+
+                                 //DeathSaves
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(2).children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).checked
+                                     = newdiv.reference.savingThrows.save1;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(2).children.item(0).children.item(2).children.item(1).children.item(0).children.item(0).checked
+                                     = newdiv.reference.savingThrows.fail1;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(2).children.item(0).children.item(1).children.item(1).children.item(1).children.item(0).checked
+                                     = newdiv.reference.savingThrows.save2;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(2).children.item(0).children.item(2).children.item(1).children.item(1).children.item(0).checked
+                                     = newdiv.reference.savingThrows.fail2;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(2).children.item(0).children.item(1).children.item(1).children.item(2).children.item(0).checked
+                                     = newdiv.reference.savingThrows.save3;
+                                 inNewDiv.children.item(0).children.item(3).children.item(1).children.item(2).children.item(0).children.item(2).children.item(1).children.item(2).children.item(0).checked
+                                     = newdiv.reference.savingThrows.fail3;
+
+
+                                 //Weapons
+                                 for (let j = 0; j < newdiv.reference.equippables.length; j++ ){
+                                    let weapon = weaponPreset.cloneNode(true);
+                                    weapon.setAttribute('id', j+500);
+                                    weapon.children.item(0).innerText = newdiv.reference.equippables[j].equippable;
+                                    weapon.children.item(1).innerText = newdiv.reference.equippables[j].details;
+                                    weapon.children.item(2).innerText = newdiv.reference.equippables[j].attackBonus;
+
+                                    inNewDiv.children.item(0).children.item(3).children.item(1).children.item(3).children.item(0).children.item(1).appendChild(weapon);
+                                 }
+
+
+                                 //Armor
+                                 for (let j = 0; j < newdiv.reference.wearables.length; j++ ){
+                                    let armor = armorPreset.cloneNode(true);
+                                    armor.setAttribute('id', j +1000);
+                                    armor.children.item(0).innerText = newdiv.reference.wearables[j].wearable;
+                                    armor.children.item(1).innerText = newdiv.reference.wearables[j].details;
+                                    armor.children.item(2).innerText = newdiv.reference.wearables[j].armorClass;
+
+                                    inNewDiv.children.item(0).children.item(3).children.item(1).children.item(4).children.item(0).children.item(1).appendChild(armor);
+                                 }
+
+
+                                 //Profs
+                                 //Skills
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(0).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.acrobatics_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(0).children.item(2).innerText
+                                     = newdiv.reference.skills.acrobatics;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(1).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.animal_handling_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(1).children.item(2).innerText
+                                     = newdiv.reference.skills.animal_handling;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(2).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.arcana_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(2).children.item(2).innerText
+                                     = newdiv.reference.skills.arcana;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(3).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.athletics_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(3).children.item(2).innerText
+                                     = newdiv.reference.skills.athletics;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(4).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.deception_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(4).children.item(2).innerText
+                                     = newdiv.reference.skills.deception;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(5).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.history_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(5).children.item(2).innerText
+                                     = newdiv.reference.skills.history;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(6).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.insight_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(6).children.item(2).innerText
+                                     = newdiv.reference.skills.insight;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(7).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.intimidation_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(7).children.item(2).innerText
+                                     = newdiv.reference.skills.intimidation;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(8).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.investigation_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(8).children.item(2).innerText
+                                     = newdiv.reference.skills.investigation;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(9).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.medicine_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(9).children.item(2).innerText
+                                     = newdiv.reference.skills.medicine;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(10).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.nature_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(10).children.item(2).innerText
+                                     = newdiv.reference.skills.nature;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(11).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.perception_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(11).children.item(2).innerText
+                                     = newdiv.reference.skills.perception;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(12).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.performance_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(12).children.item(2).innerText
+                                     = newdiv.reference.skills.performance;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(13).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.persuasion_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(13).children.item(2).innerText
+                                     = newdiv.reference.skills.persuasion;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(14).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.religion_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(14).children.item(2).innerText
+                                     = newdiv.reference.skills.religion;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(15).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.sleight_of_hand_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(15).children.item(2).innerText
+                                     = newdiv.reference.skills.sleight_of_hand;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(16).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.stealth_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(16).children.item(2).innerText
+                                     = newdiv.reference.skills.stealth;
+                                 changeIcon(
+                                     inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(17).children.item(1).children.item(0)
+                                     , newdiv.reference.skills.survival_prof);
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(17).children.item(2).innerText
+                                     = newdiv.reference.skills.survival;
+
+                                 //Tools
+                                 let toolProfs = "";
+                                 let toolDiv = document.createElement('div');
+                                 toolDiv.setAttribute("class", "d-flex" );
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.alchemistSupplies, "Alchemist Supplies");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.bagpipes, "Bagpipes");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.calligrapherSupplies, "Calligrapher Supplies");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.carpenterTools, "Carpenter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cartographerTools, "Cartographer Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cobblerTools, "Cobbler Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cookUtensils, "Cooking Utensils");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.diceSet, "Dice Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.disguiseKit, "Disguise Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.dragonchessSet, "Dragonchess Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.drum, "Drum");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.dulcimer, "Dulcimer");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.flute, "Flute");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.forgeryKit, "Forgery Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.glassblowerTools, "Glassblower Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.herbalismKit, "Herbalism Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.horn, "Horn");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.landVehicles, "Land Vehicles");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.leatherworkerTools, "Leatherworker Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.lute, "Lute");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.lyre, "Lyre");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.masonTools, "Mason Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.navigatorTools, "Navigator Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.painterTools, "Painter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.poisonerKit, "Poisoner Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.potterTools, "Potter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.shawm, "Shawm");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.smithTools, "Smith Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.thieveTools, "ThieveT ools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.threeDragonAnteSet, "Three Dragon Ante Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.tinkerTools, "Tinker Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.viol, "Viol");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.waterVehicles, "Water Vehicles");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.weaverTools, "Weaver Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.woodcarverTools, "Woodcarver Tools");
+                                 toolDiv.innerText = toolProfs;
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(1).appendChild(toolDiv);
+
+                                 //Languages
+                                let languageProfs = "";
+                                let languageDiv = document.createElement('div');
+                                languageDiv.setAttribute("class", "d-flex" );
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.celestial, "Celestial");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.deepSpeech, "Deep Speech");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.goblin, "Goblin");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.dwarvish, "Dwarvish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.giant, "Giant");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.orc, "Orc");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.draconic, "Draconic");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.abyssal, "Abyssal");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.common, "Common");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.gnomish, "Gnomish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.infernal, "Infernal");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.halfling, "Halfling");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.sylvan, "Sylvan");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.primordial, "Primordial");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.elvish, "Elvish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.undercommon, "Undercommon");
+                                languageDiv.innerText = languageProfs;
+                                inNewDiv.children.item(0).children.item(3).children.item(2).children.item(2).appendChild(languageDiv);
+
+                                //Weapons
+
+
+
+                                //Armor
+
 
                                 parentdiv.appendChild(inNewDiv);
                              }
@@ -195,6 +424,22 @@
             return false;
         }
 
+        function changeIcon(e, value) {
+
+            if(value == true){
+                e.setAttribute("class","fas fa-check");
+            }
+            else{
+                e.setAttribute("class","fas fa-times");
+            }
+        }
+
+        function proficienyCheck(value, name){
+            if(value == true)
+                return name + ", ";
+            else
+                return "";
+        }
 
 
 
@@ -335,14 +580,6 @@
         align-content: center;
     }
 
-    #UpperCharacterBlueprint {
-        /*visibility: hidden;*/
-    }
-
-    #InnerCharacterBluePrint{
-        /*visibility: hidden;*/
-    }
-
     .StatsName{
         font-size: 25px;
         display: flex;
@@ -379,7 +616,32 @@
         display: none;
     }
 
+    .OtherTexts2{
+        font-size: 20px;
+        display: flex;
+        margin: 0;
+        text-align: center;
+    }
 
+
+    /* Blueprints visibility
+    ================================== */
+    #UpperCharacterBlueprint {
+        /*visibility: hidden;*/
+    }
+
+    #InnerCharacterBluePrint{
+        /*visibility: hidden;*/
+    }
+
+    #ArmorBlueprint{
+        display: none;
+
+    }
+
+    #WeaponBlueprint{
+        display: none;
+    }
 
     /* Tables
     ================================== */
@@ -574,6 +836,7 @@
                             Level: <span></span>
                         </div>
                     </div>
+                    <div class="modal-footer"></div>
                 </div>
 
 
@@ -591,7 +854,7 @@
 
                         <!--Left Cell
                         ==========================================-->
-                        <div style="order:1; border-right: solid 3px white;width: available " class="Rtable-cell">  <!-- 1 -->
+                        <div style="order:1;width: available " class="Rtable-cell">                                 <!-- 1 -->
 
 
                             <div class="d-flex justify-content-center">                                             <!-- 0 -->
@@ -788,7 +1051,7 @@
 
                         <!--Right Top
                         ==========================================-->
-                        <div style="order:0;" class="Rtable-cell Rtable-cell--head">
+                        <div style="order:0;" class="Rtable-cell Rtable-cell--head">                                   <!-- 2 -->
                             <button type="button" class="btn btn-warning m-1 " >Edit</button>
                             <button type="button" class="btn btn-warning m-1 " >Save</button>
                             <button type="button" class="btn btn-warning m-1 " >Delete</button>
@@ -796,12 +1059,12 @@
 
                         <!--Right Cell
                         ==========================================-->
-                        <div style="order:1;" class="Rtable-cell">
+                        <div style="order:1;" class="Rtable-cell">                                                <!-- 3 -->
 
 
                             <!--Navbar
                             ==========================================-->
-                            <div class="d-flex justify-content-center">
+                            <div class="d-flex justify-content-center">                                           <!-- 0 -->
                                 <nav class="navbar navbar-expand-lg navbar-dark" style="background: #1e2027">
                                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                         <span class="navbar-toggler-icon"></span>
@@ -820,31 +1083,324 @@
 
                             <!--Combat
                             ==========================================-->
-                            <div class="">
-                                Combat
+                            <div class="">                                                                    <!-- 1 -->
+                                <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">     <!-- 0 -->
+
+                                    <div style="order:1;" class="Rtable-cell">                                      <!-- 0 -->
+                                        <div class="d-flex justify-content-between">                                    <!-- 0 -->
+                                            <div>                                                                           <!-- 0 -->
+                                                <div class="OtherTexts2">                                                       <!-- 0 -->
+                                                    Armor Class
+                                                </div>
+                                                <div class="text-center">                                                       <!-- 1 -->
+                                                    <span class="OtherValues"></span>                                               <!-- 0 -->
+                                                </div>
+                                            </div>
+                                            <div>                                                                           <!-- 1 -->
+                                                <div class="OtherTexts2">                                                       <!-- 0 -->
+                                                    Max-Hit-Points
+                                                </div>
+                                                <div class="text-center">                                                       <!-- 1 -->
+                                                    <span class="OtherValues"></span>                                               <!-- 0 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div style="order:1;" class="Rtable-cell">                                      <!-- 1 -->
+                                        <div class="d-flex justify-content-around">                                     <!-- 0 -->
+                                            <div>                                                                           <!-- 0 -->
+                                                <div class="OtherTexts2">                                                       <!-- 0 -->
+                                                    Speed
+                                                </div>
+                                                <div class="text-center">                                                       <!-- 1 -->
+                                                    <span class="OtherValues"></span>                                               <!-- 0 -->
+                                                </div>
+                                            </div>
+                                            <div>                                                                           <!-- 1 -->
+                                                <div class="OtherTexts2">                                                       <!-- 0 -->
+                                                    Initiative
+                                                </div>
+                                                <div class="text-center">                                                       <!-- 1 -->
+                                                    <span class="OtherValues"></span>                                               <!-- 0 -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">       <!-- 1 -->
+
+                                    <div style="order:1;" class="Rtable-cell">                                        <!-- 0 -->
+                                        <div class="d-flex justify-content-center">                                      <!-- 0 -->
+                                            <div>                                                                           <!-- 0 -->
+                                                <div class="OtherTexts2">                                                       <!-- 0 -->
+                                                    Temp. Max-Hit-Points
+                                                </div>
+                                                <div class="d-flex justify-content-center" >                                     <!-- 1 -->
+                                                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 100px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div style="order:1;" class="Rtable-cell">                                       <!-- 1 -->
+                                        <div class="d-flex justify-content-center">                                      <!-- 0 -->
+                                            <div>                                                                           <!-- 0 -->
+                                                <div class="OtherTexts2">                                                       <!-- 0 -->
+                                                    Temp. Hit-Points
+                                                </div>
+                                                <div class="d-flex justify-content-center" >                                     <!-- 1 -->
+                                                    <input type="number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" style="width: 100px">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Death Saves
+                                ==========================-->
+                                <div class="d-flex justify-content-center m-1">                                             <!-- 2 -->
+
+                                    <div class="flex-column">                                                             <!-- 0 -->
+                                        <div class="OtherTexts">                                                            <!-- 0 -->
+                                            Death Saves
+                                        </div>
+                                        <div class="flex-column">                                                           <!-- 1 -->
+                                            <div class="text-center">                                                           <!-- 0 -->
+                                                Save
+                                            </div>
+                                            <div class="text-center">                                                           <!-- 1 -->
+                                                <div class="form-check form-check-inline m-1">                                      <!-- 0 -->
+                                                    <input class="form-check-input m-0" type="checkbox" name="blankRadio"  value="option1" aria-label="...">
+                                                </div>
+                                                <div class="form-check form-check-inline m-1">                                      <!-- 1 -->
+                                                    <input class="form-check-input  m-0" type="checkbox" name="blankRadio"  value="option2" aria-label="...">
+                                                </div>
+                                                <div class="form-check form-check-inline m-1">                                      <!-- 2 -->
+                                                    <input class="form-check-input  m-0" type="checkbox" name="blankRadio"  value="option3" aria-label="...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="flex-column">                                                           <!-- 2 -->
+                                            <div class="text-center">
+                                                Death
+                                            </div>
+                                            <div class="text-center">
+                                                <div class="form-check form-check-inline m-1">
+                                                    <input class="form-check-input position-static m-0" type="checkbox" name="blankRadio" value="option4" aria-label="...">
+                                                </div>
+                                                <div class="form-check form-check-inline m-1">
+                                                    <input class="form-check-input position-static m-0" type="checkbox" name="blankRadio"  value="option5" aria-label="...">
+                                                </div>
+                                                <div class="form-check form-check-inline m-1">
+                                                    <input class="form-check-input position-static m-0" type="checkbox" name="blankRadio"  value="option6" aria-label="...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--Weapons
+                                ==========================-->
+                                <div style="color: white">                                                  <!-- 3 -->
+                                    <table class="table table-striped table-sm">                                <!-- 0 -->
+                                        <!-- Table head -->
+                                        <thead style="color: white">                                                <!-- 0 -->
+                                            <tr>
+                                                <th width="30%">Name</th>
+                                                <th width="50%">Details</th>
+                                                <th width="20%">Attack Bonus</th>
+                                            </tr>
+                                        </thead>
+                                        <!--Table body-->
+                                        <tbody style="color: white">                                                <!-- 1 -->
+                                            <tr id="WeaponBlueprint">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <!--Armor
+                                ==========================-->
+                                <div>                                                                       <!-- 4 -->
+                                    <table class="table table-striped table-sm">
+                                        <!-- Table head -->
+                                        <thead style="color: white">
+                                        <tr>
+                                            <th width="30%">Name</th>
+                                            <th width="57%">Details</th>
+                                            <th width="13%">AC</th>
+                                        </tr>
+                                        </thead>
+                                        <!--Table body-->
+                                        <tbody style="color: white">
+                                            <tr id="ArmorBlueprint">
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            </tr>
+
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
                             </div>
 
                             <!--Profs
                             ==========================================-->
-                            <div class="hidden">
-                                Profs
+                            <div class="hidden">                                                                <!-- 2 -->
+                                <table class="table table-striped table-sm">                                        <!-- 0 -->
+                                    <!-- Table head -->
+                                    <thead style="color: white">                                                        <!-- 0 -->
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Proficient</th>
+                                            <th>Bonus</th>
+                                        </tr>
+                                    </thead>
+                                    <!--Table body-->
+                                    <tbody style="color: white">                                                        <!-- 1 -->
+                                        <tr>                                                                                <!-- 0 -->
+                                            <td>Acrobatics</td>                                                                 <!-- 0 -->
+                                            <td><i></i> </td>                                                                   <!-- 1 --> <!-- 0 -->
+                                            <td></td>
+                                        </tr>
+                                        <tr>                                                                                <!-- 1 -->
+                                            <td>Animal Handling</td>
+                                            <td><i></i></td>
+                                            <td></td>
+                                        </tr>
+                                    <tr>                                                                                    <!-- 2 -->
+                                        <td>Arcana</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 3 -->
+                                        <td>Athletics</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 4 -->
+                                        <td>Deception</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 5 -->
+                                        <td>History</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 6 -->
+                                        <td>Insight</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 7 -->
+                                        <td>Intimidation</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 8 -->
+                                        <td>Investigation</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 9 -->
+                                        <td>Medicine</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 10 -->
+                                        <td>Nature</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 11 -->
+                                        <td>Perception</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 12 -->
+                                        <td>Performance</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 13 -->
+                                        <td>Persuasion</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 14 -->
+                                        <td>Religion</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 15 -->
+                                        <td>Sleight of Hand</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 16 -->
+                                        <td>Stealth</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>                                                                                    <!-- 17 -->
+                                        <td>Survival</td>
+                                        <td><i></i></td>
+                                        <td></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="mt-2">                                                                               <!-- 1 -->
+                                    <div class="OtherTexts">
+                                        Tool Proficiencies
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Languages
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Weapon Proficiencies
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Armor Proficiencies
+                                    </div>
+                                </div>
+
                             </div>
 
                             <!--Spells
                             ==========================================-->
-                            <div class="hidden">
+                            <div class="hidden">                                                                 <!-- 3 -->
                                 Spells
                             </div>
 
                             <!--Features
                             ==========================================-->
-                            <div class="hidden">
+                            <div class="hidden">                                                                <!-- 4 -->
                                 Features
                             </div>
 
                             <!--Equipment
                             ==========================================-->
-                            <div class="hidden">
+                            <div class="hidden">                                                                <!-- 5 -->
                                 Equipment
                             </div>
 
@@ -852,10 +1408,11 @@
 
                         <!--Bottom
                         ==========================================-->
-                        <div style="order:3; border-bottom: solid 5px white;" class="Rtable-cell Rtable-cell--foot">
+                        <div style="order:3; border-bottom: solid 5px white;" class="Rtable-cell Rtable-cell--foot"> <!-- 4 -->
 
 
                         </div>
+
                     </div>
                 </div>
 
