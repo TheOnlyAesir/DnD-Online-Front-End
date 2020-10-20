@@ -491,22 +491,143 @@
         }
 
 
-        function showCharCreationContent(e, contentNumber){
+
+        let navNumber = 1;
+        let activeBar;
+        function setNavNumber(CurrentNumber){
+            navNumber = CurrentNumber;
+
+        }
+
+        function NextButton() {
+            setNavNumber(navNumber+1);
+
+            if(navNumber === 2){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.add("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 3){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.add("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 4){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.add("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 5){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.add("active");
+                showCharCreationContent(navNumber);
+            }
+            if(navNumber > 5){
+                setNavNumber(5);
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.add("active");
+
+                showCharCreationContent(navNumber);
+            }
+            return false;
+
+        }
+
+        function PreviousButton() {
+            setNavNumber(navNumber-1);
 
 
+            if(navNumber < 1){
+                setNavNumber(1);
+                document.getElementById("RaceBar").classList.add("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
 
-            var RaceClassButton= e.parentElement.children.item(0);
-            var AbilityScoreButton = e.parentElement.children.item(1);
-            var BackgroundButton= e.parentElement.children.item(2);
-            var ProficienciesButton= e.parentElement.children.item(3);
-            var EquipmentButton= e.parentElement.children.item(4);
+            }
 
-            RaceClassButton.classList.remove("active");
-            AbilityScoreButton.classList.remove("active");
-            BackgroundButton.classList.remove("active");
-            ProficienciesButton.classList.remove("active");
-            EquipmentButton.classList.remove("active");
+
+            if(navNumber === 1){
+                document.getElementById("RaceBar").classList.add("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 2){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.add("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 3){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.add("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 4){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.add("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 5){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.add("active");
+                showCharCreationContent(navNumber);
+            }
+
+            return false;
+
+        }
+
+        function activeNavBar(e){
+
+            document.getElementById("RaceBar").classList.remove("active");
+            document.getElementById("ASBar").classList.remove("active");
+            document.getElementById("BackgroundBar").classList.remove("active");
+            document.getElementById("ProfBar").classList.remove("active");
+            document.getElementById("EquipBar").classList.remove("active");
             e.classList.add("active");
+
+        }
+
+        function showCharCreationContent(contentNumber){
 
             if(contentNumber === 1){
                 document.getElementById("Race/Class").classList.remove("hidden");
@@ -515,6 +636,8 @@
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
 
+                setNavNumber(1);
+
             }
             if(contentNumber === 2){
                 document.getElementById("Race/Class").classList.add("hidden");
@@ -522,6 +645,8 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+
+                setNavNumber(2);
             }
             if(contentNumber === 3){
                 document.getElementById("Race/Class").classList.add("hidden");
@@ -529,6 +654,8 @@
                 document.getElementById("Background").classList.remove("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+
+                setNavNumber(3);
             }
             if(contentNumber === 4){
                 document.getElementById("Race/Class").classList.add("hidden");
@@ -536,6 +663,8 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.remove("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+
+                setNavNumber(4);
             }
             if(contentNumber === 5){
                 document.getElementById("Race/Class").classList.add("hidden");
@@ -543,6 +672,8 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.remove("hidden");
+
+                setNavNumber(5);
             }
 
             return false;
@@ -997,7 +1128,7 @@
     <div class="header" id="OptionsHeader">
         <div class="d-flex">
 
-            <h1 class="StickyHeaderName ">Character Creation</h1>
+            <h1 class="StickyHeaderName " >Character Creation</h1>
 
             <div class="d-inline-flex StickyHeaderButton">
                 <h1 class="StickyHeaderName"></h1>
@@ -1026,7 +1157,7 @@
             <div class="p-5 d-flex flex-column " id="Insertable" style="width: 100%" >
 
                 <div class="d-flex w-100  justify-content-between">
-                    <button type="button" class="btn btn-warning previous d-flex" style = "font-weight: lighter;">Previous</button>
+                    <button onclick="PreviousButton();" type="button" class="btn btn-warning previous d-flex" style = "font-weight: lighter;">Previous</button>
 
                     <div class="d-flex justify-content-center">
                         <nav class="navbar navbar-expand-lg navbar-dark" style="background: #1e2027">
@@ -1035,11 +1166,11 @@
                             </button>
                             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                                 <div class="navbar-nav">
-                                    <a class="nav-link active" onclick="return showCharCreationContent(this, 1)" >RACE/CLASS</a>
-                                    <a class="nav-link" onclick="return showCharCreationContent(this, 2)">ABILITY SCORES</a>
-                                    <a class="nav-link" onclick="return showCharCreationContent(this, 3)">BACKGROUND</a>
-                                    <a class="nav-link" onclick="return showCharCreationContent(this, 4)">PROFICIENCIES</a>
-                                    <a class="nav-link" onclick="return showCharCreationContent(this, 5)">EQUIPMENT</a>
+                                    <a id = "RaceBar" class="nav-link active" onclick="showCharCreationContent(1);activeNavBar(this);" >RACE/CLASS</a>
+                                    <a id = "ASBar" class="nav-link" onclick="showCharCreationContent(2);activeNavBar(this); ">ABILITY SCORES</a>
+                                    <a id = "BackgroundBar" class="nav-link" onclick="showCharCreationContent(3); activeNavBar(this);">BACKGROUND</a>
+                                    <a id = "ProfBar" class="nav-link" onclick="showCharCreationContent(4);  activeNavBar(this);">PROFICIENCIES</a>
+                                    <a id = "EquipBar" class="nav-link" onclick="showCharCreationContent(5);  activeNavBar(this);">EQUIPMENT</a>
                                 </div>
                             </div>
                         </nav>
@@ -1047,7 +1178,7 @@
                     </div>
 
 
-                    <button type="button" class="btn btn-warning next d-flex" style = "font-weight: lighter;">Next</button>
+                    <button onclick="NextButton();" type="button" class="btn btn-warning next d-flex" style = "font-weight: lighter;">Next</button>
 
                 </div>
 
