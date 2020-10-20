@@ -15,15 +15,33 @@
 
             setUsername(User);
             setUsername2(User)
+            setSkillProfLimiter(SkillProfNumber);
 
+            //DEFAULT -> UNCHECKED
+            var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
+
+            for(var i=0 ; i<SkillProfCheckboxDefault.length; i++){
+                SkillProfCheckboxDefault[i].checked = false;
+            }
         });
 
         let User = "Renge";
+
+        // let LimitSkillProfNumber;
+        let SkillProfNumber = 2;
+
 
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
             return user;
         }
+
+
+        function setSkillProfLimiter(SkillProfNumber){
+            document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
+            return SkillProfNumber;
+        }
+
         function setUsername2(user){
             document.getElementById("UserName2").innerHTML = user;
         }
@@ -681,9 +699,30 @@
 
 
 
+        // CHECKBOX -> BACKGROUND
 
+        function SkillProfCheck(e){
 
+            if(SkillProfNumber === 0 && !e.checked){
+                SkillProfNumber = SkillProfNumber+1;
+                setSkillProfLimiter(SkillProfNumber);
+                return true;
+            }
+            if(SkillProfNumber > 0 && !e.checked) {
+                SkillProfNumber = SkillProfNumber+1;
+                setSkillProfLimiter(SkillProfNumber);
+                return true;
+            }
 
+            if(SkillProfNumber === 0 ){
+                e.checked = false;
+            }
+            if(SkillProfNumber > 0) {
+                SkillProfNumber = SkillProfNumber-1;
+                setSkillProfLimiter(SkillProfNumber);
+                return true;
+            }
+        }
 
 
 
@@ -848,6 +887,12 @@
             height:50px;
         }
 
+        .Backgroundcheckbox{
+            text-align: center;
+            width: 50px;
+            height:50px;
+        }
+
         #app-main{
             width: 100%;
             height: 100%;
@@ -956,6 +1001,10 @@
         .cb2{
             background-color: #1e2027;
             color: white;
+        }
+
+        .AnimalHandlingcheckbox{
+
         }
 
         /* Tables
@@ -1210,9 +1259,9 @@
                                                          <table class="card-body cb2">
                                                              <tr>
                                                                  <td width="80%">
-                                                                     <p class="racesinfo">
-                                                                    speed +25, Darkvision 60 feet, CON +2, poison damage resistance <br>
-                                                                     Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+
+                                                                         <i class ="racesinfo">speed +25, Darkvision 60 feet, CON +2, poison damage resistance</i><br>
+                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                  </td>
                                                                  <td class="col text-center" >
                                                                      <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
@@ -1236,9 +1285,9 @@
                                                             <table class="card-body cb2">
                                                                 <tr>
                                                                     <td width="80%">
-                                                                        <p class="racesinfo">
-                                                                            speed +30<br>
-                                                                            Humans are physically diverse and highly adaptable. They excel in nearly every profession.</p>
+
+                                                                        <i class ="racesinfo">speed +25, Darkvision 60 feet, CON +2, poison damage resistance</i><br>
+                                                                        <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
                                                                         <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
@@ -1263,9 +1312,8 @@
                                                             <table class="card-body cb2">
                                                                 <tr>
                                                                     <td width="80%">
-                                                                        <p class="racesinfo">
-                                                                            speed +30, Darkvision 60 feet, DEX +2, magical-sleep immunity,<br> Perception proficiency
-                                                                            Elves are graceful, magical creatures, with a slight build.</p>
+                                                                        <i class ="racesinfo">speed +25, Darkvision 60 feet, CON +2, poison damage resistance</i><br>
+                                                                        <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
                                                                         <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
@@ -1822,6 +1870,10 @@
 
         </div>
         </div>
+
+
+
+
 </div>
 
 <!--                _________________ABILITYANDFEATS________________________             -->
@@ -2153,7 +2205,11 @@
                     <div class="d-flex justify-content-center">
                         <h2>Alignment</h2>
                     </div>
-                    <br><br>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <p style="font-weight: inherit; color: #5a6268 ">Select X</p>
+                    </div>
+                    <br>
 
 <!--                        ALIGNMENT ACCORDION(2)-->
 
@@ -2425,39 +2481,68 @@
                         </div>
 
 
+
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2>Background</h2>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <p style="font-weight: inherit; color: #5a6268 ">Select X</p>
+                    </div>
+                    <br>
+
+<!--                    ACCORDION 3                 -->
+
+                    <div id="accordion3">
+
+
+                        <div class="card">
+                            <div class="card-header ch3" id="Acolyte">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseAcolyte" aria-expanded="true" aria-controls="collapseOne">
+                                        <p style="font-weight: lighter"> ACOLYTE</p>
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div id="collapseAcolyte" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+
+                                <table class="card-body cb2" style="width: 100%" >
+                                    <tr>
+                                        <td width="80%">
+
+                                            <i class ="racesinfo">Insight proficiency, Religion proficiency</i> <br>
+                                            <p class ="racesinfo"> You have spent your life in the service of a temple to a specific
+                                                god or pantheon of gods. You act as an intermediary between the realm of the holy and the
+                                                mortal world, performing sacred rites and offering sacrifices in order to conduct worshipers
+                                                into the presence of the divine. You are not necessarily a cleric performing sacred rites is
+                                                not the same thing as channeling divine power. <br>
+
+                                                Choose a god, a pantheon of gods, or some other quasi-divine being, and work with your DM to
+                                                detail the nature of your religious service. The Gods of the Multiverse section contains a sample
+                                                pantheon, from the Forgotten Realms setting. Were you a lesser functionary in a temple, raised from
+                                                childhood to assist the priests in the sacred rites? Or were you a high priest who suddenly experienced
+                                                a call to serve your god in a different way? Perhaps you were the leader of a small cult outside of any
+                                                established temple structure, or even an occult group that served a fiendish master that you now deny. </p>
+                                        </td>
+
+                                        <td class="col text-center">
+                                            <input class="Backgroundcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                        </td>
+                                    </tr>
+                                </table>
+
+                            </div>
+                        </div>
+
+
                     </div>
 
 
 
 
-<!--                        <div class="Rtable Rtable&#45;&#45;2cols Rtable&#45;&#45;collapse">-->
-
-<!--                            <div style="order:0;" class="Rtable-cell ">-->
-<!--                                <p>Eddard Stark</p>-->
-
-<!--                            </div>-->
-
-<!--                            <div style="order:1;" class="Rtable-cell ">-->
-<!--                                <p >Eddard Stark</p>-->
-
-<!--                            </div>-->
-
-
-
-
-<!--                            <div style="order:0;" class="Rtable-cell ">-->
-<!--                                <p>Jon Snow</p>-->
-
-<!--                            </div>-->
-
-<!--                            <div style="order:1;" class="Rtable-cell ">-->
-<!--                                <p>Jon Snow</p>-->
-
-<!--                            </div>-->
-
-
-
-                </div>
+ </div>
 
 
 
@@ -2469,14 +2554,700 @@
 
 
 
-                </div>
+
+
+
+
+
+
+
 
 <!--                _________________PROFICIENCIES________________________             -->
 
                 <div id ="Proficiencies" class="hidden">
-                    <p class="CharCreationHeader" >Proficiencies</p>
 
-                </div>
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Skill Proficiency</h2>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <p class ="d-flex " style="font-weight: inherit; color: #5a6268 ">Select</p> &nbsp;
+                        <p id="SkillProfLimiter" class ="d-flex " style="font-weight: inherit; color: darkorange "></p>
+                    </div>
+                    <br>
+
+
+                    <div id="accordion4">
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Acrobatics">
+                                        <h5 class="mb-0">
+                                            <button  class="btn btn-link" data-toggle="collapse" data-target="#collapseAcrobatics" aria-expanded="true" aria-controls="collapseOne">
+                                                <p style="font-weight: lighter"> ACROBATICS</p>
+                                            </button>
+                                        </h5>
+                                    </div>
+
+                                    <div id="collapseAcrobatics" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Acrobatics proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Dexterity (Acrobatics) check covers your attempt to stay on your feet in a tricky situation,
+                                                        such as when you’re trying to run across a sheet of ice, balance on a tightrope, or stay upright on a rocking ship’s
+                                                        deck. The GM might also call for a Dexterity (Acrobatics) check to see if you can perform acrobatic stunts, including
+                                                        dives, rolls, somersaults, and flips. </p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input" checked= "unchecked">
+                                                </td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="AnimalHandling">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAnimalHandling" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> ANIMAL HANDLING</p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseAnimalHandling" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Animal handling proficiency</i> <br>
+                                                    <p class ="racesinfo"> When there is any question whether you can calm down a domesticated animal, keep a
+                                                        mount from getting spooked, or intuit an animal’s intentions, the GM might call for a Wisdom (Animal Handling)
+                                                        check. You also make a Wisdom (Animal Handling) check to control your mount when you attempt a risky maneuver </p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this);" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Arcana">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseArcana" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> ARCANA</p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseArcana" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Arcana proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Intelligence (Arcana) check measures your ability to recall lore about spells,
+                                                        magic items, eldritch symbols, magical traditions, the planes of existence, and the inhabitants of those planes.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Athletics">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAthletics" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> ATHLETICS</p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseAthletics" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Athletics proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Strength (Athletics) check covers difficult situations you encounter
+                                                        while climbing, jumping, or swimming.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Deception">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseDeception" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> DECEPTION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseDeception" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Deception proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Charisma (Deception) check determines whether you can convincingly hide the truth,
+                                                        either verbally or through your actions. This deception can encompass everything from misleading others through
+                                                        ambiguity to telling outright lies. Typical situations include trying to fasttalk a guard, con a merchant, earn
+                                                        money through gambling, pass yourself off in a disguise, dull someone’s suspicions with false assurances, or maintain
+                                                        a straight face while telling a blatant lie.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="History">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> DECEPTION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseHistory" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">History proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Intelligence (History) check measures your ability to recall lore about historical events,
+                                                        legendary people, ancient kingdoms, past disputes, recent wars, and lost civilizations</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input  onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Insight">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseInsight" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> INSIGHT </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseInsight" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Insight proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Wisdom (Insight) check decides whether you can determine the true intentions of a
+                                                        creature, such as when searching out a lie or predicting someone’s next move. Doing so involves gleaning clues
+                                                        from body language, speech habits, and changes in mannerisms.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input  onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Intimidation">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseIntimidation" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> INDIMIDATION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseIntimidation" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Intimidation proficiency</i> <br>
+                                                    <p class ="racesinfo"> When you attempt to influence someone through overt threats, hostile actions, and physical violence,
+                                                        the GM might ask you to make a Charisma (Intimidation) check. Examples include trying to pry information out of a prisoner,
+                                                        convincing street thugs to back down from a confrontation, or using the edge of a broken bottle to convince a sneering vizier
+                                                        to reconsider a decision.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Investigation">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseInvestigation" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> INVESTIGATION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseInvestigation" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Investigation proficiency</i> <br>
+                                                    <p class ="racesinfo"> When you look around for clues and make deductions based on those clues, you make an Intelligence (Investigation)
+                                                        check. You might deduce the location of a hidden object, discern from the appearance of a wound what kind of weapon dealt it, or
+                                                        determine the weakest point in a tunnel that could cause it to collapse. Poring through ancient scrolls in search of a hidden fragment
+                                                        of knowledge might also call for an Intelligence (Investigation) check.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Medicine">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> MEDICINE </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseMedicine" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Medicine proficiency</i> <br>
+                                                    <p class ="racesinfo"> A Wisdom (Medicine) check lets you try to stabilize a dying companion or diagnose an illness.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Nature">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNature" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> NATURE </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseNature" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Nature proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Intelligence (Nature) check measures your ability to recall lore about terrain,
+                                                        plants and animals, the weather, and natural cycles.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Perception">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePerception" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> PERCEPTION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapsePerception" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Perception proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Wisdom (Perception) check lets you spot, hear, or otherwise detect the presence of something.
+                                                        It measures your general awareness of your surroundings and the keenness of your senses. For example, you might try to
+                                                        hear a conversation through a closed door, eavesdrop under an open window, or hear monsters moving stealthily in the forest.
+                                                        Or you might try to spot things that are obscured or easy to miss, whether they are orcs lying in ambush on a road, thugs
+                                                        hiding in the shadows of an alley, or candlelight under a closed secret door.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Performance">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePerformance" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> PERFORMANCE </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapsePerformance" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Performance proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Charisma (Performance) check determines how well you can
+                                                        delight an audience with music, dance, acting, storytelling, or some other form of entertainment.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Persuasion">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePersuasion" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> PERSUASION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapsePersuasion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Persuasion proficiency</i> <br>
+                                                    <p class ="racesinfo"> When you attempt to influence someone or a group of people with tact, social graces, or good nature,
+                                                        the GM might ask you to make a Charisma (Persuasion) check. Typically, you use persuasion when acting in good faith, to
+                                                        foster friendships, make cordial requests, or exhibit proper etiquette. Examples of persuading others include convincing
+                                                        a chamberlain to let your party see the king, negotiating peace between warring tribes, or inspiring a crowd of townsfolk.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Religion">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseReligion" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> RELIGION </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseReligion" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Religion proficiency</i> <br>
+                                                    <p class ="racesinfo"> Your Intelligence (Religion) check measures your ability to recall lore about deities, rites and prayers,
+                                                        religious hierarchies, holy symbols, and the practices of secret cults</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="SleightofHand">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSleightofHand" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> SLEIGHT OF HAND </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseSleightofHand" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Sleight of Hand proficiency</i> <br>
+                                                    <p class ="racesinfo"> Whenever you attempt an act of legerdemain or manual trickery, such as planting something on someone else
+                                                        or concealing an object on your person, make a Dexterity (Sleight of Hand) check. The GM might also call for a Dexterity (Sleight of Hand)
+                                                        check to determine whether you can lift a coin purse off another person or slip something out of another person’s pocket</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Stealth">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseStealth" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> STEALTH </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseStealth" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Stealth proficiency</i> <br>
+                                                    <p class ="racesinfo">Make a Dexterity (Stealth) check when you attempt to conceal yourself from enemies, slink past guards,
+                                                        slip away without being noticed, or sneak up on someone without being seen or heard.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+                                <div class="card">
+                                    <div class="card-header ch3" id="Survival">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSurvival" aria-expanded="false" aria-controls="collapseTwo">
+                                                <p style="font-weight: lighter"> SURVIVAL </p>
+                                            </button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseSurvival" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <table class="card-body cb2" style="width: 100%" >
+                                            <tr>
+                                                <td width="80%">
+
+                                                    <i class ="racesinfo">Survival proficiency</i> <br>
+                                                    <p class ="racesinfo">The GM might ask you to make a Wisdom (Survival) check to follow tracks, hunt wild game,
+                                                        guide your group through frozen wastelands, identify signs that owlbears live nearby, predict the weather,
+                                                        or avoid quicksand and other natural hazards.</p>
+                                                </td>
+
+                                                <td class="col text-center">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+
+                     </div>
+
+            <!--      LANGUAGE PROFICIENCY        -->
+
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Language Proficiency</h2>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <p id="LanguageProfCounter" style="font-weight: inherit; color: #5a6268 "> </p>
+                    </div>
+                    <br>
+
+                            <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                                <div style="order:0; " class="Rtable-cell  " >
+
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;">
+
+                                        <input id ="CelestialAbyssalCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Celestial Abyssal </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="CelestialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Celestial </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="CommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Common </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="DeepSpeechCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Deep Speech </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="DraconicCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Draconic </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="DwarvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Dwarvish </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="ElvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Elvish </h4>
+
+
+                                    </div>
+                                    <br>
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                        <input id ="GiantCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Giant </h4>
+
+
+                                    </div>
+
+
+
+                                </div>
+
+                                <div style="order:0;" class="Rtable-cell  " >
+                                    <div class="d-flex " style=" border-bottom: 1px solid white;">
+
+
+                                            <input id ="GnomishCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Gnomish </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="GoblinCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Goblin </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="HalflingCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Halfling </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="InfernalCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Infernal </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="OrcCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Orc </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="PrimordialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Primordial </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="SylvanCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Sylvan </h4>
+
+
+                                        </div>
+                                        <br>
+                                        <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                            <input id ="UndercommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Undercommon </h4>
+
+
+                                        </div>
+                                </div>
+
+
+
+                            </div>
+                            </div>
+
+
+
+</div>
 
 <!--                _________________EQUIPMENT________________________             -->
 
@@ -2487,9 +3258,9 @@
 
 
 
+            </div>
 
-
-
+            </div>
             </div>
             </div>
 
@@ -2538,6 +3309,14 @@
                 $('.alignmentcheckbox').not(this).prop('checked', false);
             });
         });
+
+        $(function () {
+            $('.Backgroundcheckbox').click(function(e) {
+                $('.Backgroundcheckbox').not(this).prop('checked', false);
+            });
+        });
+
+
 
         //__________________________________________
 
