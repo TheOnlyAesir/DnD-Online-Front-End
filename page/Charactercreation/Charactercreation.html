@@ -1697,28 +1697,29 @@
 
 <div id ="AbilityAndFeats" class="hidden CharCreationHeader">
                 <br><br>
-                    <div class="d-flex justify-content-center">                                             <!-- 0 -->
+                    <div class="d-flex justify-content-center">
                         <h2>Ability Scores</h2>
                     </div>
                     <br><br>
 
-                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">                       <!-- 1 -->
+                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
 
-                        <div style="order:1;" class="Rtable-cell  " >                                          <!-- 0 -->
+                        <div style="order:1;" class="Rtable-cell  " >
 
-                            <div class="d-flex justify-content-between abilitywidth" >                                    <!-- 0 -->
+                            <div class="d-flex justify-content-between abilitywidth" >
 
-                                <div>                                                                      <!-- 0 -->
-                                    <div class="StatsName d-flex justify-content-center">                                                 <!-- 0 -->
+                                <div>
+                                    <div class="StatsName d-flex justify-content-center">
                                         <h3 style="font-weight: lighter"> STR </h3>
                                     </div>
 
-                                    <div class="MOD d-flex justify-content-center">                                                       <!-- 2 -->
+                                    <div class="MOD d-flex justify-content-center">
                                         <p style="text-align: center"> + </p>
                                     </div>
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputSTR" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input style="width: 80px;" id="inputSTR" type="number" class="form-control InputBase"
+                                               aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                     <br>
@@ -2022,6 +2023,8 @@
                         <h2>Alignment</h2>
                     </div>
                     <br><br>
+
+<!--                        ALIGNMENT ACCORDION(2)-->
 
                     <div id="accordion2">
 
@@ -2391,6 +2394,8 @@
             }
         }
 
+        // FUNKTION DAMIT NUR 1 CHECKED WERDEN KANN
+
         $(function () {
             $('.racescheckbox').click(function(e) {
                 $('.racescheckbox').not(this).prop('checked', false);
@@ -2403,6 +2408,7 @@
             });
         });
 
+        //__________________________________________
 
 
     </script>
