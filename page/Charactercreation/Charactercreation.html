@@ -16,6 +16,7 @@
             setUsername(User);
             setUsername2(User)
             setSkillProfLimiter(SkillProfNumber);
+            setSAlignmentNumber(AlignmentNumber);
 
             //DEFAULT -> UNCHECKED
             var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
@@ -27,8 +28,13 @@
 
         let User = "Renge";
 
-        // let LimitSkillProfNumber;
+        // Skill Prof Limiter
         let SkillProfNumber = 2;
+
+        // Alignment Limiter
+        let AlignmentNumber = 1;
+
+
 
 
         function setUsername(user){
@@ -40,6 +46,11 @@
         function setSkillProfLimiter(SkillProfNumber){
             document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
             return SkillProfNumber;
+        }
+
+        function setSAlignmentNumber(AlignmentNumber){
+            document.getElementById("AlignmentLimiter").innerText = AlignmentNumber;
+            return AlignmentNumber;
         }
 
         function setUsername2(user){
@@ -724,6 +735,24 @@
             }
         }
 
+        //CHECKBOX -> ALIGNMENT
+        function AlignmentCheck(e){
+
+            if(AlignmentNumber > 0){
+                AlignmentNumber = AlignmentNumber-1;
+                setSAlignmentNumber(AlignmentNumber);
+                return true;
+            }
+
+            if(AlignmentNumber === 0 && !e.checked){
+                AlignmentNumber = AlignmentNumber+1;
+                setSAlignmentNumber(AlignmentNumber);
+                return true;
+            }
+
+
+
+        }
 
 
     </script>
@@ -1237,7 +1266,7 @@
         <div class="Rtable Rtable--2cols Rtable--collapse " >
 
             <div style="order:0;" class="Rtable-cell  ">
-                <div class="CharCreationHeader"> <br><h2  >Race</h2> <br> <p style = "font-weight: inherit; color: #5a6268 ">Select</p>  </div>
+                <div class="CharCreationHeader"> <br><h2  >Race</h2>  </div>
 
             </div>
 
@@ -1343,8 +1372,9 @@
 
             <!--                _________________RECHTE SPALTE________________________             -->
             <div style="order:0;" class="Rtable-cell  ">
-                <div class="CharCreationHeader"> <br><h2 >Class/Level</h2> <br> <p style = "font-weight: inherit; color: #5a6268 ">Select</p> </div>
+                <div class="CharCreationHeader"> <br><h2 >Class/Level</h2>  </div> <br>
             </div>
+
 
             <div style="order:1;" class="Rtable-cell ">
                 <div class="d-flex justify-content-between">
@@ -2207,7 +2237,8 @@
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
-                        <p style="font-weight: inherit; color: #5a6268 ">Select X</p>
+                        <p class="d-flex" style="font-weight: inherit; color: #5a6268 ">Select </p> &nbsp;
+                        <p id="AlignmentLimiter"  class="d-flex" style="font-weight: inherit; color: darkorange "></p>
                     </div>
                     <br>
 
@@ -2239,7 +2270,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2273,7 +2304,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2302,7 +2333,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2334,7 +2365,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2363,7 +2394,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2393,7 +2424,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2419,7 +2450,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);"  class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2446,7 +2477,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2473,7 +2504,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -2572,7 +2603,7 @@
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
-                        <p class ="d-flex " style="font-weight: inherit; color: #5a6268 ">Select</p> &nbsp;
+                        <p class ="d-flex" style="font-weight: inherit; color: #5a6268 ">Select</p> &nbsp;
                         <p id="SkillProfLimiter" class ="d-flex " style="font-weight: inherit; color: darkorange "></p>
                     </div>
                     <br>
