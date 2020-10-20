@@ -105,13 +105,13 @@
 
                                 // Left Values
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
-                                     = newdiv.reference.proficiencyBonus
+                                     = newdiv.reference.proficiencyBonus;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(1).children.item(0).children.item(1).children.item(0).innerText
-                                     = newdiv.reference.passivePerception
+                                     = newdiv.reference.passivePerception;
 
                                 // Saving Throws
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(1).children.item(0).children.item(0).innerText
-                                     = newdiv.reference.stats.strengthModifier
+                                     = newdiv.reference.stats.strengthModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(2).children.item(0).children.item(0).innerText
                                      = newdiv.reference.stats.dexterityModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(3).children.item(0).children.item(0).innerText
@@ -271,10 +271,76 @@
                                  inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(17).children.item(2).innerText
                                      = newdiv.reference.skills.survival;
 
+                                 //Tools
+                                 let toolProfs = "";
+                                 let toolDiv = document.createElement('div');
+                                 toolDiv.setAttribute("class", "d-flex" );
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.alchemistSupplies, "Alchemist Supplies");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.bagpipes, "Bagpipes");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.calligrapherSupplies, "Calligrapher Supplies");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.carpenterTools, "Carpenter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cartographerTools, "Cartographer Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cobblerTools, "Cobbler Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cookUtensils, "Cooking Utensils");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.diceSet, "Dice Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.disguiseKit, "Disguise Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.dragonchessSet, "Dragonchess Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.drum, "Drum");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.dulcimer, "Dulcimer");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.flute, "Flute");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.forgeryKit, "Forgery Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.glassblowerTools, "Glassblower Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.herbalismKit, "Herbalism Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.horn, "Horn");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.landVehicles, "Land Vehicles");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.leatherworkerTools, "Leatherworker Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.lute, "Lute");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.lyre, "Lyre");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.masonTools, "Mason Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.navigatorTools, "Navigator Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.painterTools, "Painter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.poisonerKit, "Poisoner Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.potterTools, "Potter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.shawm, "Shawm");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.smithTools, "Smith Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.thieveTools, "ThieveT ools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.threeDragonAnteSet, "Three Dragon Ante Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.tinkerTools, "Tinker Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.viol, "Viol");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.waterVehicles, "Water Vehicles");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.weaverTools, "Weaver Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.woodcarverTools, "Woodcarver Tools");
+                                 toolDiv.innerText = toolProfs;
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(1).appendChild(toolDiv);
+
+                                 //Languages
+                                let languageProfs = "";
+                                let languageDiv = document.createElement('div');
+                                languageDiv.setAttribute("class", "d-flex" );
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.celestial, "Celestial");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.deepSpeech, "Deep Speech");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.goblin, "Goblin");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.dwarvish, "Dwarvish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.giant, "Giant");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.orc, "Orc");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.draconic, "Draconic");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.abyssal, "Abyssal");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.common, "Common");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.gnomish, "Gnomish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.infernal, "Infernal");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.halfling, "Halfling");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.sylvan, "Sylvan");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.primordial, "Primordial");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.elvish, "Elvish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.undercommon, "Undercommon");
+                                languageDiv.innerText = languageProfs;
+                                inNewDiv.children.item(0).children.item(3).children.item(2).children.item(2).appendChild(languageDiv);
+
+                                //Weapons
 
 
 
-
+                                //Armor
 
 
                                 parentdiv.appendChild(inNewDiv);
@@ -366,6 +432,13 @@
             else{
                 e.setAttribute("class","fas fa-times");
             }
+        }
+
+        function proficienyCheck(value, name){
+            if(value == true)
+                return name + ", ";
+            else
+                return "";
         }
 
 
@@ -1136,9 +1209,9 @@
                                         <!-- Table head -->
                                         <thead style="color: white">                                                <!-- 0 -->
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Details</th>
-                                                <th>Attack Bonus</th>
+                                                <th width="30%">Name</th>
+                                                <th width="50%">Details</th>
+                                                <th width="20%">Attack Bonus</th>
                                             </tr>
                                         </thead>
                                         <!--Table body-->
@@ -1160,9 +1233,9 @@
                                         <!-- Table head -->
                                         <thead style="color: white">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Details</th>
-                                            <th>AC</th>
+                                            <th width="30%">Name</th>
+                                            <th width="57%">Details</th>
+                                            <th width="13%">AC</th>
                                         </tr>
                                         </thead>
                                         <!--Table body-->
@@ -1286,6 +1359,30 @@
                                     </tr>
                                     </tbody>
                                 </table>
+
+                                <div class="mt-2">                                                                               <!-- 1 -->
+                                    <div class="OtherTexts">
+                                        Tool Proficiencies
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Languages
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Weapon Proficiencies
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Armor Proficiencies
+                                    </div>
+                                </div>
 
                             </div>
 
