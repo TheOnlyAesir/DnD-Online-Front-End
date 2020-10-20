@@ -10,7 +10,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../css/stylesheet.css">
+
 
     <script type="application/javascript">
 
@@ -105,13 +105,13 @@
 
                                 // Left Values
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
-                                     = newdiv.reference.proficiencyBonus
+                                     = newdiv.reference.proficiencyBonus;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(0).children.item(1).children.item(0).children.item(1).children.item(0).innerText
-                                     = newdiv.reference.passivePerception
+                                     = newdiv.reference.passivePerception;
 
                                 // Saving Throws
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(1).children.item(0).children.item(0).innerText
-                                     = newdiv.reference.stats.strengthModifier
+                                     = newdiv.reference.stats.strengthModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(2).children.item(0).children.item(0).innerText
                                      = newdiv.reference.stats.dexterityModifier;
                                 inNewDiv.children.item(0).children.item(1).children.item(2).children.item(1).children.item(3).children.item(0).children.item(0).innerText
@@ -271,10 +271,76 @@
                                  inNewDiv.children.item(0).children.item(3).children.item(2).children.item(0).children.item(1).children.item(17).children.item(2).innerText
                                      = newdiv.reference.skills.survival;
 
+                                 //Tools
+                                 let toolProfs = "";
+                                 let toolDiv = document.createElement('div');
+                                 toolDiv.setAttribute("class", "d-flex" );
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.alchemistSupplies, "Alchemist Supplies");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.bagpipes, "Bagpipes");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.calligrapherSupplies, "Calligrapher Supplies");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.carpenterTools, "Carpenter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cartographerTools, "Cartographer Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cobblerTools, "Cobbler Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.cookUtensils, "Cooking Utensils");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.diceSet, "Dice Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.disguiseKit, "Disguise Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.dragonchessSet, "Dragonchess Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.drum, "Drum");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.dulcimer, "Dulcimer");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.flute, "Flute");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.forgeryKit, "Forgery Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.glassblowerTools, "Glassblower Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.herbalismKit, "Herbalism Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.horn, "Horn");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.landVehicles, "Land Vehicles");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.leatherworkerTools, "Leatherworker Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.lute, "Lute");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.lyre, "Lyre");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.masonTools, "Mason Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.navigatorTools, "Navigator Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.painterTools, "Painter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.poisonerKit, "Poisoner Kit");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.potterTools, "Potter Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.shawm, "Shawm");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.smithTools, "Smith Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.thieveTools, "ThieveT ools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.threeDragonAnteSet, "Three Dragon Ante Set");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.tinkerTools, "Tinker Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.viol, "Viol");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.waterVehicles, "Water Vehicles");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.weaverTools, "Weaver Tools");
+                                 toolProfs += proficienyCheck(newdiv.reference.toolProficiencies.woodcarverTools, "Woodcarver Tools");
+                                 toolDiv.innerText = toolProfs;
+                                 inNewDiv.children.item(0).children.item(3).children.item(2).children.item(1).appendChild(toolDiv);
+
+                                 //Languages
+                                let languageProfs = "";
+                                let languageDiv = document.createElement('div');
+                                languageDiv.setAttribute("class", "d-flex" );
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.celestial, "Celestial");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.deepSpeech, "Deep Speech");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.goblin, "Goblin");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.dwarvish, "Dwarvish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.giant, "Giant");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.orc, "Orc");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.draconic, "Draconic");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.abyssal, "Abyssal");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.common, "Common");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.gnomish, "Gnomish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.infernal, "Infernal");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.halfling, "Halfling");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.sylvan, "Sylvan");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.primordial, "Primordial");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.elvish, "Elvish");
+                                languageProfs += proficienyCheck(newdiv.reference.languageProficiencies.undercommon, "Undercommon");
+                                languageDiv.innerText = languageProfs;
+                                inNewDiv.children.item(0).children.item(3).children.item(2).children.item(2).appendChild(languageDiv);
+
+                                //Weapons
 
 
 
-
+                                //Armor
 
 
                                 parentdiv.appendChild(inNewDiv);
@@ -368,9 +434,336 @@
             }
         }
 
-    </script>
-</head>
+        function proficienyCheck(value, name){
+            if(value == true)
+                return name + ", ";
+            else
+                return "";
+        }
 
+
+
+
+
+
+
+
+
+    </script>
+    <style>
+
+
+    /* Header
+    ================================== */
+    #HeaderBox {
+        background-image: url("../../Images/header-background.jpg" );
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        height: 260px;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        outline: 0;
+    }
+
+    h1{
+        margin-top: 0;
+    }
+    body{
+        margin:0;
+    }
+    .WelcomeMessage{
+        color: white;
+        margin-left: 1%;
+        padding-bottom: 0px;
+        display: inline-flex;
+    }
+
+    .Logo{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+        border: 0;
+        outline: 0;
+    }
+    #UserButton{
+        margin-right: 1%;
+        margin-top: 0.5%;
+    }
+
+
+    /* Sticky Header
+    ================================== */
+    .header{
+        padding: 10px 16px;
+        background: #6c757d;
+        color: white;
+        z-index: 9;
+    }
+
+
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%
+    }
+
+    .sticky + .content {
+        padding-top: 102px;
+    }
+
+    .StickyHeaderName{
+        padding: 0;
+        border: 0;
+        outline: 0;
+        display: inline-flex;
+    }
+
+    .StickyHeaderButton{
+        margin-left: auto;
+    }
+
+    /* Dynamic Content
+    ================================== */
+
+    .content {
+        max-width: 1440px;
+        padding: 16px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    #app-main{
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #1e2027;
+        justify-content: center;
+        align-content: center;
+
+    }
+
+    .container-fluid{
+        display: flex;
+        justify-content: center;
+
+    }
+
+    /* Insertables
+    ================================== */
+
+    #Insertable {
+        width: 100%;
+    }
+
+    .UpperLabel{
+        font-size: 30px;
+        display: block;
+        padding-right: 5%;
+        align-self: center;
+    }
+
+    .alignementMOD{
+        flex-grow: 1;
+        visibility: hidden;
+    }
+
+    .HigherAlignMod {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+    }
+
+    .StatsName{
+        font-size: 25px;
+        display: flex;
+        margin: 0;
+        text-align: center;
+        font-weight: lighter;
+    }
+
+    .StatsValue{
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+
+    .MOD {
+        font-size: 15px;
+        color: #95999c !important;
+        margin: 0;
+        text-align: center;
+    }
+
+    .OtherTexts{
+        font-size: 25px;
+        display: flex;
+        margin: 0;
+        text-align: center;
+    }
+
+    .OtherValues{
+        font-size: 20px;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .OtherTexts2{
+        font-size: 20px;
+        display: flex;
+        margin: 0;
+        text-align: center;
+    }
+
+
+    /* Blueprints visibility
+    ================================== */
+    #UpperCharacterBlueprint {
+        /*visibility: hidden;*/
+    }
+
+    #InnerCharacterBluePrint{
+        /*visibility: hidden;*/
+    }
+
+    #ArmorBlueprint{
+        display: none;
+
+    }
+
+    #WeaponBlueprint{
+        display: none;
+    }
+
+    /* Tables
+    ================================== */
+    .Rtable {
+        display: -webkit-box;
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 0 3em 0;
+        padding: 0;
+        width: 100%;
+    }
+    .Rtable-cell {
+        box-sizing: border-box;
+        -webkit-box-flex: 1;
+        flex-grow: 1;
+        width: 100%;
+        padding: 0.8em 1.2em;
+        overflow: hidden;
+        list-style: none;
+        background: rgba(112, 128, 144, 0.2);
+    }
+    .Rtable-cell > h1,
+    .Rtable-cell > h2,
+    .Rtable-cell > h3,
+    .Rtable-cell > h4,
+    .Rtable-cell > h5,
+    .Rtable-cell > h6 {
+        margin: 0;
+    }
+    /* Table column sizing
+    ================================== */
+    .Rtable--2cols > .Rtable-cell {
+        width: 50%;
+    }
+    .Rtable--3cols > .Rtable-cell {
+        width: 33.33%;
+    }
+    .Rtable--4cols > .Rtable-cell {
+        width: 25%;
+    }
+    .Rtable--5cols > .Rtable-cell {
+        width: 20%;
+    }
+    .Rtable--6cols > .Rtable-cell {
+        width: 16.6%;
+    }
+    /* Apply styles
+    ================================== */
+    .Rtable {
+        position: relative;
+        top: 3px;
+        left: 3px;
+    }
+    .Rtable-cell {
+        margin: -3px 0 0 -3px;
+        background-color: #1e2027;
+        border-color: #e2e6e9;
+    }
+    /* Cell styles
+    ================================== */
+    .Rtable-cell--dark > h1,
+    .Rtable-cell--dark > h2,
+    .Rtable-cell--dark > h3,
+    .Rtable-cell--dark > h4,
+    .Rtable-cell--dark > h5,
+    .Rtable-cell--dark > h6 {
+        color: white;
+        color: white;
+    }
+    .Rtable-cell--alert > h1,
+    .Rtable-cell--alert > h2,
+    .Rtable-cell--alert > h3,
+    .Rtable-cell--alert > h4,
+    .Rtable-cell--alert > h5,
+    .Rtable-cell--alert > h6 {
+        color: white;
+    }
+    .Rtable-cell--head {
+        justify-content: right;
+        display: flex;
+
+
+    }
+    .Rtable-cell--head > h1,
+    .Rtable-cell--head > h2,
+    .Rtable-cell--head > h3,
+    .Rtable-cell--head > h4,
+    .Rtable-cell--head > h5,
+    .Rtable-cell--head > h6 {
+        color: white;
+    }
+    .Rtable-cell--foot {
+
+    }
+    /* Responsive
+    ==================================== */
+    @media all and (max-width: 832px) {
+        .Rtable--collapse {
+            display: block;
+        }
+        .Rtable--collapse > .Rtable-cell {
+            width: 100% !important;
+        }
+        .Rtable--collapse > .Rtable-cell--foot {
+            margin-bottom: 1em;
+        }
+    }
+    .no-flexbox .Rtable {
+        display: block;
+    }
+    .no-flexbox .Rtable > .Rtable-cell {
+        width: 100%;
+    }
+    .no-flexbox .Rtable > .Rtable-cell--foot {
+        margin-bottom: 1em;
+    }
+
+
+
+
+    </style>
+</head>
 <body>
 
 
@@ -523,7 +916,7 @@
 
                                 <div style="order:1;" class="Rtable-cell">                                          <!-- 1 -->
 
-                                    <div class="d-flex justify-content-between">
+                                    <div class="d-flex justify-content-between ">
 
                                         <div>
                                             <div class="StatsName">
@@ -816,9 +1209,9 @@
                                         <!-- Table head -->
                                         <thead style="color: white">                                                <!-- 0 -->
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Details</th>
-                                                <th>Attack Bonus</th>
+                                                <th width="30%">Name</th>
+                                                <th width="50%">Details</th>
+                                                <th width="20%">Attack Bonus</th>
                                             </tr>
                                         </thead>
                                         <!--Table body-->
@@ -840,9 +1233,9 @@
                                         <!-- Table head -->
                                         <thead style="color: white">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Details</th>
-                                            <th>AC</th>
+                                            <th width="30%">Name</th>
+                                            <th width="57%">Details</th>
+                                            <th width="13%">AC</th>
                                         </tr>
                                         </thead>
                                         <!--Table body-->
@@ -966,6 +1359,30 @@
                                     </tr>
                                     </tbody>
                                 </table>
+
+                                <div class="mt-2">                                                                               <!-- 1 -->
+                                    <div class="OtherTexts">
+                                        Tool Proficiencies
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Languages
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Weapon Proficiencies
+                                    </div>
+                                </div>
+
+                                <div class="mt-2">                                                                               <!-- 2 -->
+                                    <div class="OtherTexts">
+                                        Armor Proficiencies
+                                    </div>
+                                </div>
 
                             </div>
 
