@@ -156,25 +156,10 @@
 
 <div id="HeaderBox" class="row">
 
-
     <div class="Logo col-2 d-flex align-items-center">
         <img style="width: 100%" src="../../Images/Logo_Small.png" class="img-fluid." >
     </div>
 
-    <div style="width: 100%" id="UserButton" class="btn-group col-1 align-items-start">
-        <div class="btn-group dropleft" role="group">
-            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropleft</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Account</a>
-                <a class="dropdown-item" href="#">LogOut</a>
-            </div>
-        </div>
-        <button type="button" class="btn btn-secondary">
-            <span id="UserName"></span>
-        </button>
-    </div>
 </div>
 
 
@@ -185,32 +170,57 @@
 
         <div class="d-inline-flex StickyHeaderButton">
 
-            <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#exampleModal">
-                Register
-            </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#regModal">
+                        Register
+                    </button>
+                    <div class="modal fade" id="regModal" tabindex="-1" aria-labelledby="regModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="regModalLabel">Registration</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input id="username" class="form-control mt-2" type="text" placeholder="Username">
+                                    <input id="email" class="form-control mt-2" type="email" placeholder="Email">
+                                    <input id="password" class="form-control mt-2" type="password" placeholder="Password">
+                                    <input id="password_conf" class="form-control mt-2" type="password" placeholder="Confirm Password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="modal-body">
-                            <input id="username" class="form-control mt-2" type="text" placeholder="Username">
-                            <input id="email" class="form-control mt-2" type="email" placeholder="Email">
-                            <input id="password" class="form-control mt-2" type="password" placeholder="Password">
-                            <input id="password_conf" class="form-control mt-2" type="password" placeholder="Confirm Password">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+                    </div>                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#logModal">
+                        Login
+                    </button>
+                    <div class="modal fade" id="logModal" tabindex="-1" aria-labelledby="logModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="logModalLabel">Login</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input id="username_in" class="form-control mt-2" type="text" placeholder="Username/Email">
+                                    <input id="password_in" class="form-control mt-2" type="password" placeholder="Password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="login()">Login</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -294,6 +304,10 @@
 
         if(password!==password_conf) {
             alert("Passwords do not match")
+            return;
+        }
+        if (password.length<8) {
+            alert("Password is not long enough! Minimum of 8 characters!");
             return;
         }
         fetch('http://localhost:8181/api/v1.0/User/register', {
