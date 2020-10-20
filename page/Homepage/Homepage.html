@@ -5,41 +5,18 @@
     <title>Character Forge</title>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+            integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+            crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 
-    <script type="application/javascript">
-
-
-        window.addEventListener("load", function () {
-
-            setUsername(User);
-
-        });
-
-        let User = "Renge";
-
-        function setUsername(user){
-            document.getElementById("UserName").innerHTML = user;
-            return user;
-        }
-
-
-
-
-
-
-
-
-
-
-
-    </script>
     <style>
 
         #HeaderBox {
-            background-image: url("../../Images/header-background.jpg" );
+            background-image: url("../../Images/header-background.jpg");
             background-position: center;
             background-size: cover;
             width: 100%;
@@ -49,14 +26,16 @@
             border: 0;
             outline: 0;
         }
-        h1{
+
+        h1 {
             margin-top: 0;
         }
-        body{
-            margin:0;
+
+        body {
+            margin: 0;
         }
 
-        .Logo{
+        .Logo {
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -64,12 +43,13 @@
             border: 0;
             outline: 0;
         }
-        #UserButton{
+
+        #UserButton {
             margin-right: 1%;
             margin-top: 0.5%;
         }
 
-        .header{
+        .header {
             padding: 10px 16px;
             background: #6c757d;
             color: white;
@@ -91,7 +71,7 @@
             padding-top: 102px;
         }
 
-        .StickyHeaderName{
+        .StickyHeaderName {
             padding: 0;
             border: 0;
             outline: 0;
@@ -99,11 +79,11 @@
             font-family: "Palatino Linotype"
         }
 
-        .StickyHeaderButton{
+        .StickyHeaderButton {
             margin-left: auto;
         }
 
-        .container-fluid{
+        .container-fluid {
             display: fluid;
             justify-content: center;
             margin-top: 0.25%;
@@ -115,7 +95,7 @@
             border: 0px;
         }
 
-        #app-main{
+        #app-main {
             width: 100%;
             height: 100%;
             margin: 0;
@@ -126,46 +106,52 @@
             align-content: center;
 
         }
-        .PageDescription{
+
+        .PageDescription {
             padding-left: 1.5%;
             padding-top: 0.5%;
             padding-bottom: 2%;
             margin-right: 2%;
-            font-family: "Palatino Linotype" ;
+            font-family: "Palatino Linotype";
             hyphens: auto;
             text-align: justify;
             color: #721c24;
         }
-        .Text{
+
+        .Text {
             padding-left: 7%;
             padding-top: 0.5%;
             margin-right: 7%;
-            font-family: "Palatino Linotype" ;
+            font-family: "Palatino Linotype";
             hyphens: auto;
             text-align: justify;
             color: #f7f7f7;
         }
-        .PageDescriptionLong{
+
+        .PageDescriptionLong {
             padding-left: 1.5%;
             padding-top: 0.5%;
             padding-bottom: 2%;
             margin-right: 2%;
-            font-family: "Palatino Linotype" ;
+            font-family: "Palatino Linotype";
             hyphens: auto;
             text-align: justify;
             color: #721c24;
         }
-        .image{
+
+        .image {
             padding-left: 5%;
             padding-right: 5%;
             padding-top: 0.5%
         }
-        #lining{
+
+        #lining {
             padding-right: 5%;
             padding-top: 2.5%;
             padding-down: 0.5%
         }
-        .flex{
+
+        .flex {
             object-fit: cover;
             width: auto;
             height: auto;
@@ -183,25 +169,10 @@
 
 <div id="HeaderBox" class="row">
 
-
     <div class="Logo col-2 d-flex align-items-center">
-        <img style="width: 100%" src="../../Images/Logo_Small.png" class="img-fluid." >
+        <img style="width: 100%" src="../../Images/Logo_Small.png" class="img-fluid.">
     </div>
 
-    <div style="width: 100%" id="UserButton" class="btn-group col-1 align-items-start">
-        <div class="btn-group dropleft" role="group">
-            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">Toggle Dropleft</span>
-            </button>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Account</a>
-                <a class="dropdown-item" href="#">LogOut</a>
-            </div>
-        </div>
-        <button type="button" class="btn btn-secondary">
-            <span id="UserName"></span>
-        </button>
-    </div>
 </div>
 
 
@@ -212,50 +183,123 @@
 
         <div class="d-inline-flex StickyHeaderButton">
 
-            <button type="button" class="btn btn-danger m-1">Register</button>
-
+            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                    <button type="button" class="btn btn-danger m-1" data-toggle="modal" data-target="#regModal">
+                        Register
+                    </button>
+                    <div class="modal fade" id="regModal" tabindex="-1" aria-labelledby="regModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="regModalLabel">Registration</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input id="username" class="form-control mt-2" type="text" placeholder="Username">
+                                    <input id="email" class="form-control mt-2" type="email" placeholder="Email">
+                                    <input id="password" class="form-control mt-2" type="password"
+                                           placeholder="Password">
+                                    <input id="password_conf" class="form-control mt-2" type="password"
+                                           placeholder="Confirm Password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" onclick="register()">Register</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-group mr-2" role="group" aria-label="Second group">
+                    <button type="button" class="btn btn-success m-1" data-toggle="modal" data-target="#logModal">
+                        Login
+                    </button>
+                    <div class="modal fade" id="logModal" tabindex="-1" aria-labelledby="logModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="logModalLabel">Login</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input id="username_in" class="form-control mt-2" type="text"
+                                           placeholder="Username">
+                                    <input id="password_in" class="form-control mt-2" type="password"
+                                           placeholder="Password">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary"
+                                            onclick="login()">Login
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
 
 <div class="container-fluid" id="app-main">
-    <div class="d-flex content" >
+    <div class="d-flex content">
         <div class="PageDescription">
-            <h2 class="PageDescription" style="text-align: center">You are tired of forgetting your Dnd character sheet all the time?
+            <h2 class="PageDescription" style="text-align: center">You are tired of forgetting your Dnd character sheet
+                all the time?
                 Your sheet always looks totally scribbled after a session? Then this is the right place for you!</h2>
 
-        <div class="PageDescriptionLong ">
-            <p class="Text" id="" style="text-align: center"> This website provides you the ability to create, edit and store your character sheet online, so you will never struggle from an overcrowded or lost charactersheet again.
-                Of course you can also modify your character stats once your character levels up or takes damage.
-            <p class="Text" id="" style="text-align: center"> As the dungeon master of your player group you can also create and manage your group online, so playing as a group becomes even more fun! Your fellow player can even send you messages,
-            which can make your game more immersive while still maintaining the little secrets you prepared for the group members.</p>
-            <p class="Text" id="" style="text-align: center"> "Alexa, change the hitpoints!" Using the popular voice assistant Alex you can make changes to your character sheet during a game without the need for manual input.
-                With the support of our website your next campaign will be a Nat20! </p>
+            <div class="PageDescriptionLong ">
+                <p class="Text" id="" style="text-align: center"> This website provides you the ability to create, edit
+                    and store your character sheet online, so you will never struggle from an overcrowded or lost
+                    charactersheet again.
+                    Of course you can also modify your character stats once your character levels up or takes damage.
+                <p class="Text" id="" style="text-align: center"> As the dungeon master of your player group you can
+                    also create and manage your group online, so playing as a group becomes even more fun! Your fellow
+                    player can even send you messages,
+                    which can make your game more immersive while still maintaining the little secrets you prepared for
+                    the group members.</p>
+                <p class="Text" id="" style="text-align: center"> "Alexa, change the hitpoints!" Using the popular voice
+                    assistant Alex you can make changes to your character sheet during a game without the need for
+                    manual input.
+                    With the support of our website your next campaign will be a Nat20! </p>
 
-            <div class="image"> <img sytle="width: 95%" src="../../Images/DungeonsandDragonsStart-696x383.jpg"class="flex">
-                 <img style=" width: 45%" src="../../Images/SCL_Keyart_Thumb.jpg"class="flex">
-            <div class="m-0">
-            <h3 class="container-fluid" id="lining"> What is DnD? </h3>
+                <div class="image"><img sytle="width: 95%" src="../../Images/DungeonsandDragonsStart-696x383.jpg"
+                                        class="flex">
+                    <img style=" width: 45%" src="../../Images/SCL_Keyart_Thumb.jpg" class="flex">
+                    <div class="m-0">
+                        <h3 class="container-fluid" id="lining"> What is DnD? </h3>
 
-            <p class="Text" id="">Dungeons and Dragons is a pen and paper role playing game published in 1974 by Gary Gygax and Dave Arneson.
-                It is about adventures that take place in fictional worlds. The Dungeon Master creates different scenarios, which the players have to master with their fictitious characters.
-            Dungeons and Dragons has become immensely popular over the years, and D&D has grown to include many new ways to vividly experience worlds of heroic fantasy.
-                Storytelling in DnD allows you and your friends to experience and change the story together.
-                You lead your heroes through quest for treasure, battles with deadly enemies, daring rescue missions, courtly intrigues and much more.</p>
+                        <p class="Text" id="">Dungeons and Dragons is a pen and paper role playing game published in
+                            1974 by Gary Gygax and Dave Arneson.
+                            It is about adventures that take place in fictional worlds. The Dungeon Master creates
+                            different scenarios, which the players have to master with their fictitious characters.
+                            Dungeons and Dragons has become immensely popular over the years, and D&D has grown to
+                            include many new ways to vividly experience worlds of heroic fantasy.
+                            Storytelling in DnD allows you and your friends to experience and change the story together.
+                            You lead your heroes through quest for treasure, battles with deadly enemies, daring rescue
+                            missions, courtly intrigues and much more.</p>
 
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
-    <img style="width: 100%" src="../../Images/NEW-TO-DnD_What-is-DnD_Subsection_Hero_140718.jpg"  >
+    <img style="width: 100%" src="../../Images/NEW-TO-DnD_What-is-DnD_Subsection_Hero_140718.jpg">
 
 
 </div>
 
 <script>
     // When the user scrolls the page, execute myFunction
-    window.onscroll = function() {scrollFunction()};
+    window.onscroll = function () {
+        scrollFunction()
+    };
 
     // Get the header
     let header = document.getElementById("OptionsHeader");
@@ -270,6 +314,103 @@
         } else {
             header.classList.remove("sticky");
         }
+    }
+
+</script>
+
+<script type="application/javascript">
+
+    window.addEventListener("load", function () {
+
+        setUsername(User);
+
+    });
+
+    let User = "Renge";
+
+    function setUsername(user) {
+        document.getElementById("UserName").innerHTML = user;
+        return user;
+    }
+
+    function register() {
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const password_conf = document.getElementById("password_conf").value;
+
+        if (password !== password_conf) {
+            alert("Passwords do not match")
+            return;
+        }
+        if (password.length < 8) {
+            alert("Password is not long enough! Minimum of 8 characters!");
+            return;
+        }
+        fetch('http://localhost:8181/api/v1.0/User/register', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json', 'Accept': '*/*'
+            },
+            body: JSON.stringify({
+                "name": username,
+                "email": email,
+                "password": password
+            })
+        })
+            .then(function (response) {
+                if (response.status !== 200) throw response.status;
+
+                return response.json();
+
+            })
+            .then(result => {
+                console.log('Success:', result);
+                if (typeof (Storage) !== "undefined" && result.userID != null) {
+                    localStorage.setItem("userID", result.userID);
+                    localStorage.setItem("userName", result.name);
+                    window.location.href = "../UserDashboard/Dashboard.html";
+                }
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+
+    }
+
+    function login() {
+        const username = document.getElementById("username_in").value;
+        const password = document.getElementById("password_in").value;
+
+        fetch('http://localhost:8181/api/v1.0/User/login', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json', 'Accept': '*/*'
+            },
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            })
+        })
+            .then(function (response) {
+                if (response.status !== 200) throw response.status;
+
+                    return response.json();
+
+            })
+            .then(result => {
+                console.log('Success:', result);
+                if (typeof (Storage) !== "undefined" && result.userID != null) {
+                    localStorage.setItem("userID", result.userID);
+                    localStorage.setItem("userName", result.name);
+                    window.location.href = "../UserDashboard/Dashboard.html";
+                }
+            })
+            .catch(function (error) {
+                alert("Incorrect credentials!");
+            });
+
+
     }
 
 </script>
