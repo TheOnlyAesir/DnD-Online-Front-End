@@ -20,7 +20,7 @@
         var armorPreset;
         var carrayPreset;
         var notesPreset;
-        let User = "Renge";
+        let User = localStorage.userName;
         window.addEventListener("load", function () {
 
             setUsername(User);
@@ -30,10 +30,13 @@
             armorPreset = document.getElementById("ArmorBlueprint");
             carrayPreset = document.getElementById("CarryableBlueprint");
             notesPreset = document.getElementById("NotesBlueprint");
-            getAllCharactersheets(235);
+            getAllCharactersheets(localStorage.userID);
         });
 
-
+        function logout() {
+            localStorage.clear();
+            window.location.href = "../Homepage/Homepage.html";
+        }
 
 
 
@@ -968,7 +971,7 @@
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Account</a>
-                    <a class="dropdown-item" href="#">LogOut</a>
+                    <a class="dropdown-item" onclick="logout()" href="#">LogOut</a>
                 </div>
             </div>
             <button type="button" class="btn btn-secondary">

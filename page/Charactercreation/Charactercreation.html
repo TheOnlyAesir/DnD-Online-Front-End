@@ -20,7 +20,7 @@
 
         });
 
-        let User = "Renge";
+        let User = localStorage.userName;
 
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
@@ -33,6 +33,11 @@
         function getvalue(e){
             var x = document.getElementById("inputbase2").value;
             alert(x)}
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "../Homepage/Homepage.html";
+        }
 
         function LevelBoxes(level){
 
@@ -1117,7 +1122,7 @@
                 </button>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#">Account</a>
-                    <a class="dropdown-item" href="#">LogOut</a>
+                    <a class="dropdown-item" onclick="logout()" href="#">LogOut</a>
                 </div>
             </div>
             <button type="button" class="btn btn-secondary">
@@ -2429,9 +2434,6 @@
 
                     </div>
 
-
-
-
 <!--                        <div class="Rtable Rtable&#45;&#45;2cols Rtable&#45;&#45;collapse">-->
 
 <!--                            <div style="order:0;" class="Rtable-cell ">-->
@@ -2462,15 +2464,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-
                 </div>
 
 <!--                _________________PROFICIENCIES________________________             -->
@@ -2487,25 +2480,12 @@
 
                 </div>
 
-
-
-
-
-
             </div>
             </div>
 
 
 
     </div>
-
-
-
-
-
-
-
-
 
 
     <script>
