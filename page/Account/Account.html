@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Account</title>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+
+    <script>
+
+
+        let User = localStorage.userName;
+        window.addEventListener("load", function () {
+
+
+
+        });
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "../Homepage/Homepage.html";
+        }
+
+
+
+
+
+        function createGroup(e){
+            let groupName = e.parentElement.parentElement.children.item(1).children.item(0).children.item(1).value;
+            let groupNameArr = {"name": ""+groupName+""};
+            let groupPost = JSON.stringify(groupNameArr);
+
+
+            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/createGroup', {
+                method: 'post',
+                body: groupPost,
+                headers: {'Content-Type' : 'application/json'},
+            })
+                .then(function (data) {
+                    if(data.status !== 200) throw("error!");
+
+                    // alert("success!");
+
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+        }
+
+    </script>
+    <style>
+        /* Header
+        ================================== */
+        #HeaderBox {
+            background-image: url("../../Images/header-background.jpg" );
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 260px;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+        }
+
+        h1{
+            margin-top: 0;
+        }
+        html{
+            background: #1e2027;
+        }
+        body{
+            margin:0;
+        }
+        .WelcomeMessage{
+            color: white;
+            margin-left: 1%;
+            padding-bottom: 0px;
+            display: inline-flex;
+        }
+
+        .Logo{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
+            border: 0;
+            outline: 0;
+        }
+        #UserButton{
+            margin-right: 1%;
+            margin-top: 0.5%;
+        }
+
+
+        /* Sticky Header
+        ================================== */
+        .header{
+            padding: 10px 16px;
+            background: #6c757d;
+            color: white;
+            z-index: 9;
+        }
+
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%
+        }
+
+        .sticky + .content {
+            padding-top: 102px;
+        }
+
+        .StickyHeaderName{
+            padding: 0;
+            border: 0;
+            outline: 0;
+            display: inline-flex;
+        }
+
+        .StickyHeaderButton{
+            margin-left: auto;
+        }
+
+        /* Dynamic Content
+        ================================== */
+
+        .content {
+            max-width: 1440px;
+            padding: 16px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        #app-main{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: #1e2027;
+            justify-content: center;
+            align-content: center;
+            max-width: 100%;
+
+        }
+
+        .container-fluid{
+            display: flex;
+            justify-content: center;
+
+        }
+
+
+
+
+
+        /* Tables
+    ================================== */
+        .Rtable {
+            display: -webkit-box;
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 0 3em 0;
+            padding: 0;
+            width: 100%;
+        }
+        .Rtable-cell {
+            box-sizing: border-box;
+            -webkit-box-flex: 1;
+            flex-grow: 1;
+            width: 100%;
+            padding: 0.8em 1.2em;
+            overflow: hidden;
+            list-style: none;
+            background: rgba(112, 128, 144, 0.2);
+        }
+        .Rtable-cell > h1,
+        .Rtable-cell > h2,
+        .Rtable-cell > h3,
+        .Rtable-cell > h4,
+        .Rtable-cell > h5,
+        .Rtable-cell > h6 {
+            margin: 0;
+        }
+        /* Table column sizing
+        ================================== */
+        .Rtable--2cols > .Rtable-cell {
+            width: 50%;
+        }
+        .Rtable--3cols > .Rtable-cell {
+            width: 33.33%;
+        }
+        .Rtable--4cols > .Rtable-cell {
+            width: 25%;
+        }
+        .Rtable--5cols > .Rtable-cell {
+            width: 20%;
+        }
+        .Rtable--6cols > .Rtable-cell {
+            width: 16.6%;
+        }
+        /* Apply styles
+        ================================== */
+        .Rtable {
+            position: relative;
+            top: 3px;
+            left: 3px;
+        }
+        .Rtable-cell {
+            margin: -3px 0 0 -3px;
+            background-color: #1e2027;
+            border-color: #e2e6e9;
+        }
+        /* Cell styles
+        ================================== */
+        .Rtable-cell--dark > h1,
+        .Rtable-cell--dark > h2,
+        .Rtable-cell--dark > h3,
+        .Rtable-cell--dark > h4,
+        .Rtable-cell--dark > h5,
+        .Rtable-cell--dark > h6 {
+            color: white;
+            color: white;
+        }
+        .Rtable-cell--alert > h1,
+        .Rtable-cell--alert > h2,
+        .Rtable-cell--alert > h3,
+        .Rtable-cell--alert > h4,
+        .Rtable-cell--alert > h5,
+        .Rtable-cell--alert > h6 {
+            color: white;
+        }
+        .Rtable-cell--head {
+            justify-content: right;
+            display: flex;
+
+
+        }
+        .Rtable-cell--head > h1,
+        .Rtable-cell--head > h2,
+        .Rtable-cell--head > h3,
+        .Rtable-cell--head > h4,
+        .Rtable-cell--head > h5,
+        .Rtable-cell--head > h6 {
+            color: white;
+        }
+        .Rtable-cell--foot {
+
+        }
+        /* Responsive
+        ==================================== */
+        @media all and (max-width: 832px) {
+            .Rtable--collapse {
+                display: block;
+            }
+            .Rtable--collapse > .Rtable-cell {
+                width: 100% !important;
+            }
+            .Rtable--collapse > .Rtable-cell--foot {
+                margin-bottom: 1em;
+            }
+        }
+        .no-flexbox .Rtable {
+            display: block;
+        }
+        .no-flexbox .Rtable > .Rtable-cell {
+            width: 100%;
+        }
+        .no-flexbox .Rtable > .Rtable-cell--foot {
+            margin-bottom: 1em;
+        }
+
+        #ResponsiveHeader{
+            display: flex;
+        }
+
+        @media all and (max-width: 832px) {
+            #ResponsiveHeader{
+                display: flow;
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<!--Banner Header
+    ==========================================-->
+<div id="HeaderBox" class="row">
+
+
+
+    <div class="Logo col-2 d-flex align-items-center">
+        <img style="width: 100%" src="../../Images/Logo_Small.png" class="img-fluid." >
+    </div>
+
+
+</div>
+
+
+<!--Sticky Header
+==========================================-->
+<div class="header" id="OptionsHeader">
+    <div  id="ResponsiveHeader">
+        <h1 class="StickyHeaderName ">Account</h1>
+        <div class="d-inline-flex StickyHeaderButton">
+            <h1 class="StickyHeaderName"></h1>
+
+
+
+
+
+            <!--Create Group
+            ==============================-->
+            <div class="align-self-center">
+                <button type="button" class="btn btn-warning m-1" data-toggle="modal" data-target="#CreateGroupModal">Group</button>
+                <div class="modal" id="CreateGroupModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="color: black !important;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">Create Group</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <div class="form-group">
+                                    <label for="CreateGroupNameInput">Group Name:</label>
+                                    <input type="text" class="form-control" id="CreateGroupNameInput" placeholder="">
+                                </div>
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer d-flex justify-content-between" >
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="createGroup(this)">Create!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Dashboard
+            ==============================-->
+            <div class="align-self-center">
+                <button type="button" class="btn btn-warning m-1">Dashboard</button>
+            </div>
+            <!--Logout
+            ==============================-->
+            <div class="align-self-center">
+                <button type="button" class="btn btn-danger m-1" onclick="logout()">Logout</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<!--Lower Content Container
+==========================================-->
+
+<div class="container-fluid  " id="app-main">
+    <div class="d-flex content " id="">
+        <div class="p-5 h-100 d-flex flex-column " id="Insertable">
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // When the user scrolls the page, execute myFunction
+    window.onscroll = function() {scrollFunction()};
+
+    // Get the header
+    let header = document.getElementById("OptionsHeader");
+
+    // Get the offset position of the navbar
+    let sticky = header.offsetTop;
+
+    // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+    function scrollFunction() {
+        if (window.pageYOffset > sticky) {
+            header.classList.add("sticky");
+        } else {
+            header.classList.remove("sticky");
+        }
+    }
+
+</script>
+
+
+</body>
+</html>

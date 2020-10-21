@@ -676,9 +676,24 @@
 
         function createGroup(e){
             let groupName = e.parentElement.parentElement.children.item(1).children.item(0).children.item(1).value;
-            alert (groupName);
+            let groupNameArr = {"name": ""+groupName+""};
+            let groupPost = JSON.stringify(groupNameArr);
 
 
+            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/createGroup', {
+                method: 'post',
+                body: groupPost,
+                headers: {'Content-Type' : 'application/json'},
+            })
+                .then(function (data) {
+                    if(data.status !== 200) throw("error!");
+
+                    // alert("success!");
+
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
         }
 
 
@@ -711,7 +726,13 @@
     }
     body{
         margin:0;
+        height: 100%;
     }
+
+    html{
+        background: #1e2027;
+    }
+
     .WelcomeMessage{
         color: white;
         margin-left: 1%;
