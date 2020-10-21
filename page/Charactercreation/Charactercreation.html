@@ -17,19 +17,13 @@
             setUsername2(User)
             setSkillProfLimiter(SkillProfNumber);
             setSAlignmentNumber(AlignmentNumber);
-            setToolProfNumber(ToolProfNumber);
+
 
             //DEFAULT -> UNCHECKED
             var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
 
             for(var i=0 ; i<SkillProfCheckboxDefault.length; i++){
                 SkillProfCheckboxDefault[i].checked = false;
-            }
-
-            var ToolProfCheckboxDefault = document.getElementsByClassName("ToolProfCheckbox");
-
-            for(var i=0 ; i<ToolProfCheckboxDefault.length; i++){
-                ToolProfCheckboxDefault[i].checked = false;
             }
         });
 
@@ -40,9 +34,6 @@
 
         // Alignment Limiter
         let AlignmentNumber = 1;
-
-        // Tool Prof Limiter
-        let ToolProfNumber= 1;
 
 
 
@@ -63,18 +54,15 @@
 
         function setSkillProfLimiter(SkillProfNumber){
             document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
-            return SkillProfNumber1;
+            return SkillProfNumber;
         }
 
         function setSAlignmentNumber(AlignmentNumber){
             document.getElementById("AlignmentLimiter").innerText = AlignmentNumber;
-            return AlignmentNumber1;
+            return AlignmentNumber;
         }
 
-        function setToolProfNumber(ToolProfNumber){
-            document.getElementById("ToolProfLimiter").innerText = ToolProfNumber;
-            return ToolProfNumber;
-        }
+
 
         //______________________________________________________________________________________
 
@@ -1071,32 +1059,6 @@
         }
 
 
-        //CHECKBOXLIMITER -> TOOL PROFICIENCY
-        function ToolProfCheck(e){
-
-            if(ToolProfNumber === 0 && !e.checked){
-                ToolProfNumber = ToolProfNumber+1;
-                setToolProfLimiter(ToolProfNumber);
-                return true;
-            }
-            if(ToolProfNumber > 0 && !e.checked) {
-                ToolProfNumber = ToolProfNumber+1;
-                setToolProfNumber(ToolProfNumber);
-                return true;
-            }
-
-            if(ToolProfNumber === 0 ){
-                e.checked = false;
-            }
-            if(ToolProfNumber > 0) {
-                ToolProfNumber = ToolProfNumber-1;
-                setToolProfNumber(ToolProfNumber);
-                return true;
-            }
-
-
-
-        }
 
 
     </script>
@@ -1125,8 +1087,6 @@
             padding-bottom: 0px;
             display: inline-flex;
         }
-
-        .ToolProfCheckbox
 
         .Logo{
             display: block;
@@ -3626,55 +3586,7 @@
 
                             </div>
 
-<!--                TOOL PROFICIENCY        -->
-
-                    <br><br>
-                    <div class="d-flex justify-content-center">
-                        <h2 style="color: white">Tool Proficiency</h2>
-                    </div>
-                    <br>
-                    <div class="d-flex justify-content-center">
-                        <p class="d-flex" style="font-weight: inherit; color: #5a6268 ">Select </p> &nbsp;
-                        <p id="ToolProfLimiter"  class="d-flex" style="font-weight: inherit; color: darkorange "></p>
-                    </div>
-                    <br>
-
-                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
-
-                        <div style="order:0; " class="Rtable-cell  " >
-
-                            <div class="d-flex " style=" border-bottom: 1px solid white;">
-
-                                <input onclick="ToolProfCheck(this)" id ="BrewerCheckbox" style="margin-left: 40%;" class="ToolProfCheckbox  " type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Brewer's Supplies </h4>
-
-
-                            </div>
-                            <br>
-                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
-
-                                <input onclick="ToolProfCheck(this)" id ="MasonsToolsCheckbox" style="margin-left: 40%" class=" ToolProfCheckbox " type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Mason's Tools </h4>
-
-
-                            </div></div>
-
-
-                        <div style="order:0;" class="Rtable-cell  " >
-                            <div class="d-flex " style=" border-bottom: 1px solid white;">
-
-
-                                <input onclick="ToolProfCheck(this)" id ="SmithsToolsCheckbox" style="margin-left: 40%;" class=" ToolProfCheckbox " type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Smith's Tools </h4>
-
-
-                            </div>
-
-                        </div></div>
-
-
-
-
+</div>
 
 
 
@@ -3985,16 +3897,16 @@
 
             </div>
             </div>
-            </div>
-
     </div>
 
     </div>
 
+    </div>
 
 
 
 
+</body>
 
 
 
