@@ -17,12 +17,19 @@
             setUsername2(User)
             setSkillProfLimiter(SkillProfNumber);
             setSAlignmentNumber(AlignmentNumber);
+            setToolProfNumber(ToolProfNumber);
 
             //DEFAULT -> UNCHECKED
             var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
 
             for(var i=0 ; i<SkillProfCheckboxDefault.length; i++){
                 SkillProfCheckboxDefault[i].checked = false;
+            }
+
+            var ToolProfCheckboxDefault = document.getElementsByClassName("ToolProfCheckbox");
+
+            for(var i=0 ; i<ToolProfCheckboxDefault.length; i++){
+                ToolProfCheckboxDefault[i].checked = false;
             }
         });
 
@@ -34,6 +41,9 @@
         // Alignment Limiter
         let AlignmentNumber = 1;
 
+        // Tool Prof Limiter
+        let ToolProfNumber= 1;
+
 
 
 
@@ -43,16 +53,6 @@
         }
 
 
-        function setSkillProfLimiter(SkillProfNumber){
-            document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
-            return SkillProfNumber;
-        }
-
-        function setSAlignmentNumber(AlignmentNumber){
-            document.getElementById("AlignmentLimiter").innerText = AlignmentNumber;
-            return AlignmentNumber;
-        }
-
         function setUsername2(user){
             document.getElementById("UserName2").innerHTML = user;
         }
@@ -61,6 +61,24 @@
             var x = document.getElementById("inputbase2").value;
             alert(x)}
 
+        function setSkillProfLimiter(SkillProfNumber){
+            document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
+            return SkillProfNumber1;
+        }
+
+        function setSAlignmentNumber(AlignmentNumber){
+            document.getElementById("AlignmentLimiter").innerText = AlignmentNumber;
+            return AlignmentNumber1;
+        }
+
+        function setToolProfNumber(ToolProfNumber){
+            document.getElementById("ToolProfLimiter").innerText = ToolProfNumber;
+            return ToolProfNumber;
+        }
+
+        //______________________________________________________________________________________
+
+    //SHOW HIT POINT TABLE ROWS ACCORDING TO SELECTED LEVEL
         function LevelBoxes(level){
 
             if (level === 1) {
@@ -520,6 +538,10 @@
         }
 
 
+//______________________________________________________________________________________
+
+        //NAV-BAR FUNCTIONS
+
 
         let navNumber = 1;
         let activeBar;
@@ -656,6 +678,298 @@
 
         }
 
+
+//______________________________________________________________________________________
+
+        //Check if User inputs number below 0
+        function checkIfNegativeNum(e){
+
+
+            if(e.value <= 0 || e.value === null ){
+                e.value = 1;
+            }
+        }
+
+//______________________________________________________________________________________
+
+        //WHEN INDIVIDUAL ITEM INPUT IS EMPTY -> THEN UNCHECK CHECKBOX!
+
+        function CheckCheckbox(e, contentNumber){
+            var x1 = document.getElementById("IndividualItem3Checkbox");
+            var x2 = document.getElementById("IndividualItem2Checkbox");
+            var x3 = document.getElementById("IndividualItemCheckbox");
+
+            if(contentNumber === 3){
+
+                    if((!(e.value == 0)) ){
+                        x1.checked = true;
+                        checkIfNegativeNum(document.getElementById("quantityIndividualItem3"));
+                    }
+
+                    if((e.value == 0) ){
+                        x1.checked = false;
+
+                    }
+            }
+
+            if(contentNumber === 2){
+
+                    if((!(e.value == 0)) ){
+                        checkIfNegativeNum(document.getElementById("quantityIndividualItem2"));
+                        x2.checked = true;
+                    }
+
+                    if((e.value == 0) ){
+                        x2.checked = false;
+
+                    }
+            }
+
+            if(contentNumber === 1){
+
+                    if((!(e.value == 0)) ){
+                        checkIfNegativeNum(document.getElementById("quantityIndividualItem1"));
+                        x3.checked = true;
+                    }
+
+                    if((e.value == 0) ){
+                        x3.checked = false;
+
+                    }
+            }
+
+        }
+
+
+        function resetIndividualItemInput(e, contentNumber){
+
+            var x1 = document.getElementById("IndividualItem1");
+            var x2 = document.getElementById("IndividualItem2");
+            var x3 = document.getElementById("IndividualItem3");
+
+            var y1 = document.getElementById("quantityIndividualItem1")
+            var y2 = document.getElementById("quantityIndividualItem2")
+            var y2 = document.getElementById("quantityIndividualItem3")
+
+            if(contentNumber === 1){
+                if (!e.checked){
+                    resetItemQuantity(document.getElementById("quantityIndividualItem1"));
+                    x1.value = null;
+                    y1.value = null;
+                }
+                if(e.checked){
+                    e.checked = false;
+                }
+            }
+
+            if(contentNumber === 2){
+                if (!e.checked){
+                    resetItemQuantity(document.getElementById("quantityIndividualItem2"));
+                    x2.value = null;
+                    y2.value = null;
+                }
+                if(e.checked){
+                    e.checked = false;
+                }
+            }
+
+            if(contentNumber === 3){
+                if (!e.checked){
+                    resetItemQuantity(document.getElementById("quantityIndividualItem3"));
+                    x3.value = null;
+                    y3.value = null;
+                }
+                if(e.checked){
+                    e.checked = false;
+                }
+            }
+
+
+        }
+
+        //Check if Element is Hidden
+        function isHidden(el){
+            return (el.offsetParent === null)
+        }
+
+        //SHOW WEAPON SELECT
+        function showWeaponSelect(contentNumber){
+
+            var longsword = document.getElementById("LongswordSelect");
+            var Dagger = document.getElementById("DaggerSelect");
+            var Maze = document.getElementById("MazeSelect");
+
+            var longswordCheckbox = document.getElementById("LongswordCheckbox");
+            var daggerCheckbox = document.getElementById("DaggerCheckbox");
+            var mazeCheckbox = document.getElementById("MazeCheckbox");
+
+
+            if(contentNumber === 1){
+                checkIfNegativeNum(document.getElementById("quantityLongsword"));
+                longsword.classList.remove("hidden");
+                longswordCheckbox.checked = true;
+            }
+
+            if(contentNumber === 2){
+                checkIfNegativeNum(document.getElementById("quantityDagger"));
+                Dagger.classList.remove("hidden");
+                daggerCheckbox.checked = true;
+            }
+
+            if(contentNumber === 3){
+                checkIfNegativeNum(document.getElementById("quantityDagger"));
+                Maze.classList.remove("hidden");
+                mazeCheckbox.checked = true;
+            }
+
+        }
+                        //HIDE WEAPON SELECT
+                        function hideWeaponSelect(contentNumber){
+
+                            var longsword = document.getElementById("LongswordSelect");
+                            var Dagger = document.getElementById("DaggerSelect");
+                            var Maze = document.getElementById("MazeSelect");
+
+                            var longswordQuantity = document.getElementById("quantityLongsword");
+                            var daggerQuantity = document.getElementById("quantityDagger");
+                            var mazeQuantity = document.getElementById("quantityMaze");
+
+                            if(contentNumber === 1){
+                                  resetWeaponQuantity(longswordQuantity);
+                                  longsword.classList.add("hidden");
+                            }
+                            if(contentNumber === 2){
+                                resetWeaponQuantity(daggerQuantity);
+                                Dagger.classList.add("hidden");
+                            }
+                            if(contentNumber === 3){
+                                resetWeaponQuantity(mazeQuantity);
+                                Maze.classList.add("hidden");
+                            }
+                        }
+                        //RESET ITS QUANTITY NUMBER TO NULL (0) ;
+                        function resetWeaponQuantity(e){
+                            e.value = null;
+                        }
+
+
+
+        //SHOW Armor SELECT
+        function showArmorSelect(contentNumber){
+
+            var ChainMail = document.getElementById("ChainMailSelect");
+            var Leather = document.getElementById("LeatherSelect");
+            var Plate = document.getElementById("PlateSelect");
+
+            var ChainMailCheckbox = document.getElementById("ChainMailCheckbox");
+            var LeatherCheckbox = document.getElementById("LeatherCheckbox");
+            var PlateCheckbox = document.getElementById("PlateCheckbox");
+
+
+            if(contentNumber === 1){
+                checkIfNegativeNum(document.getElementById("quantityChainMail"));
+                ChainMail.classList.remove("hidden");
+                ChainMailCheckbox.checked = true;
+            }
+
+            if(contentNumber === 2){
+                checkIfNegativeNum(document.getElementById("quantityLeather"));
+                Leather.classList.remove("hidden");
+                LeatherCheckbox.checked = true;
+            }
+
+            if(contentNumber === 3){
+                checkIfNegativeNum(document.getElementById("quantityPlate"));
+                Plate.classList.remove("hidden");
+                PlateCheckbox.checked = true;
+            }
+
+        }
+                        //HIDE Armor SELECT
+                        function hideArmorSelect(contentNumber){
+
+                            var ChainMail = document.getElementById("ChainMailSelect");
+                            var Leather = document.getElementById("LeatherSelect");
+                            var Plate = document.getElementById("PlateSelect");
+
+                            var ChainMailQuantity = document.getElementById("quantityChainMail");
+                            var LeatherQuantity = document.getElementById("quantityLeather");
+                            var PlateQuantity = document.getElementById("quantityPlate");
+
+                            if(contentNumber === 1){
+                                resetArmorQuantity(ChainMailQuantity);
+                                ChainMail.classList.add("hidden");
+                            }
+                            if(contentNumber === 2){
+                                resetArmorQuantity(LeatherQuantity);
+                                Leather.classList.add("hidden");
+                            }
+                            if(contentNumber === 3){
+                                resetArmorQuantity(PlateQuantity);
+                                Plate.classList.add("hidden");
+                            }
+                        }
+                        //RESET ITS QUANTITY NUMBER TO NULL (0) ;
+                        function resetArmorQuantity(e){
+                            e.value = null;
+                        }
+
+
+
+        //SHOW ITEM SELECT
+        function showItemSelect(contentNumber){
+
+            var Arrow = document.getElementById("ArrowSelect");
+            var Backpack = document.getElementById("BackpackSelect");
+
+            var ChainMailCheckbox = document.getElementById("ArrowCheckbox");
+            var LeatherCheckbox = document.getElementById("BackpackCheckbox");
+
+
+
+            if(contentNumber === 1){
+                checkIfNegativeNum(document.getElementById("quantityArrow"));
+                Arrow.classList.remove("hidden");
+                ArrowCheckbox.checked = true;
+            }
+
+            if(contentNumber === 2){
+                checkIfNegativeNum(document.getElementById("quantityBackpack"));
+                Backpack.classList.remove("hidden");
+                BackpackCheckbox.checked = true;
+            }
+
+
+
+        }
+                        //HIDE Armor SELECT
+                        function hideItemSelect(contentNumber){
+
+                            var Arrow = document.getElementById("ArrowSelect");
+                            var Backpack = document.getElementById("BackpackSelect");
+
+                            var ArrowQuantity = document.getElementById("quantityArrow");
+                            var BackpackQuantity = document.getElementById("quantityBackpack");
+
+
+                            if(contentNumber === 1){
+                                resetItemQuantity(ArrowQuantity);
+                                Arrow.classList.add("hidden");
+                            }
+                            if(contentNumber === 2){
+                                resetItemQuantity(BackpackQuantity);
+                                Backpack.classList.add("hidden");
+                            }
+
+                        }
+                        //RESET ITS QUANTITY NUMBER TO NULL (0) ;
+                        function resetItemQuantity(e){
+                            e.value = null;
+                        }
+
+
+//______________________________________________________________________________________
+        // SHOW CHARACTERCREATOPN BAR
         function showCharCreationContent(contentNumber){
 
             if(contentNumber === 1){
@@ -710,7 +1024,7 @@
 
 
 
-        // CHECKBOX -> BACKGROUND
+        // CHECKBOXLIMITER -> BACKGROUND
 
         function SkillProfCheck(e){
 
@@ -735,7 +1049,9 @@
             }
         }
 
-        //CHECKBOX -> ALIGNMENT
+
+
+        //CHECKBOXLIMITER -> ALIGNMENT
         function AlignmentCheck(e){
 
             if(AlignmentNumber > 0){
@@ -747,6 +1063,34 @@
             if(AlignmentNumber === 0 && !e.checked){
                 AlignmentNumber = AlignmentNumber+1;
                 setSAlignmentNumber(AlignmentNumber);
+                return true;
+            }
+
+
+
+        }
+
+
+        //CHECKBOXLIMITER -> TOOL PROFICIENCY
+        function ToolProfCheck(e){
+
+            if(ToolProfNumber === 0 && !e.checked){
+                ToolProfNumber = ToolProfNumber+1;
+                setToolProfLimiter(ToolProfNumber);
+                return true;
+            }
+            if(ToolProfNumber > 0 && !e.checked) {
+                ToolProfNumber = ToolProfNumber+1;
+                setToolProfNumber(ToolProfNumber);
+                return true;
+            }
+
+            if(ToolProfNumber === 0 ){
+                e.checked = false;
+            }
+            if(ToolProfNumber > 0) {
+                ToolProfNumber = ToolProfNumber-1;
+                setToolProfNumber(ToolProfNumber);
                 return true;
             }
 
@@ -781,6 +1125,8 @@
             padding-bottom: 0px;
             display: inline-flex;
         }
+
+        .ToolProfCheckbox
 
         .Logo{
             display: block;
@@ -1022,6 +1368,11 @@
             border: 3px solid orange;
         }
 
+        .InputWeapon{
+            background-color: transparent;
+            color: white;
+            border: 1px solid orange;
+        }
         .abilitywidth{
             padding-right: 10%;
             padding-left: 10%;
@@ -3274,16 +3625,357 @@
 
 
                             </div>
+
+<!--                TOOL PROFICIENCY        -->
+
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Tool Proficiency</h2>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <p class="d-flex" style="font-weight: inherit; color: #5a6268 ">Select </p> &nbsp;
+                        <p id="ToolProfLimiter"  class="d-flex" style="font-weight: inherit; color: darkorange "></p>
+                    </div>
+                    <br>
+
+                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex " style=" border-bottom: 1px solid white;">
+
+                                <input onclick="ToolProfCheck(this)" id ="BrewerCheckbox" style="margin-left: 40%;" class="ToolProfCheckbox  " type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Brewer's Supplies </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="MasonsToolsCheckbox" style="margin-left: 40%" class=" ToolProfCheckbox " type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Mason's Tools </h4>
+
+
+                            </div></div>
+
+
+                        <div style="order:0;" class="Rtable-cell  " >
+                            <div class="d-flex " style=" border-bottom: 1px solid white;">
+
+
+                                <input onclick="ToolProfCheck(this)" id ="SmithsToolsCheckbox" style="margin-left: 40%;" class=" ToolProfCheckbox " type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Smith's Tools </h4>
+
+
                             </div>
 
+                        </div></div>
 
 
-</div>
+
+
+
+
 
 <!--                _________________EQUIPMENT________________________             -->
 
                 <div id ="Equipment" class="hidden">
-                    <p class="CharCreationHeader" >Equipment</p>
+
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Equipment</h2>
+                    </div>
+                    <br>
+
+<!--                LINKE SPALTE -> WEAPONS-->
+
+                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex justify-content-center" style=" border-bottom: 1px solid white;">
+
+
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> WEAPON </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex" >
+
+                                <select class="custom-select InputWeapon " id="inputWeapon">
+                                    <option selected>Add Item...</option>
+                                    <option value="1" onclick="showWeaponSelect(1)">Longsowrd</option>
+                                    <option value="2" onclick="showWeaponSelect(2)">Dagger</option>
+                                    <option value="3" onclick="showWeaponSelect(3)">Maze</option>
+                                </select>
+
+                            </div>
+                            <br>
+
+
+                            <div id= "LongswordSelect" class="hidden">
+                            <div class="d-flex justify-content-between"  >
+
+                                <div class ="d-flex">
+                                    <input id ="LongswordCheckbox" onclick="hideWeaponSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                    <h4 class="d-flex" style="color: white; font-weight: lighter"> Longsword </h4>
+                                </div>
+
+                                <div class ="d-flex">
+                                    <input onchange="checkIfNegativeNum(this);" id="quantityLongsword" style="width: 80px;" id="inputLongsword" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                </div>
+
+                            </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px;  "> </div>
+                            </div>
+                            <br>
+                            <div id= "DaggerSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="DaggerCheckbox" onclick="hideWeaponSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Dagger </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityDagger" style="width: 80px;" id="inputDagger" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+                            <br>
+                            <div id= "MazeSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="MazeCheckbox" onclick="hideWeaponSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Maze </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityMaze" style="width: 80px;" id="inputMaze" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+                        </div>
+
+<!--                RECHTE SPALTE -> ARMOR-->
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex justify-content-center" style=" border-bottom: 1px solid white;">
+
+
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> ARMOR </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex" >
+
+                                <select class="custom-select InputWeapon " id="inputArmor">
+                                    <option selected>Add Item...</option>
+                                    <option value="1" onclick="showArmorSelect(1)">Chain Mail</option>
+                                    <option value="2" onclick="showArmorSelect(2)">Leather</option>
+                                    <option value="3" onclick="showArmorSelect(3)">Plate</option>
+                                </select>
+
+                            </div>
+                            <br>
+
+
+                            <div id= "ChainMailSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Chain Mail </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityChainMail" style="width: 80px;" id="inputChainMail" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px;  "> </div>
+                            </div>
+                            <br>
+                            <div id= "LeatherSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Leather </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityLeather" style="width: 80px;" id="inputLeather" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+                            <br>
+                            <div id= "PlateSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Maze </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityPlate" style="width: 80px;" id="inputPlate" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+<!--               CARRYABLE                -->
+                    <br><br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Other items</h2>
+                    </div>
+                    <br>
+
+
+                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex justify-content-center" style=" border-bottom: 1px solid white;">
+
+
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> ITEM </h4>
+
+                 <!--               LINKE SPALTE ITEM                -->
+                            </div>
+                            <br>
+                            <div class="d-flex" >
+
+                                <select class="custom-select InputWeapon " id="inputItem">
+                                    <option selected>Add Item...</option>
+                                    <option value="1" onclick="showItemSelect(1)">Arrow</option>
+                                    <option value="2" onclick="showItemSelect(2)">Backpack</option>
+                                </select>
+
+                            </div>
+                            <br>
+
+
+                            <div id= "ArrowSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="ArrowCheckbox" onclick="hideItemSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Arrow </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityArrow" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px;  "> </div>
+                            </div>
+                            <br>
+                            <div id= "BackpackSelect" class="hidden">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input id ="BackpackCheckbox" onclick="hideItemSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Backpack </h4>
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityBackpack" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+                        </div>
+
+                        <!--                RECHTE SPALTE INDIVIDUELLE ITEMS-->
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex justify-content-center" style=" border-bottom: 1px solid white;">
+
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> Individual Items </h4>
+
+                            </div>
+
+
+                            <br>
+                            <div id= "IndividualItems1" >
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input onclick = "resetIndividualItemInput(this, 1);" id ="IndividualItemCheckbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="CheckCheckbox(this, 1)" id ="IndividualItem1" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityIndividualItem1" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+                            <br>
+                            <div id= "IndividualItems2" >
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input onclick = "resetIndividualItemInput(this, 2);" id ="IndividualItem2Checkbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="CheckCheckbox(this, 2)" id ="IndividualItem2" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityIndividualItem2" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+                            <br>
+                            <div id= "IndividualItems3" >
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input onclick = "resetIndividualItemInput(this, 3);" id ="IndividualItem3Checkbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="CheckCheckbox(this, 3)" id ="IndividualItem3" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this);" id="quantityIndividualItem3" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
 
                 </div>
 
@@ -3295,7 +3987,7 @@
             </div>
             </div>
 
-
+    </div>
 
     </div>
 
