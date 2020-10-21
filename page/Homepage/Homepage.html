@@ -320,19 +320,6 @@
 
 <script type="application/javascript">
 
-    window.addEventListener("load", function () {
-
-        setUsername(User);
-
-    });
-
-    let User = "Renge";
-
-    function setUsername(user) {
-        document.getElementById("UserName").innerHTML = user;
-        return user;
-    }
-
     function register() {
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
@@ -362,7 +349,6 @@
                 if (response.status !== 200) throw response.status;
 
                 return response.json();
-
             })
             .then(result => {
                 console.log('Success:', result);
@@ -375,7 +361,6 @@
             .catch(function (error) {
                 alert(error);
             });
-
     }
 
     function login() {
@@ -396,7 +381,6 @@
                 if (response.status !== 200) throw response.status;
 
                     return response.json();
-
             })
             .then(result => {
                 console.log('Success:', result);
@@ -409,8 +393,6 @@
             .catch(function (error) {
                 alert("Incorrect credentials!");
             });
-
-
     }
 
 </script>
