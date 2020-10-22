@@ -13,15 +13,15 @@
 
         //Buttons
         function newChar(){
-            window.location.href ="../Charactercreation/Charactercreation.html";
+            window.location.assign("../Charactercreation/Charactercreation.html");
         }
 
         function toDashboard(){
-            window.location.href ="../UserDashboard/Dashboard.html";
+            window.location.assign("../UserDashboard/Dashboard.html");
         }
 
         function toAccount(){
-            window.location.href ="../Account/Account.html"
+            window.location.assign("../Account/Account.html");
         }
 
         function logout() {
@@ -73,6 +73,11 @@
             for(var i=0 ; i<SkillProfCheckboxDefault.length; i++){
                 SkillProfCheckboxDefault[i].checked = false;
             }
+
+
+
+            editSheet();
+
         });
 
         let User = localStorage.userName;
@@ -1423,6 +1428,28 @@
         //Save Sheet
         function saveSheetCreation(){
 
+        }
+
+
+
+
+        //Edit Sheet
+        function editSheet(){
+            if(getParameterByName('c') != 0){
+                let charID = getParameterByName('c');
+                alert(charID);
+            }
+
+        }
+
+
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
         }
 
 

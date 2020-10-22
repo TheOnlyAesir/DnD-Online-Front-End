@@ -696,16 +696,21 @@
                 });
         }
 
+        function editChar(e){
+            let reference = e.parentElement.parentElement.parentElement.parentElement.children.item(0).reference;
+            window.location.assign("../Charactercreation/Charactercreation.html?c=" + reference.charactersheetID +"");
+        }
+
         function newChar(){
-            window.location.href ="../Charactercreation/Charactercreation.html";
+            window.location.assign("../Charactercreation/Charactercreation.html");
         }
 
         function toDashboard(){
-            window.location.href ="../UserDashboard/Dashboard.html";
+            window.location.assign("../UserDashboard/Dashboard.html");
         }
 
         function toAccount(){
-            window.location.href ="../Account/Account.html"
+            window.location.assign("../Account/Account.html");
         }
 
 
@@ -1411,7 +1416,7 @@
             <!--Right Top
             ==========================================-->
             <div style="order:0;" class="Rtable-cell Rtable-cell--head">                                   <!-- 2 -->
-                <button type="button" class="btn btn-warning m-1 " >Edit</button>
+                <button type="button" class="btn btn-warning m-1" onclick="editChar(this)">Edit</button>
                 <button type="button" class="btn btn-warning m-1" onclick="dashboardSave(this)">Save</button>
                 <div>
                     <button type="button" class="btn btn-warning m-1" data-toggle="modal" onclick="deleteModal(this)">
