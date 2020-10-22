@@ -35,6 +35,10 @@
             window.location.href = "../Homepage/Homepage.html";
         }
 
+        function toDashboard(){
+            window.location.href ="../UserDashboard/Dashboard.html";
+        }
+
         function setUserGreeting(user){
             document.getElementById("UserGreeting").innerText += user;
         }
@@ -512,7 +516,7 @@
             <!--Dashboard
             ==============================-->
             <div class="align-self-center">
-                <button type="button" class="btn btn-warning m-1">Dashboard</button>
+                <button type="button" class="btn btn-warning m-1" onclick="toDashboard()">Dashboard</button>
             </div>
             <!--Logout
             ==============================-->
