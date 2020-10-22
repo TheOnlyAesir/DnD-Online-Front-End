@@ -71,7 +71,7 @@ html{
 }
 
 .container-fluid {
-    display: fluid;
+    display: flex;
     justify-content: center;
     margin-top: 0.25%;
     margin-left: 1%;
