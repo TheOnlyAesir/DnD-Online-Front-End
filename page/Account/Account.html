@@ -15,8 +15,16 @@
     <script>
 
 
+        var tableInputBlueprint;
+        var OverviewCharTableBlueprint;
         let User = localStorage.userName;
         window.addEventListener("load", function () {
+            setUserGreeting(User);
+            setOverwiev();
+            tableInputBlueprint = document.getElementById("OverviewGroupTableBlueprint");
+            getGroups();
+            OverviewCharTableBlueprint = document.getElementById("OverviewCharTableBlueprint");
+            getCharacters();
 
 
 
@@ -25,6 +33,33 @@
         function logout() {
             localStorage.clear();
             window.location.href = "../Homepage/Homepage.html";
+        }
+
+        function setUserGreeting(user){
+            document.getElementById("UserGreeting").innerText += user;
+        }
+
+        function setOverwiev(){
+            let emailBox = document.getElementById("UserMail");
+            let email;
+
+
+            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID, {
+                method: 'get',
+            })
+                .then(function (response) {
+                    if(response.status !== 200) throw("error!");
+
+                    return response.json();
+
+                })
+                .then(function (data){
+                    email = data.email;
+                    emailBox.innerText = email;
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
         }
 
 
@@ -52,6 +87,96 @@
                     alert(error);
                 });
         }
+
+        function showContentAccount(e, contentNumber){
+            let overview = document.getElementById("Overview");
+            let groups = document.getElementById("Groups");
+            let settings = document.getElementById("Settings");
+
+            let overviewButton = e.parentElement.children.item(0);
+            let groupsButton = e.parentElement.children.item(1);
+            let settingsButton = e.parentElement.children.item(2);
+
+            overviewButton.classList.remove("active");
+            groupsButton.classList.remove("active");
+            settingsButton.classList.remove("active");
+            e.classList.add("active");
+            if(contentNumber == 1){
+                overview.classList.remove("hidden");
+                groups.classList.add("hidden");
+                settings.classList.add("hidden");
+            }
+            if(contentNumber == 2){
+                overview.classList.add("hidden");
+                groups.classList.remove("hidden");
+                settings.classList.add("hidden");
+            }
+            if(contentNumber == 3){
+                overview.classList.add("hidden");
+                groups.classList.add("hidden");
+                settings.classList.remove("hidden");
+            }
+            return false;
+        }
+
+        function getGroups(){
+            let table = document.getElementById("OverviewGroupTable");
+
+
+            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/ViewGroups', {
+                method: 'get',
+            })
+                .then(function (response) {
+                    if(response.status !== 200) throw("error!");
+
+                    return response.json();
+
+                })
+                .then(function (data){
+
+                    for(let j = 0; j < data.length ;j++){
+                        let newTableInput = tableInputBlueprint.cloneNode(true);
+                        newTableInput.setAttribute('id', j);
+                        newTableInput.children.item(0).innerText = data[j].name;
+                        table.appendChild(newTableInput);
+                    }
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+
+
+        }
+
+        function getCharacters(){
+            let table = document.getElementById("OverviewCharTable");
+
+
+            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID ,  {
+                method: 'get',
+            })
+                .then(function (response) {
+                    if(response.status !== 200) throw("error!");
+
+                    return response.json();
+
+                })
+                .then(function (data){
+
+                    for(let j = 0; j < data.charactersheets.length ;j++){
+                        let newTableInput = OverviewCharTableBlueprint.cloneNode(true);
+                        newTableInput.setAttribute('id', j);
+                        newTableInput.children.item(0).innerText = data.charactersheets[j].characterName;
+                        newTableInput.children.item(1).innerText = data.charactersheets[j].level;
+                        table.appendChild(newTableInput);
+                    }
+                })
+                .catch(function (error) {
+                    alert(error);
+                });
+        }
+
+
 
     </script>
     <style>
@@ -157,6 +282,25 @@
             display: flex;
             justify-content: center;
 
+        }
+
+        .OtherTexts2{
+            font-size: 20px;
+            display: flex;
+            margin: 0;
+            text-align: center;
+        }
+
+        .hidden{
+            display: none;
+        }
+
+        #OverviewGroupTableBlueprint{
+            display: none;
+        }
+
+        #OverviewCharTableBlueprint{
+            display: none;
         }
 
 
@@ -386,21 +530,125 @@
 
 <div class="container-fluid  " id="app-main">
     <div class="d-flex content " id="">
-        <div class="p-5 h-100 d-flex flex-column " id="Insertable">
+        <div class=" d-flex flex-column w-100"  >
+
+
+
+            <!--Navbar
+            ==========================================-->
+            <div class="d-flex justify-content-center">                                           <!-- 0 -->
+                <nav class="navbar navbar-expand-lg navbar-dark" style="background: #1e2027">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link active"  onclick="return showContentAccount(this, 1)">OVERVIEW</a>
+                            <a class="nav-link" onclick="return showContentAccount(this, 2)">GROUPS</a>
+                            <a class="nav-link" onclick="return showContentAccount(this, 3)">SETTINGS</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
 
 
 
 
 
+            <!-- Overview
+            =======================================-->
+            <div id="Overview" style="color: white; width: 100%"  >
+
+                <div class="d-flex justify-content-center w-100">
+                    <h3 id="UserGreeting">User&nbsp;</h3>
+                </div>
+
+
+                <div class="OtherTexts2 d-flex w-100 justify-content-center">
+                    <div>
+                        Email:&nbsp;<span id="UserMail"></span>
+                    </div>
+                </div>
+
+
+                <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                    <div style="order:0;" class="Rtable-cell">
+                        <div class="d-flex mt-2 justify-content-center">
+                            <table class="table table-striped table-sm">
+                                <!-- Table head -->
+                                <thead style="color: white">                                                <!-- 0 -->
+                                <tr>
+                                    <th>Group Name</th>
+                                </tr>
+                                </thead>
+                                <!--Table body-->
+                                <tbody style="color: white" id="OverviewGroupTable">                                                <!-- 1 -->
+                                <tr id="OverviewGroupTableBlueprint">
+                                    <td></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div style="order:1;" class="Rtable-cell">
+                        <div class="d-flex mt-2 justify-content-center">
+                            <table class="table table-striped table-sm">
+                                <!-- Table head -->
+                                <thead style="color: white">                                                <!-- 0 -->
+                                <tr>
+                                    <th>Character</th>
+                                    <th>Level</th>
+                                </tr>
+                                </thead>
+                                <!--Table body-->
+                                <tbody style="color: white" id="OverviewCharTable">                                                <!-- 1 -->
+                                <tr id="OverviewCharTableBlueprint">
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- Groups
+            =======================================-->
+            <div class="hidden" id="Groups" style="color: white">
+                Groups
+                <div>
+                    <table>
 
 
 
 
+                    </table>
+                </div>
+            </div>
 
+            <!-- Settings
+            =======================================-->
+            <div class="hidden" id="Settings" style="color: white">
+                <div class="d-flex justify-content-center">
+
+
+                </div>
+            </div>
 
         </div>
     </div>
 </div>
+
+
 
 <script>
     // When the user scrolls the page, execute myFunction
