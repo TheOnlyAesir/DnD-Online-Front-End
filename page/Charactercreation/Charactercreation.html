@@ -720,6 +720,7 @@
                 setINT_ModifierNumber(0);
                 setWIS_ModifierNumber(0);
                 setCHA_ModifierNumber(0);
+                reCalculateAS(7);
             }
 
             if ((e.checked == true) && contentNumber === 2){
@@ -911,6 +912,15 @@
                 calcWISTOTAL();
             }
             if (x === 6){
+                calcCHATOTAL();
+            }
+
+            if(x === 7){
+                calcSTRTOTAL();
+                calcDEXTOTAL();
+                calcCONTOTAL();
+                calcINTTOTAL();
+                calcWISTOTAL();
                 calcCHATOTAL();
             }
 
@@ -1933,7 +1943,7 @@
                                                                          <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                  </td>
                                                                  <td class="col text-center" >
-                                                                     <input onclick="setRaceModifiers(this, 1)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                     <input onclick="setRaceModifiers(this, 1); " class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                  </td>
                                                              </tr>
                                                                 </table>
@@ -1959,7 +1969,7 @@
                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input onclick="setRaceModifiers(this, 2)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 2) ;reCalculateAS(7)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -1985,7 +1995,7 @@
                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input onclick="setRaceModifiers(this, 3)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 3) ;reCalculateAS(7)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
