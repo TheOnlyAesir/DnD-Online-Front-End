@@ -15,9 +15,36 @@
 
             setUsername(User);
             setUsername2(User)
+
+            //SET LIMITERS
             setSkillProfLimiter(SkillProfNumber);
             setSAlignmentNumber(AlignmentNumber);
+            setToolProfNumber(ToolProfNumber);
+            setLanguageProfNumber(LanguageProfNumber);
 
+            //DEFAULT ABILITY SCORES
+            setSTRNumber(STRNumber);
+            setDEXNumber(DEXNumber);
+            setCONumber(CONNumber);
+            setINTNumber(INTNumber);
+            setWISNumber(WISNumber);
+            setCHANumber(CHANumber);
+
+            //DEFUALT RACE MODIFIERS
+            setSTR_ModifierNumber(STR_ModifierNumber);
+            setDEX_ModifierNumber(DEX_ModifierNumber);
+            setCON_ModifierNumber(CON_ModifierNumber);
+            setINT_ModifierNumber(INT_ModifierNumber);
+            setWIS_ModifierNumber(WIS_ModifierNumber);
+            setCHA_ModifierNumber(CHA_ModifierNumber);
+
+            //ABILITY SCORES TOTALS
+            calcSTRTOTAL();
+            calcDEXTOTAL();
+            calcCONTOTAL();
+            calcINTTOTAL();
+            calcWISTOTAL();
+            calcCHATOTAL();
 
             //DEFAULT -> UNCHECKED
             var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
@@ -35,7 +62,28 @@
         // Alignment Limiter
         let AlignmentNumber = 1;
 
+        // Tool Prof Limiter
+        let ToolProfNumber = 1;
 
+        // Language Prof Limiter
+        let LanguageProfNumber = 1;
+
+
+        //ABILITY SCORE PRESETS
+        let STRNumber = 8;
+        let DEXNumber = 8;
+        let CONNumber = 8;
+        let INTNumber = 8;
+        let WISNumber = 8;
+        let CHANumber = 8;
+
+        //DEFUALT RACE MODIFIERS
+        let STR_ModifierNumber = 0;
+        let DEX_ModifierNumber = 0;
+        let CON_ModifierNumber = 0;
+        let INT_ModifierNumber = 0;
+        let WIS_ModifierNumber = 0;
+        let CHA_ModifierNumber = 0;
 
 
         function setUsername(user){
@@ -52,6 +100,8 @@
             var x = document.getElementById("inputbase2").value;
             alert(x)}
 
+        //LIMITERS
+
         function setSkillProfLimiter(SkillProfNumber){
             document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
             return SkillProfNumber;
@@ -60,6 +110,137 @@
         function setSAlignmentNumber(AlignmentNumber){
             document.getElementById("AlignmentLimiter").innerText = AlignmentNumber;
             return AlignmentNumber;
+        }
+
+        function setToolProfNumber(ToolProfNumber){
+            document.getElementById("ToolProfLimiter").innerText = ToolProfNumber;
+            return ToolProfNumber;
+        }
+
+        function setLanguageProfNumber(LanguageProfNumber){
+            document.getElementById("LanguageProfLimiter").innerText = LanguageProfNumber;
+            return LanguageProfNumber;
+        }
+
+        //ABILITY SCORE
+
+        function setSTRNumber(STRNumber){
+            document.getElementById("inputSTR").value = STRNumber;
+            return STRNumber;
+        }
+
+        function setDEXNumber(DEXNumber){
+            document.getElementById("inputDEX").value = DEXNumber;
+            return DEXNumber;
+        }
+
+        function setCONumber(CONumber){
+            document.getElementById("inputCON").value = CONumber;
+            return CONumber;
+        }
+
+        function setINTNumber(INTNumber){
+            document.getElementById("inputINT").value = INTNumber;
+            return INTNumber;
+        }
+
+        function setWISNumber(WISNumber){
+            document.getElementById("inputWIS").value = WISNumber;
+            return WISNumber;
+        }
+
+        function setCHANumber(CHANumber){
+            document.getElementById("inputCHA").value = CHANumber;
+            return CHANumber;
+        }
+
+        // RACE MODIFIERS
+
+        function setSTR_ModifierNumber(STR_ModifierNumber){
+            document.getElementById("STR_RaceModifier").innerText = STR_ModifierNumber;
+            return STR_ModifierNumber;
+        }
+
+        function setDEX_ModifierNumber(DEX_ModifierNumber){
+            document.getElementById("DEX_RaceModifier").innerText = DEX_ModifierNumber;
+            return DEX_ModifierNumber;
+        }
+
+        function setCON_ModifierNumber(CON_ModifierNumber){
+            document.getElementById("CON_RaceModifier").innerText = CON_ModifierNumber;
+            return CON_ModifierNumber;
+        }
+
+        function setINT_ModifierNumber(INT_ModifierNumber){
+            document.getElementById("INT_RaceModifier").innerText = INT_ModifierNumber;
+            return INT_ModifierNumber;
+        }
+
+        function setWIS_ModifierNumber(WIS_ModifierNumber){
+            document.getElementById("WIS_RaceModifier").innerText = WIS_ModifierNumber;
+            return WIS_ModifierNumber;
+        }
+
+        function setCHA_ModifierNumber(CHA_ModifierNumber){
+            document.getElementById("CHA_RaceModifier").innerText = CHA_ModifierNumber;
+            return CHA_ModifierNumber;
+        }
+
+        //ABILITY SCORE TOTAL
+
+        function calcSTRTOTAL() {
+            var x = parseInt(document.getElementById("inputSTR").value);
+            var raceModifier = STR_ModifierNumber;
+
+            var STRTOTAL = x + raceModifier;
+            document.getElementById("STR_TOTAL").innerText = STRTOTAL;
+            return STRTOTAL;
+        }
+
+
+            function calcDEXTOTAL(){
+            var x = parseInt(document.getElementById("inputDEX").value);
+            var raceModifier = DEX_ModifierNumber;
+
+            var DEXTOTAL = x + raceModifier;
+            document.getElementById("DEX_TOTAL").innerText = DEXTOTAL;
+            return DEXTOTAL;
+        }
+
+        function calcCONTOTAL(){
+            var x = parseInt(document.getElementById("inputCON").value);
+            var raceModifier = CON_ModifierNumber;
+
+            var CONTOTAL = x + raceModifier;
+            document.getElementById("CON_TOTAL").innerText = CONTOTAL;
+            return CONTOTAL;
+        }
+
+        function calcINTTOTAL(){
+            var x = parseInt(document.getElementById("inputINT").value);
+            var raceModifier = INT_ModifierNumber;
+
+            var INTTOTAL = x + raceModifier;
+            document.getElementById("INT_TOTAL").innerText = INTTOTAL;
+            return INTTOTAL;
+        }
+
+        function calcWISTOTAL(){
+            var x = parseInt(document.getElementById("inputWIS").value);
+            var raceModifier = WIS_ModifierNumber;
+
+            var WISTOTAL = x + raceModifier;
+            document.getElementById("WIS_TOTAL").innerText = WISTOTAL;
+            return WISTOTAL;
+        }
+
+        function calcCHATOTAL(){
+            var x = parseInt(document.getElementById("inputCHA").value);
+            var raceModifier = CHA_ModifierNumber;
+
+            var CHATOTAL = x + raceModifier;
+            document.getElementById("CHA_TOTAL").innerText = CHATOTAL;
+            return CHATOTAL;
         }
 
 
@@ -528,6 +709,51 @@
 
 //______________________________________________________________________________________
 
+        //ABILITY SCORE RACE MODIFIER
+        function setRaceModifiers(e, contentNumber){
+
+            if ((e.checked == true) && contentNumber === 1){
+
+                setSTR_ModifierNumber(0);
+                setDEX_ModifierNumber(0);
+                setCON_ModifierNumber(2);
+                setINT_ModifierNumber(0);
+                setWIS_ModifierNumber(0);
+                setCHA_ModifierNumber(0);
+            }
+
+            if ((e.checked == true) && contentNumber === 2){
+                setSTR_ModifierNumber(1);
+                setDEX_ModifierNumber(1);
+                setCON_ModifierNumber(1);
+                setINT_ModifierNumber(1);
+                setWIS_ModifierNumber(1);
+                setCHA_ModifierNumber(1);
+            }
+
+            if ((e.checked == true) && contentNumber === 3){
+                setSTR_ModifierNumber(0);
+                setDEX_ModifierNumber(2);
+                setCON_ModifierNumber(0);
+                setINT_ModifierNumber(0);
+                setWIS_ModifierNumber(0);
+                setCHA_ModifierNumber(0);
+            }
+
+            if ((!e.checked)  == true){
+                setSTR_ModifierNumber(0);
+                setDEX_ModifierNumber(0);
+                setCON_ModifierNumber(0);
+                setINT_ModifierNumber(0);
+                setWIS_ModifierNumber(0);
+                setCHA_ModifierNumber(0);
+
+            }
+
+        }
+
+
+
         //NAV-BAR FUNCTIONS
 
 
@@ -667,6 +893,29 @@
         }
 
 
+        function reCalculateAS(x) {
+
+            if (x === 1){
+                calcSTRTOTAL();
+            }
+            if (x === 2){
+                calcDEXTOTAL();
+            }
+            if (x === 3){
+                calcCONTOTAL();
+            }
+            if (x === 4){
+                calcINTTOTAL();
+            }
+            if (x === 5){
+                calcWISTOTAL();
+            }
+            if (x === 6){
+                calcCHATOTAL();
+            }
+
+        }
+
 //______________________________________________________________________________________
 
         //Check if User inputs number below 0
@@ -676,6 +925,33 @@
             if(e.value <= 0 || e.value === null ){
                 e.value = 1;
             }
+        }
+
+        //Check if Only Quantity is there
+        function checkIndividualItemQuantityCheckboxRel(e, contentNumber){
+            var x1 = document.getElementById("IndividualItem1");
+            var x2 = document.getElementById("IndividualItem2");
+            var x3 = document.getElementById("IndividualItem3");
+
+            if(contentNumber === 1 ) {
+                if ((!(e.value == 0)) && (x1.value == 0) ) {
+                        e.value = null;
+            }
+        }
+
+            if(contentNumber === 2 ) {
+                if ((!(e.value == 0)) && (x2.value == 0)) {
+                    e.value = null;
+                }
+            }
+
+            if(contentNumber === 3 ) {
+                if ((!(e.value == 0)) && (x3.value == 0)) {
+                    e.value = null;
+                }
+            }
+
+
         }
 
 //______________________________________________________________________________________
@@ -721,6 +997,7 @@
                     }
 
                     if((e.value == 0) ){
+                        resetIndividualItemQuantity(document.getElementById("quantityIndividualItem1"))
                         x3.checked = false;
 
                     }
@@ -728,6 +1005,9 @@
 
         }
 
+        function resetIndividualItemQuantity(e){
+            e.value = null;
+        }
 
         function resetIndividualItemInput(e, contentNumber){
 
@@ -1056,6 +1336,55 @@
 
 
 
+        }
+
+
+        //CHECKBOXLIMITER -> TOOL PROFICIENCY
+        function ToolProfCheck(e){
+
+            if(ToolProfNumber === 0 && !e.checked){
+                ToolProfNumber = ToolProfNumber+1;
+                setToolProfNumber(ToolProfNumber);
+                return true;
+            }
+            if(ToolProfNumber > 0 && !e.checked) {
+                ToolProfNumber = ToolProfNumber+1;
+                setToolProfNumber(ToolProfNumber);
+                return true;
+            }
+
+            if(ToolProfNumber === 0 ){
+                e.checked = false;
+            }
+            if(ToolProfNumber > 0) {
+                ToolProfNumber = ToolProfNumber-1;
+                setToolProfNumber(ToolProfNumber);
+                return true;
+            }
+        }
+
+        //CHECKBOXLIMITER -> LANGAUGE PROFICIENCY
+        function LanguageProfCheck(e){
+
+            if(LanguageProfNumber === 0 && !e.checked){
+                LanguageProfNumber = LanguageProfNumber+1;
+                setLanguageProfNumber(LanguageProfNumber);
+                return true;
+            }
+            if(LanguageProfNumber > 0 && !e.checked) {
+                LanguageProfNumber = LanguageProfNumber+1;
+                setLanguageProfNumber(LanguageProfNumber);
+                return true;
+            }
+
+            if(LanguageProfNumber === 0 ){
+                e.checked = false;
+            }
+            if(LanguageProfNumber > 0) {
+                LanguageProfNumber = LanguageProfNumber-1;
+                setLanguageProfNumber(LanguageProfNumber);
+                return true;
+            }
         }
 
 
@@ -1604,7 +1933,7 @@
                                                                          <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                  </td>
                                                                  <td class="col text-center" >
-                                                                     <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                     <input onclick="setRaceModifiers(this, 1)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                  </td>
                                                              </tr>
                                                                 </table>
@@ -1630,7 +1959,7 @@
                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 2)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -1656,7 +1985,7 @@
                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 3)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -2242,7 +2571,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputSTR" type="number" class="form-control InputBase"
+                                        <input onchange="reCalculateAS( 1)" style="width: 80px;" id="inputSTR" type="number" class="form-control InputBase"
                                                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
@@ -2258,7 +2587,10 @@
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
-                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +X</h4>
+                                        <h4 class ="d-flex" style="font-weight: lighter; color: #5a6268"> +</h4> &nbsp;
+                                        <h4 id="STR_RaceModifier" class="d-flex " style="font-weight: lighter; color: #5a6268"> </h4>
+
+
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
@@ -2276,7 +2608,7 @@
 
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputSTRTotal" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <h5 id="STR_TOTAL" style="text-align: center; font-weight: bold; color: darkorange  "></h5>
                                     </div>
 
 
@@ -2293,7 +2625,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input style="width: 80px" id="inputDEX" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="reCalculateAS( 2)" style="width: 80px" id="inputDEX" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                     <br>
@@ -2308,7 +2640,8 @@
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
-                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +X</h4>
+                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +</h4> &nbsp;
+                                        <h4 id="DEX_RaceModifier" class="d-flex " style="font-weight: lighter; color: #5a6268"> </h4>
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
@@ -2326,7 +2659,7 @@
 
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputDEXTotal" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <h5 id="DEX_TOTAL" style="text-align: center; font-weight: bold; color: darkorange  "></h5>
                                     </div>
 
 
@@ -2342,7 +2675,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input style="width: 80px" id="inputCON" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="reCalculateAS( 3)" style="width: 80px" id="inputCON" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                     <br>
@@ -2357,7 +2690,8 @@
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
-                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +X</h4>
+                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +</h4> &nbsp;
+                                        <h4 id="CON_RaceModifier" class="d-flex " style="font-weight: lighter; color: #5a6268"> </h4>
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
@@ -2375,7 +2709,7 @@
 
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputCONTotal" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <h5 id="CON_TOTAL" style="text-align: center; font-weight: bold; color: darkorange  "></h5>
                                     </div>
 
                                 </div>
@@ -2397,7 +2731,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input style="width: 80px" id="inputINT" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="reCalculateAS( 4)" style="width: 80px" id="inputINT" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                     <br>
@@ -2412,7 +2746,8 @@
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
-                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +X</h4>
+                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +</h4> &nbsp;
+                                        <h4 id="INT_RaceModifier" class="d-flex " style="font-weight: lighter; color: #5a6268"> </h4>
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
@@ -2430,7 +2765,7 @@
 
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputINTTotal" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <h5 id="INT_TOTAL" style="text-align: center; font-weight: bold; color: darkorange  "></h5>
                                     </div>
 
                                 </div>
@@ -2445,7 +2780,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input style="width: 80px" id="inputWIS" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="reCalculateAS( 5)" style="width: 80px" id="inputWIS" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                     <br>
@@ -2460,7 +2795,8 @@
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
-                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +X</h4>
+                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +</h4> &nbsp;
+                                        <h4 id="WIS_RaceModifier" class="d-flex " style="font-weight: lighter; color: #5a6268"> </h4>
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
@@ -2478,7 +2814,7 @@
 
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputWISTotal" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <h5 id="WIS_TOTAL" style="text-align: center; font-weight: bold; color: darkorange  "></h5>
                                     </div>
 
                                 </div>
@@ -2493,7 +2829,7 @@
                                     </div>
 
                                     <div class="d-flex justify-content-center">
-                                        <input style="width: 80px" id="inputCHA" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="reCalculateAS( 6)" style="width: 80px" id="inputCHA" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
 
@@ -2509,7 +2845,8 @@
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
-                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +X</h4>
+                                        <h4 class ="CharCreationHeader" style="font-weight: lighter; color: #5a6268"> +</h4> &nbsp;
+                                        <h4 id="CHA_RaceModifier" class="d-flex " style="font-weight: lighter; color: #5a6268"> </h4>
                                     </div>
 
                                     <div class="MOD d-flex justify-content-center">
@@ -2527,7 +2864,7 @@
 
 
                                     <div class="d-flex justify-content-center" >
-                                        <input style="width: 80px;" id="inputCHATotal" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <h5 id="CHA_TOTAL" style="text-align: center; font-weight: bold; color: darkorange  "></h5>
                                     </div>
 
                                 </div>
@@ -2829,10 +3166,7 @@
                         <h2>Background</h2>
                     </div>
                     <br>
-                    <div class="d-flex justify-content-center">
-                        <p style="font-weight: inherit; color: #5a6268 ">Select X</p>
-                    </div>
-                    <br>
+
 
 <!--                    ACCORDION 3                 -->
 
@@ -3439,7 +3773,8 @@
                     </div>
                     <br>
                     <div class="d-flex justify-content-center">
-                        <p id="LanguageProfCounter" style="font-weight: inherit; color: #5a6268 "> </p>
+                        <p class ="d-flex" style="font-weight: inherit; color: #5a6268 ">Select</p> &nbsp;
+                        <p id="LanguageProfLimiter" class ="d-flex " style="font-weight: inherit; color: darkorange "></p>
                     </div>
                     <br>
 
@@ -3449,7 +3784,7 @@
 
                                     <div class="d-flex " style=" border-bottom: 1px solid white;">
 
-                                        <input id ="CelestialAbyssalCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="CelestialAbyssalCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Celestial Abyssal </h4>
 
 
@@ -3457,7 +3792,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="CelestialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="CelestialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Celestial </h4>
 
 
@@ -3465,7 +3800,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="CommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="CommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Common </h4>
 
 
@@ -3473,7 +3808,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="DeepSpeechCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="DeepSpeechCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Deep Speech </h4>
 
 
@@ -3481,7 +3816,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="DraconicCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="DraconicCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Draconic </h4>
 
 
@@ -3489,7 +3824,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="DwarvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="DwarvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Dwarvish </h4>
 
 
@@ -3497,7 +3832,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="ElvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="ElvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Elvish </h4>
 
 
@@ -3505,7 +3840,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input id ="GiantCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="GiantCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Giant </h4>
 
 
@@ -3519,7 +3854,7 @@
                                     <div class="d-flex " style=" border-bottom: 1px solid white;">
 
 
-                                            <input id ="GnomishCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="GnomishCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Gnomish </h4>
 
 
@@ -3527,7 +3862,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="GoblinCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="GoblinCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Goblin </h4>
 
 
@@ -3535,7 +3870,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="HalflingCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="HalflingCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Halfling </h4>
 
 
@@ -3543,7 +3878,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="InfernalCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="InfernalCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Infernal </h4>
 
 
@@ -3551,7 +3886,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="OrcCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="OrcCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Orc </h4>
 
 
@@ -3559,7 +3894,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="PrimordialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="PrimordialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Primordial </h4>
 
 
@@ -3567,7 +3902,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="SylvanCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="SylvanCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Sylvan </h4>
 
 
@@ -3575,7 +3910,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input id ="UndercommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="UndercommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Undercommon </h4>
 
 
@@ -3586,7 +3921,56 @@
 
                             </div>
 
-</div>
+<!--                    TOOL PROFICIENCY        -->
+
+                    <br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Tool Proficiency</h2>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-center">
+                        <p class ="d-flex" style="font-weight: inherit; color: #5a6268 ">Select</p> &nbsp;
+                        <p id="ToolProfLimiter" class ="d-flex " style="font-weight: inherit; color: darkorange "></p>
+                    </div>
+
+                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex " style=" border-bottom: 1px solid white;">
+
+                                <input onclick="ToolProfCheck(this)" id ="BrewersSuppliesCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Brewer's Supplies </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="MasonsToolsCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Mason's Tools </h4>
+
+
+                            </div>
+                            <br>
+
+                        </div>
+
+                        <div style="order:0;" class="Rtable-cell  " >
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="SmithsToolsCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Smith's Tools </h4>
+
+
+                            </div>
+                            <br>
+
+                        </div>
+
+
+                    </div>
+                </div>
 
 
 
@@ -3841,7 +4225,7 @@
                                     </div>
 
                                     <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityIndividualItem1" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this, 1)" id="quantityIndividualItem1" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                 </div>
@@ -3859,7 +4243,7 @@
                                     </div>
 
                                     <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityIndividualItem2" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this, 2)" id="quantityIndividualItem2" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                 </div>
@@ -3877,7 +4261,7 @@
                                     </div>
 
                                     <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityIndividualItem3" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this, 3)" id="quantityIndividualItem3" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                 </div>
