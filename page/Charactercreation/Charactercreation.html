@@ -11,6 +11,27 @@
     <script type="application/javascript">
 
 
+        //Buttons
+        function newChar(){
+            window.location.href ="../Charactercreation/Charactercreation.html";
+        }
+
+        function toDashboard(){
+            window.location.href ="../UserDashboard/Dashboard.html";
+        }
+
+        function toAccount(){
+            window.location.href ="../Account/Account.html"
+        }
+
+        function logout() {
+            localStorage.clear();
+            window.location.href = "../Homepage/Homepage.html";
+        }
+
+
+
+
         window.addEventListener("load", function () {
 
             setUsername(User);
@@ -54,7 +75,7 @@
             }
         });
 
-        let User = "Renge";
+        let User = localStorage.userName;
 
         // Skill Prof Limiter
         let SkillProfNumber = 2;
@@ -1399,6 +1420,14 @@
 
 
 
+        //Save Sheet
+        function saveSheetCreation(){
+
+        }
+
+
+
+
 
     </script>
     <style>
@@ -1842,11 +1871,11 @@
                     <span class="sr-only"> Toggle Dropleft </span>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Account</a>
-                    <a class="dropdown-item" href="#">LogOut</a>
+                    <a class="dropdown-item" onclick="toAccount()">Account</a>
+                    <a class="dropdown-item" onclick="logout()">LogOut</a>
                 </div>
             </div>
-            <button type="button" class="btn btn-secondary">
+            <button type="button" class="btn btn-secondary" onclick="toDashboard()">
                 <span id="UserName2"></span>
             </button>
         </div>
@@ -1872,9 +1901,32 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-danger m-1">Save</button>
-                <button type="button" class="btn btn-success m-1">Preview</button>
-                <button type="button" class="btn btn-warning m-1 " >New +</button>
+                <button type="button" class="btn btn-danger m-1" onclick="saveSheetCreation()">Save</button>
+                <button type="button" class="btn btn-warning m-1" data-toggle="modal" data-target="#NewCharModal" >New +</button>
+
+                <div class="modal" id="NewCharModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="color: black !important;">
+
+                            <!-- Modal Header -->
+                            <div class="modal-header">
+                                <h4 class="modal-title">New Charactersheet</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                Are you sure you wish to proceed? All unsaved Progress will be lost.
+                            </div>
+
+                            <!-- Modal footer -->
+                            <div class="modal-footer d-flex justify-content-between" >
+                                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-success" data-dismiss="modal" onclick="newChar()">Create!</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>
