@@ -237,15 +237,63 @@
 
         }
 
-
+        // TEST
         //DETERMINE PASSIVE PERCEPTION
-        function determineStatsModifiers(WISTOTAL){
-            var x1 = WISTOTAL;
+        function determinePassivePerception(WISTOTAL){
+            var x1 = determineStatsModifiers(WISTOTAL);
 
-            var x2 = determineStatsModifiers(x1);
+            if(x1 === -5){
+                return 5;
+            }
+            if(x1 === -4){
+                return 6;
+            }
+            if(x1 === -3){
+                return 7;
+            }
+            if(x1 === -2){
+                return 8;
+            }
+            if(x1 === -1){
+                return 9;
+            }
+            if(x1 === 0){
+                return 10;
+            }
+            if(x1 === 1){
+                return 11;
+            }
+            if(x1 === 2){
+                return 12;
+            }
+            if(x1 === 3){
+                return 13;
+            }
+            if(x1 === 4){
+                return 14;
+            }
+            if(x1 === 5){
+                return 15;
+            }
+            if(x1 === 6){
+                return 16;
+            }
+            if(x1 === 7){
+                return 17;
+            }  if(x1 === 8){
+                return 18;
+            }  if(x1 === 9){
+                return 19;
+            }
+            if(x1 === 10){
+                return 20;
+            }
 
-            var x3 = x1 - x2;
-            alert(x2);
+
+
+
+
+
 
 
         }
@@ -2909,7 +2957,7 @@
                     </div>
                     <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option onclick="determineStatsModifiers()"  value="1">Fighter</option>
+                        <option onclick="determinePassivePerception(1)"  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
