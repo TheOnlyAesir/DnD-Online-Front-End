@@ -43,7 +43,7 @@ html{
 }
 
 .content {
-    max-width: 100%;
+    max-width: 1440px;
     padding: 16px;
     width: 100%;
 }
@@ -129,7 +129,7 @@ html{
 .image {
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 0.5%
+    padding-top: 0.5%;
 }
 
 #lining {

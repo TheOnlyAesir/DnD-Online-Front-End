@@ -1435,9 +1435,45 @@
 
         //Edit Sheet
         function editSheet(){
-            if(getParameterByName('c') != 0){
+            if(getParameterByName('c') != null){
                 let charID = getParameterByName('c');
-                alert(charID);
+                // alert(charID);
+                if(charID !== 0){
+                    fetch('http://localhost:8181/api/v1.0/User/' + localStorage.userID + '/Charactersheets/' + charID, {
+                        method: 'get',
+                    })
+                        .then(function (response) {
+                            if(response.status !== 200) throw("error!");
+
+                            return response.json();
+
+                        })
+                        .then(function (data) {
+
+
+
+                            //Race
+                            //==========================================================================
+                            if(data.race === "Dwarf"){
+
+                            }
+                            else if(data.race === "Human"){
+
+                            }
+                            else if(data.race === "Elf"){
+
+                            }
+
+                        })
+
+                        .catch(function (error) {
+                            alert(error);
+                        });
+
+
+
+
+                }
             }
 
         }
