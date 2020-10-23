@@ -1700,8 +1700,12 @@
                     .then(function (data) {
                         if(data.status !== 200) throw("error!");
 
-                        // alert("success!");
-
+                        // postEquipment();
+                         alert(data);
+                        return data.json();
+                    })
+                    .then(function (response){
+                        postEquipment(response);
                     })
                     .catch(function (error) {
                         alert(error);
@@ -1710,6 +1714,84 @@
         }
 
 
+        function postEquipment(charID){
+            if(document.getElementById("ChainMailCheckbox").checked){
+                if(document.getElementById("ChainMailBackendID").innerText !== null){
+                    let chainMail = {
+                        "wearable": "Chain Mail",
+                        "details": "" + ChainMailDetails + "",
+                        "armorClass": ChainMailBaseAC
+                    }
+                    let chainMailPost = JSON.stringify(chainMail);
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable', {
+                        method: 'post',
+                        body: chainMailPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+
+                }
+            }
+            if(document.getElementById("LeatherCheckbox").checked){
+                if(document.getElementById("LeatherBackendID").innerText !== null){
+                    let leather = {
+                        "wearable": LeatherName,
+                        "details": "" + LeatherDetails + "",
+                        "armorClass": LeatherBaseAC
+                    }
+                    let leatherPost = JSON.stringify(leather);
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable', {
+                        method: 'post',
+                        body: leatherPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+
+
+                }
+            }
+            if(document.getElementById("PlateCheckbox").checked){
+                if(document.getElementById("PlateBackendID").innerText !== null){
+                    let plate = {
+                        "wearable": PlateName,
+                        "details": "" + PlateDetails + "",
+                        "armorClass": PlateBaseAC
+                    }
+                    let platePost = JSON.stringify(plate);
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable', {
+                        method: 'post',
+                        body: platePost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+
+                }
+            }
+        }
 
 
 
@@ -4419,6 +4501,7 @@
 
                                     <div class ="d-flex">
                                         <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <span class="hidden" id="ChainMailBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Chain Mail </h4>
                                     </div>
 
@@ -4433,6 +4516,7 @@
 
                                     <div class ="d-flex">
                                         <input id ="LeatherCheckbox" onclick="hideArmorSelect(2)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <span class="hidden" id="LeatherBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Leather </h4>
                                     </div>
 
@@ -4447,6 +4531,7 @@
 
                                     <div class ="d-flex">
                                         <input id ="PlateCheckbox" onclick="hideArmorSelect(3)" class="ArmorCheckboxes Stealthcheckbox d-flex" checked="false" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <span class="hidden" id="PlateBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Plate </h4>
                                     </div>
 
