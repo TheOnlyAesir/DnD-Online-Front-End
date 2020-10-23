@@ -1673,11 +1673,12 @@
 
 
             determineSpeed();
+            determineCharacterArmorClass(document.getElementById("DEX_TOTAL").innerText);
 
             let charsheet = {
                 "characterName": ""+ document.getElementById("CharNameInput").value +"",
                 "initiative": determineStatsModifiers(document.getElementById("DEX_TOTAL").innerText),
-                "armorClass": "" +  + "",
+                "armorClass": ArmorClass,
                 "speed": Speed,
                 "passivePerception":  determinePassivePerception(document.getElementById("WIS_TOTAL").innerText),
                 "level": "" + document.getElementById("inputGroupSelect02").value + "",
@@ -1882,7 +1883,7 @@
                     let chainMail = {
                         "wearable": "Chain Mail",
                         "details": "" + ChainMailDetails + "",
-                        "armorClass": ChainMailBaseAC
+                        "armorClass": determinePossibleArmorClass(document.getElementById("DEX_TOTAL").innerText, ChainMailID)
                     }
                     let chainMailPost = JSON.stringify(chainMail);
                     fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable', {
@@ -1907,7 +1908,7 @@
                     let leather = {
                         "wearable": LeatherName,
                         "details": "" + LeatherDetails + "",
-                        "armorClass": LeatherBaseAC
+                        "armorClass": determinePossibleArmorClass(document.getElementById("DEX_TOTAL").innerText, LeatherID)
                     }
                     let leatherPost = JSON.stringify(leather);
                     fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable', {
@@ -2083,6 +2084,203 @@
 
                             //Ability Scores
                             //==========================================================================
+
+
+                            //Alignment
+                            //==========================================================================
+                            if(data.characterDescription.alignment == "Chaotic Evil")
+                                document.getElementById("ChaoticEvilCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Chaotic Neutral")
+                                document.getElementById("ChaoticNeutralCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Chaotic Good")
+                                document.getElementById("ChaoticGoodCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Neutral Evil")
+                                document.getElementById("NeutralEvilCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Neutral")
+                                document.getElementById("NeutralCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Neutral Good")
+                                document.getElementById("NeutralGoodCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Lawful Evil" )
+                                document.getElementById("LawfulEvilCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Lawful Neutral" )
+                                document.getElementById("LawfulNeutralCheckbox").checked = true;
+                            else if(data.characterDescription.alignment == "Lawful Good" )
+                                document.getElementById("LawfulGoodCheckbox").checked = true;
+
+                            //Background
+                            //==========================================================================
+                            if(data.characterDescription.background == "Acolyte"){
+                                document.getElementById("AcolyteCheckbox").checked = true;
+                            }
+
+                            //Skills
+                            //==========================================================================
+                            if(data.skills.deception_prof)
+                                document.getElementById("DeceptionProf").checked = true;
+                            if(data.skills.intimidation_prof)
+                                document.getElementById("IntimidationProf").checked = true;
+                            if(data.skills.performance_prof)
+                                document.getElementById("PerformanceProf").checked = true;
+                            if(data.skills.persuasion_prof)
+                                document.getElementById("PersuasionProf").checked = true;
+                            if(data.skills.acrobatics_prof)
+                                document.getElementById("AcrobaticsProf").checked = true;
+                            if(data.skills.sleight_of_hand_prof)
+                                document.getElementById("SleightOfHandProf").checked = true;
+                            if(data.skills.stealth_prof)
+                                document.getElementById("StealthProf").checked = true;
+                            if(data.skills.arcana_prof)
+                                document.getElementById("ArcanaProf").checked = true;
+                            if(data.skills.history_prof)
+                                document.getElementById("HistoryProf").checked = true;
+                            if(data.skills.investigation_prof)
+                                document.getElementById("InvestigationProf").checked = true;
+                            if(data.skills.nature_prof)
+                                document.getElementById("NatureProf").checked = true;
+                            if(data.skills.religion_prof)
+                                document.getElementById("ReligionProf").checked = true;
+                            if(data.skills.athletics_prof)
+                                document.getElementById("AthleticsProf").checked = true;
+                            if(data.skills.animal_handling_prof)
+                                document.getElementById("AnimalHandlingProf").checked = true;
+                            if(data.skills.insight_prof)
+                                document.getElementById("InsightProf").checked = true;
+                            if(data.skills.medicine_prof)
+                                document.getElementById("MedicineProf").checked = true;
+                            if(data.skills.perception_prof)
+                                document.getElementById("PerceptionProf").checked = true;
+                            if(data.skills.survival_prof)
+                                document.getElementById("SurvivalProf").checked = true;
+
+                            //Languages
+                            //==========================================================================
+                            if(data.languageProficiencies.undercommon)
+                                document.getElementById("UndercommonCheckbox").checked.true;
+                            if(data.languageProficiencies.celestial)
+                                document.getElementById("CelestialCheckbox").checked.true;
+                            if(data.languageProficiencies.dwarvish)
+                                document.getElementById("DwarvishCheckbox").checked.true;
+                            if(data.languageProficiencies.goblin)
+                                document.getElementById("GoblinCheckbox").checked.true;
+                            if(data.languageProficiencies.halfling)
+                                document.getElementById("HalflingCheckbox").checked.true;
+                            if(data.languageProficiencies.common)
+                                document.getElementById("CommonCheckbox").checked.true;
+                            if(data.languageProficiencies.elvish)
+                                document.getElementById("ElvishCheckbox").checked.true;
+                            if(data.languageProficiencies.orc)
+                                document.getElementById("OrcCheckbox").checked.true;
+                            if(data.languageProficiencies.primordial)
+                                document.getElementById("PrimordialCheckbox").checked.true;
+                            if(data.languageProficiencies.draconic)
+                                document.getElementById("DraconicCheckbox").checked.true;
+                            if(data.languageProficiencies.sylvan)
+                                document.getElementById("SylvanCheckbox").checked.true;
+                            if(data.languageProficiencies.deepSpeech)
+                                document.getElementById("DeepSpeechCheckbox").checked.true;
+                            if(data.languageProficiencies.abyssal)
+                                document.getElementById("CelestialAbyssalCheckbox").checked.true;
+                            if(data.languageProficiencies.giant)
+                                document.getElementById("GiantCheckbox").checked.true;
+                            if(data.languageProficiencies.gnomish)
+                                document.getElementById("GnomishCheckbox").checked.true;
+                            if(data.languageProficiencies.infernal)
+                                document.getElementById("InfernalCheckbox").checked.true;
+
+                            //Tools
+                            //==========================================================================
+                            if(data.toolProficiencies.alchemistSupplies)
+                                document.getElementById("alchemistSuppliesCheckbox").checked = true;
+                            if(data.toolProficiencies.bagpipes)
+                                document.getElementById("bagpipesCheckbox").checked = true;
+                            if(data.toolProficiencies.brewerSupplies)
+                                document.getElementById("brewerSuppliesCheckbox").checked = true;
+                            if(data.toolProficiencies.calligrapherSupplies)
+                                document.getElementById("calligrapherSuppliesCheckbox").checked = true;
+                            if(data.toolProficiencies.carpenterTools)
+                                document.getElementById("carpenterToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.cartographerTools)
+                                document.getElementById("cartographerToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.cobblerTools)
+                                document.getElementById("cobblerToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.cookUtensils)
+                                document.getElementById("cookUtensilsCheckbox").checked = true;
+                            if(data.toolProficiencies.diceSet)
+                                document.getElementById("diceSetCheckbox").checked = true;
+                            if(data.toolProficiencies.disguiseKit)
+                                document.getElementById("disguiseKitCheckbox").checked = true;
+                            if(data.toolProficiencies.dragonchessSet)
+                                document.getElementById("dragonchessSetCheckbox").checked = true;
+                            if(data.toolProficiencies.drum)
+                                document.getElementById("drumCheckbox").checked = true;
+                            if(data.toolProficiencies.dulcimer)
+                                document.getElementById("dulcimerCheckbox").checked = true;
+                            if(data.toolProficiencies.flute)
+                                document.getElementById("fluteCheckbox").checked = true;
+                            if(data.toolProficiencies.forgeryKit)
+                                document.getElementById("forgeryKitCheckbox").checked = true;
+                            if(data.toolProficiencies.glassblowerTools)
+                                document.getElementById("glassblowerToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.herbalismKit)
+                                document.getElementById("herbalismKitCheckbox").checked = true;
+                            if(data.toolProficiencies.horn)
+                                document.getElementById("hornCheckbox").checked = true;
+                            if(data.toolProficiencies.jewelersTools)
+                                document.getElementById("jewelersToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.landVehicles)
+                                document.getElementById("landVehiclesCheckbox").checked = true;
+                            if(data.toolProficiencies.leatherworkerTools)
+                                document.getElementById("leatherworkerToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.lute)
+                                document.getElementById("luteCheckbox").checked = true;
+                            if(data.toolProficiencies.lyre)
+                                document.getElementById("lyreCheckbox").checked = true;
+                            if(data.toolProficiencies.masonTools)
+                                document.getElementById("masonToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.navigatorTools)
+                                document.getElementById("navigatorToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.painterTools)
+                                document.getElementById("painterToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.poisonerKit)
+                                document.getElementById("poisonerKitCheckbox").checked = true;
+                            if(data.toolProficiencies.potterTools)
+                                document.getElementById("potterToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.shawm)
+                                document.getElementById("shawmCheckbox").checked = true;
+                            if(data.toolProficiencies.smithTools)
+                                document.getElementById("SmithsToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.thieveTools)
+                                document.getElementById("thieveToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.threeDragonAnteSet)
+                                document.getElementById("threeDragonAnteSetCheckbox").checked = true;
+                            if(data.toolProficiencies.tinkerTools)
+                                document.getElementById("tinkerToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.viol)
+                                document.getElementById("violCheckbox").checked = true;
+                            if(data.toolProficiencies.waterVehicles)
+                                document.getElementById("waterVehiclesCheckbox").checked = true;
+                            if(data.toolProficiencies.weaverTools)
+                                document.getElementById("weaverToolsCheckbox").checked = true;
+                            if(data.toolProficiencies.woodcarverTools)
+                                document.getElementById("woodcarverToolsCheckbox").checked = true;
+
+                            //Description
+                            //==========================================================================
+                            document.getElementById("CharNameInput").value = data.characterName;
+                            document.getElementById("CharSexInput").value = data.characterDescription.gender;
+                            document.getElementById("CharEyeColorInput").value = data.characterDescription.eyes;
+                            document.getElementById("CharHairColorInput").value = data.characterDescription.hair;
+                            document.getElementById("CharSkinColortInput").value = data.characterDescription.characterAppearance;
+                            document.getElementById("CharAgeInput").value = data.characterDescription.age;
+                            document.getElementById("CharHeightInput").value = data.characterDescription.height;
+                            document.getElementById("CharWeightInput").value = data.characterDescription.weight;
+                            document.getElementById("CharPersonalityTrait1Input").value = data.characterDescription.personalityTraits;
+                            document.getElementById("CharPersonalityTrait2Input").value = data.characterDescription.personalityTraits2;
+                            document.getElementById("CharIdealsInput").value = data.characterDescription.ideals;
+                            document.getElementById("CharBondsInput").value = data.characterDescription.bonds;
+                            document.getElementById("CharFlawsInput").value = data.characterDescription.flaws;
+                            document.getElementById("CharAlliesAndOrganisationsInput").value = data.characterDescription.alliesAndOrganizations;
+                            document.getElementById("CharBackstoryInput").value = data.characterDescription.characterBackstory;
 
 
 
