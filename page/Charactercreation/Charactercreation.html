@@ -141,6 +141,10 @@
         let Speed = 0;
 
         //ARMOR
+        let LeatherID = 1;
+        let ChainMailID = 2;
+        let PlateID = 3;
+
         let LeatherBaseAC = 11;
         let ChainMailBaseAC = 16;
         let PlateBaseAC = 18;
@@ -334,7 +338,7 @@
 
         }
 
-        // TEST
+
         //DETERMINE ARMOR CLASS
         function determineCharacterArmorClass(DEXMOD){
 
@@ -352,7 +356,27 @@
                 ArmorClass = ChainMailBaseAC + modifier;
             }
             if(Plate.checked){
-                ArmorClass = PlateBaseAC + modifier;
+                ArmorClass = PlateBaseAC
+            }
+
+        }
+
+        // TEST
+        //DETERMINE POSSIBLE ARMOR CLASS
+        function determinePossibleArmorClass(DEXMOD, ArmorID){
+            var x;
+
+            if(ArmorID === 1){
+                x = LeatherBaseAC + modifiers;
+                return x;
+            }
+            if(ArmorID === 2){
+                x = ChainMailBaseAC + modifiers;
+                return x;
+            }
+            if(Plate.checked){
+                x = PlateBaseAC
+                return x;
             }
 
         }
