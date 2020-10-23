@@ -74,6 +74,13 @@
                 SkillProfCheckboxDefault[i].checked = false;
             }
 
+            // DEFAULT -> UNCHECKED SKILL PROF
+            var ArmorCheckboxDefault = document.getElementsByClassName("ArmorCheckboxes");
+
+            for(var i=0 ; i<ArmorCheckboxDefault.length; i++){
+                ArmorCheckboxDefault[i].checked = false;
+            }
+
 
 
             editSheet();
@@ -125,8 +132,18 @@
         let martialMeleeWeapons = false;
         let martialRangedWeapons = false;
 
+        let lightArmor = false;
+        let mediumArmor = false;
+        let heavyArmor = false;
+        let shield = false;
+
         //SPEED
         let Speed = 0;
+
+        //ARMOR CLASS (VARIABLE)
+        let LeatherBaseAC = 11;
+        let ChainMailBaseAC = 16;
+        let PlateBaseAC = 18;
 
         //ARMOR CLASS
         let ArmorClass = 5;
@@ -143,6 +160,11 @@
                 simpleRangedWeapons = true;
                 martialMeleeWeapons = true;
                 martialRangedWeapons = true;
+
+                lightArmor = true;
+                mediumArmor = true;
+                heavyArmor = true;
+                shield = true;
             }
 
             if(document.getElementById("inputGroupSelect01").value == 2){
@@ -150,7 +172,11 @@
                 simpleRangedWeapons = false;
                 martialMeleeWeapons = false;
                 martialRangedWeapons = false;
-                alert(simpleRangedWeapons);
+
+                lightArmor = true;
+                mediumArmor = false;
+                heavyArmor = false;
+                shield = false;
             }
 
             if(document.getElementById("inputGroupSelect01").value == 3){
@@ -158,7 +184,11 @@
                 simpleRangedWeapons = true;
                 martialMeleeWeapons = true;
                 martialRangedWeapons = true;
-                alert(simpleRangedWeapons);
+
+                lightArmor = true;
+                mediumArmor = true;
+                heavyArmor = false;
+                shield = true;
             }
 
         }
@@ -295,15 +325,23 @@
 
         // TEST
         //DETERMINE ARMOR CLASS
-        function determineArmorClass(){
+        function determineCharacterArmorClass(DEXMOD){
+
+            var modifier = determineStatsModifiers(DEXMOD);
 
             var leather = document.getElementById("LeatherCheckbox");
             var ChainMail = document.getElementById("ChainMailCheckbox");
             var Plate = document.getElementById("PlateCheckbox");
 
-            if( !Plate.checked ){
-                alert("AC : 6");
 
+            if(leather.checked && !ChainMail.checked && !Plate.checked){
+                ArmorClass = LeatherBaseAC + modifier;
+            }
+            if(ChainMail.checked && !Plate.checked){
+                ArmorClass = ChainMailBaseAC + modifier;
+            }
+            if(Plate.checked){
+                ArmorClass = PlateBaseAC + modifier;
             }
 
         }
@@ -1604,19 +1642,19 @@
 
 
             if(contentNumber === 1){
-                checkIfNegativeNum(document.getElementById("quantityChainMail"));
+
                 ChainMail.classList.remove("hidden");
                 ChainMailCheckbox.checked = true;
             }
 
             if(contentNumber === 2){
-                checkIfNegativeNum(document.getElementById("quantityLeather"));
+
                 Leather.classList.remove("hidden");
                 LeatherCheckbox.checked = true;
             }
 
             if(contentNumber === 3){
-                checkIfNegativeNum(document.getElementById("quantityPlate"));
+
                 Plate.classList.remove("hidden");
                 PlateCheckbox.checked = true;
             }
@@ -1629,27 +1667,22 @@
                             var Leather = document.getElementById("LeatherSelect");
                             var Plate = document.getElementById("PlateSelect");
 
-                            var ChainMailQuantity = document.getElementById("quantityChainMail");
-                            var LeatherQuantity = document.getElementById("quantityLeather");
-                            var PlateQuantity = document.getElementById("quantityPlate");
+
 
                             if(contentNumber === 1){
-                                resetArmorQuantity(ChainMailQuantity);
+
                                 ChainMail.classList.add("hidden");
                             }
                             if(contentNumber === 2){
-                                resetArmorQuantity(LeatherQuantity);
+
                                 Leather.classList.add("hidden");
                             }
                             if(contentNumber === 3){
-                                resetArmorQuantity(PlateQuantity);
+
                                 Plate.classList.add("hidden");
                             }
                         }
-                        //RESET ITS QUANTITY NUMBER TO NULL (0) ;
-                        function resetArmorQuantity(e){
-                            e.value = null;
-                        }
+
 
 
 
@@ -2971,7 +3004,7 @@
                     </div>
                     <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option onclick="determineArmorClass()"  value="1">Fighter</option>
+                        <option onclick="determineCharacterArmorClass(1)"  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
@@ -4807,48 +4840,41 @@
 
 
                             <div id= "ChainMailSelect" class="hidden">
-                                <div class="d-flex justify-content-between"  >
+                                <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Chain Mail </h4>
                                     </div>
 
-                                    <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityChainMail" style="width: 80px;" id="inputChainMail" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
+
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px;  "> </div>
                             </div>
                             <br>
                             <div id= "LeatherSelect" class="hidden">
-                                <div class="d-flex justify-content-between"  >
+                                <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Leather </h4>
                                     </div>
 
-                                    <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityLeather" style="width: 80px;" id="inputLeather" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
+
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
                             </div>
                             <br>
                             <div id= "PlateSelect" class="hidden">
-                                <div class="d-flex justify-content-between"  >
+                                <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3)" class="ArmorCheckboxes Stealthcheckbox d-flex" checked="false" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Plate </h4>
                                     </div>
 
-                                    <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityPlate" style="width: 80px;" id="inputPlate" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
@@ -4975,7 +5001,7 @@
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input onclick = "resetIndividualItemInput(this, 3);" id ="IndividualItem3Checkbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick = "resetIndividualItemInput(this, 3);" id ="IndividualItem3Checkbox" onclick="hideArmorSelect(3)" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <input onchange="CheckCheckbox(this, 3)" id ="IndividualItem3" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                                     </div>
