@@ -361,26 +361,31 @@
 
         }
 
-        // TEST
+
         //DETERMINE POSSIBLE ARMOR CLASS
         function determinePossibleArmorClass(DEXMOD, ArmorID){
+            var id = ArmorID;
             var x;
 
-            if(ArmorID === 1){
+            if(id === 1){
                 x = LeatherBaseAC + modifiers;
                 return x;
             }
-            if(ArmorID === 2){
+            if(id === 2){
                 x = ChainMailBaseAC + modifiers;
                 return x;
             }
-            if(Plate.checked){
+            if(id === 3){
                 x = PlateBaseAC
                 return x;
             }
 
         }
 
+        //HIT DICE VALUE
+        function determineHitDiceValue(){
+
+        }
 
 
 
