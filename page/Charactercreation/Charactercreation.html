@@ -1613,6 +1613,14 @@
 
         //Save Sheet
         function saveSheetCreation(){
+            if(getParameterByName('c') != null) {
+                let charID = getParameterByName('c');
+
+                //Post with ID
+            }
+            else{
+                //Post without ID
+            }
 
         }
 
@@ -1625,7 +1633,7 @@
                 let charID = getParameterByName('c');
                 // alert(charID);
                 if(charID !== 0){
-                    fetch('http://localhost:8181/api/v1.0/User/' + localStorage.userID + '/Charactersheets/' + charID, {
+                    fetch('http://localhost:8181/api/v1.0/User/' + localStorage.userID + '/Group/1/Charactersheet/' + charID, {
                         method: 'get',
                     })
                         .then(function (response) {
@@ -1641,14 +1649,115 @@
                             //Race
                             //==========================================================================
                             if(data.race === "Dwarf"){
+                                let dwarf = document.getElementById("DwarfCheckBox");
+                                dwarf.checked = true;
+                                setRaceModifiers(dwarf,1); showProf(dwarf,1);
 
                             }
                             else if(data.race === "Human"){
-
+                                let human =document.getElementById("HumanCheckBox");
+                                human.checked = true;
+                                setRaceModifiers(human,1); showProf(human,1);
                             }
                             else if(data.race === "Elf"){
-
+                                let elf = document.getElementById("ElfCheckBox");
+                                elf.checked = true;
+                                setRaceModifiers(elf,1); showProf(elf,1);
                             }
+
+                            //Level
+                            //==========================================================================
+                            let levelSelect = document.getElementById("inputGroupSelect02");
+                            switch (data.level){
+                                case 1:
+                                    levelSelect.value = 1;
+                                    break;
+                                case 2:
+                                    levelSelect.value = 2;
+                                    break;
+                                case 3:
+                                    levelSelect.value = 3;
+                                    break;
+                                case 4:
+                                    levelSelect.value = 4;
+                                    break;
+                                case 5:
+                                    levelSelect.value = 5;
+                                    break;
+                                case 6:
+                                    levelSelect.value = 6;
+                                    break;
+                                case 7:
+                                    levelSelect.value = 7;
+                                    break;
+                                case 8:
+                                    levelSelect.value = 8;
+                                    break;
+                                case 9:
+                                    levelSelect.value = 9;
+                                    break;
+                                case 10:
+                                    levelSelect.value = 10;
+                                    break;
+                                case 11:
+                                    levelSelect.value = 11;
+                                    break;
+                                case 12:
+                                    levelSelect.value = 12;
+                                    break;
+                                case 13:
+                                    levelSelect.value = 13;
+                                    break;
+                                case 14:
+                                    levelSelect.value = 14;
+                                    break;
+                                case 15:
+                                    levelSelect.value = 15;
+                                    break;
+                                case 16:
+                                    levelSelect.value = 16;
+                                    break;
+                                case 17:
+                                    levelSelect.value = 17;
+                                    break;
+                                case 18:
+                                    levelSelect.value = 18;
+                                    break;
+                                case 19:
+                                    levelSelect.value = 19;
+                                    break;
+                                case 20:
+                                    levelSelect.value = 20;
+                                    break;
+                            }
+
+
+                            //Hit-Points
+                            //==========================================================================
+                            let hp = document.getElementById("inputHitPoints");
+                            hp.value = data.life.maximumHitPoints;
+
+                            //Class
+                            //==========================================================================
+                            let charClass = document.getElementById("inputGroupSelect01");
+                            if (data.class === "Fighter"){
+                                charClass.value = 1;
+                            }
+                            if (data.class === "Wizard"){
+                                charClass.value = 2;
+                            }
+                            if (data.class === "Ranger"){
+                                charClass.value = 3;
+                            }
+
+                            //Ability Scores
+                            //==========================================================================
+
+
+
+
+
+
 
                         })
 
@@ -2250,7 +2359,7 @@
                                                                          <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                  </td>
                                                                  <td class="col text-center" >
-                                                                     <input onclick="setRaceModifiers(this,1); showProf(this,1) " class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                     <input onclick="setRaceModifiers(this,1); showProf(this,1) " class ="racescheckbox" id="DwarfCheckBox" type="checkbox" aria-label="Checkbox for following text input">
                                                                  </td>
                                                              </tr>
                                                                 </table>
@@ -2272,11 +2381,11 @@
                                                                 <tr>
                                                                     <td width="80%">
 
-                                                                        <i class ="racesinfo">speed +25, Darkvision 60 feet, CON +2, poison damage resistance</i><br>
-                                                                        <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                                        <i class ="racesinfo">speed +30</i><br>
+                                                                        <p class="racesinfo" >Humans are physically diverse and highly adaptable. They excel in nearly every profession.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input onclick="setRaceModifiers(this, 2) ;showProf(this,2)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 2) ;showProf(this,2)" class ="racescheckbox" id="HumanCheckBox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -2298,11 +2407,11 @@
                                                             <table class="card-body cb2">
                                                                 <tr>
                                                                     <td width="80%">
-                                                                        <i class ="racesinfo">speed +25, Darkvision 60 feet, CON +2, poison damage resistance</i><br>
-                                                                        <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
+                                                                        <i class ="racesinfo">speed +30, Darkvision 60 feet, DEX +2, magical-sleep immunity, Perception proficiency</i><br>
+                                                                        <p class="racesinfo" >Elves are graceful, magical creatures, with a slight build.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input onclick="setRaceModifiers(this, 3) ;showProf(this,3)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 3) ;showProf(this,3)" class ="racescheckbox" id="ElfCheckBox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
