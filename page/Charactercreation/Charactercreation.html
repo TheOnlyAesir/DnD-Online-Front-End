@@ -67,7 +67,7 @@
             calcWISTOTAL();
             calcCHATOTAL();
 
-            //DEFAULT -> UNCHECKED
+            //DEFAULT -> UNCHECKED SKILL PROF
             var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
 
             for(var i=0 ; i<SkillProfCheckboxDefault.length; i++){
@@ -77,6 +77,14 @@
 
 
             editSheet();
+
+
+            //DEFAULT -> UNCHECKED RACE
+            var RaceCheckboxDefault = document.getElementsByClassName("racescheckbox");
+
+            for(var i=0 ; i<RaceCheckboxDefault.length; i++){
+                RaceCheckboxDefault[i].checked = false;
+            }
 
         });
 
@@ -128,22 +136,26 @@
 
         //LIMITERS
 
-        function setSkillProfLimiter(SkillProfNumber){
+        function setSkillProfLimiter(SkillProfNumberx){
+            SkillProfNumber = SkillProfNumberx;
             document.getElementById("SkillProfLimiter").innerText = SkillProfNumber;
             return SkillProfNumber;
         }
 
-        function setSAlignmentNumber(AlignmentNumber){
+        function setSAlignmentNumber(AlignmentNumberx){
+            AlignmentNumber = AlignmentNumberx;
             document.getElementById("AlignmentLimiter").innerText = AlignmentNumber;
             return AlignmentNumber;
         }
 
-        function setToolProfNumber(ToolProfNumber){
+        function setToolProfNumber(ToolProfNumberx){
+            ToolProfNumber = ToolProfNumberx;
             document.getElementById("ToolProfLimiter").innerText = ToolProfNumber;
             return ToolProfNumber;
         }
 
-        function setLanguageProfNumber(LanguageProfNumber){
+        function setLanguageProfNumber(LanguageProfNumberx){
+            LanguageProfNumber = LanguageProfNumberx;
             document.getElementById("LanguageProfLimiter").innerText = LanguageProfNumber;
             return LanguageProfNumber;
         }
@@ -182,32 +194,38 @@
 
         // RACE MODIFIERS
 
-        function setSTR_ModifierNumber(STR_ModifierNumber){
+        function setSTR_ModifierNumber(STR_ModifierNumberx){
+            STR_ModifierNumber = STR_ModifierNumberx;
             document.getElementById("STR_RaceModifier").innerText = STR_ModifierNumber;
             return STR_ModifierNumber;
         }
 
-        function setDEX_ModifierNumber(DEX_ModifierNumber){
+        function setDEX_ModifierNumber(DEX_ModifierNumberx){
+            DEX_ModifierNumber = DEX_ModifierNumberx;
             document.getElementById("DEX_RaceModifier").innerText = DEX_ModifierNumber;
             return DEX_ModifierNumber;
         }
 
-        function setCON_ModifierNumber(CON_ModifierNumber){
+        function setCON_ModifierNumber(CON_ModifierNumberx){
+            CON_ModifierNumber = CON_ModifierNumberx;
             document.getElementById("CON_RaceModifier").innerText = CON_ModifierNumber;
             return CON_ModifierNumber;
         }
 
-        function setINT_ModifierNumber(INT_ModifierNumber){
+        function setINT_ModifierNumber(INT_ModifierNumberx){
+            INT_ModifierNumber = INT_ModifierNumberx;
             document.getElementById("INT_RaceModifier").innerText = INT_ModifierNumber;
             return INT_ModifierNumber;
         }
 
-        function setWIS_ModifierNumber(WIS_ModifierNumber){
+        function setWIS_ModifierNumber(WIS_ModifierNumberx){
+            WIS_ModifierNumber = WIS_ModifierNumberx;
             document.getElementById("WIS_RaceModifier").innerText = WIS_ModifierNumber;
             return WIS_ModifierNumber;
         }
 
-        function setCHA_ModifierNumber(CHA_ModifierNumber){
+        function setCHA_ModifierNumber(CHA_ModifierNumberx){
+            CHA_ModifierNumber = CHA_ModifierNumberx;
             document.getElementById("CHA_RaceModifier").innerText = CHA_ModifierNumber;
             return CHA_ModifierNumber;
         }
@@ -229,6 +247,7 @@
             var raceModifier = DEX_ModifierNumber;
 
             var DEXTOTAL = x + raceModifier;
+
             document.getElementById("DEX_TOTAL").innerText = DEXTOTAL;
             return DEXTOTAL;
         }
@@ -747,6 +766,7 @@
                 setWIS_ModifierNumber(0);
                 setCHA_ModifierNumber(0);
                 reCalculateAS(7);
+
             }
 
             if ((e.checked == true) && contentNumber === 2){
@@ -756,6 +776,7 @@
                 setINT_ModifierNumber(1);
                 setWIS_ModifierNumber(1);
                 setCHA_ModifierNumber(1);
+                reCalculateAS(7);
             }
 
             if ((e.checked == true) && contentNumber === 3){
@@ -765,6 +786,8 @@
                 setINT_ModifierNumber(0);
                 setWIS_ModifierNumber(0);
                 setCHA_ModifierNumber(0);
+                reCalculateAS(7);
+
             }
 
             if ((!e.checked)  == true){
@@ -774,8 +797,111 @@
                 setINT_ModifierNumber(0);
                 setWIS_ModifierNumber(0);
                 setCHA_ModifierNumber(0);
+                reCalculateAS(7);
 
             }
+
+        }
+
+        function resetCheckboxes(){
+            //reset
+            var SkillProfCheckboxDefault = document.getElementsByClassName("SkillProfCheckbox");
+
+            for(var i=0 ; i<SkillProfCheckboxDefault.length; i++){
+                SkillProfCheckboxDefault[i].checked = false;
+            }
+            setSkillProfLimiter(2);
+
+            var LanguageCheckboxDefault = document.getElementsByClassName("LanguageCheckboxes");
+
+            for(var i=0 ; i<LanguageCheckboxDefault.length; i++){
+                LanguageCheckboxDefault[i].checked = false;
+            }
+            setLanguageProfNumber(1);
+
+            var ToolProfCheckboxDefault = document.getElementsByClassName("ToolProfCheckboxes");
+
+            for(var i=0 ; i<ToolProfCheckboxDefault.length; i++){
+                ToolProfCheckboxDefault[i].checked = false;
+            }
+            setToolProfNumber(1);
+
+
+        }
+
+        //SHOW PROFICIENCIES SELECTION BASED ON RACE
+
+        function showProf(e, ContentNumber){
+
+            if(((e.checked) == true) && ContentNumber === 1){
+
+                document.getElementById("ProficienicesITEMS").classList.remove("hidden");
+
+                resetCheckboxes();
+
+                //Language
+                document.getElementById("LanguageProfDiv").classList.add("hidden");
+                document.getElementById("DwarvishCheckbox").checked = true;
+
+                //SKill Prof
+                document.getElementById("Acrobatics_accordion").classList.remove("hidden");
+                document.getElementById("AnimalHandling_accordion").classList.remove("hidden");
+                document.getElementById("Athletics_accordion").classList.remove("hidden");
+                document.getElementById("History_accordion").classList.remove("hidden");
+                document.getElementById("Insight_accordion").classList.remove("hidden");
+                document.getElementById("Intimidation_accordion").classList.remove("hidden");
+                document.getElementById("Perception_accordion").classList.remove("hidden");
+                document.getElementById("Survival_accordion").classList.remove("hidden");
+
+            }
+
+            if(((e.checked) == true) && ContentNumber === 2){
+
+                document.getElementById("ProficienicesITEMS").classList.remove("hidden");
+
+                resetCheckboxes();
+
+                document.getElementById("LanguageProfDiv").classList.remove("hidden");
+                document.getElementById("CommonCheckbox").checked = true;
+
+                document.getElementById("Acrobatics_accordion").classList.remove("hidden");
+                document.getElementById("AnimalHandling_accordion").classList.remove("hidden");
+                document.getElementById("Athletics_accordion").classList.remove("hidden");
+                document.getElementById("History_accordion").classList.remove("hidden");
+                document.getElementById("Insight_accordion").classList.remove("hidden");
+                document.getElementById("Perception_accordion").classList.remove("hidden");
+                document.getElementById("Survival_accordion").classList.remove("hidden");
+
+            }
+
+            if(((e.checked) == true) && ContentNumber === 3){
+
+                document.getElementById("ProficienicesITEMS").classList.remove("hidden");
+
+                resetCheckboxes();
+
+                document.getElementById("LanguageProfDiv").classList.add("hidden");
+                document.getElementById("ElvishCheckbox").checked = true;
+
+                document.getElementById("Acrobatics_accordion").classList.remove("hidden");
+                document.getElementById("AnimalHandling_accordion").classList.remove("hidden");
+                document.getElementById("Athletics_accordion").classList.remove("hidden");
+                document.getElementById("History_accordion").classList.remove("hidden");
+                document.getElementById("Insight_accordion").classList.remove("hidden");
+                document.getElementById("Perception_accordion").classList.remove("hidden");
+                document.getElementById("Survival_accordion").classList.remove("hidden");
+                document.getElementById("Perception_accordion").classList.remove("hidden");
+
+            }
+
+            if((!e.checked) == true){
+
+                resetCheckboxes();
+
+                document.getElementById("ProficienicesITEMS").classList.add("hidden");
+
+            }
+
 
         }
 
@@ -2058,7 +2184,7 @@
                                                                          <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                  </td>
                                                                  <td class="col text-center" >
-                                                                     <input onclick="setRaceModifiers(this, 1); " class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                     <input onclick="setRaceModifiers(this,1); showProf(this,1) " class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                  </td>
                                                              </tr>
                                                                 </table>
@@ -2084,7 +2210,7 @@
                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input onclick="setRaceModifiers(this, 2) ;reCalculateAS(7)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 2) ;showProf(this,2)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -2110,7 +2236,7 @@
                                                                         <p class="racesinfo" >Dwarves are short and stout and tend to be skilled warriors and craftmen in stone and metal.</p>
                                                                     </td>
                                                                     <td class="col text-center" >
-                                                                        <input onclick="setRaceModifiers(this, 3) ;reCalculateAS(7)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                                        <input onclick="setRaceModifiers(this, 3) ;showProf(this,3)" class ="racescheckbox" type="checkbox" aria-label="Checkbox for following text input">
                                                                     </td>
                                                                 </tr>
                                                             </table>
@@ -2124,15 +2250,6 @@
 
             </div>
 
-            <div style="order:3;" class="Rtable-cell ">
-            </div>
-
-            <div style="order:4;" class="Rtable-cell ">
-
-            </div>
-            <div style="order:5;" class="Rtable-cell ">
-
-            </div>
 
 
             <!--                _________________RECHTE SPALTE________________________             -->
@@ -2144,9 +2261,57 @@
             <div style="order:1;" class="Rtable-cell ">
                 <div class="d-flex justify-content-between">
 
-            <!--                _________________INPUT CLASS________________________             -->
+            <!--                _________________INPUT LEVEL________________________             -->
 
                 <div class="input-group input-groupClass mb-3 d-flex " >
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputGroupSelect02">Level</label>
+                    </div>
+                    <select class="custom-select " id="inputGroupSelect02">
+                        <!--                                        <option selected>Choose...</option>-->
+                        <option value="1" onclick="LevelBoxes(1)">1</option>
+                        <option value="2" onclick="LevelBoxes(2)">2</option>
+                        <option value="3" onclick="LevelBoxes(3)">3</option>
+                        <option value="4" onclick="LevelBoxes(4)">4</option>
+                        <option value="5" onclick="LevelBoxes(5)">5</option>
+                        <option value="6" onclick="LevelBoxes(6)">6</option>
+                        <option value="7" onclick="LevelBoxes(7)">7</option>
+                        <option value="8" onclick="LevelBoxes(8)">8</option>
+                        <option value="9" onclick="LevelBoxes(9)">9</option>
+                        <option value="10" onclick="LevelBoxes(10)">10</option>
+                        <option value="11" onclick="LevelBoxes(11)">11</option>
+                        <option value="12" onclick="LevelBoxes(12)">12</option>
+                        <option value="13" onclick="LevelBoxes(13)">13</option>
+                        <option value="14" onclick="LevelBoxes(14)">14</option>
+                        <option value="15" onclick="LevelBoxes(15)">15</option>
+                        <option value="16" onclick="LevelBoxes(16)">16</option>
+                        <option value="17" onclick="LevelBoxes(17)">17</option>
+                        <option value="18" onclick="LevelBoxes(18)">18</option>
+                        <option value="19" onclick="LevelBoxes(19)">19</option>
+                        <option value="20" onclick="LevelBoxes(20)">20</option>
+                    </select>
+
+
+                </div>
+
+                <!--                _________________INPUT MAX HitPoints________________________             -->
+
+                    <div class="input-group input-groupLevel  mb-3 d-flex">
+
+                        <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect02">Hit Points</label>
+                        </div>
+                        <input onclick="checkIfNegativeNum(this)" id="inputHitPoints" type="number" class="form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                    </div>
+
+
+
+
+            </div>
+<!--                _________________INPUT CLASS________________________             -->
+
+                <div class="input-group   " style="margin-left: 5%;padding-right: 5%">
+
                     <div class="input-group-prepend" >
                         <label class="input-group-text" for="inputGroupSelect01">Class</label>
                     </div>
@@ -2156,514 +2321,14 @@
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
+
                 </div>
-
-                <!--                _________________INPUT LEVEL________________________             -->
-
-                    <div class="input-group input-groupLevel  mb-3 d-flex">
-                        <div class="input-group-prepend">
-                            <label class="input-group-text" for="inputGroupSelect02">Level</label>
-                        </div>
-                        <select class="custom-select " id="inputGroupSelect02">
-                            <!--                                        <option selected>Choose...</option>-->
-                            <option value="1" onclick="LevelBoxes(1)">1</option>
-                            <option value="2" onclick="LevelBoxes(2)">2</option>
-                            <option value="3" onclick="LevelBoxes(3)">3</option>
-                            <option value="4" onclick="LevelBoxes(4)">4</option>
-                            <option value="5" onclick="LevelBoxes(5)">5</option>
-                            <option value="6" onclick="LevelBoxes(6)">6</option>
-                            <option value="7" onclick="LevelBoxes(7)">7</option>
-                            <option value="8" onclick="LevelBoxes(8)">8</option>
-                            <option value="9" onclick="LevelBoxes(9)">9</option>
-                            <option value="10" onclick="LevelBoxes(10)">10</option>
-                            <option value="11" onclick="LevelBoxes(11)">11</option>
-                            <option value="12" onclick="LevelBoxes(12)">12</option>
-                            <option value="13" onclick="LevelBoxes(13)">13</option>
-                            <option value="14" onclick="LevelBoxes(14)">14</option>
-                            <option value="15" onclick="LevelBoxes(15)">15</option>
-                            <option value="16" onclick="LevelBoxes(16)">16</option>
-                            <option value="17" onclick="LevelBoxes(17)">17</option>
-                            <option value="18" onclick="LevelBoxes(18)">18</option>
-                            <option value="19" onclick="LevelBoxes(19)">19</option>
-                            <option value="20" onclick="LevelBoxes(20)">20</option>
-                        </select>
-                    </div>
-
-
-            </div>
             </div>
 
-            <div style="order:3;" class="Rtable-cell ">
-                <div class="CharCreationHeader"> <h2>Hitpoints</h2> </div>
-            </div>
 
-            <div style="order:4;" class="Rtable-cell d-flex justify-content-start">
-                <div class="CharCreationHeader d-flex"> <p>TotalXXX </p> </div>
-                <div class="CharCreationHeader d-flex" style="padding-left: 30%"> <p>DiceValue(D8, D10,...)</p> </div>
-            </div>
 
-            <div style="order:5;" class="Rtable-cell ">
 
 
-
-
-                <!--                _________________HITPOINT TABELLE________________________             -->
-
-                <table id="hitpointTable" class="tableborder" width= 100% style = "font-weight: lighter;">
-
-                                                <tr>
-                                                    <th class="HitPointsTableHeader tableborder levelcolumn">
-                                                        <p>Level</p>
-                                                    </th>
-
-                                                    <th class="HitPointsTableHeader tableborder Basecolumn">
-                                                        <p>Base</p>
-                                                    </th>
-
-                                                    <th class="HitPointsTableHeader tableborder Modifiercolumn">
-                                                        <p>Modifier</p>
-                                                    </th>
-
-                                                    <th class="HitPointsTableHeader tableborder Totalcolumn">
-                                                        <p>Total Level</p>
-                                                    </th>
-
-                                                </tr>
-
-
-
-                                                <tr id="level1" >
-                                                    <td class=" innertable tableborder ">
-                                                        <p>1</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Base</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level2" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>2</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-
-                                                        <div class="input-group mb-3">
-
-                                                            <input id="inputbase2" onchange="getvalue(this)" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                            <p id="demo"></p>
-                                                        </div>
-
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level3" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>3</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase3" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level4" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>4</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase4" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level5" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>5</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase5" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level6" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>6</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase6" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level7" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>7</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase7" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level8" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>8</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase8" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level9" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>9</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase9" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level10" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>10</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase10" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level11" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>11</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase11" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr >
-
-                                                <tr id="level12" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>12</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase12" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level13" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>13</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase13" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level14" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>14</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase14" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level15" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>15</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase15" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level16" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>16</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase16" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level17" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>17</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase17" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level18" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>18</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase18" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level19" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>19</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase19" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-                                                <tr id="level20" class="hidden">
-                                                    <td class=" innertable tableborder ">
-                                                        <p>20</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <div class="input-group mb-3">
-                                                            <input id="inputbase20" type="number" class="form-control InputBase" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                                        </div>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Modifier</p>
-                                                    </td>
-
-                                                    <td class=" innertable tableborder ">
-                                                        <p>Total Level</p>
-                                                    </td>
-
-                                                </tr>
-
-
-
-                </table>
-
-                            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary" onclick="getvalue()" id="admin">Submit</button>
-                            </div>
-
-
-        </div>
         </div>
 
 
@@ -3366,7 +3031,7 @@
 <!--                _________________PROFICIENCIES________________________             -->
 
                 <div id ="Proficiencies" class="hidden">
-
+                    <div id="ProficienicesITEMS" class="hidden">
                     <br><br>
                     <div class="d-flex justify-content-center">
                         <h2 style="color: white">Skill Proficiency</h2>
@@ -3382,7 +3047,7 @@
                     <div id="accordion4">
 
 
-                                <div class="card">
+                                <div id ="Acrobatics_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Acrobatics">
                                         <h5 class="mb-0">
                                             <button  class="btn btn-link" data-toggle="collapse" data-target="#collapseAcrobatics" aria-expanded="true" aria-controls="collapseOne">
@@ -3414,7 +3079,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="AnimalHandling_accordion"class="card hidden">
                                     <div class="card-header ch3" id="AnimalHandling">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAnimalHandling" aria-expanded="false" aria-controls="collapseTwo">
@@ -3442,7 +3107,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Arcana_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Arcana">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseArcana" aria-expanded="false" aria-controls="collapseTwo">
@@ -3469,7 +3134,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Athletics_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Athletics">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseAthletics" aria-expanded="false" aria-controls="collapseTwo">
@@ -3496,7 +3161,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Deception_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Deception">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseDeception" aria-expanded="false" aria-controls="collapseTwo">
@@ -3526,7 +3191,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="History_accordion" class="card hidden">
                                     <div class="card-header ch3" id="History">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseTwo">
@@ -3553,7 +3218,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Insight_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Insight">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseInsight" aria-expanded="false" aria-controls="collapseTwo">
@@ -3581,7 +3246,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Intimidation_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Intimidation">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseIntimidation" aria-expanded="false" aria-controls="collapseTwo">
@@ -3610,7 +3275,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Investigation_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Investigation">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseInvestigation" aria-expanded="false" aria-controls="collapseTwo">
@@ -3639,7 +3304,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Medicine_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Medicine">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseMedicine" aria-expanded="false" aria-controls="collapseTwo">
@@ -3665,7 +3330,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Nature_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Nature">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNature" aria-expanded="false" aria-controls="collapseTwo">
@@ -3692,7 +3357,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Perception_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Perception">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePerception" aria-expanded="false" aria-controls="collapseTwo">
@@ -3722,7 +3387,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Performance_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Performance">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePerformance" aria-expanded="false" aria-controls="collapseTwo">
@@ -3749,7 +3414,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Persuasion_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Persuasion">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapsePersuasion" aria-expanded="false" aria-controls="collapseTwo">
@@ -3778,7 +3443,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Religion_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Religion">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseReligion" aria-expanded="false" aria-controls="collapseTwo">
@@ -3806,7 +3471,7 @@
 
 
 
-                                <div class="card">
+                                <div id ="SleightOfHand_accordion" class="card hidden">
                                     <div class="card-header ch3" id="SleightofHand">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSleightofHand" aria-expanded="false" aria-controls="collapseTwo">
@@ -3834,7 +3499,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Stealth_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Stealth">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseStealth" aria-expanded="false" aria-controls="collapseTwo">
@@ -3861,7 +3526,7 @@
                                 </div>
 
 
-                                <div class="card">
+                                <div id ="Survival_accordion" class="card hidden">
                                     <div class="card-header ch3" id="Survival">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSurvival" aria-expanded="false" aria-controls="collapseTwo">
@@ -3891,7 +3556,7 @@
                      </div>
 
             <!--      LANGUAGE PROFICIENCY        -->
-
+        <div id = "LanguageProfDiv" class="">
                     <br><br>
                     <div class="d-flex justify-content-center">
                         <h2 style="color: white">Language Proficiency</h2>
@@ -3909,7 +3574,7 @@
 
                                     <div class="d-flex " style=" border-bottom: 1px solid white;">
 
-                                        <input onclick="LanguageProfCheck(this)" id ="CelestialAbyssalCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="CelestialAbyssalCheckbox" style="margin-left: 40%;" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Celestial Abyssal </h4>
 
 
@@ -3917,7 +3582,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="CelestialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="CelestialCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Celestial </h4>
 
 
@@ -3925,7 +3590,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="CommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="CommonCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Common </h4>
 
 
@@ -3933,7 +3598,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="DeepSpeechCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="DeepSpeechCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Deep Speech </h4>
 
 
@@ -3941,7 +3606,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="DraconicCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="DraconicCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Draconic </h4>
 
 
@@ -3949,7 +3614,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="DwarvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="DwarvishCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Dwarvish </h4>
 
 
@@ -3957,7 +3622,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="ElvishCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="ElvishCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Elvish </h4>
 
 
@@ -3965,7 +3630,7 @@
                                     <br>
                                     <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                        <input onclick="LanguageProfCheck(this)" id ="GiantCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick="LanguageProfCheck(this)" id ="GiantCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Giant </h4>
 
 
@@ -3979,7 +3644,7 @@
                                     <div class="d-flex " style=" border-bottom: 1px solid white;">
 
 
-                                            <input onclick="LanguageProfCheck(this)" id ="GnomishCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="GnomishCheckbox" style="margin-left: 40%;" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Gnomish </h4>
 
 
@@ -3987,7 +3652,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="GoblinCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="GoblinCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Goblin </h4>
 
 
@@ -3995,7 +3660,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="HalflingCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="HalflingCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Halfling </h4>
 
 
@@ -4003,7 +3668,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="InfernalCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="InfernalCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Infernal </h4>
 
 
@@ -4011,7 +3676,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="OrcCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="OrcCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Orc </h4>
 
 
@@ -4019,7 +3684,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="PrimordialCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="PrimordialCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Primordial </h4>
 
 
@@ -4027,7 +3692,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="SylvanCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="SylvanCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Sylvan </h4>
 
 
@@ -4035,7 +3700,7 @@
                                         <br>
                                         <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                            <input onclick="LanguageProfCheck(this)" id ="UndercommonCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                            <input onclick="LanguageProfCheck(this)" id ="UndercommonCheckbox" style="margin-left: 40%" class="LanguageCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                             <h4 class="d-flex" style="color: white; font-weight: lighter"> Undercommon </h4>
 
 
@@ -4045,6 +3710,7 @@
 
 
                             </div>
+        </div>
 
 <!--                    TOOL PROFICIENCY        -->
 
@@ -4064,7 +3730,7 @@
 
                             <div class="d-flex " style=" border-bottom: 1px solid white;">
 
-                                <input onclick="ToolProfCheck(this)" id ="BrewersSuppliesCheckbox" style="margin-left: 40%;" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <input onclick="ToolProfCheck(this)" id ="BrewersSuppliesCheckbox" style="margin-left: 40%;" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                 <h4 class="d-flex" style="color: white; font-weight: lighter"> Brewer's Supplies </h4>
 
 
@@ -4072,7 +3738,7 @@
                             <br>
                             <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                <input onclick="ToolProfCheck(this)" id ="MasonsToolsCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <input onclick="ToolProfCheck(this)" id ="MasonsToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                 <h4 class="d-flex" style="color: white; font-weight: lighter"> Mason's Tools </h4>
 
 
@@ -4084,7 +3750,7 @@
                         <div style="order:0;" class="Rtable-cell  " >
                             <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                <input onclick="ToolProfCheck(this)" id ="SmithsToolsCheckbox" style="margin-left: 40%" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <input onclick="ToolProfCheck(this)" id ="SmithsToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                 <h4 class="d-flex" style="color: white; font-weight: lighter"> Smith's Tools </h4>
 
 
@@ -4097,7 +3763,7 @@
                     </div>
                 </div>
 
-
+                </div>
 
 <!--                _________________EQUIPMENT________________________             -->
 
