@@ -926,6 +926,8 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -935,6 +937,8 @@
                 document.getElementById("BackgroundBar").classList.add("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -944,6 +948,8 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.add("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -953,15 +959,29 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.add("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
-            if(navNumber > 5){
-                setNavNumber(5);
+
+            if(navNumber === 6){
                 document.getElementById("RaceBar").classList.remove("active");
                 document.getElementById("ASBar").classList.remove("active")
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
-                document.getElementById("EquipBar").classList.add("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.add("active");
+                showCharCreationContent(navNumber);
+            }
+            if(navNumber > 6){
+                setNavNumber(6);
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.add("active");
+
 
                 showCharCreationContent(navNumber);
             }
@@ -980,6 +1000,8 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
 
             }
@@ -991,6 +1013,8 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -1000,6 +1024,8 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -1009,6 +1035,8 @@
                 document.getElementById("BackgroundBar").classList.add("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -1018,6 +1046,8 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.add("active");
                 document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+
                 showCharCreationContent(navNumber);
             }
 
@@ -1027,6 +1057,17 @@
                 document.getElementById("BackgroundBar").classList.remove("active");
                 document.getElementById("ProfBar").classList.remove("active");
                 document.getElementById("EquipBar").classList.add("active");
+                document.getElementById("DescriptionBar").classList.remove("active");
+                showCharCreationContent(navNumber);
+            }
+
+            if(navNumber === 6){
+                document.getElementById("RaceBar").classList.remove("active");
+                document.getElementById("ASBar").classList.remove("active")
+                document.getElementById("BackgroundBar").classList.remove("active");
+                document.getElementById("ProfBar").classList.remove("active");
+                document.getElementById("EquipBar").classList.remove("active");
+                document.getElementById("DescriptionBar").classList.add("active");
                 showCharCreationContent(navNumber);
             }
 
@@ -1041,6 +1082,8 @@
             document.getElementById("BackgroundBar").classList.remove("active");
             document.getElementById("ProfBar").classList.remove("active");
             document.getElementById("EquipBar").classList.remove("active");
+            document.getElementById("DescriptionBar").classList.remove("active");
+
             e.classList.add("active");
 
         }
@@ -1408,6 +1451,8 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+                document.getElementById("Description").classList.add("hidden");
+
 
                 setNavNumber(1);
 
@@ -1418,6 +1463,7 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+                document.getElementById("Description").classList.add("hidden");
 
                 setNavNumber(2);
             }
@@ -1427,6 +1473,7 @@
                 document.getElementById("Background").classList.remove("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+                document.getElementById("Description").classList.add("hidden");
 
                 setNavNumber(3);
             }
@@ -1436,6 +1483,7 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.remove("hidden");
                 document.getElementById("Equipment").classList.add("hidden");
+                document.getElementById("Description").classList.add("hidden");
 
                 setNavNumber(4);
             }
@@ -1445,8 +1493,20 @@
                 document.getElementById("Background").classList.add("hidden");
                 document.getElementById("Proficiencies").classList.add("hidden");
                 document.getElementById("Equipment").classList.remove("hidden");
+                document.getElementById("Description").classList.add("hidden");
 
                 setNavNumber(5);
+            }
+
+            if(contentNumber === 6){
+                document.getElementById("Race/Class").classList.add("hidden");
+                document.getElementById("AbilityAndFeats").classList.add("hidden");
+                document.getElementById("Background").classList.add("hidden");
+                document.getElementById("Proficiencies").classList.add("hidden");
+                document.getElementById("Equipment").classList.add("hidden");
+                document.getElementById("Description").classList.remove("hidden");
+
+                setNavNumber(6);
             }
 
             return false;
@@ -1890,6 +1950,11 @@
             color: white;
             border: 1px solid orange;
         }
+        .InputCharDesc{
+            background-color: transparent;
+            color: white;
+            border: 1px solid orange;
+        }
         .abilitywidth{
             padding-right: 10%;
             padding-left: 10%;
@@ -2140,6 +2205,7 @@
                                     <a id = "BackgroundBar" class="nav-link" onclick="showCharCreationContent(3); activeNavBar(this);">BACKGROUND</a>
                                     <a id = "ProfBar" class="nav-link" onclick="showCharCreationContent(4);  activeNavBar(this);">PROFICIENCIES</a>
                                     <a id = "EquipBar" class="nav-link" onclick="showCharCreationContent(5);  activeNavBar(this);">EQUIPMENT</a>
+                                    <a id = "DescriptionBar" class="nav-link" onclick="showCharCreationContent(6);  activeNavBar(this);">DESCRIPTION</a>
                                 </div>
                             </div>
                         </nav>
@@ -4062,6 +4128,196 @@
                         </div>
 
 
+                    </div>
+
+                </div>
+
+<!--                DESCRIPTION                     -->
+
+                <div id="Description" class="hidden">
+                    <br><br>
+                <div class="d-flex justify-content-center">
+                    <h2 style="color: white">Description</h2>
+                </div>
+                <br><br>
+
+                <div class="d-flex justify-content-start"  >
+                    <h4 class="d-flex " style="color: white; font-weight: lighter"> CHARACTER NAME </h4>
+                </div>
+                <div>
+                <input  style="width: 100%" id="CharNameInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                    <br><div class="modal-footer" style="color: white">
+                    </div>
+                </div>
+
+                <div class="d-flex">
+
+                    <div class="Rtable Rtable--4cols Rtable--collapse" style="margin-bottom: 0">
+
+                        <div style="order:0; " class="Rtable-cell  " >
+                            <div class="D-flex">
+                                <div class="d-flex justify-content-start" >
+                                    <h4 class="d-flex " style="color: white; font-weight: lighter"> AGE </h4>
+                                </div>
+                                <div>
+                                    <input  style="width: 100%" id="CharAgeInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div style="order:0; " class="Rtable-cell  " >
+                            <div class="D-flex">
+                                <div class="d-flex justify-content-start" >
+                                    <h4 class="d-flex " style="color: white; font-weight: lighter"> SEX </h4>
+                                </div>
+                                <div>
+                                    <input  style="width: 100%" id="CharSexInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="D-flex">
+                                <div class="d-flex justify-content-start" >
+                                    <h4 class="d-flex " style="color: white; font-weight: lighter"> HEIGHT </h4>
+                                </div>
+                                <div>
+                                    <input  style="width: 100%" id="CharHeightInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="D-flex">
+                                <div class="d-flex justify-content-start" >
+                                    <h4 class="d-flex " style="color: white; font-weight: lighter"> WEIGHT </h4>
+                                </div>
+                                <div>
+                                    <input  style="width: 100%" id="CharWeightInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                    <div class="d-flex">
+
+                        <div class="Rtable Rtable--3cols Rtable--collapse" style="margin-bottom: 0">
+
+                            <div style="order:0; " class="Rtable-cell  " >
+                                <div class="D-flex">
+                                    <div class="d-flex justify-content-start" >
+                                        <h4 class="d-flex " style="color: white; font-weight: lighter"> HAIR COLOR </h4>
+                                    </div>
+                                    <div>
+                                        <input  style="width: 100%" id="CharHairColorInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                            <div style="order:0; " class="Rtable-cell  " >
+                                <div class="D-flex">
+                                    <div class="d-flex justify-content-start" >
+                                        <h4 class="d-flex " style="color: white; font-weight: lighter"> EYE COLOR </h4>
+                                    </div>
+                                    <div>
+                                        <input  style="width: 100%" id="CharEyeColorInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div style="order:0; " class="Rtable-cell  " >
+
+                                <div class="D-flex">
+                                    <div class="d-flex justify-content-start" >
+                                        <h4 class="d-flex " style="color: white; font-weight: lighter"> SKIN COLOR </h4>
+                                    </div>
+                                    <div>
+                                        <input  style="width: 100%" id="CharSkinColortInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <div class="modal-footer" style="color: white">
+                    </div>
+                    <br>
+
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> PERSONALITY TRAIT 1 </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharPersonalityTrait1Input" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> PERSONALITY TRAIT 2 </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharPersonalityTrait2Input" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> IDEALS </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharIdealsInput" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> BONDS </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharBondsInput" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> FLAWS </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharFlawsInput" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> ALLIES AND ORGANISATIONS </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharAlliesAndOrganisationsInput" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
+                    </div>
+
+                    <br>
+                    <div class="d-flex justify-content-start"  >
+                        <h4 class="d-flex " style="color: white; font-weight: lighter"> DESCRIPTION/BACKSTORY </h4>
+                    </div>
+                    <div>
+                        <textarea  style="width: 100%" id="CharBackstoryInput" type="text" class="InputCharDesc form-control " aria-label="With textarea" aria-describedby="inputGroup-sizing-lg"></textarea>
                     </div>
 
                 </div>
