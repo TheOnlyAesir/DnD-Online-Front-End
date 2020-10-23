@@ -1815,13 +1815,197 @@
 
         //Save Sheet
         function saveSheetCreation(){
-            if(getParameterByName('c') != null) {
-                let charID = getParameterByName('c');
+            let race;
+            if(document.getElementById("DwarfCheckBox").checked)
+                race = "Dwarf";
+            else if(document.getElementById("HumanCheckBox").checked)
+                race = "Human";
+            else if(document.getElementById("ElfCheckBox").checked)
+                race = "Elf";
 
-                //Post with ID
-            }
-            else{
-                //Post without ID
+
+            let combatClass;
+            if(document.getElementById("inputGroupSelect01").value == 1)
+                combatClass = "Fighter";
+            else if(document.getElementById("inputGroupSelect01").value == 2)
+                combatClass = "Wizard";
+            else if(document.getElementById("inputGroupSelect01").value == 3)
+                combatClass = "Ranger";
+            alert("Dassas");
+
+
+
+            let alignment;
+
+
+            let background;
+
+
+
+            let charsheet = {
+                "characterName": ""+ document.getElementById("CharNameInput").value +"",
+                "initiative": "" + + "",
+                "armorClass": "" + + "",
+                "speed": ""+ +"",
+                "passivePerception": "" + + "",
+                "level": "" + document.getElementById("inputGroupSelect02").value + "",
+                "combatClass": "" + combatClass + "",
+                "race": "" + race + "",
+                "stats": {
+                    "strength": "" + document.getElementById("STR_TOTAL").innerText + "",
+                    "dexterity": "" + document.getElementById("DEX_TOTAL").innerText + "",
+                    "constitution": "" + document.getElementById("CON_TOTAL").innerText + "",
+                    "intelligence": "" + document.getElementById("INT_TOTAL").innerText + "",
+                    "wisdom": "" + document.getElementById("WIS_TOTAL").innerText + "",
+                    "charisma": "" + document.getElementById("CHA_TOTAL").innerText + "",
+                    "strengthModifier": "" +  + "",
+                    "dexterityModifier": "" +  + "",
+                    "constitutionModifier": "" +  + "",
+                    "intelligenceModifier": "" +  + "",
+                    "wisdomModifier": "" +  + "",
+                    "charismaModifier": "" +  + "",
+                },
+                "skills":{
+                    "deception":"" +  + "",
+                    "deception_prof":"" + document.getElementById("DeceptionProf").checked + "",
+                    "intimidation":"" + + "",
+                    "intimidation_prof":"" + document.getElementById("IntimidationProf").checked + "",
+                    "performance":"" + + "",
+                    "performance_prof":"" + document.getElementById("PerformanceProf").checked + "",
+                    "persuasion":"" + + "",
+                    "persuasion_prof":"" + document.getElementById("PersuasionProf").checked + "",
+                    "acrobatics":"" + + "",
+                    "acrobatics_prof":"" + document.getElementById("AcrobaticsProf").checked + "",
+                    "sleight_of_hand":"" + + "",
+                    "sleight_of_hand_prof":"" + document.getElementById("SleightOfHandProf").checked + "",
+                    "stealth":"" + + "",
+                    "stealth_prof":"" + document.getElementById("StealthProf").checked + "",
+                    "arcana":"" + + "",
+                    "arcana_prof":"" + document.getElementById("ArcanaProf").checked + "",
+                    "history":"" + + "",
+                    "history_prof":"" + document.getElementById("HistoryProf").checked + "",
+                    "investigation":"" + + "",
+                    "investigation_prof":"" + document.getElementById("InvestigationProf").checked + "",
+                    "nature":"" + + "",
+                    "nature_prof":"" + document.getElementById("NatureProf").checked + "",
+                    "religion":"" + + "",
+                    "religion_prof":"" + document.getElementById("ReligionProf").checked + "",
+                    "athletics":"" + + "",
+                    "athletics_prof":"" + document.getElementById("AthleticsProf").checked + "",
+                    "animal_handling":"" + + "",
+                    "animal_handling_prof":"" + document.getElementById("AnimalHandlingProf").checked + "",
+                    "insight":"" + + "",
+                    "insight_prof":"" + document.getElementById("InsightProf").checked + "",
+                    "medicine":"" + + "",
+                    "medicine_prof":"" + document.getElementById("MedicineProf").checked + "",
+                    "perception":"" + + "",
+                    "perception_prof":"" + document.getElementById("PerceptionProf").checked + "",
+                    "survival":"" + + "",
+                    "survival_prof":"" + document.getElementById("SurvivalProf").checked + ""
+                },
+                "life":{
+                    "currentHitPoints":"" + document.getElementById("inputHitPoints").value + "",
+                    "maximumHitPoints":"" + document.getElementById("inputHitPoints").value + "",
+                    "temporaryHitPoints":"" + document.getElementById("inputHitPoints").value + "",
+                    "value":"" + + "",
+                    "quantity":"" + + ""
+                },
+                "treasure":{
+                    "platinum_coins":"" + + "",
+                    "gold_coins":"" + + "",
+                    "electrum_coins":"" + + "",
+                    "silver_coins":"" + + "",
+                    "copper_coins":"" + + "",
+                },
+                "characterDescription":{
+                    "alignment":"" + alignment + "",
+                    "background":"" + background + "",
+                    "gender":"" + document.getElementById("CharSexInput").value + "",
+                    "eyes":"" + document.getElementById("CharEyeColorInput").value + "",
+                    "hair":"" + document.getElementById("CharHairColorInput").value + "",
+                    "characterAppearance":"" + document.getElementById("CharSkinColortInput").value + "",
+                    "age": document.getElementById("CharAgeInput").value,
+                    "height": document.getElementById("CharHeightInput").value,
+                    "weight":document.getElementById("CharWeightInput").value,
+                    "personalityTraits":"" + document.getElementById("CharPersonalityTrait1Input").value + "",
+                    "personalityTraits2":"" + document.getElementById("CharPersonalityTrait2Input").value + "",
+                    "ideals":"" + document.getElementById("CharIdealsInput").value + "",
+                    "bonds":"" + document.getElementById("CharBondsInput").value + "",
+                    "flaws":"" + document.getElementById("CharFlawsInput").value + "",
+                    "alliesAndOrganizations":"" + document.getElementById("CharAlliesAndOrganisationsInput").value + "",
+                    "characterBackstory":"" + document.getElementById("CharBackstoryInput").value + ""
+                },
+                "savingThrows":{
+                },
+                "languageProficiencies":{
+                    "undercommon":"" + document.getElementById("UndercommonCheckbox").checked + "",
+                    "celestial":"" + document.getElementById("CelestialCheckbox").checked + "",
+                    "dwarvish":"" + document.getElementById("DwarvishCheckbox").checked + "",
+                    "goblin":"" + document.getElementById("GoblinCheckbox").checked + "",
+                    "halfling":"" + document.getElementById("HalflingCheckbox").checked + "",
+                    "common":"" + document.getElementById("CommonCheckbox").checked + "",
+                    "elvish":"" + document.getElementById("ElvishCheckbox").checked + "",
+                    "orc":"" + document.getElementById("OrcCheckbox").checked + "",
+                    "primordial":"" + document.getElementById("PrimordialCheckbox").checked + "",
+                    "draconic":"" + document.getElementById("DraconicCheckbox").checked + "",
+                    "sylvan":"" + document.getElementById("SylvanCheckbox").checked + "",
+                    "deepSpeech":"" + document.getElementById("DeepSpeechCheckbox").checked + "",
+                    "abyssal":"" + document.getElementById("CelestialAbyssalCheckbox").checked + "",
+                    "giant":"" + document.getElementById("GiantCheckbox").checked + "",
+                    "gnomish":"" + document.getElementById("GnomishCheckbox").checked + "",
+                    "infernal":"" + document.getElementById("InfernalCheckbox").checked + ""
+                },
+                "toolProficiencies":{
+                    "alchemistSupplies":"" + + "",
+                    "bagpipes":"" + + "",
+                    "brewerSupplies":"" + + "",
+                    "calligrapherSupplies":"" + + "",
+                    "carpenterTools":"" + + "",
+                    "cartographerTools":"" + + "",
+                    "cobblerTools":"" + + "",
+                    "cookUtensils":"" + + "",
+                    "diceSet":"" + + "",
+                    "disguiseKit":"" + + "",
+                    "dragonchessSet":"" + + "",
+                    "drum":"" + + "",
+                    "dulcimer":"" + + "",
+                    "flute":"" + + "",
+                    "forgeryKit":"" + + "",
+                    "glassblowerTools":"" + + "",
+                    "herbalismKit":"" + + "",
+                    "horn":"" + + "",
+                    "jewelersTools":"" + + "",
+                    "landVehicles":"" + + "",
+                    "leatherworkerTools":"" + + "",
+                    "lute":"" + + "",
+                    "lyre":"" + + "",
+                    "masonTools":"" + + "",
+                    "navigatorTools":"" + + "",
+                    "painterTools":"" + + "",
+                    "poisonerKit":"" + + "",
+                    "potterTools":"" + + "",
+                    "shawm":"" + + "",
+                    "smithTools":"" + + "",
+                    "thieveTools":"" + + "",
+                    "threeDragonAnteSet":"" + + "",
+                    "tinkerTools":"" + + "",
+                    "viol":"" + + "",
+                    "waterVehicles":"" + + "",
+                    "weaverTools":"" + + "",
+                    "woodcarverTools":"" + + ""
+                },
+                "armorProficiencies":{
+                    "lightArmor":"" + + "",
+                    "mediumArmor":"" + + "",
+                    "heavyArmor":"" + + "",
+                    "shield":"" + + ""
+                },
+                "weaponProficiencies":{
+                    "simpleMeleeWeapons":"" + + "",
+                    "simpleRangedWeapons":"" + + "",
+                    "martiaMeleeWeapons":"" + + "",
+                    "martialRangedWeapons":"" + + ""
+                }
             }
             // alert(document.getElementById("").value);
 
