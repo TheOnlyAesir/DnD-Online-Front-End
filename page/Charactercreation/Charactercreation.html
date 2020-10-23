@@ -209,20 +209,22 @@
 
         //DETERMINE WEAPON ATTACKBONUS
         function calculateAttackBonus(STRTOTAL, DEXTOTAL ,id){
+            determineProficiencyBonus();
+
             var ID = id;
             var STRMOD = determineStatsModifiers(STRTOTAL);
             var DEXMOD = determineStatsModifiers(DEXTOTAL);
 
             if(ID === 1){
-                LongswordAttackDamage = STRMOD;
+                LongswordAttackBonus = DEXMOD + ProfBonus;
             }
 
             if(ID === 2){
-                DaggerAttackDamage = DEXMOD;
+                DaggerAttackDamage = STRMOD + ProfBonus;
             }
 
             if(ID === 3){
-                MazeAttackDamage = DEXMOD;
+                MazeAttackDamage = STRMOD + ProfBonus;
             }
         }
 
@@ -230,55 +232,21 @@
         function determineProficiencyBonus(){
             var x = document.getElementById("inputGroupSelect02").value;
 
-            if(x == 1){
-                return(-5);
+            if((x >= 1) && (x <= 4)){
+                ProfBonus = 2;
             }
-            if((ScoreNumber > 1) && (ScoreNumber < 4)){
-                return(-4);
+            if((x >= 5) && (x <= 8)){
+                ProfBonus = 3;
             }
-            if((ScoreNumber > 3) && (ScoreNumber < 6)){
-                return(-3);
+            if((x >= 9) && (x <= 12)){
+                ProfBonus = 4;
             }
-            if((ScoreNumber > 5) && (ScoreNumber < 8)){
-                return(-2);
+            if((x >= 13) && (x <= 16)){
+                ProfBonus = 5;
             }
-            if((ScoreNumber > 7) && (ScoreNumber < 10)){
-                return(-1);
+            if((x >= 17) && (x <= 20)){
+                ProfBonus = 6;
             }
-            if((ScoreNumber > 9) && (ScoreNumber < 12)){
-                return(0);
-            }
-            if((ScoreNumber > 11) && (ScoreNumber < 14)){
-                return(1);
-            }
-            if((ScoreNumber > 13) && (ScoreNumber < 16)){
-                return(2);
-            }
-            if((ScoreNumber > 15) && (ScoreNumber < 18)){
-                return(3);
-            }
-            if((ScoreNumber > 17) && (ScoreNumber < 20)){
-                return(4);
-            }
-            if((ScoreNumber > 19) && (ScoreNumber < 22)){
-                return(5);
-            }
-            if((ScoreNumber > 21) && (ScoreNumber < 24)){
-                return(6);
-            }
-            if((ScoreNumber > 23) && (ScoreNumber < 26)){
-                return(7);
-            }
-            if((ScoreNumber > 25) && (ScoreNumber < 28)){
-                return(8);
-            }
-            if((ScoreNumber > 27) && (ScoreNumber < 30)){
-                return(9);
-            }
-            if(ScoreNumber > 29){
-                return(10);
-            }
-
         }
 
 
@@ -2742,7 +2710,7 @@
                     </div>
                     <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option onclick="determineSpeed()"  value="1">Fighter</option>
+                        <option  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
