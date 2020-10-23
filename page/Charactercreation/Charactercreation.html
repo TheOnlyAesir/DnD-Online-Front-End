@@ -119,6 +119,123 @@
         let WIS_ModifierNumber = 0;
         let CHA_ModifierNumber = 0;
 
+        //ARMOR AND WEAPON PROF
+        let simpleMeleeWeapons = false;
+        let simpleRangedWeapons = false;
+        let martialMeleeWeapons = false;
+        let martialRangedWeapons = false;
+
+        //SPEED
+        let Speed = 0;
+
+
+
+
+
+
+        //DETERMINE ARMOR AND WEAPON PROF
+        function determineArmorAndWeaponProf(){
+
+            if(document.getElementById("inputGroupSelect01").value == 1){
+                simpleMeleeWeapons = true;
+                simpleRangedWeapons = true;
+                martialMeleeWeapons = true;
+                martialRangedWeapons = true;
+            }
+
+            if(document.getElementById("inputGroupSelect01").value == 2){
+                simpleMeleeWeapons = true;
+                simpleRangedWeapons = false;
+                martialMeleeWeapons = false;
+                martialRangedWeapons = false;
+                alert(simpleRangedWeapons);
+            }
+
+            if(document.getElementById("inputGroupSelect01").value == 3){
+                simpleMeleeWeapons = true;
+                simpleRangedWeapons = true;
+                martialMeleeWeapons = true;
+                martialRangedWeapons = true;
+                alert(simpleRangedWeapons);
+            }
+
+        }
+
+        //DETERMINE SPEED ACCORDING TO SELECTED RACE
+        function determineSpeed(){
+
+            if(parseInt(document.getElementById("DwarfCheckBox").value) == 1){
+               Speed = 25;
+
+            }
+
+            if(document.getElementById("HumanCheckBox").checked == true){
+                Speed = 30;
+
+            }
+
+            if(document.getElementById("ElfCheckBox").checked == true){
+                Speed = 30;
+
+            }
+
+        }
+
+        //DETERMINE STATS MODIFIERS BASED ON ABILITY SCORES INPUT
+        function determineStatsModifiers(ScoreNumber){
+
+            if(ScoreNumber == 1){
+                return(-5);
+            }
+            if((ScoreNumber > 1) && (ScoreNumber < 4)){
+                return(-4);
+            }
+            if((ScoreNumber > 3) && (ScoreNumber < 6)){
+                return(-3);
+            }
+            if((ScoreNumber > 5) && (ScoreNumber < 8)){
+                return(-2);
+            }
+            if((ScoreNumber > 7) && (ScoreNumber < 10)){
+                return(-1);
+            }
+            if((ScoreNumber > 9) && (ScoreNumber < 12)){
+                return(0);
+            }
+            if((ScoreNumber > 11) && (ScoreNumber < 14)){
+                return(1);
+            }
+            if((ScoreNumber > 13) && (ScoreNumber < 16)){
+                return(2);
+            }
+            if((ScoreNumber > 15) && (ScoreNumber < 18)){
+                return(3);
+            }
+            if((ScoreNumber > 17) && (ScoreNumber < 20)){
+                return(4);
+            }
+            if((ScoreNumber > 19) && (ScoreNumber < 22)){
+                return(5);
+            }
+            if((ScoreNumber > 21) && (ScoreNumber < 24)){
+                return(6);
+            }
+            if((ScoreNumber > 23) && (ScoreNumber < 26)){
+                return(7);
+            }
+            if((ScoreNumber > 25) && (ScoreNumber < 28)){
+                return(8);
+            }
+            if((ScoreNumber > 27) && (ScoreNumber < 30)){
+                return(9);
+            }
+            if(ScoreNumber > 29){
+                return(10);
+            }
+
+
+
+        }
 
 
         //DETERMINE PASSIVE PERCEPTION
@@ -1698,196 +1815,13 @@
 
         //Save Sheet
         function saveSheetCreation(){
-            let race;
-            if(document.getElementById("DwarfCheckBox").checked)
-                race = "Dwarf";
-            else if(document.getElementById("HumanCheckBox").checked)
-                race = "Human";
-            else if(document.getElementById("ElfCheckBox").checked)
-                race = "Elf";
+            if(getParameterByName('c') != null) {
+                let charID = getParameterByName('c');
 
-
-            let combatClass;
-            if(document.getElementById("inputGroupSelect01").value == 1)
-                combatClass = "Fighter";
-            else if(document.getElementById("inputGroupSelect01").value == 2)
-                combatClass = "Wizard";
-            else if(document.getElementById("inputGroupSelect01").value == 3)
-                combatClass = "Ranger";
-
-
-
-            let alignment;
-
-
-            let background;
-
-
-
-            let charsheet = {
-                "characterName": ""+ document.getElementById("CharNameInput").value +"",
-                "initiative": "" + + "",
-                "armorClass": "" + + "",
-                "speed": ""+ +"",
-                "passivePerception": "" + + "",
-                "level": "" + document.getElementById("inputGroupSelect02").value + "",
-                "combatClass": "" + combatClass + "",
-                "race": "" + race + "",
-                "stats": {
-                    "strength": "" + document.getElementById("STR_TOTAL").innerText + "",
-                    "dexterity": "" + document.getElementById("DEX_TOTAL").innerText + "",
-                    "constitution": "" + document.getElementById("CON_TOTAL").innerText + "",
-                    "intelligence": "" + document.getElementById("INT_TOTAL").innerText + "",
-                    "wisdom": "" + document.getElementById("WIS_TOTAL").innerText + "",
-                    "charisma": "" + document.getElementById("CHA_TOTAL").innerText + "",
-                    "strengthModifier": "" +  + "",
-                    "dexterityModifier": "" +  + "",
-                    "constitutionModifier": "" +  + "",
-                    "intelligenceModifier": "" +  + "",
-                    "wisdomModifier": "" +  + "",
-                    "charismaModifier": "" +  + "",
-                },
-                "skills":{
-                    "deception":"" +  + "",
-                    "deception_prof":"" + document.getElementById("DeceptionProf").checked + "",
-                    "intimidation":"" + + "",
-                    "intimidation_prof":"" + document.getElementById("IntimidationProf").checked + "",
-                    "performance":"" + + "",
-                    "performance_prof":"" + document.getElementById("PerformanceProf").checked + "",
-                    "persuasion":"" + + "",
-                    "persuasion_prof":"" + document.getElementById("PersuasionProf").checked + "",
-                    "acrobatics":"" + + "",
-                    "acrobatics_prof":"" + document.getElementById("AcrobaticsProf").checked + "",
-                    "sleight_of_hand":"" + + "",
-                    "sleight_of_hand_prof":"" + document.getElementById("SleightOfHandProf").checked + "",
-                    "stealth":"" + + "",
-                    "stealth_prof":"" + document.getElementById("StealthProf").checked + "",
-                    "arcana":"" + + "",
-                    "arcana_prof":"" + document.getElementById("ArcanaProf").checked + "",
-                    "history":"" + + "",
-                    "history_prof":"" + document.getElementById("HistoryProf").checked + "",
-                    "investigation":"" + + "",
-                    "investigation_prof":"" + document.getElementById("InvestigationProf").checked + "",
-                    "nature":"" + + "",
-                    "nature_prof":"" + document.getElementById("NatureProf").checked + "",
-                    "religion":"" + + "",
-                    "religion_prof":"" + document.getElementById("ReligionProf").checked + "",
-                    "athletics":"" + + "",
-                    "athletics_prof":"" + document.getElementById("AthleticsProf").checked + "",
-                    "animal_handling":"" + + "",
-                    "animal_handling_prof":"" + document.getElementById("AnimalHandlingProf").checked + "",
-                    "insight":"" + + "",
-                    "insight_prof":"" + document.getElementById("InsightProf").checked + "",
-                    "medicine":"" + + "",
-                    "medicine_prof":"" + document.getElementById("MedicineProf").checked + "",
-                    "perception":"" + + "",
-                    "perception_prof":"" + document.getElementById("PerceptionProf").checked + "",
-                    "survival":"" + + "",
-                    "survival_prof":"" + document.getElementById("SurvivalProf").checked + ""
-                },
-                "life":{
-                    "currentHitPoints":"" + document.getElementById("inputHitPoints").value + "",
-                    "maximumHitPoints":"" + document.getElementById("inputHitPoints").value + "",
-                    "temporaryHitPoints":"" + document.getElementById("inputHitPoints").value + "",
-                    "value":"" + + "",
-                    "quantity":"" + + ""
-                },
-                "treasure":{
-                    "platinum_coins":"" + + "",
-                    "gold_coins":"" + + "",
-                    "electrum_coins":"" + + "",
-                    "silver_coins":"" + + "",
-                    "copper_coins":"" + + "",
-                },
-                "characterDescription":{
-                    "alignment":"" + alignment + "",
-                    "background":"" + background + "",
-                    "gender":"" + document.getElementById("CharSexInput").value + "",
-                    "eyes":"" + document.getElementById("CharEyeColorInput").value + "",
-                    "hair":"" + document.getElementById("CharHairColorInput").value + "",
-                    "characterAppearance":"" + document.getElementById("CharSkinColortInput").value + "",
-                    "age": document.getElementById("CharAgeInput").value,
-                    "height": document.getElementById("CharHeightInput").value,
-                    "weight":document.getElementById("CharWeightInput").value,
-                    "personalityTraits":"" + document.getElementById("CharPersonalityTrait1Input").value + "",
-                    "personalityTraits2":"" + document.getElementById("CharPersonalityTrait2Input").value + "",
-                    "ideals":"" + document.getElementById("CharIdealsInput").value + "",
-                    "bonds":"" + document.getElementById("CharBondsInput").value + "",
-                    "flaws":"" + document.getElementById("CharFlawsInput").value + "",
-                    "alliesAndOrganizations":"" + document.getElementById("CharAlliesAndOrganisationsInput").value + "",
-                    "characterBackstory":"" + document.getElementById("CharBackstoryInput").value + ""
-                },
-                "savingThrows":{
-                },
-                "languageProficiencies":{
-                    "undercommon":"" + document.getElementById("UndercommonCheckbox").checked + "",
-                    "celestial":"" + document.getElementById("CelestialCheckbox").checked + "",
-                    "dwarvish":"" + document.getElementById("DwarvishCheckbox").checked + "",
-                    "goblin":"" + document.getElementById("GoblinCheckbox").checked + "",
-                    "halfling":"" + document.getElementById("HalflingCheckbox").checked + "",
-                    "common":"" + document.getElementById("CommonCheckbox").checked + "",
-                    "elvish":"" + document.getElementById("ElvishCheckbox").checked + "",
-                    "orc":"" + document.getElementById("OrcCheckbox").checked + "",
-                    "primordial":"" + document.getElementById("PrimordialCheckbox").checked + "",
-                    "draconic":"" + document.getElementById("DraconicCheckbox").checked + "",
-                    "sylvan":"" + document.getElementById("SylvanCheckbox").checked + "",
-                    "deepSpeech":"" + document.getElementById("DeepSpeechCheckbox").checked + "",
-                    "abyssal":"" + document.getElementById("CelestialAbyssalCheckbox").checked + "",
-                    "giant":"" + document.getElementById("GiantCheckbox").checked + "",
-                    "gnomish":"" + document.getElementById("GnomishCheckbox").checked + "",
-                    "infernal":"" + document.getElementById("InfernalCheckbox").checked + ""
-                },
-                "toolProficiencies":{
-                    "alchemistSupplies":"" + + "",
-                    "bagpipes":"" + + "",
-                    "brewerSupplies":"" + + "",
-                    "calligrapherSupplies":"" + + "",
-                    "carpenterTools":"" + + "",
-                    "cartographerTools":"" + + "",
-                    "cobblerTools":"" + + "",
-                    "cookUtensils":"" + + "",
-                    "diceSet":"" + + "",
-                    "disguiseKit":"" + + "",
-                    "dragonchessSet":"" + + "",
-                    "drum":"" + + "",
-                    "dulcimer":"" + + "",
-                    "flute":"" + + "",
-                    "forgeryKit":"" + + "",
-                    "glassblowerTools":"" + + "",
-                    "herbalismKit":"" + + "",
-                    "horn":"" + + "",
-                    "jewelersTools":"" + + "",
-                    "landVehicles":"" + + "",
-                    "leatherworkerTools":"" + + "",
-                    "lute":"" + + "",
-                    "lyre":"" + + "",
-                    "masonTools":"" + + "",
-                    "navigatorTools":"" + + "",
-                    "painterTools":"" + + "",
-                    "poisonerKit":"" + + "",
-                    "potterTools":"" + + "",
-                    "shawm":"" + + "",
-                    "smithTools":"" + + "",
-                    "thieveTools":"" + + "",
-                    "threeDragonAnteSet":"" + + "",
-                    "tinkerTools":"" + + "",
-                    "viol":"" + + "",
-                    "waterVehicles":"" + + "",
-                    "weaverTools":"" + + "",
-                    "woodcarverTools":"" + + ""
-                },
-                "armorProficiencies":{
-                    "lightArmor":"" + + "",
-                    "mediumArmor":"" + + "",
-                    "heavyArmor":"" + + "",
-                    "shield":"" + + ""
-                },
-                "weaponProficiencies":{
-                    "simpleMeleeWeapons":"" + + "",
-                    "simpleRangedWeapons":"" + + "",
-                    "martiaMeleeWeapons":"" + + "",
-                    "martialRangedWeapons":"" + + ""
-                }
+                //Post with ID
+            }
+            else{
+                //Post without ID
             }
             // alert(document.getElementById("").value);
 
@@ -2783,15 +2717,15 @@
 
             </div>
 <!--                _________________INPUT CLASS________________________             -->
-
+<!--TEST FUNCTIONS-->
                 <div class="input-group   " style="margin-left: 5%;padding-right: 5%">
 
                     <div class="input-group-prepend" >
                         <label class="input-group-text" for="inputGroupSelect01">Class</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option value="1">Fighter</option>
+                        <option onclick="determineStatsModifiers()"  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
@@ -4204,7 +4138,23 @@
 
                             <div class="d-flex " style=" border-bottom: 1px solid white;">
 
-                                <input onclick="ToolProfCheck(this)" id ="BrewersSuppliesCheckbox" style="margin-left: 40%;" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <input onclick="ToolProfCheck(this)" id ="bagpipesCheckbox" style="margin-left: 40%;" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Bagpipes </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="alchemistSuppliesCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Alchemist Supplies </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="brewerSuppliesCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                 <h4 class="d-flex" style="color: white; font-weight: lighter"> Brewer's Supplies </h4>
 
 
@@ -4212,16 +4162,217 @@
                             <br>
                             <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
-                                <input onclick="ToolProfCheck(this)" id ="MasonsToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Mason's Tools </h4>
+                                <input onclick="ToolProfCheck(this)" id ="calligrapherSuppliesCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Calligraphers Supplies </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="carpenterToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Carpenter Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="cartographerToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Cartographer Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="cobblerToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Cobbler Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="cookUtensilsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Cook Utensils </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="diceSetCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Dice Set </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="disguiseKitCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Disguise Kit </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="dragonchessSetCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Dragonchess Set </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="drumCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Drum </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="dulcimerCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Dulcimer </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="fluteCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Flute </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="forgeryKitCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Forgery Kit </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="glassblowerToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Glassblower Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="herbalismKitCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Herbalism Kit </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="hornCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Horn </h4>
 
 
                             </div>
                             <br>
 
+
+
                         </div>
 
                         <div style="order:0;" class="Rtable-cell  " >
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="jewelersToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Jeweler's Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="landVehiclesCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Land Vehicles </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="leatherworkerToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Leatherworker Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="luteCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Lute </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="lyreCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Lyre </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="masonToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Mason Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="navigatorToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Navigator's Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="painterToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Painter Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="poisonerKitCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Poisoner Kit </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="potterToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Potter Tools </h4>
+
+
+                            </div>
+                            <br>    <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                            <input onclick="ToolProfCheck(this)" id ="shawmCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                            <h4 class="d-flex" style="color: white; font-weight: lighter"> Shawm </h4>
+
+
+                        </div>
+                            <br>
                             <div class="d-flex " style=" border-bottom: 1px solid white;" >
 
                                 <input onclick="ToolProfCheck(this)" id ="SmithsToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
@@ -4230,6 +4381,64 @@
 
                             </div>
                             <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="thieveToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Thieve Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="threeDragonAnteSetCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Three Dragon Ante Set </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="tinkerToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Tinker Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="violCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Viol </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="waterVehiclesCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Water Vehicles </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="weaverToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Weaver Tools </h4>
+
+
+                            </div>
+                            <br>
+                            <div class="d-flex " style=" border-bottom: 1px solid white;" >
+
+                                <input onclick="ToolProfCheck(this)" id ="woodcarverToolsCheckbox" style="margin-left: 40%" class="ToolProfCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                <h4 class="d-flex" style="color: white; font-weight: lighter"> Woodcarver Tools </h4>
+
+
+                            </div>
+                            <br>
+
+
 
                         </div>
 
@@ -4537,6 +4746,79 @@
 
 
                     </div>
+
+<!--                    TREASURE-->
+
+                    <br><br><br>
+                    <div class="d-flex justify-content-center">
+                        <h2 style="color: white">Treasure</h2>
+                    </div>
+                    <br>
+
+
+                    <div class="Rtable Rtable--2cols Rtable--collapse" style="margin-bottom: 0">
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex justify-content-start" style=" border-bottom: 1px solid white;">
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> COPPER COINS </h4>
+                            </div>
+                            <br>
+                            <div>
+                                <input onclick="checkIfNegativeNum(this)" style="width: 100%" id="CopperInput" type="Number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            </div>
+
+                            <br>
+
+                            <div class="d-flex justify-content-start" style=" border-bottom: 1px solid white;">
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> SILVER COINS </h4>
+                            </div>
+                            <br>
+                            <div>
+                                <input onclick="checkIfNegativeNum(this)" style="width: 100%" id="SilverInput" type="Number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            </div>
+
+
+
+                        </div>
+
+                        <!--                RECHTE SPALTE -> ARMOR-->
+
+                        <div style="order:0; " class="Rtable-cell  " >
+
+                            <div class="d-flex justify-content-start" style=" border-bottom: 1px solid white;">
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> ELECTRUM COINS </h4>
+                            </div>
+                            <br>
+                            <div>
+                                <input onclick="checkIfNegativeNum(this)" style="width: 100%" id="ElectrumInput" type="Number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            </div>
+
+                            <br>
+
+                            <div class="d-flex justify-content-start" style=" border-bottom: 1px solid white;">
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> GOLD COINS </h4>
+                            </div>
+                            <br>
+                            <div>
+                                <input onclick="checkIfNegativeNum(this)" style="width: 100%" id="GoldInput" type="Number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            </div>
+
+                            <br>
+
+                            <div class="d-flex justify-content-start" style=" border-bottom: 1px solid white;">
+                                <h4 class="d-flex " style="color: white; font-weight: lighter"> PLATINUM COINS </h4>
+                            </div>
+                            <br>
+                            <div>
+                                <input onclick="checkIfNegativeNum(this)" style="width: 100%" id="PlatinumInput" type="Number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
 
                 </div>
 
