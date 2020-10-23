@@ -119,6 +119,123 @@
         let WIS_ModifierNumber = 0;
         let CHA_ModifierNumber = 0;
 
+        //ARMOR AND WEAPON PROF
+        let simpleMeleeWeapons = false;
+        let simpleRangedWeapons = false;
+        let martialMeleeWeapons = false;
+        let martialRangedWeapons = false;
+
+        //SPEED
+        let Speed = 0;
+
+
+
+
+
+
+        //DETERMINE ARMOR AND WEAPON PROF
+        function determineArmorAndWeaponProf(){
+
+            if(document.getElementById("inputGroupSelect01").value == 1){
+                simpleMeleeWeapons = true;
+                simpleRangedWeapons = true;
+                martialMeleeWeapons = true;
+                martialRangedWeapons = true;
+            }
+
+            if(document.getElementById("inputGroupSelect01").value == 2){
+                simpleMeleeWeapons = true;
+                simpleRangedWeapons = false;
+                martialMeleeWeapons = false;
+                martialRangedWeapons = false;
+                alert(simpleRangedWeapons);
+            }
+
+            if(document.getElementById("inputGroupSelect01").value == 3){
+                simpleMeleeWeapons = true;
+                simpleRangedWeapons = true;
+                martialMeleeWeapons = true;
+                martialRangedWeapons = true;
+                alert(simpleRangedWeapons);
+            }
+
+        }
+
+        //DETERMINE SPEED ACCORDING TO SELECTED RACE
+        function determineSpeed(){
+
+            if(parseInt(document.getElementById("DwarfCheckBox").value) == 1){
+               Speed = 25;
+
+            }
+
+            if(document.getElementById("HumanCheckBox").checked == true){
+                Speed = 30;
+
+            }
+
+            if(document.getElementById("ElfCheckBox").checked == true){
+                Speed = 30;
+
+            }
+
+        }
+
+        //DETERMINE STATS MODIFIERS BASED ON ABILITY SCORES INPUT
+        function determineStatsModifiers(ScoreNumber){
+
+            if(ScoreNumber == 1){
+                return(-5);
+            }
+            if((ScoreNumber > 1) && (ScoreNumber < 4)){
+                return(-4);
+            }
+            if((ScoreNumber > 3) && (ScoreNumber < 6)){
+                return(-3);
+            }
+            if((ScoreNumber > 5) && (ScoreNumber < 8)){
+                return(-2);
+            }
+            if((ScoreNumber > 7) && (ScoreNumber < 10)){
+                return(-1);
+            }
+            if((ScoreNumber > 9) && (ScoreNumber < 12)){
+                return(0);
+            }
+            if((ScoreNumber > 11) && (ScoreNumber < 14)){
+                return(1);
+            }
+            if((ScoreNumber > 13) && (ScoreNumber < 16)){
+                return(2);
+            }
+            if((ScoreNumber > 15) && (ScoreNumber < 18)){
+                return(3);
+            }
+            if((ScoreNumber > 17) && (ScoreNumber < 20)){
+                return(4);
+            }
+            if((ScoreNumber > 19) && (ScoreNumber < 22)){
+                return(5);
+            }
+            if((ScoreNumber > 21) && (ScoreNumber < 24)){
+                return(6);
+            }
+            if((ScoreNumber > 23) && (ScoreNumber < 26)){
+                return(7);
+            }
+            if((ScoreNumber > 25) && (ScoreNumber < 28)){
+                return(8);
+            }
+            if((ScoreNumber > 27) && (ScoreNumber < 30)){
+                return(9);
+            }
+            if(ScoreNumber > 29){
+                return(10);
+            }
+
+
+
+        }
 
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
@@ -2556,15 +2673,15 @@
 
             </div>
 <!--                _________________INPUT CLASS________________________             -->
-
+<!--TEST FUNCTIONS-->
                 <div class="input-group   " style="margin-left: 5%;padding-right: 5%">
 
                     <div class="input-group-prepend" >
                         <label class="input-group-text" for="inputGroupSelect01">Class</label>
                     </div>
-                    <select class="custom-select" id="inputGroupSelect01">
+                    <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option value="1">Fighter</option>
+                        <option onclick="determineStatsModifiers()"  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
