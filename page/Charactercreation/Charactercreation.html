@@ -140,10 +140,18 @@
         //SPEED
         let Speed = 0;
 
-        //ARMOR CLASS (VARIABLE)
+        //ARMOR
         let LeatherBaseAC = 11;
         let ChainMailBaseAC = 16;
         let PlateBaseAC = 18;
+
+        let LeatherName = "Leather";
+        let ChainMailName = "Chain Mail";
+        let PlateName = "Plate";
+
+        let LeatherDetails = "light, base AC 11";
+        let ChainMailDetails = "heavy, base AC 16";
+        let PlateDetails = "heavy, base AC 18";
 
         //ARMOR CLASS
         let ArmorClass = 5;
@@ -193,11 +201,14 @@
 
         }
 
+
+
         //DETERMINE SPEED ACCORDING TO SELECTED RACE
         function determineSpeed(){
 
-            if(parseInt(document.getElementById("DwarfCheckBox").value) == 1){
+            if(document.getElementById("DwarfCheckBox").checked == true){
                Speed = 25;
+               alert(Speed);
 
             }
 
@@ -3004,7 +3015,7 @@
                     </div>
                     <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option onclick="determineCharacterArmorClass(1)"  value="1">Fighter</option>
+                        <option onclick="determineSpeed()"  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
