@@ -237,6 +237,19 @@
 
         }
 
+
+        //DETERMINE PASSIVE PERCEPTION
+        function determineStatsModifiers(WISTOTAL){
+            var x1 = WISTOTAL;
+
+            var x2 = determineStatsModifiers(x1);
+
+            var x3 = x1 - x2;
+            alert(x2);
+
+
+        }
+
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
             return user;
