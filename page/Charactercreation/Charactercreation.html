@@ -128,6 +128,8 @@
         //SPEED
         let Speed = 0;
 
+        //ARMOR CLASS
+        let ArmorClass = 5;
 
 
 
@@ -237,7 +239,7 @@
 
         }
 
-        // TEST
+
         //DETERMINE PASSIVE PERCEPTION
         function determinePassivePerception(WISTOTAL){
             var x1 = determineStatsModifiers(WISTOTAL);
@@ -289,14 +291,26 @@
                 return 20;
             }
 
+        }
 
+        // TEST
+        //DETERMINE ARMOR CLASS
+        function determineArmorClass(){
 
+            var leather = document.getElementById("LeatherCheckbox");
+            var ChainMail = document.getElementById("ChainMailCheckbox");
+            var Plate = document.getElementById("PlateCheckbox");
 
+            if( !Plate.checked ){
+                alert("AC : 6");
 
-
-
+            }
 
         }
+
+
+
+
 
         function setUsername(user){
             document.getElementById("UserName").innerHTML = user;
@@ -2957,7 +2971,7 @@
                     </div>
                     <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option onclick="determinePassivePerception(1)"  value="1">Fighter</option>
+                        <option onclick="determineArmorClass()"  value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
@@ -4829,7 +4843,7 @@
 
                                     <div class ="d-flex">
                                         <input id ="PlateCheckbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Maze </h4>
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Plate </h4>
                                     </div>
 
                                     <div class ="d-flex">
