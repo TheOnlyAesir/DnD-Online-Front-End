@@ -141,6 +141,10 @@
         let Speed = 0;
 
         //ARMOR
+        let LeatherID = 1;
+        let ChainMailID = 2;
+        let PlateID = 3;
+
         let LeatherBaseAC = 11;
         let ChainMailBaseAC = 16;
         let PlateBaseAC = 18;
@@ -153,9 +157,129 @@
         let ChainMailDetails = "heavy, base AC 16";
         let PlateDetails = "heavy, base AC 18";
 
+        //WEAPONS
+        let LongswordID = 1;
+        let DaggerID = 2;
+        let MazeID = 3;
+
+        let LongswordDetails = "melee, 1d8+ ";
+        let DaggerDetails = "melee, 1d4+ ";
+        let MazeDetails="melee, 1d6+ ";
+
+        let LongswordName = "Longsword";
+        let DaggerName = "Dagger";
+        let MazeName = "Maze";
+
+        let LongswordAttackDamage = 0;
+        let DaggerAttackDamage = 0;
+        let MazeAttackDamage = 0;
+
+        let LongswordAttackBonus = 0;
+        let DaggerAttackBonus = 0;
+        let MazeAttackBonus = 0;
+
+        //PROFICIENCY BONUS
+        let ProfBonus = 0;
+
         //ARMOR CLASS
         let ArmorClass = 5;
 
+
+
+
+
+        //DETERMINE WEAPON ATTACKDAMAGE
+        function calculateAttackDamage(STRTOTAL, DEXTOTAL ,id){
+            var ID = id;
+            var STRMOD = determineStatsModifiers(STRTOTAL);
+            var DEXMOD = determineStatsModifiers(DEXTOTAL);
+
+            if(ID === 1){
+                LongswordAttackDamage = STRMOD;
+            }
+
+            if(ID === 2){
+                DaggerAttackDamage = DEXMOD;
+            }
+
+            if(ID === 3){
+                MazeAttackDamage = DEXMOD;
+            }
+        }
+
+        //DETERMINE WEAPON ATTACKBONUS
+        function calculateAttackBonus(STRTOTAL, DEXTOTAL ,id){
+            var ID = id;
+            var STRMOD = determineStatsModifiers(STRTOTAL);
+            var DEXMOD = determineStatsModifiers(DEXTOTAL);
+
+            if(ID === 1){
+                LongswordAttackDamage = STRMOD;
+            }
+
+            if(ID === 2){
+                DaggerAttackDamage = DEXMOD;
+            }
+
+            if(ID === 3){
+                MazeAttackDamage = DEXMOD;
+            }
+        }
+
+        //DETERMINE PROFICIENCY BONUS BASED ON LEVEL
+        // function determineProficiencyBonus(){
+        //     var x = document.getElementById("inputGroupSelect02").value;
+        //
+        //     if(ScoreNumber == 1){
+        //         return(-5);
+        //     }
+        //     if((ScoreNumber > 1) && (ScoreNumber < 4)){
+        //         return(-4);
+        //     }
+        //     if((ScoreNumber > 3) && (ScoreNumber < 6)){
+        //         return(-3);
+        //     }
+        //     if((ScoreNumber > 5) && (ScoreNumber < 8)){
+        //         return(-2);
+        //     }
+        //     if((ScoreNumber > 7) && (ScoreNumber < 10)){
+        //         return(-1);
+        //     }
+        //     if((ScoreNumber > 9) && (ScoreNumber < 12)){
+        //         return(0);
+        //     }
+        //     if((ScoreNumber > 11) && (ScoreNumber < 14)){
+        //         return(1);
+        //     }
+        //     if((ScoreNumber > 13) && (ScoreNumber < 16)){
+        //         return(2);
+        //     }
+        //     if((ScoreNumber > 15) && (ScoreNumber < 18)){
+        //         return(3);
+        //     }
+        //     if((ScoreNumber > 17) && (ScoreNumber < 20)){
+        //         return(4);
+        //     }
+        //     if((ScoreNumber > 19) && (ScoreNumber < 22)){
+        //         return(5);
+        //     }
+        //     if((ScoreNumber > 21) && (ScoreNumber < 24)){
+        //         return(6);
+        //     }
+        //     if((ScoreNumber > 23) && (ScoreNumber < 26)){
+        //         return(7);
+        //     }
+        //     if((ScoreNumber > 25) && (ScoreNumber < 28)){
+        //         return(8);
+        //     }
+        //     if((ScoreNumber > 27) && (ScoreNumber < 30)){
+        //         return(9);
+        //     }
+        //     if(ScoreNumber > 29){
+        //         return(10);
+        //     }
+        //
+        // }
 
 
 
@@ -334,7 +458,7 @@
 
         }
 
-        // TEST
+
         //DETERMINE ARMOR CLASS
         function determineCharacterArmorClass(DEXMOD){
 
@@ -352,11 +476,36 @@
                 ArmorClass = ChainMailBaseAC + modifier;
             }
             if(Plate.checked){
-                ArmorClass = PlateBaseAC + modifier;
+                ArmorClass = PlateBaseAC
             }
 
         }
 
+
+        //DETERMINE POSSIBLE ARMOR CLASS
+        function determinePossibleArmorClass(DEXMOD, ArmorID){
+            var id = ArmorID;
+            var x;
+
+            if(id === 1){
+                x = LeatherBaseAC + modifiers;
+                return x;
+            }
+            if(id === 2){
+                x = ChainMailBaseAC + modifiers;
+                return x;
+            }
+            if(id === 3){
+                x = PlateBaseAC
+                return x;
+            }
+
+        }
+
+        //HIT DICE VALUE
+        function determineHitDiceValue(){
+
+        }
 
 
 
@@ -1236,6 +1385,18 @@
                                 Plate.classList.add("hidden");
                             }
                         }
+
+
+//TEST
+        function CheckBackendCopy(e){
+
+            if(!e.checked){
+
+                alert("YEAH!");
+
+            }
+
+        }
 
 
 
@@ -4500,7 +4661,7 @@
                                 <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1);CheckBackendCopy(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="ChainMailBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Chain Mail </h4>
                                     </div>
@@ -4515,7 +4676,7 @@
                                 <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2);CheckBackendCopy(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="LeatherBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Leather </h4>
                                     </div>
@@ -4530,7 +4691,7 @@
                                 <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3)" class="ArmorCheckboxes Stealthcheckbox d-flex" checked="false" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3);CheckBackendCopy(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" checked="false" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="PlateBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Plate </h4>
                                     </div>
