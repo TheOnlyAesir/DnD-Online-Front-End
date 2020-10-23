@@ -166,7 +166,7 @@
         //DETERMINE SPEED ACCORDING TO SELECTED RACE
         function determineSpeed(){
 
-            if(parseInt(document.getElementById("DwarfCheckBox").value) == 1){
+            if(document.getElementById("DwarfCheckBox").checked == true){
                Speed = 25;
 
             }
@@ -484,464 +484,7 @@
 
         //______________________________________________________________________________________
 
-    //SHOW HIT POINT TABLE ROWS ACCORDING TO SELECTED LEVEL
-        function LevelBoxes(level){
 
-            if (level === 1) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.add("hidden");
-                document.getElementById("level3").classList.add("hidden");
-                document.getElementById("level4").classList.add("hidden");
-                document.getElementById("level5").classList.add("hidden");
-                document.getElementById("level6").classList.add("hidden");
-                document.getElementById("level7").classList.add("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 2){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.add("hidden");
-                document.getElementById("level4").classList.add("hidden");
-                document.getElementById("level5").classList.add("hidden");
-                document.getElementById("level6").classList.add("hidden");
-                document.getElementById("level7").classList.add("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 3){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.add("hidden");
-                document.getElementById("level5").classList.add("hidden");
-                document.getElementById("level6").classList.add("hidden");
-                document.getElementById("level7").classList.add("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-            if (level === 4){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.add("hidden");
-                document.getElementById("level6").classList.add("hidden");
-                document.getElementById("level7").classList.add("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 5){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.add("hidden");
-                document.getElementById("level7").classList.add("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 6){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.add("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 7){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.add("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-            if (level === 8){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.add("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-            if (level === 9){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.add("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-            if (level === 10){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.add("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 11){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.add("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 12){
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.add("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 13) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.add("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 14) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.add("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 15) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.remove("hidden");
-                document.getElementById("level16").classList.add("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-            if (level === 16) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.remove("hidden");
-                document.getElementById("level16").classList.remove("hidden");
-                document.getElementById("level17").classList.add("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-            if (level === 17) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.remove("hidden");
-                document.getElementById("level16").classList.remove("hidden");
-                document.getElementById("level17").classList.remove("hidden");
-                document.getElementById("level18").classList.add("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 18) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.remove("hidden");
-                document.getElementById("level16").classList.remove("hidden");
-                document.getElementById("level17").classList.remove("hidden");
-                document.getElementById("level18").classList.remove("hidden");
-                document.getElementById("level19").classList.add("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 19) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.remove("hidden");
-                document.getElementById("level16").classList.remove("hidden");
-                document.getElementById("level17").classList.remove("hidden");
-                document.getElementById("level18").classList.remove("hidden");
-                document.getElementById("level19").classList.remove("hidden");
-                document.getElementById("level20").classList.add("hidden");
-            }
-
-            if (level === 20) {
-                document.getElementById("level1").classList.remove("hidden");
-                document.getElementById("level2").classList.remove("hidden");
-                document.getElementById("level3").classList.remove("hidden");
-                document.getElementById("level4").classList.remove("hidden");
-                document.getElementById("level5").classList.remove("hidden");
-                document.getElementById("level6").classList.remove("hidden");
-                document.getElementById("level7").classList.remove("hidden");
-                document.getElementById("level8").classList.remove("hidden");
-                document.getElementById("level9").classList.remove("hidden");
-                document.getElementById("level10").classList.remove("hidden");
-                document.getElementById("level11").classList.remove("hidden");
-                document.getElementById("level12").classList.remove("hidden");
-                document.getElementById("level13").classList.remove("hidden");
-                document.getElementById("level14").classList.remove("hidden");
-                document.getElementById("level15").classList.remove("hidden");
-                document.getElementById("level16").classList.remove("hidden");
-                document.getElementById("level17").classList.remove("hidden");
-                document.getElementById("level18").classList.remove("hidden");
-                document.getElementById("level19").classList.remove("hidden");
-                document.getElementById("level20").classList.remove("hidden");
-            }
-                return false;
-        }
 
 
 //______________________________________________________________________________________
@@ -1893,24 +1436,46 @@
                 combatClass = "Wizard";
             else if(document.getElementById("inputGroupSelect01").value == 3)
                 combatClass = "Ranger";
-            alert("Dassas");
+
 
 
 
             let alignment;
+            if(document.getElementById("ChaoticEvilCheckbox").checked)
+                alignment = "Chaotic Evil";
+            else if(document.getElementById("ChaoticNeutralCheckbox").checked)
+                alignment = "Chaotic Neutral";
+            else if(document.getElementById("ChaoticGoodCheckbox").checked)
+                alignment = "Chaotic Good";
+            else if(document.getElementById("NeutralEvilCheckbox").checked)
+                alignment = "Neutral Evil";
+            else if(document.getElementById("NeutralCheckbox").checked)
+                alignment = "Neutral";
+            else if(document.getElementById("NeutralGoodCheckbox").checked)
+                alignment = "Neutral Good";
+            else if(document.getElementById("LawfulEvilCheckbox").checked)
+                alignment = "Lawful Evil";
+            else if(document.getElementById("LawfulNeutralCheckbox").checked)
+                alignment = "Lawful Neutral";
+            else if(document.getElementById("LawfulGoodCheckbox").checked)
+                alignment = "Lawful Good";
 
 
             let background;
+            if(document.getElementById("AcolyteCheckbox").checked)
+                background = "Acolyte";
 
 
+            determineSpeed();
 
             let charsheet = {
                 "characterName": ""+ document.getElementById("CharNameInput").value +"",
-                "initiative": "" + + "",
-                "armorClass": "" + + "",
-                "speed": ""+ +"",
-                "passivePerception": "" + + "",
+                "initiative": determineStatsModifiers(document.getElementById("DEX_TOTAL").innerText),
+                "armorClass": "" +  + "",
+                "speed": Speed,
+                "passivePerception":  determinePassivePerception(document.getElementById("WIS_TOTAL").innerText),
                 "level": "" + document.getElementById("inputGroupSelect02").value + "",
+                "proficiencyBonus":"" + + "",
                 "combatClass": "" + combatClass + "",
                 "race": "" + race + "",
                 "stats": {
@@ -1920,12 +1485,12 @@
                     "intelligence": "" + document.getElementById("INT_TOTAL").innerText + "",
                     "wisdom": "" + document.getElementById("WIS_TOTAL").innerText + "",
                     "charisma": "" + document.getElementById("CHA_TOTAL").innerText + "",
-                    "strengthModifier": "" +  + "",
-                    "dexterityModifier": "" +  + "",
-                    "constitutionModifier": "" +  + "",
-                    "intelligenceModifier": "" +  + "",
-                    "wisdomModifier": "" +  + "",
-                    "charismaModifier": "" +  + "",
+                    "strengthModifier": determineStatsModifiers(document.getElementById("STR_TOTAL").innerText),
+                    "dexterityModifier": determineStatsModifiers(document.getElementById("DEX_TOTAL").innerText),
+                    "constitutionModifier": determineStatsModifiers(document.getElementById("CON_TOTAL").innerText),
+                    "intelligenceModifier": determineStatsModifiers(document.getElementById("INT_TOTAL").innerText),
+                    "wisdomModifier": determineStatsModifiers(document.getElementById("WIS_TOTAL").innerText) ,
+                    "charismaModifier": determineStatsModifiers(document.getElementById("CHA_TOTAL").innerText)
                 },
                 "skills":{
                     "deception":"" +  + "",
@@ -1973,11 +1538,11 @@
                     "quantity":"" + + ""
                 },
                 "treasure":{
-                    "platinum_coins":"" + + "",
-                    "gold_coins":"" + + "",
-                    "electrum_coins":"" + + "",
-                    "silver_coins":"" + + "",
-                    "copper_coins":"" + + "",
+                    "platinum_coins":"" + document.getElementById("PlatinumInput").value + "",
+                    "gold_coins":"" + document.getElementById("GoldInput").value + "",
+                    "electrum_coins":"" + document.getElementById("ElectrumInput").value + "",
+                    "silver_coins":"" + document.getElementById("SilverInput").value + "",
+                    "copper_coins":"" + document.getElementById("CopperInput").value + ""
                 },
                 "characterDescription":{
                     "alignment":"" + alignment + "",
@@ -2018,55 +1583,55 @@
                     "infernal":"" + document.getElementById("InfernalCheckbox").checked + ""
                 },
                 "toolProficiencies":{
-                    "alchemistSupplies":"" + + "",
-                    "bagpipes":"" + + "",
-                    "brewerSupplies":"" + + "",
-                    "calligrapherSupplies":"" + + "",
-                    "carpenterTools":"" + + "",
-                    "cartographerTools":"" + + "",
-                    "cobblerTools":"" + + "",
-                    "cookUtensils":"" + + "",
-                    "diceSet":"" + + "",
-                    "disguiseKit":"" + + "",
-                    "dragonchessSet":"" + + "",
-                    "drum":"" + + "",
-                    "dulcimer":"" + + "",
-                    "flute":"" + + "",
-                    "forgeryKit":"" + + "",
-                    "glassblowerTools":"" + + "",
-                    "herbalismKit":"" + + "",
-                    "horn":"" + + "",
-                    "jewelersTools":"" + + "",
-                    "landVehicles":"" + + "",
-                    "leatherworkerTools":"" + + "",
-                    "lute":"" + + "",
-                    "lyre":"" + + "",
-                    "masonTools":"" + + "",
-                    "navigatorTools":"" + + "",
-                    "painterTools":"" + + "",
-                    "poisonerKit":"" + + "",
-                    "potterTools":"" + + "",
-                    "shawm":"" + + "",
-                    "smithTools":"" + + "",
-                    "thieveTools":"" + + "",
-                    "threeDragonAnteSet":"" + + "",
-                    "tinkerTools":"" + + "",
-                    "viol":"" + + "",
-                    "waterVehicles":"" + + "",
-                    "weaverTools":"" + + "",
-                    "woodcarverTools":"" + + ""
+                    "alchemistSupplies":"" + document.getElementById("alchemistSuppliesCheckbox").checked  + "",
+                    "bagpipes":"" + document.getElementById("bagpipesCheckbox").checked  + "",
+                    "brewerSupplies":"" + document.getElementById("brewerSuppliesCheckbox").checked  + "",
+                    "calligrapherSupplies":"" + document.getElementById("calligrapherSuppliesCheckbox").checked + "",
+                    "carpenterTools":"" + document.getElementById("carpenterToolsCheckbox").checked + "",
+                    "cartographerTools":"" + document.getElementById("cartographerToolsCheckbox").checked + "",
+                    "cobblerTools":"" + document.getElementById("cobblerToolsCheckbox").checked + "",
+                    "cookUtensils":"" + document.getElementById("cookUtensilsCheckbox").checked + "",
+                    "diceSet":"" + document.getElementById("diceSetCheckbox").checked + "",
+                    "disguiseKit":"" + document.getElementById("disguiseKitCheckbox").checked + "",
+                    "dragonchessSet":"" + document.getElementById("dragonchessSetCheckbox").checked + "",
+                    "drum":"" + document.getElementById("drumCheckbox").checked + "",
+                    "dulcimer":"" + document.getElementById("dulcimerCheckbox").checked + "",
+                    "flute":"" + document.getElementById("fluteCheckbox").checked + "",
+                    "forgeryKit":"" + document.getElementById("forgeryKitCheckbox").checked + "",
+                    "glassblowerTools":"" + document.getElementById("glassblowerToolsCheckbox").checked + "",
+                    "herbalismKit":"" + document.getElementById("herbalismKitCheckbox").checked + "",
+                    "horn":"" + document.getElementById("hornCheckbox").checked + "",
+                    "jewelersTools":"" + document.getElementById("jewelersToolsCheckbox").checked + "",
+                    "landVehicles":"" + document.getElementById("landVehiclesCheckbox").checked + "",
+                    "leatherworkerTools":"" + document.getElementById("leatherworkerToolsCheckbox").checked + "",
+                    "lute":"" + document.getElementById("luteCheckbox").checked + "",
+                    "lyre":"" + document.getElementById("lyreCheckbox").checked + "",
+                    "masonTools":"" + document.getElementById("masonToolsCheckbox").checked + "",
+                    "navigatorTools":"" + document.getElementById("navigatorToolsCheckbox").checked + "",
+                    "painterTools":"" + document.getElementById("painterToolsCheckbox").checked + "",
+                    "poisonerKit":"" + document.getElementById("poisonerKitCheckbox").checked + "",
+                    "potterTools":"" + document.getElementById("potterToolsCheckbox").checked + "",
+                    "shawm":"" + document.getElementById("shawmCheckbox").checked + "",
+                    "smithTools":"" + document.getElementById("SmithsToolsCheckbox").checked + "",
+                    "thieveTools":"" + document.getElementById("thieveToolsCheckbox").checked + "",
+                    "threeDragonAnteSet":"" + document.getElementById("threeDragonAnteSetCheckbox").checked + "",
+                    "tinkerTools":"" + document.getElementById("tinkerToolsCheckbox").checked + "",
+                    "viol":"" + document.getElementById("violCheckbox").checked + "",
+                    "waterVehicles":"" + document.getElementById("waterVehiclesCheckbox").checked + "",
+                    "weaverTools":"" + document.getElementById("weaverToolsCheckbox").checked + "",
+                    "woodcarverTools":"" + document.getElementById("woodcarverToolsCheckbox").checked + ""
                 },
                 "armorProficiencies":{
-                    "lightArmor":"" + + "",
-                    "mediumArmor":"" + + "",
-                    "heavyArmor":"" + + "",
-                    "shield":"" + + ""
+                    "lightArmor":"" + false + "",
+                    "mediumArmor":"" + false + "",
+                    "heavyArmor":"" + false + "",
+                    "shield":"" + false + ""
                 },
                 "weaponProficiencies":{
-                    "simpleMeleeWeapons":"" + + "",
-                    "simpleRangedWeapons":"" + + "",
-                    "martiaMeleeWeapons":"" + + "",
-                    "martialRangedWeapons":"" + + ""
+                    "simpleMeleeWeapons":"" + false + "",
+                    "simpleRangedWeapons":"" + false + "",
+                    "martiaMeleeWeapons":"" + false + "",
+                    "martialRangedWeapons":"" + false + ""
                 }
             }
             // alert(document.getElementById("").value);
@@ -2075,31 +1640,31 @@
 
             let charsheetPost = JSON.stringify(charsheet);
 
-            // if(getParameterByName('c') != null) {
-            //     let charID = getParameterByName('c');
-            //
-            //     //Put with ID
-            // }
-            // else{
-            //     //Post without ID
-            //
-            //     fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + 1 +'/Charactersheet', {
-            //         method: 'post',
-            //         body: charsheetPost,
-            //         headers: {'Content-Type' : 'application/json'},
-            //     })
-            //         .then(function (data) {
-            //             if(data.status !== 200) throw("error!");
-            //
-            //             // alert("success!");
-            //
-            //         })
-            //         .catch(function (error) {
-            //             alert(error);
-            //         });
-            //
-            //
-            // }
+            if(getParameterByName('c') != null) {
+                let charID = getParameterByName('c');
+
+                //Put with ID
+            }
+            else{
+                //Post without ID
+
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + 1 +'/Charactersheet', {
+                    method: 'post',
+                    body: charsheetPost,
+                    headers: {'Content-Type' : 'application/json'},
+                })
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
+
+
+            }
 
         }
 
@@ -3362,7 +2927,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="ChaoticEvilCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3396,7 +2961,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="ChaoticNeutralCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3425,7 +2990,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="ChaoticGoodCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3457,7 +3022,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="NeutralEvilCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3486,7 +3051,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="NeutralCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3497,7 +3062,7 @@
                             <div class="card-header ch3" id="NeutralGood">
                                 <h5 class="mb-0">
                                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseNeutralGood" aria-expanded="false" aria-controls="collapseThree">
-                                        <p style="font-weight: lighter"> NEUTRAL Good</p>
+                                        <p style="font-weight: lighter"> NEUTRAL GOOD</p>
                                     </button>
                                 </h5>
                             </div>
@@ -3516,7 +3081,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="NeutralGoodCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3542,7 +3107,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);"  class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);"  class="alignmentcheckbox" type="checkbox" id="LawfulEvilCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3569,7 +3134,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="LawfulNeutralCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3580,7 +3145,7 @@
                             <div class="card-header ch3" id="LawfulGood">
                                 <h5 class="mb-0">
                                     <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseLawfulGood" aria-expanded="false" aria-controls="collapseThree">
-                                        <p style="font-weight: lighter"> LAWFUL NEUTRAL</p>
+                                        <p style="font-weight: lighter"> LAWFUL GOOD</p>
                                     </button>
                                 </h5>
                             </div>
@@ -3596,7 +3161,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input onclick="AlignmentCheck(this);" class="alignmentcheckbox" type="checkbox" id="LawfulGoodCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3648,7 +3213,7 @@
                                         </td>
 
                                         <td class="col text-center">
-                                            <input class="Backgroundcheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                            <input class="Backgroundcheckbox" type="checkbox" id="AcolyteCheckbox" aria-label="Checkbox for following text input">
                                         </td>
                                     </tr>
                                 </table>
@@ -3724,7 +3289,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input" checked= "unchecked">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="AcrobaticsProf" aria-label="Checkbox for following text input" checked= "unchecked">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3753,7 +3318,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this);" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this);" class="SkillProfCheckbox" type="checkbox" id="AnimalHandlingProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3780,7 +3345,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="ArcanaProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3807,7 +3372,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="AthleticsProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3837,7 +3402,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="DeceptionProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3849,7 +3414,7 @@
                                     <div class="card-header ch3" id="History">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseHistory" aria-expanded="false" aria-controls="collapseTwo">
-                                                <p style="font-weight: lighter"> DECEPTION </p>
+                                                <p style="font-weight: lighter"> HISTORY </p>
                                             </button>
                                         </h5>
                                     </div>
@@ -3864,7 +3429,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input  onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input  onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="HistoryProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3892,7 +3457,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input  onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input  onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="InsightProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3921,7 +3486,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="IntimidationProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3950,7 +3515,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="InvestigationProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -3976,7 +3541,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="MedicineProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4003,7 +3568,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="NatureProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4033,7 +3598,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="PerceptionProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4060,7 +3625,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="PerformanceProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4089,7 +3654,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="PersuasionProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4116,7 +3681,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="ReligionProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4145,7 +3710,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="SleightOfHandProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4172,7 +3737,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="StealthProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
@@ -4200,7 +3765,7 @@
                                                 </td>
 
                                                 <td class="col text-center">
-                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" aria-label="Checkbox for following text input">
+                                                    <input onclick="SkillProfCheck(this)" class="SkillProfCheckbox" type="checkbox" id="SurvivalProf" aria-label="Checkbox for following text input">
                                                 </td>
                                             </tr>
                                         </table>
