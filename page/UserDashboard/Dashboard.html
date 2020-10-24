@@ -82,6 +82,10 @@
                                  let inNewDiv = innerPresetDiv.cloneNode(true);
                                  inNewDiv.setAttribute('id', newdiv.reference.charactersheetID);
 
+                                 inNewDiv.children.item(0).children.item(0).children.item(0).children.item(0).innerText = newdiv.reference.combatClass;
+                                 inNewDiv.children.item(0).children.item(0).children.item(1).children.item(0).innerText = newdiv.reference.life.quantity;
+                                 inNewDiv.children.item(0).children.item(0).children.item(1).children.item(1).innerText = newdiv.reference.life.value;
+
                                  // Stats Left
                                  inNewDiv.children.item(0).children.item(1).children.item(1).children.item(0).children.item(0).children.item(0).children.item(1).children.item(0).innerText
                                     = newdiv.reference.stats.strength;
@@ -696,16 +700,21 @@
                 });
         }
 
+        function editChar(e){
+            let reference = e.parentElement.parentElement.parentElement.parentElement.children.item(0).reference;
+            window.location.assign("../Charactercreation/Charactercreation.html?c=" + reference.charactersheetID +"");
+        }
+
         function newChar(){
-            window.location.href ="../Charactercreation/Charactercreation.html";
+            window.location.assign("../Charactercreation/Charactercreation.html");
         }
 
         function toDashboard(){
-            window.location.href ="../UserDashboard/Dashboard.html";
+            window.location.assign("../UserDashboard/Dashboard.html");
         }
 
         function toAccount(){
-            window.location.href ="../Account/Account.html"
+            window.location.assign("../Account/Account.html");
         }
 
 
@@ -1208,7 +1217,13 @@
 
             <!--Left Top
             ==========================================-->
-            <div style="order:0;" class="Rtable-cell Rtable-cell--head">                                     <!-- 0 -->
+            <div style="order:0;" class="Rtable-cell Rtable-cell--head justify-content-between">                                     <!-- 0 -->
+                <div class="d-flex OtherTexts">
+                    Class: &nbsp;<span></span>
+                </div>
+                <div class="d-flex OtherTexts">
+                    Hit-Die: &nbsp;<span></span>d<span></span>
+                </div>
             </div>
 
             <!--Left Cell
@@ -1411,7 +1426,7 @@
             <!--Right Top
             ==========================================-->
             <div style="order:0;" class="Rtable-cell Rtable-cell--head">                                   <!-- 2 -->
-                <button type="button" class="btn btn-warning m-1 " >Edit</button>
+                <button type="button" class="btn btn-warning m-1" onclick="editChar(this)">Edit</button>
                 <button type="button" class="btn btn-warning m-1" onclick="dashboardSave(this)">Save</button>
                 <div>
                     <button type="button" class="btn btn-warning m-1" data-toggle="modal" onclick="deleteModal(this)">

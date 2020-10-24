@@ -1,5 +1,5 @@
 #HeaderBox {
-    background-image: url("../../Images/header-background.jpg");
+    background-image: url("../Images/header-background.jpg");
     background-position: center;
     background-size: cover;
     width: 100%;
@@ -43,7 +43,7 @@ html{
 }
 
 .content {
-    max-width: 100%;
+    max-width: 1440px;
     padding: 16px;
     width: 100%;
 }
@@ -71,7 +71,7 @@ html{
 }
 
 .container-fluid {
-    display: fluid;
+    display: flex;
     justify-content: center;
     margin-top: 0.25%;
     margin-left: 1%;
@@ -129,7 +129,7 @@ html{
 .image {
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 0.5%
+    padding-top: 0.5%;
 }
 
 #lining {
