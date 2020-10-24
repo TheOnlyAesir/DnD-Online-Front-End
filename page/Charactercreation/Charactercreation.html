@@ -30,7 +30,7 @@
         }
 
 
-
+        var IndividualItemPreset;
 
         window.addEventListener("load", function () {
 
@@ -84,6 +84,7 @@
 
 
             editSheet();
+            IndividualItemPreset = document.getElementById("IndividualItemsBlueprint");
 
 
             //DEFAULT -> UNCHECKED RACE
@@ -2479,7 +2480,11 @@
                                     document.getElementById("quantityBackpack").value = data.carryables[j].amount;
                                 }
                                 else{
-
+                                      let newItem = IndividualItemPreset.cloneNode(true);
+                                      newItem.setAttribute('id', j+20000);
+                                      newItem.children.item(0).children.item(0).children.item(0).checked = true;
+                                      newItem.children.item(0).children.item(0).children.item(1).value = data.carryables[j].carryable;
+                                      newItem.children.item(0).children.item(1).children.item(0).value = data.carryables[j].amount;
                                 }
                             }
 
