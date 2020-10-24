@@ -1427,9 +1427,11 @@
 
         function deleteIndividualItemsFromBackend (e){
             let id = e.parentElement.parentElement.children.item(2).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
                 method: 'delete',
                  })
 
@@ -1449,9 +1451,11 @@
 
         function deleteItemsFromBackend (e){
             let id = e.parentElement.parentElement.children.item(2).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1473,9 +1477,11 @@
 
         function deleteWeaponFromBackend (e){
             let id = e.parentElement.children.item(1).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1495,10 +1501,13 @@
 
 //TEST
         function deleteArmorFromBackend (e){
+
             let id = e.parentElement.children.item(1).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1968,31 +1977,31 @@
 
             let charsheetPost = JSON.stringify(charsheet);
 
+            //Put with ID
+            //============================================================================
             if(getParameterByName('c') != null) {
                 let charID = getParameterByName('c');
 
-                //Put with ID -->Endpoint muss noch gemacht werden
-                // fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + group +'/Charactersheet', {
-                //     method: 'put',
-                //     body: charsheetPost,
-                //     headers: {'Content-Type' : 'application/json'},
-                // })
-                //     .then(function (data) {
-                //         if(data.status !== 200) throw("error!");
-                //
-                //         // postEquipment();
-                //         alert(data);
-                //         return data.json();
-                //     })
-                //     .then(function (response){
-                //         postEquipment(response);
-                //     })
-                //     .catch(function (error) {
-                //         alert(error);
-                //     });
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/update', {
+                    method: 'put',
+                    body: charsheetPost,
+                    headers: {'Content-Type' : 'application/json'},
+                })
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+
+                        return data.json();
+                    })
+                    .then(function (response){
+                        postEquipment(response);
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
             }
+            //Post without ID
+            //============================================================================
             else{
-                //Post without ID
 
                 fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + group +'/Charactersheet', {
                     method: 'post',
@@ -2002,8 +2011,7 @@
                     .then(function (data) {
                         if(data.status !== 200) throw("error!");
 
-                        // postEquipment();
-                         alert(data);
+
                         return data.json();
                     })
                     .then(function (response){
@@ -2022,6 +2030,8 @@
 
 
         function postEquipment(charID){
+            //Chain
+            //============================================================================
             if(document.getElementById("ChainMailCheckbox").checked){
                 if(document.getElementById("ChainMailBackendID").innerText === ""){
                     let chainMail = {
@@ -2047,6 +2057,8 @@
 
                 }
             }
+            //Leather
+            //============================================================================
             if(document.getElementById("LeatherCheckbox").checked){
                 if(document.getElementById("LeatherBackendID").innerText === ""){
                     let leather = {
@@ -2073,6 +2085,8 @@
 
                 }
             }
+            //Plate
+            //============================================================================
             if(document.getElementById("PlateCheckbox").checked){
                 if(document.getElementById("PlateBackendID").innerText === ""){
                     let plate = {
@@ -2101,6 +2115,8 @@
         }
 
         function postEquippable(charID){
+            //Langsword
+            //============================================================================
             if(document.getElementById("LongswordCheckbox").checked){
                 if(document.getElementById("LongswordBackendID").innerText === ""){
                     calculateAttackDamageAndBonus(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, LongswordID);
@@ -2127,6 +2143,8 @@
                         });
                 }
             }
+            //Mace
+            //============================================================================
             if(document.getElementById("MazeCheckbox").checked){
                 if(document.getElementById("MazeBackendID").innerText === ""){
                     calculateAttackDamageAndBonus(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, MazeID);
@@ -2153,6 +2171,8 @@
                         });
                 }
             }
+            //Dagger
+            //============================================================================
             if(document.getElementById("DaggerCheckbox").checked){
                 if(document.getElementById("DaggerBackendID").innerText === ""){
                     calculateAttackDamageAndBonus(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, DaggerID);
@@ -2357,10 +2377,37 @@
             //============================================================================
             let surround = document.getElementById("IndividualItemsInsert");
             for(let j = 5; j < 100; j++){
+                if(surround.children.item(j) != null){
+                    if(surround.children.item(j).children.item(0).children.item(2).innerText !== ""){
+                        let name = surround.children.item(j).children.item(0).children.item(0).children.item(1).value;
+                        let amount = surround.children.item(j).children.item(0).children.item(1).children.item(0).value;
+                        let ID = surround.children.item(j).children.item(0).children.item(2).innerText;
 
-                // let name = ;
-                // let amount = ;
+                        let checkInd = {
+                            "carryable": name,
+                            "amount": amount
+                        };
 
+                        let checkIndput = JSON.stringify(checkInd);
+                        fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + ID, {
+                            method: 'put',
+                            body: checkIndput,
+                            headers: {'Content-Type' : 'application/json'},
+                        })
+                            .then(function (data) {
+                                if(data.status !== 200) throw("error!");
+
+                                // alert("success!");
+
+                            })
+                            .catch(function (error) {
+                                alert(error);
+                            });
+                    }
+                }
+                else {
+                    break;
+                }
             }
 
         }
@@ -2789,6 +2836,7 @@
                                 if(data.carryables[j].carryable === "Arrow"){
                                     showItemSelect(1);
                                     document.getElementById("quantityArrow").value = data.carryables[j].amount;
+                                    document.getElementById("ArrowBackendID").innerText = data.carryables[j].carryableID;
 
                                 }
                                 else if(data.carryables[j].carryable === "Backpack"){
