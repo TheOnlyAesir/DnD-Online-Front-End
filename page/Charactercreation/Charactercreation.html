@@ -1288,6 +1288,7 @@
         function resetIndividualItemInputDynamic(e){
             let name = e.parentElement.children.item(1);
             let amount = e.parentElement.parentElement.children.item(1).children.item(0);
+
             if(!e.checked){
                 name.value = null;
                 amount.value = null;
@@ -1702,7 +1703,7 @@
             determineCharacterArmorClass(document.getElementById("DEX_TOTAL").innerText);
             determineProficiencyBonus();
             determineHitDices();
-            calculateSkillValues(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, document.getElementById("INT_TOTAL").innerText, document.getElementById("WIS_TOTAL").innerText, document.getElementById("CHA_TOTAL"));
+            calculateSkillValues(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, document.getElementById("INT_TOTAL").innerText, document.getElementById("WIS_TOTAL").innerText, document.getElementById("CHA_TOTAL").innerText);
             determineArmorAndWeaponProf();
 
 
@@ -2505,12 +2506,15 @@
                             for(let j = 0; j < data.wearables.length; j++){
                                 if(data.wearables[j].wearable === ChainMailName){
                                     showArmorSelect(1);
+                                    document.getElementById("ChainMailBackendID").innerText = data.wearables[j].wearableID;
                                 }
                                 if(data.wearables[j].wearable === LeatherName){
                                     showArmorSelect(2);
+                                    document.getElementById("LeatherBackendID").innerText = data.wearables[j].wearableID;
                                 }
                                 if(data.wearables[j].wearable === PlateName){
                                     showArmorSelect(3);
+                                    document.getElementById("PlateBackendID").innerText = data.wearables[j].wearableID;
                                 }
                             }
 
@@ -2519,12 +2523,15 @@
                             for(let j = 0; j < data.equippables.length; j++){
                                 if(data.equippables[j].equippable === LongswordName){
                                     showWeaponSelect(1);
+                                    document.getElementById("LongswordBackendID").innerText = data.equippables[j].equippableID;
                                 }
                                 if(data.equippables[j].equippable === DaggerName){
                                     showWeaponSelect(2);
+                                    document.getElementById("DaggerBackendID").innerText = data.equippables[j].equippableID;
                                 }
                                 if(data.equippables[j].equippable === MazeName){
                                     showWeaponSelect(3);
+                                    document.getElementById("MazeBackendID").innerText = data.equippables[j].equippableID;
                                 }
                             }
 
@@ -5254,6 +5261,7 @@
                                         <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this)" id="quantityIndividualItem1" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
+
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
                             </div>
@@ -5307,6 +5315,7 @@
                                     <div class ="d-flex">
                                         <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this)" id="" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
+                                    <span class="hidden"></span>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
