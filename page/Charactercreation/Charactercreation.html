@@ -803,7 +803,7 @@
 
 
 //______________________________________________________________________________________
-//TEST
+
         //ABILITY SCORE RACE MODIFIER
         function setRaceModifiers(e, contentNumber){
 
@@ -1424,8 +1424,75 @@
         //
         //     }
         //
-        // }
 
+        function deleteIndividualItemsFromBackend (e){
+            let id = e.parentElement.parentElement.children.item(2).innerText;
+
+            if((!e.checked) && (id !== "")){
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id, {
+                method: 'delete',
+                 })
+
+                     .then(function (data) {
+                     if(data.status !== 200) throw("error!");
+                    // alert("success!");
+
+                })
+            .catch(function (error) {
+                alert(error);
+            });
+
+
+            }
+
+        }
+
+
+
+        function deleteWeaponFromBackend (e){
+            let id = e.parentElement.children.item(1).innerText;
+
+            if((!e.checked) && (id !== "")){
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable/' + id, {
+                    method: 'delete',
+                })
+
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
+
+
+            }
+
+        }
+
+//TEST
+        function deleteArmorFromBackend (e){
+            let id = e.parentElement.children.item(1).innerText;
+
+            if((!e.checked) && (id !== "")){
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable/' + id, {
+                    method: 'delete',
+                })
+
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
+
+
+            }
+
+        }
 
 
 
@@ -5044,7 +5111,7 @@
 
                                 <select class="custom-select InputWeapon " id="inputWeapon">
                                     <option selected>Add Item...</option>
-                                    <option value="1" onclick="showWeaponSelect(1)">Longsowrd</option>
+                                    <option value="1" onclick="showWeaponSelect(1)">Longsword</option>
                                     <option value="2" onclick="showWeaponSelect(2)">Dagger</option>
                                     <option value="3" onclick="showWeaponSelect(3)">Mace</option>
                                 </select>
@@ -5057,7 +5124,7 @@
                             <div class="d-flex justify-content-between"  >
 
                                 <div class ="d-flex">
-                                    <input id ="LongswordCheckbox" onclick="hideWeaponSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                    <input id ="LongswordCheckbox" onclick="hideWeaponSelect(1); deleteWeaponFromBackend(this)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                     <span class="hidden" id="LongswordBackendID"></span>
                                     <h4 class="d-flex" style="color: white; font-weight: lighter"> Longsword </h4>
                                 </div>
@@ -5071,7 +5138,7 @@
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input id ="DaggerCheckbox" onclick="hideWeaponSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="DaggerCheckbox" onclick="hideWeaponSelect(2);deleteWeaponFromBackend(this)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="DaggerBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Dagger </h4>
                                     </div>
@@ -5085,7 +5152,7 @@
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input id ="MazeCheckbox" onclick="hideWeaponSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="MazeCheckbox" onclick="hideWeaponSelect(3);deleteWeaponFromBackend(this)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="MazeBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Mace </h4>
                                     </div>
@@ -5127,7 +5194,7 @@
                                 <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1);CheckBackendCopy(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="ChainMailCheckbox" onclick="hideArmorSelect(1);deleteArmorFromBackend(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="ChainMailBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Chain Mail </h4>
                                     </div>
@@ -5142,7 +5209,7 @@
                                 <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2);CheckBackendCopy(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="LeatherCheckbox" onclick="hideArmorSelect(2);deleteArmorFromBackend(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="LeatherBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Leather </h4>
                                     </div>
@@ -5157,7 +5224,7 @@
                                 <div class="d-flex justify-content-start"  >
 
                                     <div class ="d-flex">
-                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3);CheckBackendCopy(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" checked="false" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="PlateCheckbox" onclick="hideArmorSelect(3);deleteArmorFromBackend(this)" class="ArmorCheckboxes Stealthcheckbox d-flex" checked="false" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="PlateBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Plate </h4>
                                     </div>
@@ -5303,12 +5370,12 @@
                             </div>
 
 
-
+<!--TEST-->
                             <div id= "IndividualItemsBlueprint" class="mt-2">
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input onclick = "resetIndividualItemInputDynamic(this);" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick = "resetIndividualItemInputDynamic(this); deleteFromBackend(this)" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <input onchange="checkCheckboxDynamic(this)" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                     </div>
 
