@@ -217,20 +217,30 @@
         //DETERMINE WEAPON ATTACKBONUS
         function calculateAttackBonus(STRTOTAL, DEXTOTAL ,id){
             determineProficiencyBonus();
+            determineArmorAndWeaponProf()
 
             var ID = id;
             var STRMOD = determineStatsModifiers(STRTOTAL);
             var DEXMOD = determineStatsModifiers(DEXTOTAL);
 
             if(ID === 1){
+                if(martialMeleeWeapons === true){
+                    LongswordAttackBonus = DEXMOD + ProfBonus + 2;
+                }
                 LongswordAttackBonus = DEXMOD + ProfBonus;
             }
 
             if(ID === 2){
+                if(simpleMeleeWeapons === true){
+                    DaggerAttackDamage = STRMOD + ProfBonus + 2;
+                }
                 DaggerAttackDamage = STRMOD + ProfBonus;
             }
 
             if(ID === 3){
+                if(simpleMeleeWeapons === true){
+                    MazeAttackDamage = STRMOD + ProfBonus + 2;
+                }
                 MazeAttackDamage = STRMOD + ProfBonus;
             }
         }
