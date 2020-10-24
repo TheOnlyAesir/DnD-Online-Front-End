@@ -1918,12 +1918,16 @@
                     })
                     .then(function (response){
                         postEquipment(response);
+                        return response;
+                    })
+                    .then(function (response){
+                        // window.location.assign("../UserDashboard/Dashboard.html");
                     })
                     .catch(function (error) {
                         alert(error);
                     });
             }
-            window.location.assign("../UserDashboard/Dashboard.html");
+
         }
 
 
