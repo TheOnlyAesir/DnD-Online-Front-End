@@ -67,9 +67,6 @@
         }
 
 
-
-
-
         function createGroup(e){
             let groupName = e.parentElement.parentElement.children.item(1).children.item(0).children.item(1).value;
             let groupNameArr = {"name": ""+groupName+""};
@@ -183,6 +180,8 @@
 
 
     </script>
+
+
     <style>
         /* Header
         ================================== */
@@ -643,14 +642,91 @@
             =======================================-->
             <div class="hidden" id="Settings" style="color: white">
                 <div class="d-flex justify-content-center">
-
-
+                    <form>
+                        <div class="form-group">
+                            <label for="changeEmail">Change Email</label>
+                            <input id="changeEmail" type="email" class="form-control" placeholder="Enter New Email">
+                            </br>
+                            <input id="emailConf" type="email" class="form-control" placeholder="Confirm New Email">
+                        </div>
+                        <button type="button" class="btn btn-outline-dark" onclick="changeEmailAdress()">Submit</button>
+                        <br/>
+                        <br/>
+                        <div class="form-group">
+                            <label for="changePassword">Change Password</label>
+                            <input id="changePassword" type="password" class="form-control" placeholder="Enter New Password">
+                            <br/>
+                            <input id="password_Conf" type="password" class="form-control" placeholder="Confirm New Password">
+                        </div>
+                        <button type="button" class="btn btn-outline-dark" onclick="changeUserPassword()">Submit</button>
+                    </form>
                 </div>
             </div>
 
         </div>
     </div>
 </div>
+
+<script type="application/javascript">
+
+    function changeEmailAdress() {
+        const newMail = document.getElementById("changeEmail").value;
+        const mailconf = document.getElementById("emailConf").value;
+
+        if (newMail !== mailconf) {
+            alert("Inputs do not match");
+            return;
+        }
+        fetch('http://localhost:8181/api/v1.0/User/editEmail', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json', 'Accept': '*/*'
+            },
+            body: JSON.stringify({
+                "userid": localStorage.userID,
+                "email": newMail
+            })
+        })
+            .then(function (response) {
+                if (response.status !== 200) throw response.status;
+                location.reload();
+                return response.json();
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+
+    function changeUserPassword() {
+        const newPass = document.getElementById("changePassword").value;
+        const passconf = document.getElementById("password_Conf").value;
+
+        if (newPass !== passconf) {
+            alert("Inputs do not match");
+            return;
+        }
+        fetch('http://localhost:8181/api/v1.0/User/editPassword', {
+            method: 'post',
+            headers: {
+                'Content-Type': 'application/json', 'Accept': '*/*'
+            },
+            body: JSON.stringify({
+                "userid": localStorage.userID,
+                "password": newPass
+            })
+        })
+            .then(function (response) {
+                if (response.status !== 200) throw response.status;
+                location.reload();
+                return response.json();
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+
+    }
+
+</script>
 
 
 
