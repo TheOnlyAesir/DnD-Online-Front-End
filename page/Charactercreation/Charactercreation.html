@@ -282,9 +282,9 @@
             else{ InvestigationValue = INT; }
 
             if(document.getElementById("NatureProf").checked){
-                InvestigationValue = INT + 2;
+                NatureValue = INT + 2;
             }
-            else{ InvestigationValue = INT; }
+            else{ NatureValue = INT; }
 
             if(document.getElementById("ReligionProf").checked){
                 ReligionValue = INT + 2;
@@ -327,9 +327,9 @@
             else{ IndimidationValue = CHA; }
 
             if(document.getElementById("PerformanceProf").checked){
-                Per = CHA + 2;
+                PerformanceValue = CHA + 2;
             }
-            else{ IndimidationValue = CHA; }
+            else{ PerformanceValue = CHA; }
 
             if(document.getElementById("PersuasionProf").checked){
                 PersuasionValue = CHA + 2;
@@ -736,7 +736,7 @@
             return CHA_ModifierNumber;
         }
 
-        //ABILITY SCORE TOTAL
+        //ABILITY SCORE TOTAL--
 
         function calcSTRTOTAL() {
             var x = parseInt(document.getElementById("inputSTR").value);
