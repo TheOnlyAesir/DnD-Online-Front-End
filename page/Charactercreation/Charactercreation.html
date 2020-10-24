@@ -204,7 +204,33 @@
         let StealthValue = 0;
         let SurvivalValue = 0;
 
-        //TEST
+        //HitDices
+        let HitDiceValue = 0;
+        let HitDiceQuantity = 0;
+
+        // DETERMINE HIT DICES
+        function determineHitDices(){
+
+            var x1 = document.getElementById("inputGroupSelect02").value;
+
+            HitDiceQuantity = x1;
+
+            var x2 = document.getElementById("inputGroupSelect01").value;
+
+            if(x2 == 1 || x2 == 3 ){
+                HitDiceValue = 10;
+
+            }
+
+            if(x2 == 2){
+                HitDiceValue = 6;
+            }
+
+
+
+        }
+
+
         //CALCULATE SKILL VALUES
         function calculateSkillValues(STRTOTAL, DEXTOTAL, INTTOTAL, WISTOTAL, CHATOTAL){
 
@@ -259,6 +285,57 @@
                 InvestigationValue = INT + 2;
             }
             else{ InvestigationValue = INT; }
+
+            if(document.getElementById("ReligionProf").checked){
+                ReligionValue = INT + 2;
+            }
+            else{ ReligionValue = INT; }
+
+            if(document.getElementById("AnimalHandlingProf").checked){
+                AnimalHandlingValue = WIS + 2;
+            }
+            else{ AnimalHandlingValue = WIS; }
+
+            if(document.getElementById("InsightProf").checked){
+                InsightValue = WIS + 2;
+            }
+            else{ InsightValue = WIS; }
+
+            if(document.getElementById("MedicineProf").checked){
+                MedicineValue = WIS + 2;
+            }
+            else{ MedicineValue = WIS; }
+
+            if(document.getElementById("PerceptionProf").checked){
+                PerceptionValue = WIS + 2;
+            }
+            else{ PerceptionValue = WIS; }
+
+            if(document.getElementById("SurvivalProf").checked){
+                SurvivalValue = WIS + 2;
+            }
+            else{ SurvivalValue = WIS; }
+
+            if(document.getElementById("DeceptionProf").checked){
+                DeceptionValue = CHA + 2;
+            }
+            else{ DeceptionValue = CHA; }
+
+            if(document.getElementById("IntimidationProf").checked){
+                IndimidationValue = CHA + 2;
+            }
+            else{ IndimidationValue = CHA; }
+
+            if(document.getElementById("PerformanceProf").checked){
+                Per = CHA + 2;
+            }
+            else{ IndimidationValue = CHA; }
+
+            if(document.getElementById("PersuasionProf").checked){
+                PersuasionValue = CHA + 2;
+            }
+            else{ PersuasionValue = CHA; }
+
         }
 
 
@@ -374,7 +451,7 @@
 
             if(document.getElementById("DwarfCheckBox").checked == true){
                Speed = 25;
-               alert(Speed);
+
 
             }
 
@@ -545,10 +622,6 @@
 
         }
 
-        //HIT DICE VALUE
-        function determineHitDiceValue(){
-
-        }
 
 
 
@@ -1340,15 +1413,15 @@
 
 
 
-        function CheckBackendCopy(e){
-
-            if(!e.checked){
-
-                alert("YEAH!");
-
-            }
-
-        }
+        // function CheckBackendCopy(e){
+        //
+        //     if(!e.checked){
+        //
+        //         alert("YEAH!");
+        //
+        //     }
+        //
+        // }
 
 
 
@@ -4901,7 +4974,7 @@
                                     <option selected>Add Item...</option>
                                     <option value="1" onclick="showWeaponSelect(1)">Longsowrd</option>
                                     <option value="2" onclick="showWeaponSelect(2)">Dagger</option>
-                                    <option value="3" onclick="showWeaponSelect(3)">Maze</option>
+                                    <option value="3" onclick="showWeaponSelect(3)">Mace</option>
                                 </select>
 
                             </div>
@@ -4942,7 +5015,7 @@
                                     <div class ="d-flex">
                                         <input id ="MazeCheckbox" onclick="hideWeaponSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <span class="hidden" id="MazeBackendID"></span>
-                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Maze </h4>
+                                        <h4 class="d-flex" style="color: white; font-weight: lighter"> Mace </h4>
                                     </div>
 
 
