@@ -1868,7 +1868,7 @@
             }
             // alert(document.getElementById("").value);
 
-            let groupID;
+            let group = 1;
 
             let charsheetPost = JSON.stringify(charsheet);
 
@@ -1876,30 +1876,29 @@
                 let charID = getParameterByName('c');
 
                 //Put with ID -->Endpoint muss noch gemacht werden
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + group +'/Charactersheet', {
-                    method: 'put',
-                    body: charsheetPost,
-                    headers: {'Content-Type' : 'application/json'},
-                })
-                    .then(function (data) {
-                        if(data.status !== 200) throw("error!");
-
-                        // postEquipment();
-                        alert(data);
-                        return data.json();
-                    })
-                    .then(function (response){
-                        postEquipment(response);
-                    })
-                    .catch(function (error) {
-                        alert(error);
-                    });
-
+                // fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + group +'/Charactersheet', {
+                //     method: 'put',
+                //     body: charsheetPost,
+                //     headers: {'Content-Type' : 'application/json'},
+                // })
+                //     .then(function (data) {
+                //         if(data.status !== 200) throw("error!");
+                //
+                //         // postEquipment();
+                //         alert(data);
+                //         return data.json();
+                //     })
+                //     .then(function (response){
+                //         postEquipment(response);
+                //     })
+                //     .catch(function (error) {
+                //         alert(error);
+                //     });
             }
             else{
                 //Post without ID
 
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + 1 +'/Charactersheet', {
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + group +'/Charactersheet', {
                     method: 'post',
                     body: charsheetPost,
                     headers: {'Content-Type' : 'application/json'},
@@ -1918,6 +1917,7 @@
                         alert(error);
                     });
             }
+            window.location.assign("../UserDashboard/Dashboard.html");
         }
 
 
