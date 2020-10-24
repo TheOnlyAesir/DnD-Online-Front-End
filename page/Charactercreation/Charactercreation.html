@@ -1427,9 +1427,11 @@
 
         function deleteIndividualItemsFromBackend (e){
             let id = e.parentElement.parentElement.children.item(2).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
                 method: 'delete',
                  })
 
@@ -1449,9 +1451,11 @@
 
         function deleteItemsFromBackend (e){
             let id = e.parentElement.parentElement.children.item(2).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1473,9 +1477,11 @@
 
         function deleteWeaponFromBackend (e){
             let id = e.parentElement.children.item(1).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1495,10 +1501,13 @@
 
 //TEST
         function deleteArmorFromBackend (e){
+
             let id = e.parentElement.children.item(1).innerText;
+            e.parentElement.parentElement.children.item(2).innerText = "";
 
             if((!e.checked) && (id !== "")){
-                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable/' + id, {
+                let charID = getParameterByName('c');
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/wearable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -2369,30 +2378,32 @@
             let surround = document.getElementById("IndividualItemsInsert");
             for(let j = 5; j < 100; j++){
                 if(surround.children.item(j) != null){
-                    let name = surround.children.item(j).children.item(0).children.item(0).children.item(1).value;
-                    let amount = surround.children.item(j).children.item(0).children.item(1).children.item(0).value;
-                    let ID = surround.children.item(j).children.item(0).children.item(2).innerText;
+                    if(surround.children.item(j).children.item(0).children.item(2).innerText !== ""){
+                        let name = surround.children.item(j).children.item(0).children.item(0).children.item(1).value;
+                        let amount = surround.children.item(j).children.item(0).children.item(1).children.item(0).value;
+                        let ID = surround.children.item(j).children.item(0).children.item(2).innerText;
 
-                    let checkInd = {
-                        "carryable": name,
-                        "amount": amount
-                    };
+                        let checkInd = {
+                            "carryable": name,
+                            "amount": amount
+                        };
 
-                    let checkIndput = JSON.stringify(checkInd);
-                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + ID, {
-                        method: 'put',
-                        body: checkIndput,
-                        headers: {'Content-Type' : 'application/json'},
-                    })
-                        .then(function (data) {
-                            if(data.status !== 200) throw("error!");
-
-                            // alert("success!");
-
+                        let checkIndput = JSON.stringify(checkInd);
+                        fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + ID, {
+                            method: 'put',
+                            body: checkIndput,
+                            headers: {'Content-Type' : 'application/json'},
                         })
-                        .catch(function (error) {
-                            alert(error);
-                        });
+                            .then(function (data) {
+                                if(data.status !== 200) throw("error!");
+
+                                // alert("success!");
+
+                            })
+                            .catch(function (error) {
+                                alert(error);
+                            });
+                    }
                 }
                 else {
                     break;
