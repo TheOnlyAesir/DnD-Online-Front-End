@@ -354,9 +354,9 @@
                 LongswordAttackDamage = STRMOD;
 
                     if(martialMeleeWeapons === true){
-                        LongswordAttackBonus = DEXMOD + ProfBonus + 2;
+                        LongswordAttackBonus = STRMOD + ProfBonus ;
                     }
-                    else{LongswordAttackBonus = DEXMOD + ProfBonus;}
+                    else{LongswordAttackBonus = STRMOD ;}
 
             }
 
@@ -364,18 +364,18 @@
                 DaggerAttackDamage = DEXMOD;
 
                     if(simpleMeleeWeapons === true){
-                        DaggerAttackDamage = STRMOD + ProfBonus + 2;
+                        DaggerAttackDamage = STRMOD + ProfBonus ;
                     }
-                    else{DaggerAttackDamage = STRMOD + ProfBonus;}
+                    else{DaggerAttackDamage = STRMOD  ;}
             }
 
             if(ID === 3){
                 MazeAttackDamage = DEXMOD;
 
                     if(simpleMeleeWeapons === true){
-                        MazeAttackDamage = STRMOD + ProfBonus + 2;
+                        MazeAttackDamage = STRMOD + ProfBonus ;
                     }
-                    else{MazeAttackDamage = STRMOD + ProfBonus;}
+                    else{MazeAttackDamage = STRMOD  ;}
             }
         }
 
