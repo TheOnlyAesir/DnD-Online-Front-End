@@ -803,7 +803,7 @@
 
 
 //______________________________________________________________________________________
-
+//TEST
         //ABILITY SCORE RACE MODIFIER
         function setRaceModifiers(e, contentNumber){
 
@@ -1277,6 +1277,7 @@
                 resetIndividualItemInputDynamic(amount);
                 Checkbox.checked = false;
             }
+
         }
 
         function resetIndividualItemQuantity(e){
@@ -1699,6 +1700,11 @@
 
             determineSpeed();
             determineCharacterArmorClass(document.getElementById("DEX_TOTAL").innerText);
+            determineProficiencyBonus();
+            determineHitDices();
+            calculateSkillValues(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, document.getElementById("INT_TOTAL").innerText, document.getElementById("WIS_TOTAL").innerText, document.getElementById("CHA_TOTAL"));
+            determineArmorAndWeaponProf();
+
 
             let charsheet = {
                 "characterName": ""+ document.getElementById("CharNameInput").value +"",
@@ -1707,7 +1713,7 @@
                 "speed": Speed,
                 "passivePerception":  determinePassivePerception(document.getElementById("WIS_TOTAL").innerText),
                 "level": "" + document.getElementById("inputGroupSelect02").value + "",
-                "proficiencyBonus":"" +  + "",
+                "proficiencyBonus": ProfBonus,
                 "combatClass": "" + combatClass + "",
                 "race": "" + race + "",
                 "stats": {
@@ -1725,49 +1731,49 @@
                     "charismaModifier": determineStatsModifiers(document.getElementById("CHA_TOTAL").innerText)
                 },
                 "skills":{
-                    "deception":"" +  + "",
+                    "deception": DeceptionValue,
                     "deception_prof":"" + document.getElementById("DeceptionProf").checked + "",
-                    "intimidation":"" + + "",
+                    "intimidation": IndimidationValue,
                     "intimidation_prof":"" + document.getElementById("IntimidationProf").checked + "",
-                    "performance":"" + + "",
+                    "performance": PerformanceValue,
                     "performance_prof":"" + document.getElementById("PerformanceProf").checked + "",
-                    "persuasion":"" + + "",
+                    "persuasion": PersuasionValue,
                     "persuasion_prof":"" + document.getElementById("PersuasionProf").checked + "",
-                    "acrobatics":"" + + "",
+                    "acrobatics": AcrobaticsValue,
                     "acrobatics_prof":"" + document.getElementById("AcrobaticsProf").checked + "",
-                    "sleight_of_hand":"" + + "",
+                    "sleight_of_hand": SleightOfHandValue,
                     "sleight_of_hand_prof":"" + document.getElementById("SleightOfHandProf").checked + "",
-                    "stealth":"" + + "",
+                    "stealth": StealthValue,
                     "stealth_prof":"" + document.getElementById("StealthProf").checked + "",
-                    "arcana":"" + + "",
+                    "arcana": ArcanaValue,
                     "arcana_prof":"" + document.getElementById("ArcanaProf").checked + "",
-                    "history":"" + + "",
+                    "history": HistoryValue,
                     "history_prof":"" + document.getElementById("HistoryProf").checked + "",
-                    "investigation":"" + + "",
+                    "investigation": InvestigationValue,
                     "investigation_prof":"" + document.getElementById("InvestigationProf").checked + "",
-                    "nature":"" + + "",
+                    "nature": NatureValue,
                     "nature_prof":"" + document.getElementById("NatureProf").checked + "",
-                    "religion":"" + + "",
+                    "religion": ReligionValue,
                     "religion_prof":"" + document.getElementById("ReligionProf").checked + "",
-                    "athletics":"" + + "",
+                    "athletics": AthleticsValue,
                     "athletics_prof":"" + document.getElementById("AthleticsProf").checked + "",
-                    "animal_handling":"" + + "",
+                    "animal_handling": AnimalHandlingValue,
                     "animal_handling_prof":"" + document.getElementById("AnimalHandlingProf").checked + "",
-                    "insight":"" + + "",
+                    "insight": InsightValue,
                     "insight_prof":"" + document.getElementById("InsightProf").checked + "",
-                    "medicine":"" + + "",
+                    "medicine": MedicineValue,
                     "medicine_prof":"" + document.getElementById("MedicineProf").checked + "",
-                    "perception":"" + + "",
+                    "perception": PerceptionValue,
                     "perception_prof":"" + document.getElementById("PerceptionProf").checked + "",
-                    "survival":"" + + "",
+                    "survival": SurvivalValue,
                     "survival_prof":"" + document.getElementById("SurvivalProf").checked + ""
                 },
                 "life":{
                     "currentHitPoints":"" + document.getElementById("inputHitPoints").value + "",
                     "maximumHitPoints":"" + document.getElementById("inputHitPoints").value + "",
                     "temporaryHitPoints":"" + document.getElementById("inputHitPoints").value + "",
-                    "value":"" + + "",
-                    "quantity":"" + + ""
+                    "value": HitDiceValue,
+                    "quantity": HitDiceQuantity
                 },
                 "treasure":{
                     "platinum_coins":"" + document.getElementById("PlatinumInput").value + "",
@@ -1854,16 +1860,16 @@
                     "woodcarverTools":"" + document.getElementById("woodcarverToolsCheckbox").checked + ""
                 },
                 "armorProficiencies":{
-                    "lightArmor":"" + false + "",
-                    "mediumArmor":"" + false + "",
-                    "heavyArmor":"" + false + "",
-                    "shield":"" + false + ""
+                    "lightArmor": lightArmor,
+                    "mediumArmor": mediumArmor,
+                    "heavyArmor": heavyArmor,
+                    "shield": shield
                 },
                 "weaponProficiencies":{
-                    "simpleMeleeWeapons":"" + false + "",
-                    "simpleRangedWeapons":"" + false + "",
-                    "martiaMeleeWeapons":"" + false + "",
-                    "martialRangedWeapons":"" + false + ""
+                    "simpleMeleeWeapons": simpleMeleeWeapons,
+                    "simpleRangedWeapons": simpleRangedWeapons,
+                    "martiaMeleeWeapons": martialMeleeWeapons,
+                    "martialRangedWeapons": martialRangedWeapons
                 }
             }
             // alert(document.getElementById("").value);
@@ -2234,6 +2240,56 @@
 
                             //Ability Scores
                             //==========================================================================
+                            document.getElementById("STR_TOTAL").innerText = data.stats.strength;
+                            document.getElementById("DEX_TOTAL").innerText = data.stats.dexterity;
+                            document.getElementById("CON_TOTAL").innerText = data.stats.constitution;
+
+                            document.getElementById("INT_TOTAL").innerText = data.stats.intelligence;
+                            document.getElementById("WIS_TOTAL").innerText = data.stats.wisdom;
+                            document.getElementById("CHA_TOTAL").innerText = data.stats.charisma;
+
+
+                            document.getElementById("STR_RaceModifier").innerText = data.stats.strengthModifier;
+                            document.getElementById("DEX_RaceModifier").innerText = data.stats.dexterityModifier;
+                            document.getElementById("CON_RaceModifier").innerText = data.stats.constitutionModifier;
+
+                            document.getElementById("INT_RaceModifier").innerText = data.stats.intelligenceModifier;
+                            document.getElementById("WIS_RaceModifier").innerText = data.stats.wisdomModifier;
+                            document.getElementById("CHA_RaceModifier").innerText = data.stats.charismaModifier;
+
+                            if(data.race === "Dwarf"){
+
+                                document.getElementById("inputSTR").value = data.stats.strength;
+                                document.getElementById("inputDEX").value = data.stats.dexterity;
+                                document.getElementById("inputCON").value = data.stats.constitution - 2;
+
+                                document.getElementById("inputINT").value = data.stats.intelligence;
+                                document.getElementById("inputWIS").value = data.stats.wisdom;
+                                document.getElementById("inputCHA").value = data.stats.charisma;
+
+                            }
+                            else if(data.race === "Human"){
+                                document.getElementById("inputSTR").value = data.stats.strength - 1;
+                                document.getElementById("inputDEX").value = data.stats.dexterity - 1;
+                                document.getElementById("inputCON").value = data.stats.constitution - 1;
+
+                                document.getElementById("inputINT").value = data.stats.intelligence - 1;
+                                document.getElementById("inputWIS").value = data.stats.wisdom - 1;
+                                document.getElementById("inputCHA").value = data.stats.charisma - 1;
+
+                            }
+                            else if(data.race === "Elf"){
+                                document.getElementById("inputSTR").value = data.stats.strength;
+                                document.getElementById("inputDEX").value = data.stats.dexterity - 2;
+                                document.getElementById("inputCON").value = data.stats.constitution ;
+
+                                document.getElementById("inputINT").value = data.stats.intelligence;
+                                document.getElementById("inputWIS").value = data.stats.wisdom;
+                                document.getElementById("inputCHA").value = data.stats.charisma;
+
+                            }
+
+
 
 
                             //Alignment
