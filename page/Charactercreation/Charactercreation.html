@@ -1181,132 +1181,46 @@
         }
 
         //Check if Only Quantity is there
-        function checkIndividualItemQuantityCheckboxRel(e, contentNumber){
-            var x1 = document.getElementById("IndividualItem1");
-            var x2 = document.getElementById("IndividualItem2");
-            var x3 = document.getElementById("IndividualItem3");
+        function checkIndividualItemQuantityCheckboxRel(e){
+            let checkbox = e.parentElement.parentElement.children.item(0).children.item(0);
 
-            if(contentNumber === 1 ) {
-                if ((!(e.value == 0)) && (x1.value == 0) ) {
-                        e.value = null;
-            }
-        }
-
-            if(contentNumber === 2 ) {
-                if ((!(e.value == 0)) && (x2.value == 0)) {
-                    e.value = null;
-                }
-            }
-
-            if(contentNumber === 3 ) {
-                if ((!(e.value == 0)) && (x3.value == 0)) {
-                    e.value = null;
-                }
-            }
-
+            if((e.value !== 0) && (checkbox.checked == false))
+                e.value = null;
 
         }
-
 //______________________________________________________________________________________
 
         //WHEN INDIVIDUAL ITEM INPUT IS EMPTY -> THEN UNCHECK CHECKBOX!
+        function checkCheckboxDynamic(e){
+            let Checkbox = e.parentElement.children.item(0);
+            let amount = e.parentElement.parentElement.children.item(1).children.item(0);
 
-        function CheckCheckbox(e, contentNumber){
-            var x1 = document.getElementById("IndividualItem3Checkbox");
-            var x2 = document.getElementById("IndividualItem2Checkbox");
-            var x3 = document.getElementById("IndividualItemCheckbox");
-
-            if(contentNumber === 3){
-
-                    if((!(e.value == 0)) ){
-                        x1.checked = true;
-                        checkIfNegativeNum(document.getElementById("quantityIndividualItem3"));
-                    }
-
-                    if((e.value == 0) ){
-                        x1.checked = false;
-
-                    }
+            if(e.value !== 0){
+                checkIfNegativeNum(amount);
+                Checkbox.checked = true;
             }
-
-            if(contentNumber === 2){
-
-                    if((!(e.value == 0)) ){
-                        checkIfNegativeNum(document.getElementById("quantityIndividualItem2"));
-                        x2.checked = true;
-                    }
-
-                    if((e.value == 0) ){
-                        x2.checked = false;
-
-                    }
+            else{
+                resetIndividualItemInputDynamic(amount);
+                Checkbox.checked = false;
             }
-
-            if(contentNumber === 1){
-
-                    if((!(e.value == 0)) ){
-                        checkIfNegativeNum(document.getElementById("quantityIndividualItem1"));
-                        x3.checked = true;
-                    }
-
-                    if((e.value == 0) ){
-                        resetIndividualItemQuantity(document.getElementById("quantityIndividualItem1"))
-                        x3.checked = false;
-
-                    }
-            }
-
         }
 
         function resetIndividualItemQuantity(e){
             e.value = null;
         }
 
-        function resetIndividualItemInput(e, contentNumber){
 
-            var x1 = document.getElementById("IndividualItem1");
-            var x2 = document.getElementById("IndividualItem2");
-            var x3 = document.getElementById("IndividualItem3");
-
-            var y1 = document.getElementById("quantityIndividualItem1")
-            var y2 = document.getElementById("quantityIndividualItem2")
-            var y2 = document.getElementById("quantityIndividualItem3")
-
-            if(contentNumber === 1){
-                if (!e.checked){
-                    resetItemQuantity(document.getElementById("quantityIndividualItem1"));
-                    x1.value = null;
-                    y1.value = null;
-                }
-                if(e.checked){
-                    e.checked = false;
-                }
+        function resetIndividualItemInputDynamic(e){
+            let name = e.parentElement.children.item(1);
+            let amount = e.parentElement.parentElement.children.item(1).children.item(0);
+            if(!e.checked){
+                name.value = null;
+                amount.value = null;
             }
-
-            if(contentNumber === 2){
-                if (!e.checked){
-                    resetItemQuantity(document.getElementById("quantityIndividualItem2"));
-                    x2.value = null;
-                    y2.value = null;
-                }
-                if(e.checked){
-                    e.checked = false;
-                }
-            }
-
-            if(contentNumber === 3){
-                if (!e.checked){
-                    resetItemQuantity(document.getElementById("quantityIndividualItem3"));
-                    x3.value = null;
-                    y3.value = null;
-                }
-                if(e.checked){
-                    e.checked = false;
-                }
-            }
-
-
+            else
+                e.checked = false;
         }
+
 
         //Check if Element is Hidden
         function isHidden(el){
@@ -1719,7 +1633,7 @@
                 "speed": Speed,
                 "passivePerception":  determinePassivePerception(document.getElementById("WIS_TOTAL").innerText),
                 "level": "" + document.getElementById("inputGroupSelect02").value + "",
-                "proficiencyBonus":"" + + "",
+                "proficiencyBonus":"" +  + "",
                 "combatClass": "" + combatClass + "",
                 "race": "" + race + "",
                 "stats": {
@@ -1937,7 +1851,7 @@
             if(document.getElementById("ChainMailCheckbox").checked){
                 if(document.getElementById("ChainMailBackendID").innerText === ""){
                     let chainMail = {
-                        "wearable": "Chain Mail",
+                        "wearable": ChainMailName,
                         "details": "" + ChainMailDetails + "",
                         "armorClass": determinePossibleArmorClass(document.getElementById("DEX_TOTAL").innerText, ChainMailID)
                     }
@@ -2009,13 +1923,13 @@
                         });
                 }
             }
-            postWieldable(charID);
+            postEquippable(charID);
         }
 
-        function postWieldable(charID){
+        function postEquippable(charID){
             if(document.getElementById("LongswordCheckbox").checked){
                 if(document.getElementById("LongswordBackendID").innerText === ""){
-                    calculateAttackDamageAndBonus();
+                    calculateAttackDamageAndBonus(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, LongswordID);
                     let longsword = {
                         "equippable": LongswordName,
                         "details": "" + LongswordDetails + LongswordAttackDamage + " damage" ,
@@ -2041,7 +1955,7 @@
             }
             if(document.getElementById("MazeCheckbox").checked){
                 if(document.getElementById("MazeBackendID").innerText === ""){
-                    calculateAttackDamageAndBonus();
+                    calculateAttackDamageAndBonus(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, MazeID);
                     let mace = {
                         "equippable": MazeName,
                         "details": "" + MazeDetails + MazeAttackDamage + " damage" ,
@@ -2066,8 +1980,8 @@
                 }
             }
             if(document.getElementById("DaggerCheckbox").checked){
-                if(document.getElementById("DaggerBackendID").innerText){
-                    calculateAttackDamageAndBonus();
+                if(document.getElementById("DaggerBackendID").innerText === ""){
+                    calculateAttackDamageAndBonus(document.getElementById("STR_TOTAL").innerText, document.getElementById("DEX_TOTAL").innerText, DaggerID);
                     let dagger = {
                         "equippable": DaggerName,
                         "details": "" + DaggerDetails + DaggerAttackDamage + " damage" ,
@@ -2112,7 +2026,7 @@
             if(document.getElementById("IndividualItem3Checkbox").checked){
 
             }
-            for(let j = 3; j < 100; j++){
+            for(let j = 5; j < 100; j++){
 
             }
 
@@ -2452,6 +2366,51 @@
                             document.getElementById("SilverInput").value = data.treasure.silver_coins ;
                             document.getElementById("CopperInput").value = data.treasure.copper_coins ;
 
+                            //Armor
+                            //==========================================================================
+                            for(let j = 0; j < data.wearables.length; j++){
+                                if(data.wearables[j].wearable === ChainMailName){
+                                    showArmorSelect(1);
+                                }
+                                if(data.wearables[j].wearable === LeatherName){
+                                    showArmorSelect(2);
+                                }
+                                if(data.wearables[j].wearable === PlateName){
+                                    showArmorSelect(3);
+                                }
+                            }
+
+                            //Weapon
+                            //==========================================================================
+                            for(let j = 0; j < data.equippables.length; j++){
+                                if(data.equippables[j].equippable === LongswordName){
+                                    showWeaponSelect(1);
+                                }
+                                if(data.equippables[j].equippable === DaggerName){
+                                    showWeaponSelect(2);
+                                }
+                                if(data.equippables[j].equippable === MazeName){
+                                    showWeaponSelect(3);
+                                }
+                            }
+
+                            //Other Items
+                            //==========================================================================
+                            for(let j = 0; j < data.carryables.length; j++ ){
+                                if(data.carryables[j].carryable === "Arrow"){
+                                    showItemSelect(1);
+                                    document.getElementById("quantityArrow").value = data.carryables[j].amount;
+                                }
+                                else if(data.carryables[j].carryable === "Backpack"){
+                                    showItemSelect(2);
+                                    document.getElementById("quantityBackpack").value = data.carryables[j].amount;
+                                }
+                                else{
+
+                                }
+                            }
+
+
 
 
 
@@ -2769,6 +2728,10 @@
 
         .AnimalHandlingcheckbox{
 
+        }
+
+        #IndividualItemsBlueprint{
+            display: none;
         }
 
         /* Tables
@@ -5139,59 +5102,79 @@
                             </div>
 
 
-                            <br>
-                            <div id= "IndividualItems1" >
+
+                            <div id= "IndividualItems1" class="mt-2" >
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input onclick = "resetIndividualItemInput(this, 1);" id ="IndividualItemCheckbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                        <input onchange="CheckCheckbox(this, 1)" id ="IndividualItem1" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        <input onclick = "resetIndividualItemInputDynamic(this);" id ="IndividualItemCheckbox" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="checkCheckboxDynamic(this)" id ="IndividualItem1" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                                     </div>
 
                                     <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this, 1)" id="quantityIndividualItem1" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this)" id="quantityIndividualItem1" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
                             </div>
 
-                            <br>
-                            <div id= "IndividualItems2" >
+
+                            <div id= "IndividualItems2" class="mt-2" >
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input onclick = "resetIndividualItemInput(this, 2);" id ="IndividualItem2Checkbox" onclick="hideArmorSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                        <input onchange="CheckCheckbox(this, 2)" id ="IndividualItem2" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        <input onclick = "resetIndividualItemInputDynamic(this);" id ="IndividualItem2Checkbox" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="checkCheckboxDynamic(this)" id ="IndividualItem2" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                                     </div>
 
                                     <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this, 2)" id="quantityIndividualItem2" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this)" id="quantityIndividualItem2" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
                             </div>
 
-                            <br>
-                            <div id= "IndividualItems3" >
+
+                            <div id= "IndividualItems3" class="mt-2" >
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input onclick = "resetIndividualItemInput(this, 3);" id ="IndividualItem3Checkbox" onclick="hideArmorSelect(3)" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
-                                        <input onchange="CheckCheckbox(this, 3)" id ="IndividualItem3" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                        <input onclick = "resetIndividualItemInputDynamic(this);" id ="IndividualItem3Checkbox" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="checkCheckboxDynamic(this)" id ="IndividualItem3" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 
                                     </div>
 
                                     <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this, 3)" id="quantityIndividualItem3" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this)" id="quantityIndividualItem3" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
                             </div>
+
+
+
+                            <div id= "IndividualItemsBlueprint" class="mt-2">
+                                <div class="d-flex justify-content-between"  >
+
+                                    <div class ="d-flex">
+                                        <input onclick = "resetIndividualItemInputDynamic(this);" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onchange="checkCheckboxDynamic(this)" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                                    </div>
+
+                                    <div class ="d-flex">
+                                        <input onchange="checkIfNegativeNum(this); checkIndividualItemQuantityCheckboxRel(this)" id="" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                                    </div>
+
+                                </div>
+                                <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
+                            </div>
+
+
 
                         </div>
 
