@@ -1447,6 +1447,28 @@
 
         }
 
+        function deleteItemsFromBackend (e){
+            let id = e.parentElement.parentElement.children.item(2).innerText;
+
+            if((!e.checked) && (id !== "")){
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + id, {
+                    method: 'delete',
+                })
+
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
+
+
+            }
+
+        }
+
 
 
         function deleteWeaponFromBackend (e){
@@ -5437,7 +5459,7 @@
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input id ="ArrowCheckbox" onclick="hideItemSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="ArrowCheckbox" onclick="hideItemSelect(1); deleteItemsFromBackend(this)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Arrow </h4>
                                     </div>
 
@@ -5454,7 +5476,7 @@
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input id ="BackpackCheckbox" onclick="hideItemSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input id ="BackpackCheckbox" onclick="hideItemSelect(2); deleteItemsFromBackend(this)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Backpack </h4>
                                     </div>
 
@@ -5541,7 +5563,7 @@
                                 <div class="d-flex justify-content-between"  >
 
                                     <div class ="d-flex">
-                                        <input onclick = "resetIndividualItemInputDynamic(this); deleteFromBackend(this)" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <input onclick = "resetIndividualItemInputDynamic(this); deleteIndividualItemsFromBackend(this)" class=" Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
                                         <input onchange="checkCheckboxDynamic(this)" type="text" class="InputWeapon d-flex" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                                     </div>
 
