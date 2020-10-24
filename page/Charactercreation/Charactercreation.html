@@ -204,7 +204,33 @@
         let StealthValue = 0;
         let SurvivalValue = 0;
 
-        //TEST
+        //HitDices
+        let HitDiceValue = 0;
+        let HitDiceQuantity = 0;
+
+        // DETERMINE HIT DICES
+        function determineHitDices(){
+
+            var x1 = document.getElementById("inputGroupSelect02").value;
+
+            HitDiceQuantity = x1;
+
+            var x2 = document.getElementById("inputGroupSelect01").value;
+
+            if(x2 == 1 || x2 == 3 ){
+                HitDiceValue = 10;
+
+            }
+
+            if(x2 == 2){
+                HitDiceValue = 6;
+            }
+
+
+
+        }
+
+
         //CALCULATE SKILL VALUES
         function calculateSkillValues(STRTOTAL, DEXTOTAL, INTTOTAL, WISTOTAL, CHATOTAL){
 
@@ -425,7 +451,7 @@
 
             if(document.getElementById("DwarfCheckBox").checked == true){
                Speed = 25;
-               alert(Speed);
+
 
             }
 
@@ -596,10 +622,6 @@
 
         }
 
-        //HIT DICE VALUE
-        function determineHitDiceValue(){
-
-        }
 
 
 
@@ -1477,15 +1499,15 @@
 
 
 
-        function CheckBackendCopy(e){
-
-            if(!e.checked){
-
-                alert("YEAH!");
-
-            }
-
-        }
+        // function CheckBackendCopy(e){
+        //
+        //     if(!e.checked){
+        //
+        //         alert("YEAH!");
+        //
+        //     }
+        //
+        // }
 
 
 
