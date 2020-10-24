@@ -1843,14 +1843,33 @@
             }
             // alert(document.getElementById("").value);
 
-
+            let groupID;
 
             let charsheetPost = JSON.stringify(charsheet);
 
             if(getParameterByName('c') != null) {
                 let charID = getParameterByName('c');
 
-                //Put with ID
+                //Put with ID -->Endpoint muss noch gemacht werden
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + group +'/Charactersheet', {
+                    method: 'put',
+                    body: charsheetPost,
+                    headers: {'Content-Type' : 'application/json'},
+                })
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+
+                        // postEquipment();
+                        alert(data);
+                        return data.json();
+                    })
+                    .then(function (response){
+                        postEquipment(response);
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
+
             }
             else{
                 //Post without ID
@@ -1954,6 +1973,41 @@
 
                 }
             }
+            postWieldable(charID);
+        }
+
+        function postWieldable(charID){
+            if(document.getElementById("LongswordCheckbox").checked){
+
+            }
+            if(document.getElementById("MazeCheckbox").checked){
+
+            }
+            if(document.getElementById("DaggerCheckbox").checked){
+
+            }
+
+
+            postCarryable(charID);
+        }
+
+        function postCarryable(charid){
+            if(document.getElementById("BackpackCheckbox").checked){
+
+            }
+            if(document.getElementById("ArrowCheckbox").checked){
+
+            }
+            if(document.getElementById("IndividualItemCheckbox").checked){
+
+            }
+            if(document.getElementById("IndividualItem2Checkbox").checked){
+
+            }
+            if(document.getElementById("IndividualItem3Checkbox").checked){
+
+            }
+
         }
 
 
@@ -2282,6 +2336,8 @@
                             document.getElementById("CharAlliesAndOrganisationsInput").value = data.characterDescription.alliesAndOrganizations;
                             document.getElementById("CharBackstoryInput").value = data.characterDescription.characterBackstory;
 
+                            //Coins
+                            //==========================================================================
 
 
 
