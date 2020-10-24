@@ -2095,23 +2095,182 @@
             postCarryable(charID);
         }
 
-        function postCarryable(charid){
+        function postCarryable(charID){
+
+            //Backpack
+            //============================================================================
             if(document.getElementById("BackpackCheckbox").checked){
 
+                let Backpack = {
+                    "carryable": "Backpack",
+                    "amount": document.getElementById("quantityBackpack").value
+                };
+                let BackpackPost = JSON.stringify(Backpack);
+
+                if(document.getElementById("BackpackBackendID").innerText === "" ){
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable', {
+                        method: 'post',
+                        body: BackpackPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
+                else{
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + document.getElementById("BackpackBackendID").innerText, {
+                        method: 'put',
+                        body: BackpackPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
             }
+
+            //Arrow
+            //============================================================================
             if(document.getElementById("ArrowCheckbox").checked){
 
+                let Arrow = {
+                    "carryable": "Arrow",
+                    "amount": document.getElementById("quantityArrow").value
+                };
+                let ArrowPost = JSON.stringify(Arrow);
+
+
+                if(document.getElementById("ArrowBackendID").innerText === ""){
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable', {
+                        method: 'post',
+                        body: ArrowPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
+                else{
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable/' + document.getElementById("ArrowBackendID").innerText, {
+                        method: 'put',
+                        body: ArrowPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
             }
+
+            //Individual Item Checkbox 1
+            //============================================================================
             if(document.getElementById("IndividualItemCheckbox").checked){
+                let IndivInput1 = {
+                    "carryable": document.getElementById("IndividualItem1").value,
+                    "amount": document.getElementById("quantityIndividualItem1").value
+                };
+
+                let IndivInputPost1 = JSON.stringify(IndivInput1);
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable', {
+                    method: 'post',
+                    body: IndivInputPost1,
+                    headers: {'Content-Type' : 'application/json'},
+                })
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
 
             }
+
+            //Individual Item Checkbox 2
+            //============================================================================
             if(document.getElementById("IndividualItem2Checkbox").checked){
+                let IndivInput2 = {
+                    "carryable": document.getElementById("IndividualItem2").value,
+                    "amount": document.getElementById("quantityIndividualItem2").value
+                };
+
+                let IndivInputPost2 = JSON.stringify(IndivInput2);
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable', {
+                    method: 'post',
+                    body: IndivInputPost2,
+                    headers: {'Content-Type' : 'application/json'},
+                })
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
 
             }
+
+            //Individual Item Checkbox 3
+            //============================================================================
             if(document.getElementById("IndividualItem3Checkbox").checked){
+                let IndivInput3 = {
+                    "carryable": document.getElementById("IndividualItem3").value,
+                    "amount": document.getElementById("quantityIndividualItem3").value
+                };
+
+                let IndivInputPost3 = JSON.stringify(IndivInput3);
+                fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/carryable', {
+                    method: 'post',
+                    body: IndivInputPost3,
+                    headers: {'Content-Type' : 'application/json'},
+                })
+                    .then(function (data) {
+                        if(data.status !== 200) throw("error!");
+
+                        // alert("success!");
+
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    });
 
             }
+
+            //Check for amount Change in Individual Items
+            //============================================================================
+            let surround = document.getElementById("IndividualItemsInsert");
             for(let j = 5; j < 100; j++){
+
+                // let name = ;
+                // let amount = ;
 
             }
 
@@ -2541,17 +2700,22 @@
                                 if(data.carryables[j].carryable === "Arrow"){
                                     showItemSelect(1);
                                     document.getElementById("quantityArrow").value = data.carryables[j].amount;
+
                                 }
                                 else if(data.carryables[j].carryable === "Backpack"){
                                     showItemSelect(2);
                                     document.getElementById("quantityBackpack").value = data.carryables[j].amount;
+                                    document.getElementById("BackpackBackendID").innerText = data.carryables[j].carryableID;
                                 }
                                 else{
                                       let newItem = IndividualItemPreset.cloneNode(true);
+                                      let surrundDiv = document.getElementById("IndividualItemsInsert");
                                       newItem.setAttribute('id', j+20000);
                                       newItem.children.item(0).children.item(0).children.item(0).checked = true;
                                       newItem.children.item(0).children.item(0).children.item(1).value = data.carryables[j].carryable;
                                       newItem.children.item(0).children.item(1).children.item(0).value = data.carryables[j].amount;
+                                      newItem.children.item(0).children.item(2).innerText = data.carryables[j].carryableID;
+                                      surrundDiv.appendChild(newItem);
                                 }
                             }
 
@@ -5213,6 +5377,7 @@
                                     <div class ="d-flex">
                                         <input onchange="checkIfNegativeNum(this);" id="quantityArrow" style="width: 80px;" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
+                                    <span class="hidden" id="ArrowBackendID"></span>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px;  "> </div>
@@ -5229,6 +5394,7 @@
                                     <div class ="d-flex">
                                         <input onchange="checkIfNegativeNum(this);" id="quantityBackpack" style="width: 80px;"  type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                                     </div>
+                                    <span class="hidden" id="BackpackBackendID"></span>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
@@ -5238,7 +5404,7 @@
 
                         <!--                RECHTE SPALTE INDIVIDUELLE ITEMS-->
 
-                        <div style="order:0; " class="Rtable-cell  " >
+                        <div style="order:0; " class="Rtable-cell" id="IndividualItemsInsert">
 
                             <div class="d-flex justify-content-center" style=" border-bottom: 1px solid white;">
 
