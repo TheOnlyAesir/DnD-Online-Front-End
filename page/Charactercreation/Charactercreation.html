@@ -186,6 +186,13 @@
 
 
 
+        //CALCULATE SKILL VALUES
+        function calculateSkillValues(){
+
+
+
+        }
+
 
 
         //DETERMINE WEAPON ATTACKDAMAGE
@@ -1252,19 +1259,19 @@
 
 
             if(contentNumber === 1){
-                checkIfNegativeNum(document.getElementById("quantityLongsword"));
+
                 longsword.classList.remove("hidden");
                 longswordCheckbox.checked = true;
             }
 
             if(contentNumber === 2){
-                checkIfNegativeNum(document.getElementById("quantityDagger"));
+
                 Dagger.classList.remove("hidden");
                 daggerCheckbox.checked = true;
             }
 
             if(contentNumber === 3){
-                checkIfNegativeNum(document.getElementById("quantityDagger"));
+
                 Maze.classList.remove("hidden");
                 mazeCheckbox.checked = true;
             }
@@ -1277,27 +1284,22 @@
                             var Dagger = document.getElementById("DaggerSelect");
                             var Maze = document.getElementById("MazeSelect");
 
-                            var longswordQuantity = document.getElementById("quantityLongsword");
-                            var daggerQuantity = document.getElementById("quantityDagger");
-                            var mazeQuantity = document.getElementById("quantityMaze");
+
 
                             if(contentNumber === 1){
-                                  resetWeaponQuantity(longswordQuantity);
+
                                   longsword.classList.add("hidden");
                             }
                             if(contentNumber === 2){
-                                resetWeaponQuantity(daggerQuantity);
+
                                 Dagger.classList.add("hidden");
                             }
                             if(contentNumber === 3){
-                                resetWeaponQuantity(mazeQuantity);
+
                                 Maze.classList.add("hidden");
                             }
                         }
-                        //RESET ITS QUANTITY NUMBER TO NULL (0) ;
-                        function resetWeaponQuantity(e){
-                            e.value = null;
-                        }
+
 
 
 
@@ -4478,9 +4480,6 @@
                                     <h4 class="d-flex" style="color: white; font-weight: lighter"> Longsword </h4>
                                 </div>
 
-                                <div class ="d-flex">
-                                    <input onchange="checkIfNegativeNum(this);" id="quantityLongsword" style="width: 80px;" id="inputLongsword" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                </div>
 
                             </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px;  "> </div>
@@ -4494,9 +4493,6 @@
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Dagger </h4>
                                     </div>
 
-                                    <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityDagger" style="width: 80px;" id="inputDagger" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
@@ -4510,9 +4506,7 @@
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Maze </h4>
                                     </div>
 
-                                    <div class ="d-flex">
-                                        <input onchange="checkIfNegativeNum(this);" id="quantityMaze" style="width: 80px;" id="inputMaze" type="number" class="form-control InputWeapon" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
-                                    </div>
+
 
                                 </div>
                                 <div style=" border-bottom: 1px solid dimgrey; height: 10px; "> </div>
