@@ -1878,7 +1878,7 @@
 
         function postEquipment(charID){
             if(document.getElementById("ChainMailCheckbox").checked){
-                if(document.getElementById("ChainMailBackendID").innerText !== null){
+                if(document.getElementById("ChainMailBackendID").innerText === ""){
                     let chainMail = {
                         "wearable": "Chain Mail",
                         "details": "" + ChainMailDetails + "",
@@ -1903,7 +1903,7 @@
                 }
             }
             if(document.getElementById("LeatherCheckbox").checked){
-                if(document.getElementById("LeatherBackendID").innerText !== null){
+                if(document.getElementById("LeatherBackendID").innerText === ""){
                     let leather = {
                         "wearable": LeatherName,
                         "details": "" + LeatherDetails + "",
@@ -1929,7 +1929,7 @@
                 }
             }
             if(document.getElementById("PlateCheckbox").checked){
-                if(document.getElementById("PlateBackendID").innerText !== null){
+                if(document.getElementById("PlateBackendID").innerText === ""){
                     let plate = {
                         "wearable": PlateName,
                         "details": "" + PlateDetails + "",
@@ -1950,7 +1950,6 @@
                         .catch(function (error) {
                             alert(error);
                         });
-
                 }
             }
             postWieldable(charID);
@@ -1958,13 +1957,82 @@
 
         function postWieldable(charID){
             if(document.getElementById("LongswordCheckbox").checked){
+                if(document.getElementById("LongswordBackendID").innerText === ""){
+                    calculateAttackDamageAndBonus();
+                    let longsword = {
+                        "equippable": LongswordName,
+                        "details": "" + LongswordDetails + LongswordAttackDamage + " damage" ,
+                        "attackBonus": LongswordAttackBonus
+                    };
 
+                    let longswordPost = JSON.stringify(longsword);
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable', {
+                        method: 'post',
+                        body: longswordPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
             }
             if(document.getElementById("MazeCheckbox").checked){
+                if(document.getElementById("MazeBackendID").innerText === ""){
+                    calculateAttackDamageAndBonus();
+                    let mace = {
+                        "equippable": MazeName,
+                        "details": "" + MazeDetails + MazeAttackDamage + " damage" ,
+                        "attackBonus": MazeAttackBonus
+                    };
 
+                    let macePost = JSON.stringify(mace);
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable', {
+                        method: 'post',
+                        body: macePost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
             }
             if(document.getElementById("DaggerCheckbox").checked){
+                if(document.getElementById("DaggerBackendID").innerText){
+                    calculateAttackDamageAndBonus();
+                    let dagger = {
+                        "equippable": DaggerName,
+                        "details": "" + DaggerDetails + DaggerAttackDamage + " damage" ,
+                        "attackBonus": DaggerAttackBonus,
+                    };
 
+                    let daggerPost = JSON.stringify(dagger);
+                    fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/1/Charactersheet/' + charID + '/equippable', {
+                        method: 'post',
+                        body: daggerPost,
+                        headers: {'Content-Type' : 'application/json'},
+                    })
+                        .then(function (data) {
+                            if(data.status !== 200) throw("error!");
+
+                            // alert("success!");
+
+                        })
+                        .catch(function (error) {
+                            alert(error);
+                        });
+                }
             }
 
 
@@ -1985,6 +2053,9 @@
 
             }
             if(document.getElementById("IndividualItem3Checkbox").checked){
+
+            }
+            for(let j = 3; j < 100; j++){
 
             }
 
@@ -2318,7 +2389,11 @@
 
                             //Coins
                             //==========================================================================
-
+                            document.getElementById("PlatinumInput").value = data.treasure.platinum_coins ;
+                            document.getElementById("GoldInput").value = data.treasure.gold_coins ;
+                            document.getElementById("ElectrumInput").value = data.treasure.electrum_coins ;
+                            document.getElementById("SilverInput").value = data.treasure.silver_coins ;
+                            document.getElementById("CopperInput").value = data.treasure.copper_coins ;
 
 
 
@@ -4822,6 +4897,7 @@
 
                                 <div class ="d-flex">
                                     <input id ="LongswordCheckbox" onclick="hideWeaponSelect(1);" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                    <span class="hidden" id="LongswordBackendID"></span>
                                     <h4 class="d-flex" style="color: white; font-weight: lighter"> Longsword </h4>
                                 </div>
 
@@ -4835,6 +4911,7 @@
 
                                     <div class ="d-flex">
                                         <input id ="DaggerCheckbox" onclick="hideWeaponSelect(2)"  class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <span class="hidden" id="DaggerBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Dagger </h4>
                                     </div>
 
@@ -4848,6 +4925,7 @@
 
                                     <div class ="d-flex">
                                         <input id ="MazeCheckbox" onclick="hideWeaponSelect(3)" class="Stealthcheckbox d-flex" type="checkbox" aria-label="Checkbox for following text input"> &nbsp;&nbsp;
+                                        <span class="hidden" id="MazeBackendID"></span>
                                         <h4 class="d-flex" style="color: white; font-weight: lighter"> Maze </h4>
                                     </div>
 
