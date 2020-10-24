@@ -184,38 +184,87 @@
         //ARMOR CLASS
         let ArmorClass = 5;
 
+        //SKILL VALUES
+        let AcrobaticsValue = 0;
+        let AnimalHandlingValue = 0;
+        let ArcanaValue = 0;
+        let AthleticsValue = 0;
+        let DeceptionValue = 0;
+        let HistoryValue = 0;
+        let InsightValue = 0;
+        let IndimidationValue = 0;
+        let InvestigationValue = 0;
+        let MedicineValue = 0;
+        let NatureValue = 0;
+        let PerceptionValue= 0;
+        let PerformanceValue = 0;
+        let PersuasionValue = 0;
+        let ReligionValue = 0;
+        let SleightOfHandValue = 0;
+        let StealthValue = 0;
+        let SurvivalValue = 0;
 
-
+        //TEST
         //CALCULATE SKILL VALUES
-        function calculateSkillValues(){
+        function calculateSkillValues(STRTOTAL, DEXTOTAL, INTTOTAL, WISTOTAL, CHATOTAL){
+
+            var STR = determineStatsModifiers(STRTOTAL);
+            var DEX = determineStatsModifiers(DEXTOTAL);
+            var INT = determineStatsModifiers(INTTOTAL);
+            var WIS = determineStatsModifiers(WISTOTAL);
+            var CHA = determineStatsModifiers(CHATOTAL);
 
 
+            if(document.getElementById("AthleticsProf").checked){
+                AthleticsValue = STR + 2;
+            }
+            else{ AthleticsValue = STR; }
 
+            if(document.getElementById("AcrobaticsProf").checked){
+                AcrobaticsValue = DEX + 2;
+            }
+            else{ AcrobaticsValue = DEX; }
+
+            if(document.getElementById("SleightOfHandProf").checked){
+                SleightOfHandValue = DEX + 2;
+            }
+            else{ SleightOfHandValue = DEX; }
+
+            if(document.getElementById("StealthProf").checked){
+                StealthValue = DEX + 2;
+            }
+            else{ StealthValue = DEX; }
+
+            if(document.getElementById("StealthProf").checked){
+                StealthValue = DEX + 2;
+            }
+            else{ StealthValue = DEX; }
+
+            if(document.getElementById("ArcanaProf").checked){
+                ArcanaValue = INT + 2;
+            }
+            else{ ArcanaValue = INT; }
+
+            if(document.getElementById("HistoryProf").checked){
+                HistoryValue = INT + 2;
+            }
+            else{ HistoryValue = INT; }
+
+            if(document.getElementById("InvestigationProf").checked){
+                InvestigationValue = INT + 2;
+            }
+            else{ InvestigationValue = INT; }
+
+            if(document.getElementById("NatureProf").checked){
+                InvestigationValue = INT + 2;
+            }
+            else{ InvestigationValue = INT; }
         }
 
 
 
         //DETERMINE WEAPON ATTACKDAMAGE
-        function calculateAttackDamage(STRTOTAL, DEXTOTAL ,id){
-            var ID = id;
-            var STRMOD = determineStatsModifiers(STRTOTAL);
-            var DEXMOD = determineStatsModifiers(DEXTOTAL);
-
-            if(ID === 1){
-                LongswordAttackDamage = STRMOD;
-            }
-
-            if(ID === 2){
-                DaggerAttackDamage = DEXMOD;
-            }
-
-            if(ID === 3){
-                MazeAttackDamage = DEXMOD;
-            }
-        }
-
-        //DETERMINE WEAPON ATTACKBONUS
-        function calculateAttackBonus(STRTOTAL, DEXTOTAL ,id){
+        function calculateAttackDamageAndBonus(STRTOTAL, DEXTOTAL ,id){
             determineProficiencyBonus();
             determineArmorAndWeaponProf()
 
@@ -224,26 +273,34 @@
             var DEXMOD = determineStatsModifiers(DEXTOTAL);
 
             if(ID === 1){
-                if(martialMeleeWeapons === true){
-                    LongswordAttackBonus = DEXMOD + ProfBonus + 2;
-                }
-                LongswordAttackBonus = DEXMOD + ProfBonus;
+                LongswordAttackDamage = STRMOD;
+
+                    if(martialMeleeWeapons === true){
+                        LongswordAttackBonus = DEXMOD + ProfBonus + 2;
+                    }
+                    else{LongswordAttackBonus = DEXMOD + ProfBonus;}
+
             }
 
             if(ID === 2){
-                if(simpleMeleeWeapons === true){
-                    DaggerAttackDamage = STRMOD + ProfBonus + 2;
-                }
-                DaggerAttackDamage = STRMOD + ProfBonus;
+                DaggerAttackDamage = DEXMOD;
+
+                    if(simpleMeleeWeapons === true){
+                        DaggerAttackDamage = STRMOD + ProfBonus + 2;
+                    }
+                    else{DaggerAttackDamage = STRMOD + ProfBonus;}
             }
 
             if(ID === 3){
-                if(simpleMeleeWeapons === true){
-                    MazeAttackDamage = STRMOD + ProfBonus + 2;
-                }
-                MazeAttackDamage = STRMOD + ProfBonus;
+                MazeAttackDamage = DEXMOD;
+
+                    if(simpleMeleeWeapons === true){
+                        MazeAttackDamage = STRMOD + ProfBonus + 2;
+                    }
+                    else{MazeAttackDamage = STRMOD + ProfBonus;}
             }
         }
+
 
         //DETERMINE PROFICIENCY BONUS BASED ON LEVEL
         function determineProficiencyBonus(){
@@ -1368,7 +1425,7 @@
                         }
 
 
-//TEST
+
         function CheckBackendCopy(e){
 
             if(!e.checked){
@@ -2507,11 +2564,7 @@
 
         }
 
-        .test{
-            color: white;
-            text-align: center;
 
-        }
 
         .innertable{
             color: white;
@@ -3001,7 +3054,7 @@
                     </div>
                     <select  class="custom-select"id="inputGroupSelect01" >
 
-                        <option  value="1">Fighter</option>
+                        <option value="1">Fighter</option>
                         <option value="2">Wizard</option>
                         <option value="3">Ranger</option>
                     </select>
