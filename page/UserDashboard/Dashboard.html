@@ -68,7 +68,7 @@
                          newdiv.reference = data[i];
                          newdiv.children.item(0).children.item(0).children.item(0).innerText = data[i].characterName;
                          newdiv.children.item(0).children.item(3).children.item(0).innerText = data[i].level;
-                         newdiv.children.item(0).children.item(1).children.item(0).innerText = data[i].groupID;
+                         newdiv.children.item(0).children.item(1).children.item(0).innerText = data[i].group.name;
                          newdiv.onclick = function (e){                          //ON-Click muss auffgelöst werden, da es sonst alle elemente im child betrifft.
 
 
@@ -1051,6 +1051,17 @@
         margin-bottom: 1em;
     }
 
+    #ResponsiveHeader{
+        display: flex;
+    }
+
+    @media all and (max-width: 832px) {
+        #ResponsiveHeader{
+            display: flow;
+
+        }
+    }
+
 
 
 
@@ -1093,7 +1104,7 @@
     <!--Sticky Header
     ==========================================-->
     <div class="header" id="OptionsHeader">
-        <div class="d-flex">
+        <div id="ResponsiveHeader">
             <h1 class="StickyHeaderName ">Dashboard</h1>
             <div class="d-inline-flex StickyHeaderButton">
                 <h1 class="StickyHeaderName"></h1>
