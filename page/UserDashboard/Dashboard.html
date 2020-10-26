@@ -49,7 +49,7 @@
         }
 
         function getAllCharactersheets(userid){
-            fetch('http://localhost:8181/api/v1.0/User/' + userid + '/Charactersheets/all', {
+            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/' + userid + '/Charactersheets/all', {
                 method: 'get',
             })
                 .then(function (response) {
