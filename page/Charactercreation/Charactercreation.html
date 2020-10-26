@@ -2426,6 +2426,7 @@
                 if(charID !== 0){
                     fetch('http://localhost:8181/api/v1.0/User/' + localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID, {
                         method: 'get',
+                        headers: {'Content-Type' : 'application/json'},
                     })
                         .then(function (response) {
                             if(response.status !== 200) throw("error!");
