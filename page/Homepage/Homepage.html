@@ -202,7 +202,7 @@
             alert("Password is not long enough! Minimum of 8 characters!");
             return;
         }
-        fetch('http://localhost:8181/api/v1.0/User/register', {
+        fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/register', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json', 'Accept': '*/*'
@@ -235,7 +235,7 @@
         const username = document.getElementById("username_in").value;
         const password = document.getElementById("password_in").value;
 
-        fetch('http://localhost:8181/api/v1.0/User/login', {
+        fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/login', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json', 'Accept': '*/*'

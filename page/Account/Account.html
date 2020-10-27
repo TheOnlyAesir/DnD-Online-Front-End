@@ -280,7 +280,7 @@
             })
                 .then(function (response) {
                     if(response.status !== 200) throw("error!");
-                    declineInvite(e.parentElement.parentElement.children.item(2).children.item(0))
+                    declineInvite(e.parentElement.parentElement.children.item(2).children.item(0));
                 })
                 .catch(function (error) {
                     alert(error);
