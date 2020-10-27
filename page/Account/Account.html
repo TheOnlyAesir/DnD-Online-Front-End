@@ -55,7 +55,7 @@
             let email;
 
 
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID, {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID, {
                 method: 'get',
             })
                 .then(function (response) {
@@ -80,7 +80,7 @@
             let groupPost = JSON.stringify(groupNameArr);
 
 
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/createGroup', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/createGroup', {
                 method: 'post',
                 body: groupPost,
                 headers: {'Content-Type' : 'application/json'},
@@ -132,7 +132,7 @@
             let tableManage = document.getElementById("GroupManagTable");
 
 
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/ViewGroups', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/ViewGroups', {
                 method: 'get',
             })
                 .then(function (response) {
@@ -179,7 +179,7 @@
             let table = document.getElementById("OverviewCharTable");
 
 
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID ,  {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID ,  {
                 method: 'get',
             })
                 .then(function (response) {
@@ -206,7 +206,7 @@
         function getInvites(){
             let table = document.getElementById("GroupInviteTable");
 
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/ViewInvites',  {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/ViewInvites',  {
                 method: 'get',
             })
                 .then(function (response) {
@@ -245,7 +245,7 @@
 
             let emptyJSON = JSON.stringify({});
 
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Invitations/create/' + userName ,  {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Invitations/create/' + userName ,  {
                 method: 'post',
                 body: emptyJSON,
                 headers: {'Content-Type' : 'application/json'},
@@ -260,7 +260,7 @@
 
         function leaveGroup(e){
             let groupID = e.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children.item(1).children.item(1).innerText;
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/removeFromGroup' ,  {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/removeFromGroup' ,  {
                 method: 'delete',
             })
                 .then(function (response) {
@@ -274,7 +274,7 @@
         function acceptInvite(e){
             let invID = e.parentElement.children.item(1).innerText;
             let groupID = e.parentElement.children.item(2).innerText;
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/addToGroup' ,  {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/addToGroup' ,  {
                 method: 'post',
                 headers: {'Content-Type' : 'application/json'},
             })
@@ -291,7 +291,7 @@
         function declineInvite(e){
             let invID = e.parentElement.parentElement.children.item(1).children.item(1).innerText;
             let groupID = e.parentElement.parentElement.children.item(1).children.item(2).innerText;
-            fetch('http://localhost:8181/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Invitations/' + invID + '/delete' ,  {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Invitations/' + invID + '/delete' ,  {
                 method: 'delete',
             })
                 .then(function (response) {
@@ -954,7 +954,7 @@
             alert("Inputs do not match");
             return;
         }
-        fetch('http://localhost:8181/api/v1.0/User/editEmail', {
+        fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editEmail', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json', 'Accept': '*/*'
@@ -982,7 +982,7 @@
             alert("Inputs do not match");
             return;
         }
-        fetch('http://localhost:8181/api/v1.0/User/editPassword', {
+        fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editPassword', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json', 'Accept': '*/*'
