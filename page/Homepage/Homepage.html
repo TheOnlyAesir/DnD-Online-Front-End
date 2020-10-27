@@ -223,7 +223,7 @@
                 if (typeof (Storage) !== "undefined" && result.userID != null) {
                     localStorage.setItem("userID", result.userID);
                     localStorage.setItem("userName", result.name);
-                    window.location.href = "../UserDashboard/Dashboard.html";
+                    window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/");
                 }
             })
             .catch(function (error) {
@@ -255,7 +255,7 @@
                 if (typeof (Storage) !== "undefined" && result.userID != null) {
                     localStorage.setItem("userID", result.userID);
                     localStorage.setItem("userName", result.name);
-                    window.location.href = "../UserDashboard/Dashboard.html";
+                    window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/");
                 }
             })
             .catch(function (error) {
