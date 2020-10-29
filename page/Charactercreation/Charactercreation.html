@@ -14,7 +14,7 @@
 
         //Redirect if not logged in
         function checkLogin(){
-            if (localStorage.userID === null)
+            if (localStorage.length == 0)
                 window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
         }
 
