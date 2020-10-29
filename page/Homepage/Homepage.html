@@ -202,7 +202,7 @@
             alert("Password is not long enough! Minimum of 8 characters!");
             return;
         }
-        fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/register', {
+        fetch('https://characterforge.azurewebsites.net/api/v1.0/User/register', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json', 'Accept': '*/*'
@@ -223,7 +223,7 @@
                 if (typeof (Storage) !== "undefined" && result.userID != null) {
                     localStorage.setItem("userID", result.userID);
                     localStorage.setItem("userName", result.name);
-                    window.location.href = "../UserDashboard/Dashboard.html";
+                    window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/");
                 }
             })
             .catch(function (error) {
@@ -235,7 +235,7 @@
         const username = document.getElementById("username_in").value;
         const password = document.getElementById("password_in").value;
 
-        fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/login', {
+        fetch('https://characterforge.azurewebsites.net/api/v1.0/User/login', {
             method: 'post',
             headers: {
                 'Content-Type': 'application/json', 'Accept': '*/*'
@@ -255,7 +255,7 @@
                 if (typeof (Storage) !== "undefined" && result.userID != null) {
                     localStorage.setItem("userID", result.userID);
                     localStorage.setItem("userName", result.name);
-                    window.location.href = "../UserDashboard/Dashboard.html";
+                    window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/");
                 }
             })
             .catch(function (error) {

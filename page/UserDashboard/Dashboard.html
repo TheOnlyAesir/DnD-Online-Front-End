@@ -37,7 +37,7 @@
 
         function logout() {
             localStorage.clear();
-            window.location.href = "../Homepage/Homepage.html";
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
         }
 
 
@@ -49,7 +49,7 @@
         }
 
         function getAllCharactersheets(userid){
-            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/' + userid + '/Charactersheets/all', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/' + userid + '/Charactersheets/all', {
                 method: 'get',
             })
                 .then(function (response) {
@@ -540,7 +540,7 @@
                             let putNote = { note: ""+currentNote.value+"" };
                             let putNoteJson = JSON.stringify(putNote);
 
-                            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/notes/' + currentNote.referenceID, {
+                            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/notes/' + currentNote.referenceID, {
                                 method: 'put',
                                 body: putNoteJson,
                                 headers: {'Content-Type' : 'application/json'},
@@ -560,7 +560,7 @@
                             let postNote = { note: ""+currentNote.value+"" };
                             let postNoteJson = JSON.stringify(postNote);
 
-                            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/notes/', {
+                            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/notes/', {
                                 method: 'post',
                                 body: postNoteJson,
                                 headers: {'Content-Type' : 'application/json'},
@@ -592,7 +592,7 @@
                 , "value":""+reference.life.value+"", "quantity": ""+reference.life.quantity+""};
             let lifePost = JSON.stringify(life)
 
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/life', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/life', {
                     method: 'put',
                     body: lifePost,
                     headers: {'Content-Type' : 'application/json'},
@@ -626,7 +626,7 @@
             let deathSaves = {"save1": ""+save1+"", "save2": ""+save2+"", "save3": ""+save3+"", "fail1": ""+fail1+"", "fail2": ""+fail2+"", "fail3": ""+fail3+""};
             let deathSavesPut = JSON.stringify(deathSaves);
 
-            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/savingthrows', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/savingthrows', {
                 method: 'put',
                 body: deathSavesPut,
                 headers: {'Content-Type' : 'application/json'},
@@ -652,7 +652,7 @@
 
             let coins = {"platinum_coins": "" +platinum+ "", "gold_coins": ""+gold+"", "electrum_coins": ""+ electrum+"", "silver_coins":""+silver+"", "copper_coins": ""+copper+""};
             let coinsPut = JSON.stringify(coins);
-            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/treasure', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/1/Group/1/Charactersheet/'+ reference.charactersheetID + '/treasure', {
                 method: 'put',
                 body: coinsPut,
                 headers: {'Content-Type' : 'application/json'},
@@ -684,7 +684,7 @@
             let groupPost = JSON.stringify(groupNameArr);
 
 
-            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/createGroup', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/createGroup', {
                 method: 'post',
                 body: groupPost,
                 headers: {'Content-Type' : 'application/json'},
@@ -702,19 +702,19 @@
 
         function editChar(e){
             let reference = e.parentElement.parentElement.parentElement.parentElement.children.item(0).reference;
-            window.location.assign("../Charactercreation/Charactercreation.html?c=" + reference.charactersheetID +"");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + reference.charactersheetID +"");
         }
 
         function newChar(){
-            window.location.assign("../Charactercreation/Charactercreation.html");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation/");
         }
 
         function toDashboard(){
-            window.location.assign("../UserDashboard/Dashboard.html");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/");
         }
 
         function toAccount(){
-            window.location.assign("../Account/Account.html");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/account/");
         }
 
 

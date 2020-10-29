@@ -13,20 +13,20 @@
 
         //Buttons
         function newChar(){
-            window.location.assign("../Charactercreation/Charactercreation.html");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation/");
         }
 
         function toDashboard(){
-            window.location.assign("../UserDashboard/Dashboard.html");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/");
         }
 
         function toAccount(){
-            window.location.assign("../Account/Account.html");
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/account/");
         }
 
         function logout() {
             localStorage.clear();
-            window.location.href = "../Homepage/Homepage.html";
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
         }
 
 
@@ -1434,7 +1434,7 @@
 
             if((!e.checked) && (id !== "")){
                 let charID = getParameterByName('c');
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
                 method: 'delete',
                  })
 
@@ -1458,7 +1458,7 @@
 
             if((!e.checked) && (id !== "")){
                 let charID = getParameterByName('c');
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1484,7 +1484,7 @@
 
             if((!e.checked) && (id !== "")){
                 let charID = getParameterByName('c');
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable/' + id + '/delete', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1510,7 +1510,7 @@
 
             if((!e.checked) && (id !== "")){
                 let charID = getParameterByName('c');
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable/' + id + '/delete', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable/' + id + '/delete', {
                     method: 'delete',
                 })
 
@@ -1985,7 +1985,7 @@
             if(getParameterByName('c') != null) {
                 let charID = getParameterByName('c');
 
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/update', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/update', {
                     method: 'put',
                     body: charsheetPost,
                     headers: {'Content-Type' : 'application/json'},
@@ -2006,7 +2006,7 @@
             //============================================================================
             else{
 
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet', {
                     method: 'post',
                     body: charsheetPost,
                     headers: {'Content-Type' : 'application/json'},
@@ -2043,7 +2043,7 @@
                         "armorClass": determinePossibleArmorClass(document.getElementById("DEX_TOTAL").innerText, ChainMailID)
                     }
                     let chainMailPost = JSON.stringify(chainMail);
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable', {
                         method: 'post',
                         body: chainMailPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2070,7 +2070,7 @@
                         "armorClass": determinePossibleArmorClass(document.getElementById("DEX_TOTAL").innerText, LeatherID)
                     }
                     let leatherPost = JSON.stringify(leather);
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable', {
                         method: 'post',
                         body: leatherPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2098,7 +2098,7 @@
                         "armorClass": PlateBaseAC
                     }
                     let platePost = JSON.stringify(plate);
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/wearable', {
                         method: 'post',
                         body: platePost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2130,7 +2130,7 @@
                     };
 
                     let longswordPost = JSON.stringify(longsword);
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable', {
                         method: 'post',
                         body: longswordPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2158,7 +2158,7 @@
                     };
 
                     let macePost = JSON.stringify(mace);
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable', {
                         method: 'post',
                         body: macePost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2186,7 +2186,7 @@
                     };
 
                     let daggerPost = JSON.stringify(dagger);
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/equippable', {
                         method: 'post',
                         body: daggerPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2220,7 +2220,7 @@
                 let BackpackPost = JSON.stringify(Backpack);
 
                 if(document.getElementById("BackpackBackendID").innerText === "" ){
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
                         method: 'post',
                         body: BackpackPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2236,7 +2236,7 @@
                         });
                 }
                 else{
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + document.getElementById("BackpackBackendID").innerText, {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + document.getElementById("BackpackBackendID").innerText, {
                         method: 'put',
                         body: BackpackPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2265,7 +2265,7 @@
 
 
                 if(document.getElementById("ArrowBackendID").innerText === ""){
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
                         method: 'post',
                         body: ArrowPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2281,7 +2281,7 @@
                         });
                 }
                 else{
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + document.getElementById("ArrowBackendID").innerText, {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + document.getElementById("ArrowBackendID").innerText, {
                         method: 'put',
                         body: ArrowPost,
                         headers: {'Content-Type' : 'application/json'},
@@ -2307,7 +2307,7 @@
                 };
 
                 let IndivInputPost1 = JSON.stringify(IndivInput1);
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
                     method: 'post',
                     body: IndivInputPost1,
                     headers: {'Content-Type' : 'application/json'},
@@ -2333,7 +2333,7 @@
                 };
 
                 let IndivInputPost2 = JSON.stringify(IndivInput2);
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
                     method: 'post',
                     body: IndivInputPost2,
                     headers: {'Content-Type' : 'application/json'},
@@ -2359,7 +2359,7 @@
                 };
 
                 let IndivInputPost3 = JSON.stringify(IndivInput3);
-                fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
+                fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable', {
                     method: 'post',
                     body: IndivInputPost3,
                     headers: {'Content-Type' : 'application/json'},
@@ -2392,7 +2392,7 @@
                         };
 
                         let checkIndput = JSON.stringify(checkInd);
-                        fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + ID, {
+                        fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID + '/carryable/' + ID, {
                             method: 'put',
                             body: checkIndput,
                             headers: {'Content-Type' : 'application/json'},
@@ -2424,8 +2424,9 @@
                 let charID = getParameterByName('c');
                 // alert(charID);
                 if(charID !== 0){
-                    fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/' + localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID, {
+                    fetch('https://characterforge.azurewebsites.net/api/v1.0/User/' + localStorage.userID + '/Group/' + groupID + '/Charactersheet/' + charID, {
                         method: 'get',
+                        headers: {'Content-Type' : 'application/json'},
                     })
                         .then(function (response) {
                             if(response.status !== 200) throw("error!");
@@ -2857,13 +2858,12 @@
                                       newItem.children.item(0).children.item(2).innerText = data.carryables[j].carryableID;
                                       surrundDiv.appendChild(newItem);
                                 }
+
+                                groupID = data.group.groupID;
+
+
+
                             }
-
-
-
-
-
-
                         })
 
                         .catch(function (error) {
@@ -2891,7 +2891,7 @@
 
 //None
         function getAllGroups(){
-            fetch('https://cryptic-castle-12302.herokuapp.com/api/v1.0/User/'+ localStorage.userID + '/ViewGroups', {
+            fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/ViewGroups', {
                 method: 'get',
             })
                 .then(function (response) {
