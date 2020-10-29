@@ -954,6 +954,10 @@
             alert("Inputs do not match");
             return;
         }
+        if (newMail==null || newMail==="") {
+            alert("You need to enter a new email adress!");
+            return;
+        }
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editEmail', {
             method: 'post',
             headers: {
@@ -980,6 +984,10 @@
 
         if (newPass !== passconf) {
             alert("Inputs do not match");
+            return;
+        }
+        if(newPass==="" || newPass==null) {
+            alert("You need to enter a new password with a minimum length of 8 characters!");
             return;
         }
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editPassword', {
