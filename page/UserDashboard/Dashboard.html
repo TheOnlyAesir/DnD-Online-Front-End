@@ -533,6 +533,7 @@
 
         function dashboardSave(e){
             e.disabled = false;
+            setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard"); }, 4000);
             let reference = e.parentElement.parentElement.parentElement.parentElement.children.item(0).reference;
             //alert(reference.charactersheetID);
             let lowerFilled = e.parentElement.parentElement;
@@ -610,7 +611,7 @@
 
                         // alert("success!");
                         deathSaves(lowerFilled, reference);
-                        setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard"); }, 4000);
+
                     })
                     .catch(function (error) {
                         alert(error);
