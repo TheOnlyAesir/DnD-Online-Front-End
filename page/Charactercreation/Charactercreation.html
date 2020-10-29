@@ -2210,7 +2210,9 @@
             }
 
 
-            postCarryable(charID);
+            postCarryable(charID).then(function (){
+                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard");
+            });
         }
 
         function postCarryable(charID){
@@ -2418,7 +2420,7 @@
                     break;
                 }
             }
-            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard");
+
         }
 
 
