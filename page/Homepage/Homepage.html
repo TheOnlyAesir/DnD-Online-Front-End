@@ -188,6 +188,25 @@
 
 <script type="application/javascript">
 
+    function checkExistingUsername(name) {
+
+        return fetch('https://characterforge.azurewebsites.net/api/v1.0/User/usercheck/' + name, {
+            method: 'get',
+        })
+            .then(function (response) {
+                if(response.status !== 200) throw("error!");
+
+                return response.json();
+
+            })
+            .then(function (data){
+                return data.exists;
+            })
+            .catch(function (error) {
+                alert(error);
+            });
+    }
+
     function register() {
         const username = document.getElementById("username").value;
         const email = document.getElementById("email").value;
@@ -202,6 +221,16 @@
             alert("Password is not long enough! Minimum of 8 characters!");
             return;
         }
+        if (username==="" || username==null || username.length<3) {
+            alert("Your charactername is either empty or is too short!");
+            return;
+        }
+        if (checkExistingUsername(username)) {
+            alert("Username already taken!");
+            return;
+        }
+
+
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/register', {
             method: 'post',
             headers: {
@@ -234,6 +263,8 @@
     function login() {
         const username = document.getElementById("username_in").value;
         const password = document.getElementById("password_in").value;
+
+
 
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/login', {
             method: 'post',
