@@ -962,7 +962,7 @@
             alert("Inputs do not match");
             return;
         }
-        if (newMail==null || newMail==="") {
+        if (newPass.length<8 || newMail==="" || !newMail) {
             alert("You need to enter a new email adress!");
             return;
         }
@@ -994,12 +994,8 @@
             alert("Inputs do not match");
             return;
         }
-        if(newPass==="" || newPass==null) {
+        if(newPass.replace(/\s/g,"") == "" || newPass.length<8) {
             alert("You need to enter a new password with a minimum length of 8 characters!");
-            return;
-        }
-        if (newPass.length<8) {
-            alert("Your password needs at least 8 characters!");
             return;
         }
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editPassword', {

@@ -217,15 +217,18 @@
             alert("Passwords do not match")
             return;
         }
-        if (password.length < 8) {
+        if (password.length < 8 || password.replace(/\s/g,"") == "") {
             alert("Password is not long enough! Minimum of 8 characters!");
             return;
         }
-        if (username==="" || username==null || username.length<3) {
+        if (username.replace(/\s/g,"") == "" || !username || username.length<3) {
             alert("Your charactername is either empty or is too short!");
             return;
         }
-
+        if (email.replace(/\s/g,"") == "" || !email || email.length<3) {
+            alert("Your email address is either empty or is too short!");
+            return;
+        }
         if (await checkExistingUsername(username)) {
             alert("Username already taken!");
             return;
