@@ -990,6 +990,10 @@
             alert("You need to enter a new password with a minimum length of 8 characters!");
             return;
         }
+        if (newPass.length<8) {
+            alert("Your password needs at least 8 characters!");
+            return;
+        }
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editPassword', {
             method: 'post',
             headers: {
