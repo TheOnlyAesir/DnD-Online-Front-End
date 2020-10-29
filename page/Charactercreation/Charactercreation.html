@@ -2028,10 +2028,7 @@
                     })
                     .then(function (response){
                         postEquipment(response);
-                        return response;
-                    })
-                    .then(function (response){
-                        // window.location.assign("../UserDashboard/Dashboard.html");
+
                     })
                     .catch(function (error) {
                         alert(error);
@@ -2421,7 +2418,7 @@
                     break;
                 }
             }
-
+            window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard");
         }
 
 
@@ -5798,7 +5795,7 @@
                                     <h4 class="d-flex " style="color: white; font-weight: lighter"> AGE </h4>
                                 </div>
                                 <div>
-                                    <input  style="width: 100%" id="CharAgeInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input  style="width: 100%" id="CharAgeInput" type="number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
 
@@ -5826,7 +5823,7 @@
                                     <h4 class="d-flex " style="color: white; font-weight: lighter"> HEIGHT </h4>
                                 </div>
                                 <div>
-                                    <input  style="width: 100%" id="CharHeightInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input  style="width: 100%" id="CharHeightInput" type="number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
 
@@ -5839,7 +5836,7 @@
                                     <h4 class="d-flex " style="color: white; font-weight: lighter"> WEIGHT </h4>
                                 </div>
                                 <div>
-                                    <input  style="width: 100%" id="CharWeightInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input  style="width: 100%" id="CharWeightInput" type="number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
                         </div>
