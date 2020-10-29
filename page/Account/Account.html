@@ -281,6 +281,7 @@
         }
 
         function acceptInvite(e){
+            e.onclick = null;
             let invID = e.parentElement.children.item(1).innerText;
             let groupID = e.parentElement.children.item(2).innerText;
             fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/addToGroup' ,  {
