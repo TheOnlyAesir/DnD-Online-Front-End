@@ -2006,6 +2006,7 @@
                     })
                     .then(function (response){
                         postEquipment(response);
+                        setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + response +""); }, 5000);
                     })
                     .catch(function (error) {
                         alert(error);
@@ -2028,12 +2029,13 @@
                     })
                     .then(function (response){
                         postEquipment(response);
-
+                        setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + response +""); }, 5000);
                     })
                     .catch(function (error) {
                         alert(error);
                     });
             }
+
 
         }
 
@@ -2210,9 +2212,9 @@
             }
 
 
-            postCarryable(charID).then(function (){
-                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + charID +"");;
-            });
+            postCarryable(charID);
+
+
         }
 
         function postCarryable(charID){
