@@ -2006,6 +2006,7 @@
                     })
                     .then(function (response){
                         postEquipment(response);
+                        setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + response +""); }, 5000);
                     })
                     .catch(function (error) {
                         alert(error);
