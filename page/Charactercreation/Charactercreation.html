@@ -11,6 +11,13 @@
     <script type="application/javascript">
 
 
+
+        //Redirect if not logged in
+        function checkLogin(){
+            if (localStorage.userID === null)
+                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
+        }
+
         //Buttons
         function newChar(){
             window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation/");
@@ -36,8 +43,10 @@
 
         window.addEventListener("load", function () {
 
+            checkLogin();
+
             setUsername(User);
-            setUsername2(User)
+            setUsername2(User);
 
             //SET LIMITERS
             setSkillProfLimiter(SkillProfNumber);

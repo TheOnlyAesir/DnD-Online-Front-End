@@ -21,6 +21,8 @@
         var GroupInviteTableBlueprint;
         let User = localStorage.userName;
         window.addEventListener("load", function () {
+            checkLogin();
+
             setUserGreeting(User);
             setOverwiev();
             tableInputBlueprint = document.getElementById("OverviewGroupTableBlueprint");
@@ -40,6 +42,12 @@
         function logout() {
             localStorage.clear();
             window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
+        }
+
+        //Redirect if not logged in
+        function checkLogin(){
+            if (localStorage.userID === null)
+                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
         }
 
         function toDashboard(){
