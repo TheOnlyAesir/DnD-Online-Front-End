@@ -532,7 +532,7 @@
         }
 
         function dashboardSave(e){
-            e = false;
+            e.disabled = false;
             let reference = e.parentElement.parentElement.parentElement.parentElement.children.item(0).reference;
             //alert(reference.charactersheetID);
             let lowerFilled = e.parentElement.parentElement;
