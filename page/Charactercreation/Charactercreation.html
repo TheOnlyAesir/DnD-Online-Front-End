@@ -1763,6 +1763,7 @@
 
         //Save Sheet
         function saveSheetCreation(){
+            document.getElementById("SaveButton").onclick = null;
             let race;
             if(document.getElementById("DwarfCheckBox").checked)
                 race = "Dwarf";
@@ -3431,7 +3432,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-danger m-1" onclick="saveSheetCreation()">Save</button>
+                <button type="button" class="btn btn-danger m-1" id="SaveButton" onclick="saveSheetCreation()">Save</button>
                 <button type="button" class="btn btn-warning m-1" data-toggle="modal" data-target="#NewCharModal" >New +</button>
 
                 <div class="modal" id="NewCharModal">
