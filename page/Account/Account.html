@@ -21,6 +21,8 @@
         var GroupInviteTableBlueprint;
         let User = localStorage.userName;
         window.addEventListener("load", function () {
+            checkLogin();
+
             setUserGreeting(User);
             setOverwiev();
             tableInputBlueprint = document.getElementById("OverviewGroupTableBlueprint");
@@ -40,6 +42,12 @@
         function logout() {
             localStorage.clear();
             window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
+        }
+
+        //Redirect if not logged in
+        function checkLogin(){
+            if (localStorage.length == 0)
+                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
         }
 
         function toDashboard(){
@@ -87,7 +95,7 @@
             })
                 .then(function (data) {
                     if(data.status !== 200) throw("error!");
-
+                    setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard"); }, 2000);
                     // alert("success!");
 
                 })
@@ -265,6 +273,7 @@
             })
                 .then(function (response) {
                     if(response.status !== 200) throw("error!");
+                    setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/account/"); }, 2000);
                 })
                 .catch(function (error) {
                     alert(error);
@@ -272,6 +281,7 @@
         }
 
         function acceptInvite(e){
+            e.onclick = null;
             let invID = e.parentElement.children.item(1).innerText;
             let groupID = e.parentElement.children.item(2).innerText;
             fetch('https://characterforge.azurewebsites.net/api/v1.0/User/'+ localStorage.userID + '/Group/' + groupID + '/addToGroup' ,  {
@@ -281,6 +291,7 @@
                 .then(function (response) {
                     if(response.status !== 200) throw("error!");
                     declineInvite(e.parentElement.parentElement.children.item(2).children.item(0));
+                    setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/account/"); }, 2000);
                 })
                 .catch(function (error) {
                     alert(error);
@@ -296,6 +307,7 @@
             })
                 .then(function (response) {
                     if(response.status !== 200) throw("error!");
+                    setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/account/"); }, 2000);
                 })
                 .catch(function (error) {
                     alert(error);
@@ -954,6 +966,10 @@
             alert("Inputs do not match");
             return;
         }
+        if (newMail.length<8 || newMail==="" || newMail.replace(/\s/g,"") == "") {
+            alert("You need to enter a new email adress!");
+            return;
+        }
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editEmail', {
             method: 'post',
             headers: {
@@ -980,6 +996,10 @@
 
         if (newPass !== passconf) {
             alert("Inputs do not match");
+            return;
+        }
+        if(newPass.replace(/\s/g,"") == "" || newPass.length<8) {
+            alert("You need to enter a new password with a minimum length of 8 characters!");
             return;
         }
         fetch('https://characterforge.azurewebsites.net/api/v1.0/User/editPassword', {

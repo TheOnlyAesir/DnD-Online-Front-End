@@ -11,6 +11,13 @@
     <script type="application/javascript">
 
 
+
+        //Redirect if not logged in
+        function checkLogin(){
+            if (localStorage.length == 0)
+                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
+        }
+
         //Buttons
         function newChar(){
             window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation/");
@@ -36,8 +43,10 @@
 
         window.addEventListener("load", function () {
 
+            checkLogin();
+
             setUsername(User);
-            setUsername2(User)
+            setUsername2(User);
 
             //SET LIMITERS
             setSkillProfLimiter(SkillProfNumber);
@@ -1754,6 +1763,7 @@
 
         //Save Sheet
         function saveSheetCreation(){
+            document.getElementById("SaveButton").onclick = null;
             let race;
             if(document.getElementById("DwarfCheckBox").checked)
                 race = "Dwarf";
@@ -1997,6 +2007,7 @@
                     })
                     .then(function (response){
                         postEquipment(response);
+                        setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + response +""); }, 5000);
                     })
                     .catch(function (error) {
                         alert(error);
@@ -2019,15 +2030,13 @@
                     })
                     .then(function (response){
                         postEquipment(response);
-                        return response;
-                    })
-                    .then(function (response){
-                        // window.location.assign("../UserDashboard/Dashboard.html");
+                        setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard/charactercreation?c=" + response +""); }, 5000);
                     })
                     .catch(function (error) {
                         alert(error);
                     });
             }
+
 
         }
 
@@ -2205,6 +2214,8 @@
 
 
             postCarryable(charID);
+
+
         }
 
         function postCarryable(charID){
@@ -3431,7 +3442,7 @@
                     </div>
                 </div>
 
-                <button type="button" class="btn btn-danger m-1" onclick="saveSheetCreation()">Save</button>
+                <button type="button" class="btn btn-danger m-1" id="SaveButton" onclick="saveSheetCreation()">Save</button>
                 <button type="button" class="btn btn-warning m-1" data-toggle="modal" data-target="#NewCharModal" >New +</button>
 
                 <div class="modal" id="NewCharModal">
@@ -5799,7 +5810,7 @@
                                     <h4 class="d-flex " style="color: white; font-weight: lighter"> AGE </h4>
                                 </div>
                                 <div>
-                                    <input  style="width: 100%" id="CharAgeInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input  style="width: 100%" id="CharAgeInput" type="number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
 
@@ -5827,7 +5838,7 @@
                                     <h4 class="d-flex " style="color: white; font-weight: lighter"> HEIGHT </h4>
                                 </div>
                                 <div>
-                                    <input  style="width: 100%" id="CharHeightInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input  style="width: 100%" id="CharHeightInput" type="number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
 
@@ -5840,7 +5851,7 @@
                                     <h4 class="d-flex " style="color: white; font-weight: lighter"> WEIGHT </h4>
                                 </div>
                                 <div>
-                                    <input  style="width: 100%" id="CharWeightInput" type="text" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                                    <input  style="width: 100%" id="CharWeightInput" type="number" class="InputCharDesc form-control " aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
                                 </div>
                             </div>
                         </div>

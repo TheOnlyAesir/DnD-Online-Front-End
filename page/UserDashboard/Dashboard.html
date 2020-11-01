@@ -23,6 +23,7 @@
         var count;
         let User = localStorage.userName;
         window.addEventListener("load", function () {
+            checkLogin();
 
             setUsername(User);
             presetDiv = document.getElementById("UpperCharacterBlueprint");
@@ -38,6 +39,12 @@
         function logout() {
             localStorage.clear();
             window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
+        }
+
+        //Redirect if not logged in
+        function checkLogin(){
+            if (localStorage.length == 0)
+                window.location.assign("https://onlineverwaltungdnd.azurewebsites.net");
         }
 
 
@@ -525,6 +532,8 @@
         }
 
         function dashboardSave(e){
+            e.onclick = null;
+            setTimeout(() => {window.location.assign("https://onlineverwaltungdnd.azurewebsites.net/Dashboard"); }, 4000);
             let reference = e.parentElement.parentElement.parentElement.parentElement.children.item(0).reference;
             //alert(reference.charactersheetID);
             let lowerFilled = e.parentElement.parentElement;
