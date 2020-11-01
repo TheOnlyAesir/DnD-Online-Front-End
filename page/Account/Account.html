@@ -975,7 +975,7 @@
             alert("Inputs do not match");
             return;
         }
-        if (newPass.length<8 || newMail==="" || !newMail) {
+        if (newMail.length<8 || newMail==="" || newMail.replace(/\s/g,"") == "") {
             alert("You need to enter a new email adress!");
             return;
         }
