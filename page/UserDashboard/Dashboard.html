@@ -1072,33 +1072,46 @@
 
     <!--Banner Header
     ==========================================-->
-    <div id="HeaderBox" class="row">
 
-        <div class="col-1">
+    <div id="HeaderBox"   >
+
+        <div class = "d-flex justify-content-between">
             <h1 class="WelcomeMessage">
-                Welcome&nbsp <span id="UserName"></span>
+                Welcome&nbsp <span id="UserName" ></span>
             </h1>
-        </div>
 
-        <div class="Logo col-2 d-flex align-items-center">
-            <img style="width: 100%" src="../../Images/Logo_Small.png" class="img-fluid." >
-        </div>
 
-        <div style="width: 100%" id="UserButton" class="btn-group col-1 align-items-start">
-            <div class="btn-group dropleft" role="group">
-                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="sr-only">Toggle Dropleft</span>
-                </button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" onclick="toAccount()">Account</a>
-                    <a class="dropdown-item" onclick="logout()" href="#">LogOut</a>
+            <div class=" d-flex">
+                <h1 class="StickyHeaderName"></h1>
+
+                <div style="width: 100%; " id="UserButton" class="btn-group col-1 align-self-center  ">
+                    <div class="btn-group dropleft d-flex flex-row" role="group">
+                        <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="sr-only">Toggle Dropleft</span>
+                        </button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" onclick="toAccount()">Account</a>
+                            <a class="dropdown-item" onclick="logout()" href="#">LogOut</a>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary " onclick="toDashboard()">
+                        <span id="UserName2"></span>
+                    </button>
                 </div>
+
             </div>
-            <button type="button" class="btn btn-secondary" onclick="toDashboard()">
-                <span id="UserName2"></span>
-            </button>
+
+        </div>
+
+        <div class="d-flex " style="height: 200px">
+
+            <div class="Logo align-self-center">
+                <img style="width: 100%" src="../../Images/Logo_Small.png" class="img-fluid." >
+            </div>
+
         </div>
     </div>
+
 
 
     <!--Sticky Header
